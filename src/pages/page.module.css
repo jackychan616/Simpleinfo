@@ -16,5 +16,20 @@
     z-index: 2;
     font-family: var(--font-mono);
   }
-  
+.navs > ul {
+    background-color: rgb(230, 230, 230);
+    list-style: none;  
+    margin: 0;
+    padding: 0;
+}
+.navs a {
+    color: inherit;
+    font-size: 1.2rem;
+    text-decoration: none;  
+    xt-decoration: none;  
+}
+.navs a:hover {
+    background-color: rgb(115, 115, 115);
+    color: white;
+}
   
