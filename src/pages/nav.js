@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import { navLinks } from "../source/data";
 function Nav(){
     return (
         <div className="nav">
