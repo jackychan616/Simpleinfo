@@ -1,12 +1,14 @@
 import Link from "next/link";
 
-function Nav(){
+export default function Nav(){
     return (
         <div className="nav">
-           <ul>
-                <li><Link href="/">Home</Link></li>
-                <li><Link href="/content">電腦</Link></li>
-            </ul> 
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <ul>
+                    <li><Link href="/" className="navbar-brand">Home</Link></li>
+                    <li><Link href="/content" className="navbar-brand">電腦</Link></li>
+                </ul> 
+            </nav>
         </div>
     ); 
 }
