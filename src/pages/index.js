@@ -1,15 +1,14 @@
 
 export default function Home() {
   return (
-    <>
+    <html lang="zh-Hant-HK">
       <Head>
-        <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta charset="utf-8"/>
       </Head>
       <main>
         
       </main>
-    </>
+    </html>
   )
 }
