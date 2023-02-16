@@ -10,8 +10,12 @@ export default function Home() {
         <meta charset="utf-8"/>
       </head>
       <body>
+        
         <div >
-          <Nav/>
+          <div>
+            <Nav/>
+          </div>
+          
         </div>
       </body>
     </html>
