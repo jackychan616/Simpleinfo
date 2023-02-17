@@ -1,7 +1,7 @@
 import Image from "next/image";
+import Nav from '../nav'
 
-
-export default function Page(){
+function Content(){
     return(
         <div>
             <div id="web-title">
@@ -55,7 +55,7 @@ export default function Page(){
             <h3>
                 示範
             </h3>
-            <Image src="/img/img2.png" id="img2" width="500" height='300'/>
+            <Image src="/img/img2.png" id="img2" width="500" height='100'/>
         </div>
 
         <div class="content" id="content-cat">
@@ -84,5 +84,16 @@ export default function Page(){
         </div>
         </div>
         
+    );
+}
+
+export default function Page(){
+    return(
+        <>
+            <Nav/>
+            <Content/>
+        </>
+        
+
     );
 }
