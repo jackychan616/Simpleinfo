@@ -9,11 +9,11 @@ export default function Home() {
   return (
     <html lang="zh-Hant-HK" className={style.html}>
       <head>
-        <meta charSet="utf-8"/>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta charset="utf-8"/>
       </head>
       <body>
-          <App/>
+          <Main/>
       </body>
     </html>
   )
