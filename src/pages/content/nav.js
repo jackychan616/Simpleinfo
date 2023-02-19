@@ -1,9 +1,12 @@
 
 
-export default fucntion bar(){
+export default function Bar(){
     return (
-        <nav>
-            
-        </nav>
-    )
+        <div>
+            <nav>
+                
+            </nav>
+        </div>
+
+    );
 }

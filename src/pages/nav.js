@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Nav(){
     return (
-            <nav className="navbar navbar-expand-lg sticky-top  navbar-light " >
+            <nav className="  navbar navbar-expand-lg  navbar-light " >
                 <Link href="/" className="navbar-brand">
                     <Image src="/logo.png"  height='50' width='50' alt="" className="d-inline-block align-top"/>
                     <span className="h3 mx-1">Simple Info</span>
@@ -23,12 +23,16 @@ export default function Nav(){
                         <li className="nav-item">
                             <Link className="nav-link" href="/content"> 教學文章</Link>
                         </li>
+                        
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 更多</a>
-                                <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <Link className="dropdown-item" href="/">1</Link>
-                                    <Link className="dropdown-item" href="/">2</Link>
-                                </div>
+                            <a className="nav-link dropdown-toggle" role ="button" id="navbarDropdown"
+                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                                更多
+                            </a>
+                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <Link className="dropdown-item" href="/">1</Link>
+                                <Link className="dropdown-item" href="/content">2</Link>
+                            </div>
                         </li>
                     </ul>
                 </div>
