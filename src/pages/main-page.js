@@ -1,4 +1,3 @@
-import Nav from './nav';
 
 function Body(){
     return(
@@ -25,7 +24,6 @@ function Body(){
 export default function App(){
     return(
         <div>
-            <Nav/>
             <Body/>
         </div>
     );  

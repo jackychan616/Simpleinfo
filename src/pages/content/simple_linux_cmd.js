@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Nav from '../nav'
+import Nav from '../components/nav'
 
 function Content(){
     return(

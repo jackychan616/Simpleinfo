@@ -1,11 +1,12 @@
-import 'bootstrap/dist/css/bootstrap.css';   
-import { useEffect } from "react";
+import '../styles/globals.css'; 
+import Layout  from './components/layout';
 
-export default function MyApp({ Component, pageProps }) {
-    useEffect(() => {
-      require("bootstrap/dist/js/bootstrap.bundle.min.js");
-    }, []);
-  
-    return <Component {...pageProps} />;
+export default function MyApp({ Component ,pageProps}) {
+  return  (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+    
+  );
 }
   
