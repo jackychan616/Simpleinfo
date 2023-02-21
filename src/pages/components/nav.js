@@ -24,16 +24,7 @@ export default function Nav(){
                             <Link className="nav-link" href="/content"> 教學文章</Link>
                         </li>
                         
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" role ="button" id="navbarDropdown"
-                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                                更多
-                            </a>
-                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link className="dropdown-item" href="/">1</Link>
-                                <Link className="dropdown-item" href="/content">2</Link>
-                            </div>
-                        </li>
+                        
                     </ul>
                 </div>
             </nav>
