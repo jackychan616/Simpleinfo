@@ -90,7 +90,6 @@ function Content(){
 export default function Page(){
     return(
         <>
-            <Nav/>
             <Content/>
         </>
         
