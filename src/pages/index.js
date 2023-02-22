@@ -12,7 +12,7 @@ export default function Home() {
         <meta charset="utf-8"/>
       </head>
       
-      <body className=''>
+      <body>
         <App/>
       </body>
     </html>
