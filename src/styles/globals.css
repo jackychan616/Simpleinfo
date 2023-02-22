@@ -1,2 +1,5 @@
 @import 'node_modules/bootstrap/dist/css/bootstrap.css';
 
+.container p{
+    color: rgb(92, 89, 89);
+}
