@@ -1,4 +1,4 @@
-
+import Link from "next/link";
 function Body(){
     return(
         <div className=" d-flex   justify-content-center align-items-center">
@@ -25,6 +25,7 @@ export default function App(){
     return(
         <div>
             <Body/>
+            <Link href="/content/python-tutorial/py-quick-tutorial/">123</Link>
         </div>
     );  
 }
