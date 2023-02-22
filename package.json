@@ -16,6 +16,7 @@
     "bootstrap": "^5.2.3",
     "markdown-to-jsx": "^7.1.9",
     "next": "^13.1.6",
+    "next-seo": "^5.15.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0"

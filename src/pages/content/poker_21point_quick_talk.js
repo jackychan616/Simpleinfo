@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Script from 'next/script';
-const title = '[撲克牌]二十一點玩法教學';
+const title = '[porker 撲克牌] 二十一點玩法教學 ';
 
 
 
@@ -9,20 +9,14 @@ export default function page(){
     <>  
     <Head>
         <title>{title}</title>
-        <meta name="description" content='{title}'></meta>
+        <meta name="description" content={title}></meta>
+        <meta property='og:title' content={title}></meta>
+        <meta property='og:description' content={title}></meta>
+        <meta property='og:url' content=''></meta>
         <meta name="keywords" content="啤牌,樸克牌,21點,二十一點,桌遊,教學,親子,聯誼,香港,臺灣,大學"></meta>
     </Head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3459129696587268"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-3459129696587268"
-     data-ad-slot="2003379010"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+    <Script id="Adsense-id" data-ad-client="ca-pub-3459129696587268"  async strategy="afterInteractive"
+  onError={ (e) => { console.error('Script failed to load', e) }}src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"/>
     <div className="container">
         <h1>{title}</h1>
         
