@@ -15,9 +15,6 @@ export default function page(){
         <meta property='og:url' content=''></meta>
         <meta name="keywords" content="啤牌,樸克牌,21點,二十一點,桌遊,教學,親子,聯誼,香港,臺灣,大學"></meta>
     </Head>
-    <Script id="Adsense-id" data-ad-client="ca-pub-3459129696587268"  async strategy="afterInteractive"
-  onError={ (e) => { console.error('Script failed to load', e) }}src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"/>
-    <div className="container">
         <h1>{title}</h1>
         
         <h3>流程</h3>
