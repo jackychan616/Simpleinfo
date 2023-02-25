@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Nav from '../../components/nav'
+
 
 function Content(){
     return(
-        <div className="container page_container    ">
+        <div className="container page_container">
             <div id="web-title">
             <h1>
                 Linux幾個必學指令(ls cd cat)

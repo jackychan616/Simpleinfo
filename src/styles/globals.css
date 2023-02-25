@@ -1,5 +1,5 @@
 @import 'node_modules/bootstrap/dist/css/bootstrap.css';
 
-.page_container .container p{
-    color: rgb(126, 121, 121);
+.page_container p{
+    color: rgb(139, 131, 131);
 }
