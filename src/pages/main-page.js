@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 function Body(){
     return(
         <div className=" d-flex   justify-content-center align-items-center" style={{backgroundColor : "rgb(56,60,68)",height : "150px"}}>
@@ -7,7 +8,6 @@ function Body(){
         </div>
     )
 }   
-
 export default function App(){
     return(
         <div>
