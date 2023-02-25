@@ -3,3 +3,17 @@
 .page_container p{
     color: rgb(139, 131, 131);
 }
+
+.content-container{
+    background-color: rgb(243,244,246);
+    
+}
+.content-container:hover{
+    --_i: 100%;
+    transition: .3s, background-size .3s .3s;
+}
+
+.content-container .content-link{
+    color: rgb(127, 158, 181);
+    text-decoration: underline;
+}

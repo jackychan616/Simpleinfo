@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function Nav(){
     return (
-            <nav className="  navbar navbar-expand-lg  navbar-light " >
+            <nav className="  navbar navbar-expand-lg navbar-light bg-light " >
                 <Link href="/" className="navbar-brand">
-                    <Image src="/logo.png"  height='50' width='50' alt="" className="d-inline-block align-top"/>
+                    <Image src="/logo.png"  height='30' width='30' alt=""/>
                     <span className="h3 mx-1">Simple Info</span>
                 </Link>
 
@@ -13,7 +13,7 @@ export default function Nav(){
                     <ul className="navbar-nav mr-auto">
 
                         <li className="nav-item active">
-                            <Link className="nav-link" href="/">首頁<span class="sr-only">(current)</span></Link>
+                            <Link className="nav-link" href="/">首頁</Link>
                         </li>
 
                         <li class="nav-item">
@@ -23,7 +23,6 @@ export default function Nav(){
                         <li className="nav-item">
                             <Link className="nav-link" href="/content"> 教學文章</Link>
                         </li>
-                        
                         
                     </ul>
                 </div>

@@ -12,10 +12,10 @@ export default function content(){
             <Head>
                 <title>Simple Blog - Linux 教學</title>
             </Head>
-            <div>
+            <div className='container'>
                 <h1>Linux 教學</h1>
                 <div className='container'>
-                    <Link href="/content/linux-tutorial/simple_linux_cmd"><p>Linux幾個必學指令</p></Link>
+                    <Link className='content-link' href="/content/linux-tutorial/simple_linux_cmd">Linux幾個必學指令</Link>
                 </div>
             </div>
         </>
