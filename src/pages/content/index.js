@@ -21,7 +21,7 @@ export default function Page(){
 
             <div className="row">
                 <div className="col container-lg content-container border border-primary">
-                    <Link href="/" className="content-link"><h4>Python 教學</h4></Link>
+                    <Link href="/content/python-tutorial" className="content-link"><h4>Python 教學</h4></Link>
                     <Image src="/img/python.png" width="314" height="150"></Image>
                 </div>  
                 <div className=""></div>
