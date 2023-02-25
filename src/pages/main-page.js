@@ -25,7 +25,6 @@ export default function App(){
     return(
         <div>
             <Body/>
-            <Link href="/content/python-tutorial/py-quick-tutorial/">123</Link>
         </div>
     );  
 }

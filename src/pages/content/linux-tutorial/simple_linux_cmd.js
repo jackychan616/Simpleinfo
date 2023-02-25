@@ -1,14 +1,14 @@
 import Image from "next/image";
-import Nav from '../components/nav'
+import Nav from '../../components/nav'
 
 function Content(){
     return(
-        <div className="container">
+        <div className="container page_container    ">
             <div id="web-title">
             <h1>
                 Linux幾個必學指令(ls cd cat)
             </h1>
-        </div>
+            </div>
 
         <div class="content" id="introduction">
             <h2 id="introduction-title">
