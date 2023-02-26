@@ -7,11 +7,13 @@ const blogdata = [
         "title": 'Python 教學',
         "image": '/img/py.jpg',
         "date": 'September 12, 2022',
+        "href": '/content/python-tutorial'
     },
     {
         "title": 'linux 教學',
         "image": '/img/linux.jpeg',
         "date": 'September 12, 2022',
+        "href": '/content/linux-tutorial'
     }
 ];
 const useStyles = createStyles((theme) => ({
@@ -31,10 +33,10 @@ const useStyles = createStyles((theme) => ({
   }));
 
 
-function Body(){
+function Body(){    
             const { classes } = useStyles();
             const cards = blogdata.map((article) => (
-            <Card key={article.title} p="md" radius="md" component="a" href="#" className={classes.card}> /* href is link;*/
+            <Card key={article.title} p="md" radius="md" component="a" href={article.href} className={classes.card}> 
             <AspectRatio ratio={1920 / 1080}>
                 <Image src={article.image} width = "650" height = "80"/> 
             </AspectRatio>
