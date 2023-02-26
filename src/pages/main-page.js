@@ -4,14 +4,14 @@ import { createStyles, SimpleGrid, Card, Text, Container, AspectRatio } from '@m
 
 const blogdata = [
     {
-        title: 'Python 教學',
-        image: '',
-        date: 'September 12, 2022',
+        "title": 'Python 教學',
+        "image": '',
+        "date": 'September 12, 2022',
     },
     {
-        title: 'linux 教學',
-        image: '',
-        date: 'September 12, 2022',
+        "title": 'linux 教學',
+        "image": '',
+        "date": 'September 12, 2022',
     }
 ];
 const useStyles = createStyles((theme) => ({
