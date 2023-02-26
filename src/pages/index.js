@@ -3,18 +3,9 @@ import App from './main-page';
 import 'bootstrap/dist/css/bootstrap.css';    
 import style from '../styles/Home.module.css';
 import { Children } from 'react';
-
+import Head from 'next/head';
 export default function Home() {
   return (
-    <html lang="zh-Hant-HK" >
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <meta charset="utf-8"/>
-      </head>
-      
-      <body>
-        <App/>
-      </body>
-    </html>
+    <App/>
   )
 }

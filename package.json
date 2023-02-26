@@ -10,17 +10,27 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
+<<<<<<< HEAD
     "@mantine/core": "^5.10.5",
     "@mantine/hooks": "^5.10.5",
+=======
+    "@emotion/server": "^11.10.0",
+    "@mantine/core": "^5.10.5",
+    "@mantine/hooks": "^5.10.5",
+    "@mantine/next": "^5.10.5",
+    "@mantine/prism": "^5.10.5",
+>>>>>>> faf78ca98a72dd2c2b766502416fc649cb76aee7
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@next/font": "13.1.6",
     "@next/mdx": "^13.1.6",
     "bootstrap": "^5.2.3",
+    "highlight.js": "^11.7.0",
     "markdown-to-jsx": "^7.1.9",
     "next": "^13.1.6",
     "next-seo": "^5.15.0",
     "npm": "^9.5.0",
+    "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0"

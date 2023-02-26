@@ -1,7 +1,8 @@
 @import 'node_modules/bootstrap/dist/css/bootstrap.css';
 
+
 .page_container p{
-    color: rgb(112, 106, 106);
+    color: rgb(138, 127, 127);
 }
 
 .content-container{
@@ -17,3 +18,7 @@
     color: rgb(127, 158, 181);
     text-decoration: underline;
 }
+
+samp {
+    font-family: monospace;
+  }
