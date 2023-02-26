@@ -1,0 +1,9 @@
+[title] 如何使用AI繒圖？推薦幾款免費的線上AI軟仵（stable diffusion ,night cafe , openArt)
+
+本章將介紹三款線上繪圖AI軟件，並教大家如何使用 。．
+
+stable diffusion
+stable diffusion 是免費開源軟件，它產出的圖片能用作商業用途。
+我們有兩個途徑使用它。
+Dream studio
+進入網站註冊後，按Dream  ，在底下輸入關鍵字按Enter
