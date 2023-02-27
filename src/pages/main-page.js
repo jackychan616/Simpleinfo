@@ -16,6 +16,7 @@ const blogdata = [
         "href": '/content/linux-tutorial'
     }
 ];
+
 const useStyles = createStyles((theme) => ({
     card: {
       transition: 'transform 150ms ease, box-shadow 150ms ease',

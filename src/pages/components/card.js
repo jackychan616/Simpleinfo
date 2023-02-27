@@ -1,6 +1,22 @@
 import { createStyles, SimpleGrid, Card, Image, Text, Container, AspectRatio } from '@mantine/core';
 
-//PostData ={"title":str,"image":url,"date":str}
+
+
+const blogdata = [
+  {
+      "title": 'Python 教學',
+      "image": '/img/py.jpg',
+      "href": '/content/python-tutorial'
+  },
+  {
+      "title": 'linux 教學',
+      "image": '/img/linux.jpeg',
+      "href": '/content/linux-tutorial'
+  },
+  {
+     " title":"[porker 撲克牌] 二十一點玩法教學 ","image":"/img/poker.jpg","href":"/content/card-game"
+  }
+];
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -18,10 +34,10 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function ArtiCard({PostData}) {
+export default function ArtiCard()  {
   const { classes } = useStyles();
 
-  const cards = PostData.map((article) => (
+  const cards =blogdata.map((article) => (
     <Card key={article.title} p="md" radius="md" component="a" href={article.href} className={classes.card}>
       <AspectRatio ratio={1920 / 1080}>
         <Image src={article.image} />
@@ -37,11 +53,11 @@ export default function ArtiCard({PostData}) {
 
   return (
     <Container>
-    <Container py="xl">
-      <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-        {cards}
-      </SimpleGrid>
-    </Container>
+      <Container py="xl">
+        <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+          {cards}
+        </SimpleGrid>
+      </Container>
     </Container>
   );
 }
