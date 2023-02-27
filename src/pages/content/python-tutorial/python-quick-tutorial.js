@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import {Title,Text } from "@mantine/core";
 import { Prism } from '@mantine/prism';
-import ConText from "@/pages/components/MyText";
+import ConText from "../../../pages/components/MyText";
 import { useEffect } from "react"
 
 
