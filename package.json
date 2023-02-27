@@ -19,19 +19,11 @@
     "@mantine/prism": "^5.10.5",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
-<<<<<<< HEAD
     "@mui/material": "^5.11.10",
     "@next/font": "13.1.6",
     "@next/mdx": "^13.1.6",
     "@tabler/core": "^1.0.0-beta17",
     "@tabler/icons": "^2.6.0",
-=======
-    "@mui/icons-material": "^5.11.9",
-    "@mui/material": "^5.11.10",
-    "@next/font": "13.1.6",
-    "@next/mdx": "^13.1.6",
-    "@storybook/react": "^6.5.16",
->>>>>>> 7ad2dab74c0bfc3865d5a6da3997547484d83714
     "bootstrap": "^5.2.3",
     "highlight.js": "^11.7.0",
     "markdown-to-jsx": "^7.1.9",
