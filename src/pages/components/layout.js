@@ -14,7 +14,7 @@ const sections = [
 export default function Layout({children}){
     return (
         <>
-            <Header title="" sections={sections} />
+            <Header title=""/>
             <main>{children}</main>
         </>
     );
