@@ -1,9 +1,10 @@
 import Nav from './nav';
 import Navs from './newnav';
+import  MyHeader  from './header';
 export default function Layout({children}){
     return (
         <>
-            <Navs/>
+            <MyHeader/>
             <main>{children}</main>
         </>
     );

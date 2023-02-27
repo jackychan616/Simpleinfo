@@ -18,11 +18,11 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function ArtiCard() {
+export default function ArtiCard({PostData}) {
   const { classes } = useStyles();
 
   const cards = PostData.map((article) => (
-    <Card key={article.title} p="md" radius="md" component="a" href="#" className={classes.card}>
+    <Card key={article.title} p="md" radius="md" component="a" href={article.href} className={classes.card}>
       <AspectRatio ratio={1920 / 1080}>
         <Image src={article.image} />
       </AspectRatio>
