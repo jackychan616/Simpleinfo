@@ -4,17 +4,13 @@ import {Title,Text } from "@mantine/core";
 import { Prism } from '@mantine/prism';
 import ConText from "../../../pages/components/MyText";
 import { useEffect } from "react"
+import Sharebox from "../../components/share";
 
 
 
-
-export default function page(){
+function Page(){
     return(
         <>
-        <Head>
-            <title>Simple Blog - Python 入門</title>
-   
-        </Head>
         <div className="container">
             <Title order={1}>Python入門</Title>
 
@@ -74,6 +70,23 @@ export default function page(){
                 </div>
             </div>  
         </div>
+        </>
+    );
+}
+
+export default function _Page(){
+    return(
+        <>
+            <Head>
+                <title>Simple Blog - Python 入門</title>
+    
+            </Head>
+            <div>
+                <Sharebox/>
+            </div>
+            
+            <Page />
+
         </>
     );
 }
