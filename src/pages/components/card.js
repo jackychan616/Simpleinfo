@@ -18,7 +18,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function ArtiCard({PostData}) {
+export default function Arti    Card({PostData}) {
   const { classes } = useStyles();
 
   const cards = PostData.map((article) => (
