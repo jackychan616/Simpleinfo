@@ -14,6 +14,7 @@ export default function Sharebox(){
             <Box sz={{flexGrow:1}}>
                 <Grid container spacing={8}>
                     <Grid xs={8}></Grid>
+                    <Grid xs={2}>
 
                         <Tooltip title="Share" >
                             <IconButton >
