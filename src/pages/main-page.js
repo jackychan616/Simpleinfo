@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { createStyles, SimpleGrid, Card,  Container, AspectRatio, Title } from '@mantine/core';
+import { createStyles, SimpleGrid, Card,  Container, AspectRatio, Title,Text } from '@mantine/core';
 
 const blogdata = [
     {
@@ -56,14 +56,16 @@ function Body(){
                 
                 
             </div>
-            <div >
-                <Title order={1} size="h1" align="center">快速探索</Title>
+            <Container>
+                <Title order={1} size="h1" align="center" variant='gradient'
+                    gradient={{from:"dark.9" ,to:'dark.0',deg:10}}>快速探索</Title>
+                
                 <Container py="xl">
                     <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
                         {cards}
                     </SimpleGrid>
+                </Container>
             </Container>
-            </div>
             
         </>
         
@@ -73,6 +75,5 @@ export default function App(){
     return(
         <div>
             <Body/>
-        </div>
-    );  
+        </div>);  
 }
