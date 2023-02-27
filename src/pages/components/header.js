@@ -20,7 +20,7 @@ function Header(props) {
         <Typography
           component="h2"
           variant="h5"
-          color="blue"
+          color="white"
           align="center"
           noWrap
           sx={{ flex: 1 }}
@@ -30,7 +30,7 @@ function Header(props) {
         <IconButton>
           <SearchIcon />
         </IconButton>
-        <Button variant="outlined" size="small">
+        <Button variant="outlined" size="small" color = "inherit">
           Sign up
         </Button>
       </Toolbar>
