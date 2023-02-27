@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { createStyles, SimpleGrid, Card, Text, Container, AspectRatio } from '@mantine/core';
+import { createStyles, SimpleGrid, Card,  Container, AspectRatio, Title } from '@mantine/core';
 
 const blogdata = [
     {
@@ -56,21 +56,15 @@ function Body(){
                 
                 
             </div>
-            <div  align="center">
-                <h3 >快速探索</h3>
-                <div className="row">
-                    <div className="col">
-                        <Link href="/content/linux-tutorial" passHref><button class>Linux 教學</button></Link>
-                        <Link href="/content/python-tutorial"><button>Python 教學</button></Link>
-                    </div>
-                    
-                </div>
-            </div>
-            <Container py="xl">
-                <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-                {cards}
-                </SimpleGrid>
+            <div >
+                <Title order={1} size="h1" align="center">快速探索</Title>
+                <Container py="xl">
+                    <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+                        {cards}
+                    </SimpleGrid>
             </Container>
+            </div>
+            
         </>
         
     )
