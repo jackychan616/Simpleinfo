@@ -4,7 +4,7 @@ const title = '[porker 撲克牌] 二十一點玩法教學 ';
 
 
 
-export default function page(){
+function page(){
     return(
     <>  
     <Head>
@@ -91,3 +91,9 @@ export default function page(){
     
     );
 }
+
+export default () =>(
+    <>
+        <page/>
+    </>
+);
