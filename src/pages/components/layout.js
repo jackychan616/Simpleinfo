@@ -1,4 +1,3 @@
-import Nav from './nav';
 import Header from './header';
 const sections = [
     { title: 'Technology', url: '#' },
@@ -15,7 +14,7 @@ const sections = [
 export default function Layout({children}){
     return (
         <>
-            <Header title="Blog" sections={sections} />
+            <Header title="" sections={sections} />
             <main>{children}</main>
         </>
     );
