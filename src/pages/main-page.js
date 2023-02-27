@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
-import { createStyles, SimpleGrid, Card,  Container, AspectRatio, Title,Text } from '@mantine/core';
+
+import { createStyles, SimpleGrid, Card,  Container, AspectRatio, Title,Text,Image } from '@mantine/core';
 
 const blogdata = [
     {
