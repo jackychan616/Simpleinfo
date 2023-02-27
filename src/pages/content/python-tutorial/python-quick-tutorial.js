@@ -1,13 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
-import "prismjs/themes/prism-tomorrow.css";
-import {Title,Text} from "@mantine/core";
+import {Title,Text } from "@mantine/core";
+import { Prism } from '@mantine/prism';
 import ConText from "@/pages/components/MyText";
 import { useEffect } from "react"
 
-import Prism from "prismjs";
-
-require("prismjs/components/prism-python");
 
 
 
@@ -50,7 +47,7 @@ export default function page(){
                 <div className="page_container container">
                     <Title order={3}>語法</Title>
                     <Text>文件輸入以下句子</Text>
-                    <pre><code className="language-python">print('ok')</code></pre>
+                    <Prism language="python">print('ok')</Prism>
                     <Text>輸出</Text>
                     <samp>ok</samp>
                 </div>
@@ -66,8 +63,8 @@ export default function page(){
                     </ul>
                             
         <pre>
-            <code className="language-python">number = 1 </code>
-            <code className="language-python">string = '這是一行句子'</code>
+            <Prism language = "python">number = 1 # print(number) output : 1 </Prism>
+            <Prism language = "python">string = '這是一行句子' # print(string) output: 這是一行句子</Prism>
         </pre>
                 </div>
                 <div className="container">
