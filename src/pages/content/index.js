@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@mantine/core";
 import ArtiCard from "../components/card";
+import ArtiCard from "../../pages/components/card";
 
 const PostData =[
     {
