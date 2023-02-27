@@ -74,7 +74,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 
-export default function Navs() {
+export default function newnav() {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();

@@ -20,6 +20,7 @@
     "@mdx-js/react": "^2.3.0",
     "@next/font": "13.1.6",
     "@next/mdx": "^13.1.6",
+    "@storybook/react": "^6.5.16",
     "bootstrap": "^5.2.3",
     "highlight.js": "^11.7.0",
     "markdown-to-jsx": "^7.1.9",
