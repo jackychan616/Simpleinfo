@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Image from 'next/image';
 function Header(props) {
-  const { sections, title } = props;
+  const {title } = props;
 
   return (
     <React.Fragment>
