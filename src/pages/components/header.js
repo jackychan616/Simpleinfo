@@ -40,12 +40,6 @@ function Header(props) {
 }
 
 Header.propTypes = {
-  sections: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
   title: PropTypes.string.isRequired,
 };
 
