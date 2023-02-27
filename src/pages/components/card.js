@@ -36,10 +36,12 @@ export default function ArtiCard({PostData}) {
   ));
 
   return (
+    <Container>
     <Container py="xl">
       <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
         {cards}
       </SimpleGrid>
+    </Container>
     </Container>
   );
 }
