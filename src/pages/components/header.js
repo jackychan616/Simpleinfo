@@ -6,18 +6,21 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-
+import Image from 'next/image';
 function Header(props) {
   const { sections, title } = props;
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Button size="small">Subscribe</Button>
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' ,bgcolor : "#009688"}}>
+        <Link href="/" className="navbar-brand">
+                    <Image src="/logo.png"  height='30' width='30' alt=""/>
+                    <span className="h3 mx-1">Simple Info</span>
+        </Link>
         <Typography
           component="h2"
           variant="h5"
-          color="inherit"
+          color="blue"
           align="center"
           noWrap
           sx={{ flex: 1 }}
