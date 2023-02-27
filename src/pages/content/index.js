@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Container } from "react-bootstrap";
+import { Container } from "@mantine/core";
 import ArtiCard from "@/pages/components/card";
 
 const PostData =[
@@ -14,7 +14,7 @@ const PostData =[
         title:"[porker 撲克牌] 二十一點玩法教學 ",image:"/img/porker.jpg",date:"September 12, 2022",href:"/content/card-game"
     },
     {
-        
+
     }
 
 
