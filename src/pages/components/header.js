@@ -1,86 +1,66 @@
-import { createStyles, Header, Autocomplete, Group, Burger } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { IconSearch } from '@tabler/icons';
-import { MantineLogo } from '@mantine/ds';
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 
-const useStyles = createStyles((theme) => ({
-  header: {
-    paddingLeft: theme.spacing.md,
-    paddingRight: theme.spacing.md,
-  },
-
-  inner: {
-    height: 56,
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-
-  links: {
-    [theme.fn.smallerThan('md')]: {
-      display: 'none',
-    },
-  },
-
-  search: {
-    [theme.fn.smallerThan('xs')]: {
-      display: 'none',
-    },
-  },
-
-  link: {
-    display: 'block',
-    lineHeight: 1,
-    padding: '8px 12px',
-    borderRadius: theme.radius.sm,
-    textDecoration: 'none',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
-    fontWeight: 500,
-
-    '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    },
-  },
-}));
-
-
-
-export function MyHeader({links}) {
-  const [opened, { toggle }] = useDisclosure(false);
-  const { classes } = useStyles();
-
-  const items = links.map((link) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={classes.link}
-      onClick={(event) => event.preventDefault()}
-    >
-      {link.label}
-    </a>
-  ));
+function Header(props) {
+  const { sections, title } = props;
 
   return (
-    <Header height={56} className={classes.header} mb={120}>
-      <div className={classes.inner}>
-        <Group>
-          <Burger opened={opened} onClick={toggle} size="sm" />
-          <MantineLogo size={28} />
-        </Group>
-
-        <Group>
-          <Group ml={50} spacing={5} className={classes.links}>
-            {items}
-          </Group>
-          <Autocomplete
-            className={classes.search}
-            placeholder="Search"
-            icon={<IconSearch size={16} stroke={1.5} />}
-            data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
-          />
-        </Group>
-      </div>
-    </Header>
+    <React.Fragment>
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Button size="small">Subscribe</Button>
+        <Typography
+          component="h2"
+          variant="h5"
+          color="inherit"
+          align="center"
+          noWrap
+          sx={{ flex: 1 }}
+        >
+          {title}
+        </Typography>
+        <IconButton>
+          <SearchIcon />
+        </IconButton>
+        <Button variant="outlined" size="small">
+          Sign up
+        </Button>
+      </Toolbar>
+      <Toolbar
+        component="nav"
+        variant="dense"
+        sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
+      >
+        {sections.map((section) => (
+          <Link
+            color="inherit"
+            noWrap
+            key={section.title}
+            variant="body2"
+            href={section.url}
+            sx={{ p: 1, flexShrink: 0 }}
+          >
+            {section.title}
+          </Link>
+        ))}
+      </Toolbar>
+    </React.Fragment>
   );
 }
+
+Header.propTypes = {
+  sections: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  title: PropTypes.string.isRequired,
+};
+
+export default Header;
