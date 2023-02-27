@@ -6,13 +6,12 @@ import Tooltip from '@mui/material/Tooltip';
 
 export default function sharebox(){
     return(
-        <div>
-            <h1>123</h1>
+
             <Tooltip title="Share">
                 <IconButton >
-                    <ShareIcon/>
+                    <DeleteIcon />
                 </IconButton>
             </Tooltip>
-        </div>
+
     );
 }

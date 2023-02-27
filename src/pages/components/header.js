@@ -12,7 +12,7 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' ,bgcolor : "#009688"}}>
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' ,bgcolor : "#b3d9ff"}}>
         <Link href="/" className="navbar-brand">
                     <Image src="/logo.png"  height='30' width='30' alt=""/>
                     <span className="h3 mx-1">Simple Info</span>
