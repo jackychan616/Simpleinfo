@@ -6,15 +6,18 @@ const blogdata = [
   {
       "title": 'Python 教學',
       "image": '/img/py.jpg',
-      "href": '/content/python-tutorial'
+      "href": '/content/python-tutorial',
+      "date": '12-25'
+
   },
   {
       "title": 'linux 教學',
       "image": '/img/linux.jpeg',
-      "href": '/content/linux-tutorial'
+      "href": '/content/linux-tutorial',
+      "date": '12-25'
   },
   {
-     " title":"[porker 撲克牌] 二十一點玩法教學 ","image":"/img/poker.jpg","href":"/content/card-game"
+     " title":"[porker 撲克牌] 二十一點玩法教學 ","image":"/img/poker.jpg","href":"/content/card-game","date": "12-25"
   }
 ];
 

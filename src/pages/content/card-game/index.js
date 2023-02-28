@@ -15,7 +15,7 @@ export default function content(){
             <div className='container'>
                 <h1>poker 教學</h1>
                 <div className='container'>
-                    <Link className='content-link' href="/content/linux-tutorial/simple_linux_cmd">[porker 撲克牌] 二十一點玩法教學</Link>
+                    <Link className='content-link' href="/content/card-game/poker_21point_quick_talk">[porker 撲克牌] 二十一點玩法教學</Link>
                 </div>
             </div>
         </>
