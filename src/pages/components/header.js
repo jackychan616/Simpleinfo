@@ -80,15 +80,43 @@ const useStyles = createStyles((theme) => ({
     [theme.fn.largerThan('sm')]: {
       display: 'none',
     },
-  },
+  }
 }));
 
 
+const mockdata=[
+  {icon:'/img/python.png',
+  title:'Python 教學',
+  description:'詳細易明的Python教學' 
+  },
+  {
+    icon:'',
+    title:'Linux 教學',
+    description:'學習如何使用Linux'
+
+  }
+]
 
 export default function HeaderMegaMenu() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const { classes, theme } = useStyles();
+
+  const links = mockdata.map((item) => (
+    <UnstyledButton className={classes.subLink} key={item.title}>
+      <Group noWrap align="flex-start">
+        
+        <div>
+          <Text size="sm" weight={500}>
+            {item.title}
+          </Text>
+          <Text size="xs" color="dimmed">
+            {item.description}
+          </Text>
+        </div>
+      </Group>
+    </UnstyledButton>
+  ));
 
 
 
@@ -98,7 +126,12 @@ export default function HeaderMegaMenu() {
         <Group position="apart" sx={{ height: '100%' }}>
           
           <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
-            <Title>Simple Info</Title>
+            <Link href="/" 
+                  style={{
+                    textDecoration: 'none',
+                  }}
+            ><Title>Simple Info</Title></Link>
+            
             <Link href="/" className={classes.link}>
               <Box component="span" mr={5}>
                       首頁
@@ -118,9 +151,9 @@ export default function HeaderMegaMenu() {
 
               <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>
                 <Group position="apart" px="md">
-                  <Text weight={500}>Features</Text>
+                  <Text weight={500}>主題</Text>
                   <Anchor href="/content" size="xs">
-                    View all
+                    查看所有
                   </Anchor>
                 </Group>
 
@@ -129,19 +162,22 @@ export default function HeaderMegaMenu() {
                   mx="-md"
                   color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
                 />
+                <SimpleGrid cols={2} spacing={0}>
+                  {links}
+                </SimpleGrid>
                 
 
                 <div className={classes.dropdownFooter}>
                   <Group position="apart">
                     <div>
-                      <Text weight={500} size="sm">
-                        Get started
+                      <Text weight={500} >
+                        最近更新
                       </Text>
                       <Text size="xs" color="dimmed">
-                        Their food sources have decreased, and their numbers
+                        
                       </Text>
                     </div>
-                    <Button variant="default">Get started</Button>
+                    <Button variant="default">前往</Button>
                   </Group>
                 </div>
               </HoverCard.Dropdown>
