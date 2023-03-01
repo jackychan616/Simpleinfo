@@ -31,6 +31,14 @@ const useStyles = createStyles((theme) => ({
       fontFamily: `Greycliff CF, ${theme.fontFamily}`,
       fontWeight: 600,
     },
+  bigtitle: {
+    textAlign: 'center',
+      fontWeight: 1000,
+      fontSize: 55,
+      lineHeight: 1,
+      color: '#1c7ed6'
+    
+  }
   }));
 
 
@@ -58,8 +66,7 @@ function Body(){
                 
             </div>
             <Container>
-                <Title order={1} size="h1" align="center" variant='gradient'
-                    gradient={{from:"dark.9" ,to:'dark.0',deg:10}}>快速探索</Title>
+                <div className={classes.bigtitle}>快速探索</div>
                 
                 <Container py="xl">
                     <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
