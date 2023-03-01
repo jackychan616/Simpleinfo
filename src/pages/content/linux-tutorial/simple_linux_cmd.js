@@ -41,7 +41,7 @@ function Content(){
             <code><pre> -al       顯示隱藏檔案資訊  </pre> </code>
 
 
-            <Image src="/img/img1.png" id="img1" width='500' height="300"/>
+            <Image src="/img/img1.png" id="img1" width='500' height="300" alt = " linux"/ >
         </div>
         <div class="content" id="content-cd">
             <h1>
