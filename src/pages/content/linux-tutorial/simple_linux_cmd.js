@@ -54,7 +54,7 @@ function Content(){
             <h3>
                 示範
             </h3>
-            <Image src="/img/img2.png" id="img2" width="500" height='100'/>
+            <Image src="/img/img2.png" id="img2" width="500" height='100' alt = " linux">
         </div>
 
         <div class="content" id="content-cat">
