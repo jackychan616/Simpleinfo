@@ -43,7 +43,7 @@ export default function ArtiCard()  {
   const cards =blogdata.map((article) => (
     <Card key={article.title} p="md" radius="md" component="a" href={article.href} className={classes.card}>
       <AspectRatio ratio={1920 / 1080}>
-        <Image src={article.image} />
+        <Image src={article.image} alt = "card"/>
       </AspectRatio>
       <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
         {article.date}
