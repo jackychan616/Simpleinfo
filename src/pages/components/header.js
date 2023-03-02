@@ -139,7 +139,7 @@ export default function HeaderMegaMenu() {
             </Link>
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
-                <Link href="/content" className={classes.link}>
+                <Link href="/content" className={classes.link} >
                   <Center inline>
                     <Box component="span" mr={5}>
                       文章

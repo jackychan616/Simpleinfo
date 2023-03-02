@@ -42,28 +42,25 @@ const useStyles = createStyles((theme) => ({
 
 export function cookie(){
     return(
-    <Paper withBorder p="lg" radius="md" shadow="md">
-    <Group position="apart" mb="xs">
-      <Text size="md" weight={500}>
-        Allow cookies
-      </Text>
-      <CloseButton mr={-9} mt={-9} />
-    </Group>
-    <Text color="dimmed" size="xs">
-      So the deal is, we want to spy on you. We would like to know what did you have for todays
-      breakfast, where do you live, how much do you earn and like 50 other things. To view our
-      landing page you will have to accept all cookies. That&apos;s all, and remember that we are
-      watching...
-    </Text>
-    <Group position="right" mt="xs">
-      <Button variant="default" size="xs">
-        Cookies preferences
-      </Button>
-      <Button variant="outline" size="xs">
-        Accept all
-      </Button>
-    </Group>
-  </Paper>
+        <Paper withBorder p="lg" radius="md" shadow="md">
+        <Group position="apart" mb="xs">
+        <Text size="md" weight={500}>
+         Allow cookies
+        </Text>
+        <CloseButton mr={-9} mt={-9} />
+        </Group>
+        <Text color="dimmed" size="xs">
+            it is a cookie !!!!!!!!!!!!!!!!!
+        </Text>
+        <Group position="right" mt="xs">
+        <Button variant="default" size="xs">
+            Cookies preferences
+        </Button>
+        <Button variant="outline" size="xs">
+            Accept all
+        </Button>
+        </Group>
+        </Paper>
     );
 }
 function Body(){    
@@ -85,9 +82,7 @@ function Body(){
                 <>
             <div className=" d-flex   justify-content-center align-items-center" style={{backgroundColor : "rgb(56,60,68)",height : "150px"}}>
                 <h1 className='display-5 'style={{color : "white"}}>Simple info</h1>
-                <p style={{color : "white"}}> Keep it simple </p>
-                
-                
+                <p style={{color : "white"}}> Keep it simple </p>  
             </div>
             <Container>
                 <div className={classes.bigtitle}>快速探索</div>
