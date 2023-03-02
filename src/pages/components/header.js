@@ -94,7 +94,7 @@ const mockdata=[
     title:'遊戲',
     description:'分享游戲中大小事'
   }
-]
+];
 
 export default function HeaderMegaMenu() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
