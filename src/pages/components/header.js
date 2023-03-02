@@ -21,12 +21,8 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import { blue } from '@mui/material/colors';
 import Link from 'next/link';
-<<<<<<< HEAD
 import Image from 'next/image';
 
-=======
-import { DevicesPc, DeviceGamepad2 } from 'tabler-icons-react';
->>>>>>> 1dc5b2dfe9a9d4d1a32f6b2fd36634b2d5c57535
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -90,16 +86,9 @@ const useStyles = createStyles((theme) => ({
 
 
 const mockdata=[
-<<<<<<< HEAD
-  {icon:'/img/python.png',
-  title:'Python 教學',
-  description:'詳細易明的Python教學',
-  url : "/content/python-tutorial"
-=======
   {icon:DevicesPc,
   title:'電腦編程教學',
   description:'詳細易明的教學' 
->>>>>>> 1dc5b2dfe9a9d4d1a32f6b2fd36634b2d5c57535
   },
   {
     icon: DeviceGamepad2,
