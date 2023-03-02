@@ -40,7 +40,7 @@ const useStyles = createStyles((theme) => ({
   }
   }));
 
-function cookie(){
+export function cookie(){
     return(
     <Paper withBorder p="lg" radius="md" shadow="md">
     <Group position="apart" mb="xs">
@@ -98,7 +98,7 @@ function Body(){
                     </SimpleGrid>
                 </Container>
             </Container>
-            
+            <cookie/>
         </>
         
     )
@@ -107,6 +107,5 @@ export default function App(){
     return(
         <div>
             <Body/>
-            <cookie/>
         </div>);  
 }
