@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Nav(){
-    return (
+    return (    
             <nav className="  navbar navbar-expand-lg navbar-light bg-light">
                 <Link href="/" className="navbar-brand">
                     <Image src="/logo.png"  height='30' width='30' alt=""/>
