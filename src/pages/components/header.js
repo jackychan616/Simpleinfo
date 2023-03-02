@@ -21,6 +21,7 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import { blue } from '@mui/material/colors';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 const useStyles = createStyles((theme) => ({
@@ -87,7 +88,8 @@ const useStyles = createStyles((theme) => ({
 const mockdata=[
   {icon:'/img/python.png',
   title:'Python 教學',
-  description:'詳細易明的Python教學' 
+  description:'詳細易明的Python教學',
+  url : "/content/python-tutorial"
   },
   {
     icon:'',

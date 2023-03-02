@@ -40,27 +40,18 @@ const useStyles = createStyles((theme) => ({
   }
   }));
 
-export function cookie(){
+function down(){
+
     return(
-        <Paper withBorder p="lg" radius="md" shadow="md">
-        <Group position="apart" mb="xs">
-        <Text size="md" weight={500}>
-         Allow cookies
-        </Text>
-        <CloseButton mr={-9} mt={-9} />
-        </Group>
-        <Text color="dimmed" size="xs">
-            it is a cookie !!!!!!!!!!!!!!!!!
-        </Text>
-        <Group position="right" mt="xs">
-        <Button variant="default" size="xs">
-            Cookies preferences
-        </Button>
-        <Button variant="outline" size="xs">
-            Accept all
-        </Button>
-        </Group>
-        </Paper>
+
+    <Paper withBorder p="lg" radius="md" shadow="md" style = {{backgroundColor : "rgba(82,113,255,255)"}}>
+    <Group position="apart" mb="xs">
+    <Image src ="simple_info.png" alt = "icon" width = "120px"/>
+    </Group>
+    <Text color="dark" size="xs">
+        built by simple info team
+    </Text>
+    </Paper>
     );
 }
 function Body(){    
@@ -93,14 +84,16 @@ function Body(){
                     </SimpleGrid>
                 </Container>
             </Container>
-            <cookie/>
-        </>
+            </>
         
     )
 }   
+
 export default function App(){
     return(
         <div>
-            <Body/>
-        </div>);  
+            <Body />
+            {down()}
+        </div>
+    );
 }
