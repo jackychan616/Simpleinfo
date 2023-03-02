@@ -1,12 +1,38 @@
 import Head from "next/head";
-import Image from "next/image";
-import {Title,Text } from "@mantine/core";
-import { Prism } from '@mantine/prism';
-import ConText from "../../../pages/components/MyText";
-import { useEffect } from "react"
+import {Title,Image,Text,Table} from "@mantine/core";
+
+
+import {ConText,OutputText,PyPrism} from "../../components/component";
 import Sharebox from "../../components/share";
 
+const code1=`
+print('ok')
+`;
 
+const code2=`
+number = 1 
+print(number) 
+`;
+
+const code3=`
+text = '這是一行句子' 
+print(text) 
+`;
+const code4=`
+Bool =True
+if Bool :
+    //Bool 是True則執行這一行
+else :
+    //Bool 是False則執行這一行
+`;
+
+const code5=`
+age = 16
+if age >=18:
+    print('adult')
+else:
+    print('kids')
+`;
 
 function Page(){
     return(
@@ -27,47 +53,72 @@ function Page(){
 
                 <div className="page_container">
                     <Title order={2}>下載Python</Title>
-                    <Text fz="lg">我們將介紹如何在電腦設置Python開發環境</Text>
-                    <Text fz="lg">Python能在大多數平臺使用包括Windows,MacOS,Linux 等等</Text>
-                    <Text fz="lg">下載</Text>
-                    <Text fz="lg">一般建議在Python官網下載 <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></Text>
+                    <ConText fz="lg">我們將介紹如何在電腦設置Python開發環境</ConText>
+                    <ConText fz="lg">Python能在大多數平臺使用包括Windows,MacOS,Linux 等等</ConText>
+                    <Title order={3}>下載</Title>
+                    <ConText fz="lg">一般建議在Python官網下載 <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></ConText>
 
-                    <Text fz="lg">安裝</Text>
-                    <Text fz="lg">下載了合適的檔案後，按 <kbd>win + r </kbd>然後輸入<kbd>cmd</kbd> 打開終端，然後輸入python檢查是否安裝正確</Text>
-                    <Image src="/img/python-install-check.png" alt="" width="625" height="85"></Image>
-                    <Text>如果輸出與圖片差不多，證明下載正確</Text>
-                    <Image src="/img/python-tutorial-cmd.png" alt="" width="350" height="171"></Image>
+                    <Title order={3}>安裝</Title>
+                    <ConText fz="lg">下載了合適的檔案後，按 <kbd>win + r </kbd>然後輸入<kbd>cmd</kbd> 打開終端，然後輸入python檢查是否安裝正確</ConText>
+                    <Image src="/img/python-install-check.png" alt="" ></Image>
+                    <ConText>如果輸出與圖片差不多，證明下載正確</ConText>
+                    <Image src="/img/python-tutorial-cmd.png" alt="" ></Image>
 
                 </div>
 
                 <div className="page_container container">
                     <Title order={3}>語法</Title>
-                    <Text>文件輸入以下句子</Text>
-                    <Prism language="python">print('ok')</Prism>
-                    <Text>輸出</Text>
+                    <ConText>文件輸入以下句子</ConText>
+                    <PyPrism language="python">{code1}</PyPrism>
+                    <ConText>輸出</ConText>
                     <samp>ok</samp>
                 </div>
                 
                 <div className="container">
                     <Title order={3}>變數</Title>
-                    <Text>在設計程式當中，我們常常需要儲存數據，我們能使用<kbd>變數</kbd>儲存數字和字串</Text>
+                    <ConText>在設計程式當中，我們常常需要儲存數據，我們能使用<kbd>變數</kbd>儲存數字和字串</ConText>
                     <ul>
-                        <li><Text fz="lg">每個變數被使用前必須賦值</Text></li>
-                        <li><Text><kbd>=</kbd>用來賦值給變數</Text></li>
-                        <li><Text>每個變數被使用前必須賦值</Text></li>
-                        <li><Text><kbd>變數 = 值</kbd></Text></li>
+                        <li><ConText fz="lg">每個變數被使用前必須賦值</ConText></li>
+                        <li><ConText><kbd>=</kbd>用來賦值給變數</ConText></li>
+                        <li><ConText>每個變數被使用前必須賦值</ConText></li>
+                        <li><ConText><kbd>變數 = 值</kbd></ConText></li>
                     </ul>
                             
-        <pre>
-            <Prism language = "python">number = 1 # print(number) output : 1 </Prism>
-            <Prism language = "python">string = '這是一行句子' # print(string) output: 這是一行句子</Prism>
-        </pre>
+
+                        <PyPrism >{code2}</PyPrism>
+                        <OutputText >結果:1</OutputText>
+                        <PyPrism >{code3}</PyPrism>
                 </div>
-                <div className="container">
-                    <div className="col">
-                        <button>123</button>
-                    </div>
-                </div>
+        <div className="container">
+            <Title order={4}>變數類型</Title>
+            <ConText>Python 有很多變數類型,用來處理數字和文字</ConText>
+            <Table horizontalSpacing="xs">
+                <thread>
+                    <tr>
+                        <th>變數</th>
+                        <th>類型</th>
+                    </tr>   
+                    <tbody>
+                        <tr>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </thread>
+            </Table>
+        </div>    
+        
+        <div>
+            <Title order={2}>條件句</Title>
+            <ConText>條件句是基於布林(Boolean 即是True & False)執行不同段落</ConText>
+            <Title order={3}>例子 1 </Title>
+            <PyPrism >{code4}</PyPrism>
+            <Title order={4}>例子 2</Title>
+            <Text>結合運算符</Text>
+            <PyPrism >{code5}</PyPrism>
+        </div>
+        
             </div>  
         </div>
         </>
@@ -86,7 +137,6 @@ export default function _Page(){
             </div>
             
             <Page />
-
         </>
     );
 }

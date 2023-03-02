@@ -86,17 +86,19 @@ function Page(){
     );
 }
 
-export default ()=>(
-    <>
-        <Head>
-            <title>{title}</title>
-            <meta name="description" content={title}></meta>
-            <meta property='og:title' content={title}></meta>
-            <meta property='og:description' content={title}></meta>
-            <meta property='og:url' content=''></meta>
-            <meta name="keywords" content="啤牌,樸克牌,21點,二十一點,桌遊,教學,親子,聯誼,香港,臺灣,大學"></meta>
-        </Head>
-        <sharebox/>
-        <Page />
-    </>
-);
+export default function page(){
+    return(
+        <>
+            <Head>
+                <title>{title}</title>
+                <meta name="description" content={title}></meta>
+                <meta property='og:title' content={title}></meta>
+                <meta property='og:description' content={title}></meta>
+                <meta property='og:url' content=''></meta>
+                <meta name="keywords" content="啤牌,樸克牌,21點,二十一點,桌遊,教學,親子,聯誼,香港,臺灣,大學"></meta>
+            </Head>
+            <sharebox/>
+            <Page />
+        </>
+    );
+}
