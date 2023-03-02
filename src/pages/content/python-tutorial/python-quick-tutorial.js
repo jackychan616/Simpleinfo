@@ -37,6 +37,10 @@ else:
 function Page(){
     return(
         <>
+        <Head>
+            <meta name="title" content="Python入門"></meta>
+            <meta name="description" content="入門快速學習Python,即使新手也很快速掌握"></meta>
+        </Head>
         <div className="container">
             <Title order={1}>Python入門</Title>
 

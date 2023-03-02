@@ -2,8 +2,10 @@
 
 本章將介紹三款線上繪圖AI軟件，並教大家如何使用 。．
 
-stable diffusion
+subtitle[stable diffusion]
 stable diffusion 是免費開源軟件，它產出的圖片能用作商業用途。
 我們有兩個途徑使用它。
-Dream studio
-進入網站註冊後，按Dream  ，在底下輸入關鍵字按Enter
+sub-subtitle[Dream studio]
+進入網站註冊後，按Dream ，在底下輸入關鍵字按Enter
+[image https://discord.com/channels/1079371718235267174/1080795534320734258/1080805595931738163]
+
