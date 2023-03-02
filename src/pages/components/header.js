@@ -21,7 +21,7 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import { blue } from '@mui/material/colors';
 import Link from 'next/link';
-
+import { DevicesPc, DeviceGamepad2 } from 'tabler-icons-react';
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -85,15 +85,14 @@ const useStyles = createStyles((theme) => ({
 
 
 const mockdata=[
-  {icon:'/img/python.png',
+  {icon:DevicesPc,
   title:'電腦編程教學',
   description:'詳細易明的教學' 
   },
   {
-    icon:'',
+    icon: DeviceGamepad2,
     title:'遊戲',
     description:'分享游戲中大小事'
-
   }
 ]
 
@@ -105,7 +104,9 @@ export default function HeaderMegaMenu() {
   const links = mockdata.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
       <Group noWrap align="flex-start">
-        
+      <ThemeIcon size={34} variant="default" radius="md">
+          <item.icon size={22} color={theme.fn.primaryColor()} />
+        </ThemeIcon>
         <div>
           <Text size="sm" weight={500}>
             {item.title}
