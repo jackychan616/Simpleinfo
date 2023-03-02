@@ -86,13 +86,13 @@ const useStyles = createStyles((theme) => ({
 
 const mockdata=[
   {icon:'/img/python.png',
-  title:'Python 教學',
-  description:'詳細易明的Python教學' 
+  title:'電腦編程教學',
+  description:'詳細易明的教學' 
   },
   {
     icon:'',
-    title:'Linux 教學',
-    description:'學習如何使用Linux'
+    title:'遊戲',
+    description:'分享游戲中大小事'
 
   }
 ]

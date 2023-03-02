@@ -2,8 +2,8 @@ import Head from "next/head";
 import {Title,Image,Text,Table} from "@mantine/core";
 
 
-import {ConText,OutputText,PyPrism} from "../../components/component";
-import Sharebox from "../../components/share";
+import {ConText,OutputText,PyPrism} from "../../../components/component";
+import Sharebox from "../../../components/share";
 
 const code1=`
 print('ok')
