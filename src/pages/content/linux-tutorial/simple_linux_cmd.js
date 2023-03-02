@@ -66,13 +66,11 @@ function Content(){
             </h3>
             <p>cat 用途是獲取文件或輸入并打印出來,通常用來顯示文件內容處理文件</p>
             <h3>格式</h3>
-            <code><pre> cat '['-字母']' '['文件名稱']'</pre></code>
+            <code>{` cat [-字母] [文件名稱]`}</code>
             <h3>基本使用</h3>
             <code><pre> cat ['filename.txt']'     顯示檔案內容   </pre> </code>
             <code><pre> cat '['文字或檔案名稱(file2name.txr)] '{'>'}' '['filename.txt']'   快速創建檔案並將內容寫入檔案   </pre> </code>
-            <code><pre> cat *.'['副檔名']'    例如 *.txt   顯示所有txt的檔案內容   </pre> </code>
-
-           
+            <code><pre> cat *.'['副檔名']'    例如 *.txt   顯示所有txt的檔案內容   </pre> </code>          
         </div>
         </div>
         
