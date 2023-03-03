@@ -1,9 +1,13 @@
-import {Text,Title,} from '@mantine/core';
+import {Text,Title,Space} from '@mantine/core';
 import { Prism } from '@mantine/prism';
 
 export function ConText({children}){
   return (
-    <Text fz="lg" c="dark.3">{children}</Text>
+    <>
+    <Text fz="md" c="dark.3">{children}</Text>
+    <Space h="sm"></Space>
+    </>
+    
   );
 }
 
@@ -19,6 +23,17 @@ export function PyPrism({children}){
     <Prism language='python'>
       {children}
     </Prism>
+  );
+}
+
+export function ConTitle({children,order}){
+  return(
+    <>
+      <Title order={order}
+      >{children}</Title>
+      <Space h="lg"></Space>
+    </>
+    
   );
 }
 
