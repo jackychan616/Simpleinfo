@@ -78,6 +78,7 @@ function Body(){
 export default function App(){
     return(
         <div>
+            <title>Simple info - 快速探索</title>
             <Body />
         </div>
     );

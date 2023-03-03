@@ -4,6 +4,7 @@ import {Title,Image,Text,Table,Code} from "@mantine/core";
 
 import {ConText,OutputText,PyPrism} from "../../../components/component";
 import Sharebox from "../../../components/share";
+import Sharebutton from "../../../components/newshare";
 
 const code1=`
 print('ok')
@@ -156,7 +157,7 @@ export default function MainPage(){
     
             </Head>
             <div>
-                <Sharebox/>
+                <Sharebutton/>
             </div>
             
             <Page />

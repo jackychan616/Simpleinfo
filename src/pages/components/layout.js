@@ -8,7 +8,7 @@ function Down(){
         <Group position="apart" mb="xs">
         <Image src ="/img/simple_info.png" alt = "icon" width = "120px" height="150px"/>
         </Group>
-        <Text color="dark" size="xs">
+        <Text color="White"  fw ={1500}>
             built by simple info team
         </Text>
     </Paper>
