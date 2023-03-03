@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
 import dynamic from "next/dynamic"
 
-export default function Sharebutton() {
+export default function Sharebutton({children}) {
     return(
         <Menu shadow="md" width={200}>
             <Menu.Target>
@@ -15,7 +15,7 @@ export default function Sharebutton() {
                 </Tooltip>
             </Menu.Target>
             <Menu.Dropdown>
-                <Menu.Item component='a' onClick={() => {navigator.clipboard.writeText("idk")}}>
+                <Menu.Item component='a' onClick={() => {navigator.clipboard.writeText(children)}}>
                     複製鏈結
                 </Menu.Item>
             </Menu.Dropdown>
