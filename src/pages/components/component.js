@@ -4,8 +4,8 @@ import { Prism } from '@mantine/prism';
 export function ConText({children}){
   return (
     <>
-    <Text fz="md" c="dark.3">{children}</Text>
-    <Space h="sm"></Space>
+      <Text fz="md" c="dark.3">{children}</Text>
+      <Space h="sm"></Space>
     </>
     
   );
