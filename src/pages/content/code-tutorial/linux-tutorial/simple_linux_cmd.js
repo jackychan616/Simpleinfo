@@ -68,9 +68,9 @@ function Content(){
             <h3>格式</h3>
             <code>{` cat [-字母] [文件名稱]`}</code>
             <h3>基本使用</h3>
-            <code><pre> cat &apos;[&apos;filename.txt&apos;]&apos;     顯示檔案內容   </pre> </code>
-            <code><pre> cat &apos;['文字或檔案名稱(file2name.txr)] &apos;{'>'}&apos; &apos;['filename.txt']&apos;   快速創建檔案並將內容寫入檔案   </pre> </code>
-            <code><pre> cat *.&apos;['副檔名']&apos;    例如 *.txt   顯示所有txt的檔案內容   </pre> </code>          
+            <code>{`cat filename.txt]     顯示檔案內容  `}</code>
+            <code>{` cat ['文字或檔案名稱(file2name.txr)] {'>'} ['filename.txt']   快速創建檔案並將內容寫入檔案 `}</code>
+            <code>{`cat *.['副檔名']    例如 *.txt   顯示所有txt的檔案內容 `} </code>          
         </div>
         </div>
         
