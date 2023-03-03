@@ -22,7 +22,8 @@ import { useDisclosure } from '@mantine/hooks';
 import { blue } from '@mui/material/colors';
 import Link from 'next/link';
 import Image from 'next/image';
-import {DevicesPc,DeviceGamepad2} from 'tabler-icons-react'
+import { DevicesPc, DeviceGamepad2 } from 'tabler-icons-react';
+
 
 const useStyles = createStyles((theme) => ({
   link: {

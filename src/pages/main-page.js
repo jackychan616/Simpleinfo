@@ -6,13 +6,13 @@ const blogdata = [
         "title": 'Python 教學',
         "image": '/img/py.jpg',
         "date": 'September 12, 2022',
-        "href": '/content/python-tutorial'
+        "href": '/content/code-tutorial/python-tutorial'
     },
     {
         "title": 'linux 教學',
         "image": '/img/linux.jpeg',
         "date": 'September 12, 2022',
-        "href": '/content/linux-tutorial'
+        "href": '/content/code-tutorial/linux-tutorial'
     }
 ];
 
@@ -40,20 +40,6 @@ const useStyles = createStyles((theme) => ({
   }
   }));
 
-function down(){
-
-    return(
-
-    <Paper withBorder p="lg" radius="md" shadow="md" style = {{backgroundColor : "rgba(82,113,255,255)"}}>
-    <Group position="apart" mb="xs">
-    <Image src ="simple_info.png" alt = "icon" width = "120px"/>
-    </Group>
-    <Text color="dark" size="xs">
-        built by simple info team
-    </Text>
-    </Paper>
-    );
-}
 function Body(){    
             const { classes } = useStyles();
             const cards = blogdata.map((article) => (
@@ -93,7 +79,6 @@ export default function App(){
     return(
         <div>
             <Body />
-            {down()}
         </div>
     );
 }
