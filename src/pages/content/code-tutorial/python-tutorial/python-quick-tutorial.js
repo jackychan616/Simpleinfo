@@ -1,5 +1,5 @@
 import Head from "next/head";
-import {Title,Image,Text,Table} from "@mantine/core";
+import {Title,Image,Text,Table,Code} from "@mantine/core";
 
 
 import {ConText,OutputText,PyPrism} from "../../../components/component";
@@ -93,6 +93,11 @@ const elements=[
                     <PyPrism language="python">{code1}</PyPrism>
                     <ConText>輸出</ConText>
                     <samp>ok</samp>
+                    <Title order={4}>Python 標識符</Title>
+                    <Text>在Python中, 標識符由英文字母、符號及橫綫{`(_)`}組成</Text>
+                    <Text>但不能由數字做開頭</Text>
+                    <Text>能夠以大小寫區分,例如<Code>Print</Code>和<Code>print</Code>不一樣</Text>
+                    
                 </div>
                 
                 <div className="container">
