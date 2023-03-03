@@ -17,10 +17,8 @@ function down(){
 export default function Layout({children}){
     return (
         <>
-            <div>
             <Header title=""/>
             <main>{children}</main>
-            </div>
             {down()}
         </>
     );
