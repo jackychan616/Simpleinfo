@@ -155,7 +155,7 @@ export default function MainPage(){
     
             </Head>
             <div>
-                <Sharebutton children={"url"}/>
+                <Sharebutton url={"url"}/>
             </div>
             <Page />
         </>
