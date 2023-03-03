@@ -104,7 +104,7 @@ export default function HeaderMegaMenu() {
 
   const links = mockdata.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
-      <Group noWrap align="flex-start">
+      <Group noWrap align="flex-start"> 
       <ThemeIcon size={34} variant="default" radius="md">
           <item.icon size={22} color={theme.fn.primaryColor()} />
         </ThemeIcon>
