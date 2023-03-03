@@ -2,6 +2,7 @@ import Head from "next/head";
 import {TitleImage,Text,Table,Space,Image} from "@mantine/core";
 import {ConText,OutputText,PyPrism,ConTitle} from "../../../components/component";
 import Sharebox from "../../../components/share";
+import Sharebutton from "../../../components/newshare";
 
 const kbd1=`
 print('ok')
@@ -154,7 +155,7 @@ export default function MainPage(){
     
             </Head>
             <div>
-                <Sharebox/>
+                <Sharebutton/>
             </div>
             <Page />
         </>
