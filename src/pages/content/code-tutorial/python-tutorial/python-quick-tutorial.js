@@ -33,8 +33,25 @@ if age >=18:
 else:
     print('kids')
 `;
+const elements=[
+    {name:'str',type:'句子',example:`'s=這是一行句子'`,code:`print(s+',這也是')`,output:`'這是一行句子,這也是`},
+    {name:'int',type:'整數(1 , 2 ,3)',example:'number= 120',code:`print(number+50)`,output:'170'},
+    {name:"list",type:`列表,列表中可以包含多種變數,每個元素都有分配一個索引，第一個索引是0，第二個索引是1，如此類推`,example:`list=['apple','orange',1,2,3]`,code:`print(list[0]+list[0])`,output:`'appleorange`},
+    {name:'dict',type:'字典,能夠儲存變數,每個數據都有獨特的名稱作為索引',example:`dict={'number1':1,'number2':2}`,code:`print(dict['number1']+dict['number2'])`,output:'3'}];
 
-function Page(){
+
+    function Page(){
+    const rows = elements.map((element) => (
+        <tr key={element.name}>
+          <td>{element.name}</td>
+          <td>{element.type}</td>
+          <td>{element.example}</td>
+          <td>{element.code}</td>
+          <td>{element.output}</td>
+        </tr>
+      ));
+    
+    
     return(
         <>
         <Head>
@@ -96,19 +113,16 @@ function Page(){
         <div className="container">
             <Title order={4}>變數類型</Title>
             <ConText>Python 有很多變數類型,用來處理數字和文字</ConText>
-            <Table horizontalSpacing="xs">
+            <Table horizontalSpacing="xs" striped highlightOnHover withBorder withColumnBorders >
                 <thread>
                     <tr>
                         <th>變數</th>
                         <th>類型</th>
+                        <th>例子</th>
+                        <th>執行</th>
+                        <th>結果</th>
                     </tr>   
-                    <tbody>
-                        <tr>
-                            <td>
-
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tbody>{rows}</tbody>
                 </thread>
             </Table>
         </div>    
@@ -129,7 +143,7 @@ function Page(){
     );
 }
 
-export default function _Page(){
+export default function MainPage(){
     return(
         <>
             <Head>
