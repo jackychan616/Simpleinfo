@@ -1,23 +1,19 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Page  from '../../components/page_index';
+import ArtiCard from '../../components/card';
 
-const components=[
-    'poker',
+const Bloglist=[
+    {name:'[porker 撲克牌] 二十一點玩法教學',hTitle:'二十一點玩法教學',img:'/img/poker.jpg',}
+];
 
-]
-
-export default function content(){
+export default function ConPage(){
     return (
         <>
-            <Head>
-                <title>Simple Blog poker 教學</title>
-            </Head>
-            <div className='container'>
-                <h1>poker 教學</h1>
-                <div className='container'>
-                    <Link className='content-link' href="/content/card-game/poker_21point_quick_talk">[porker 撲克牌] 二十一點玩法教學</Link>
-                </div>
-            </div>
+            <Page title="Simple Info - 遊戲" hTitle="分享游戲中大小事" img="/img/card-game.jpg">
+                <ArtiCard data={Bloglist}/>
+            </Page>
+            
         </>
         
     );

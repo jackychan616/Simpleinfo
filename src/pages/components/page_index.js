@@ -7,10 +7,10 @@ export function Page({children,title,hTitle,img}){
         <>
             <Head>
                 <title>{title}</title>    
-            </Head> 
+            </Head>     
             <Container >
                 <Title order={1}>{hTitle}</Title>
-                <Image src={img} alt=""/>
+                <Image src={img} alt=""/>   
             </Container>
             {children}
             
