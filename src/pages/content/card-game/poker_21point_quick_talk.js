@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import Script from 'next/script';
-import sharebox from '../../components/share';
 const title = '[porker 撲克牌] 二十一點玩法教學 ';
-
+import { Sharebutton } from 'src/pages/components/newshare';
 
 
 function Page(){
@@ -103,7 +102,9 @@ export default function page(){
                 <title>{title}</title>
                 <Metadata />
             </Head>
-            <sharebox/>
+            <div>
+                    <Sharebutton url={"url"}/>
+            </div>
             <Page />
         </>
     );
