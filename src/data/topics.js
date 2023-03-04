@@ -3,7 +3,7 @@ import { DevicesPc, DeviceGamepad2 ,Robot} from 'tabler-icons-react';
 export const topics = [
         {
           name:"電腦編程教學",
-          path:"python-tutorial",
+          path:"code-tutorial",
           page:1,
           description:"詳細易明的教學",
           icon:DevicesPc

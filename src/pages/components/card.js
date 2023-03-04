@@ -2,24 +2,6 @@ import { createStyles, SimpleGrid, Card, Image, Text, Container, AspectRatio } f
 
 
 
-const blogdata = [
-  {
-      "title": 'Python 教學',
-      "image": '/img/py.jpg',
-      "href": '/content/python-tutorial',
-      "date": '12-25'
-
-  },
-  {
-      "title": 'linux 教學',
-      "image": '/img/linux.jpeg',
-      "href": '/content/linux-tutorial',
-      "date": '12-25'
-  },
-  {
-     " title":"[porker 撲克牌] 二十一點玩法教學 ","image":"/img/poker.jpg","href":"/content/card-game","date": "12-25"
-  }
-];
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -37,19 +19,19 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function ArtiCard()  {
+export function ArtiCard({children,data})   {
   const { classes } = useStyles();
 
-  const cards =blogdata.map((article) => (
-    <Card key={article.title} p="md" radius="md" component="a" href={article.href} className={classes.card}>
+  const cards =data.map((article) => (
+    <Card key={article.name} p="md" radius="md" component="a" href={article.path} className={classes.card}>
       <AspectRatio ratio={1920 / 1080}>
-        <Image src={article.image} alt = "card"/>
+        <Image src={article.img} alt = "card"/>
       </AspectRatio>
       <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
         {article.date}
       </Text>
       <Text className={classes.title} mt={5}>
-        {article.title}
+        {article.name}
       </Text>
     </Card>
   ));
@@ -61,6 +43,7 @@ export default function ArtiCard()  {
           {cards}
         </SimpleGrid>
       </Container>
+      {children}
     </Container>
   );
 }
