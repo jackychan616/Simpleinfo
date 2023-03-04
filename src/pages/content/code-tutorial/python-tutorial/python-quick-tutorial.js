@@ -38,7 +38,7 @@ const elements=[
     {name:'dict',type:'字典,能夠儲存變數,每個數據都有獨特的名稱作為索引',example:`dict={'number1':1,'number2':2}`,kbd:`print(dict['number1']+dict['number2'])`,output:'3'}];
 
 
-    function Page(){
+function Page(){
     const rows = elements.map((element) => (
         <tr key={element.name}>
           <td>{element.name}</td>
