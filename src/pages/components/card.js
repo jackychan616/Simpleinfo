@@ -30,7 +30,7 @@ export function ArtiCard({children,data})   {
       <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
         {article.date}
       </Text>
-      <Text className={classes.title} mt={5}>
+      <Text className={classes.name} mt={5}>
         {article.name}
       </Text>
     </Card>

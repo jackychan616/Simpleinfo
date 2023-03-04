@@ -6,13 +6,13 @@ import {ArtiCard} from "../components/card";
 
 const PostData =[
     {
-        title: '電腦編程教學',image: '/img/py.jpg',href: '/content/python-tutorial'
+        name: '電腦編程教學',img: '/img/py.jpg',path: '/content/python-tutorial',date:''
     },
     {
-        title: 'linux 教學',image: '/img/linux.jpeg',href: '/content/linux-tutorial' 
+        name: 'linux 教學',img: '/img/linux.jpeg',path: '/content/linux-tutorial' ,date:''
     },
     {
-        title:"[porker 撲克牌] 二十一點玩法教學 ",image:"/img/poker.jpg",href:"/content/card-game"
+        name:"[porker 撲克牌] 二十一點玩法教學 ",img:"/img/poker.jpg",path:"/content/card-game",date:''
     }
 
 
@@ -21,7 +21,7 @@ const PostData =[
 export default function Page(){
     return (
         <Container>
-            <ArtiCard />
+            <ArtiCard data={PostData}/>
         </Container>
        
     );

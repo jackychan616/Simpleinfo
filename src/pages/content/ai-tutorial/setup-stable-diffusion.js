@@ -24,7 +24,6 @@ export function ConPage(){
                 <ConTitle order={2}>前置條件</ConTitle>
                 <List spacing="xs"
                         size="sm"
-                        centre
                         icon={
                             <ThemeIcon color="teal" size={24} radius="xl">
                               <IconCircleCheck size="1rem" />
