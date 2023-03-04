@@ -3,6 +3,7 @@ import Image from "next/image";
 
 function ConContent(){
     return(
+        <>
         <div className="container page_container">
             <div id="web-title">
             <h1>
@@ -73,7 +74,7 @@ function ConContent(){
             <code>{`cat *.['副檔名']    例如 *.txt   顯示所有txt的檔案內容 `} </code>          
         </div>
         </div>
-        
+    </>
     );
 }
 
