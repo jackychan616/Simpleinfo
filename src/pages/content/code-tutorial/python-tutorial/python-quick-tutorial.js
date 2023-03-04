@@ -151,7 +151,6 @@ export default function MainPage(){
         <>
             <Head>
                 <title>Simple Blog - Python 入門</title>
-    
             </Head>
             <div>
                 <Sharebutton url={"url"}/>
