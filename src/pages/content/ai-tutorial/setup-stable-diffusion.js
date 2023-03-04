@@ -4,7 +4,7 @@ import { ConTitle,ConText} from '../../components/component';
 import { IconCircleCheck, IconCircleDashed } from '@tabler/icons-react';
 
 
-export default function Page(){
+export function ConPage(){
     return(
         <>
             <Head>
@@ -59,6 +59,18 @@ export default function Page(){
 稍後可能會有關於Error的解決方式以及使用教程，祝君好運。
 </ConText>  
             </Container>
+        </>
+    );
+}
+
+export default function page(){
+    return(
+        <>
+            <Head>
+                <meta name='title' content='在Windows本地部署Stable Diffusion'/>
+                <meta name='description' content='如何在Windows部署AI畫圖, 使用Python在電腦搭建Stable diffusion'/>
+            </Head>
+            <ConPage/>
         </>
     );
 }
