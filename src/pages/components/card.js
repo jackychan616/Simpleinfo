@@ -19,7 +19,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function ArtiCard({children,data})   {
+export function ArtiCard({children,data})   {
   const { classes } = useStyles();
 
   const cards =data.map((article) => (
