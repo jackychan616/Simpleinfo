@@ -1,5 +1,5 @@
 import Head from "next/head";
-import {TitleImage,Text,Table,Space,Image} from "@mantine/core";
+import {TitleImage,Text,Table,Space,Image,Container} from "@mantine/core";
 import {ConText,OutputText,PyPrism,ConTitle} from "../../../components/component";
 import {Sharebutton} from "../../../components/newshare";
 
@@ -152,10 +152,13 @@ export default function MainPage(){
             <Head>
                 <title>Simple Blog - Python 入門</title>
             </Head>
-            <div>
-                <Sharebutton url={"url"}/>
-            </div>
+            <Container>
+                <div>
+                    <Sharebutton url={"url"}/>
+                </div>
             <Page />
+            </Container>
+            
         </>
     );
 }
