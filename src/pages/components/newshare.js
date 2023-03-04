@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
 import dynamic from "next/dynamic"
 
-export default function Sharebutton({url}) {
+export function Sharebutton({url}) {
     return(
         <Menu shadow="md" width={200}>
             <Menu.Target>

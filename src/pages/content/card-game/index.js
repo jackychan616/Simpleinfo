@@ -4,7 +4,7 @@ import{ Page}  from '../../components/page_index';
 import{ ArtiCard }from '../../components/card';
 
 const Bloglist=[
-    {name:'[porker 撲克牌] 二十一點玩法教學',path:'poker_21point_quick_talk',hTitle:'二十一點玩法教學',img:'/img/poker.jpg',}
+    {name:'[porker 撲克牌] 二十一點玩法教學',path:'poker_21point_quick_talk',img:'/img/poker.jpg',}
 ];
 
 export default function ConPage(){
