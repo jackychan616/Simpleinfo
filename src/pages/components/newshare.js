@@ -18,6 +18,9 @@ export function Sharebutton({url}) {
                 <Menu.Item component='a' onClick={() => {navigator.clipboard.writeText(url)}}>
                     複製鏈結
                 </Menu.Item>
+                <Menu.item component='a'>
+                    Share to facebook
+                </Menu.item>
             </Menu.Dropdown>
         </Menu>
     )
