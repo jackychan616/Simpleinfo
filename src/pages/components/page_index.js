@@ -17,3 +17,11 @@ export function Page({children,title,hTitle,img}){
         </>
     );
 }
+
+function Context(){
+    return (
+      <>
+      </>
+    );
+  }
+  export default Context;

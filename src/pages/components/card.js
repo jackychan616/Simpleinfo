@@ -47,3 +47,11 @@ export function ArtiCard({children,data})   {
     </Container>
   );
 }
+
+function Context(){
+  return (
+    <>
+    </>
+  );
+}
+export default Context;
