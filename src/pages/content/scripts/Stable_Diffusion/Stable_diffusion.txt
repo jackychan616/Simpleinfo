@@ -1,4 +1,4 @@
-如何在Windows本地部署Stable Diffusion?
+  如何在Windows本地部署Stable Diffusion?
 前置條件
 	安裝python最新版，確保添加至“PATH”路徑
 	安裝git
