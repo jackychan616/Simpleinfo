@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 
-function Content(){
+function ConContent(){
     return(
         <div className="container page_container">
             <div id="web-title">
@@ -80,7 +80,7 @@ function Content(){
 export default function Page(){
     return(
         <>
-            <Content/>
+            <ConContent/>
         </>
         
 
