@@ -25,6 +25,7 @@
     "@next/mdx": "^13.1.6",
     "@tabler/core": "^1.0.0-beta17",
     "@tabler/icons": "^2.6.0",
+    "@tabler/icons-react": "^2.7.0",
     "bootstrap": "^5.2.3",
     "highlight.js": "^11.7.0",
     "markdown-to-jsx": "^7.1.9",

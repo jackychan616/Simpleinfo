@@ -23,7 +23,7 @@ import { blue } from '@mui/material/colors';
 import Link from 'next/link';
 import Image from 'next/image';
 import { DevicesPc, DeviceGamepad2 } from 'tabler-icons-react';
-
+import { topics} from '../../data/topics'
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -86,38 +86,32 @@ const useStyles = createStyles((theme) => ({
 }));
 
 
-const mockdata=[
-  {icon:DevicesPc,
-  title:'電腦編程教學',
-  description:'詳細易明的教學' 
-  },
-  {
-    icon: DeviceGamepad2,
-    title:'遊戲',
-    description:'分享游戲中大小事'
-  }
-];
-
 export default function HeaderMegaMenu() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const { classes, theme } = useStyles();
 
-  const links = mockdata.map((item) => (
-    <UnstyledButton className={classes.subLink} key={item.title}>
-      <Group noWrap align="flex-start"> 
-      <ThemeIcon size={34} variant="default" radius="md">
-          <item.icon size={22} color={theme.fn.primaryColor()} />
-        </ThemeIcon>
-        <div>
-          <Text size="sm" weight={500}>
-            {item.title}
-          </Text>
-          <Text size="xs" color="dimmed">
-            {item.description}
-          </Text>
-        </div>
-      </Group>
+  const links = topics.map((item) => (
+    <UnstyledButton className={classes.subLink} key={item.name}>
+      <Link href={'/content/'+item.path} style={{
+                    textDecoration: 'none',
+                  }}>
+        <Group noWrap align="flex-start"> 
+          <ThemeIcon size={34} variant="default" radius="md">
+              <item.icon size={22} color={theme.fn.primaryColor()} />
+            </ThemeIcon>
+            <div>
+              <Text size="sm" weight={500}>
+                {item.name}
+              </Text>
+              <Text size="xs" color="dimmed">
+                {item.description}
+              </Text>
+            </div>
+          </Group>
+      </Link>
+        
+      
     </UnstyledButton>
   ));
 
@@ -213,11 +207,14 @@ export default function HeaderMegaMenu() {
             首頁
           </Link>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
-            <Center inline>
-              <Box component="span" mr={5}>
-                文章
-              </Box>
-            </Center>
+            <Link href="/content">
+              <Center inline>
+                <Box component="span" mr={5}>
+                  文章
+                </Box>
+              </Center>
+            </Link>
+           
           </UnstyledButton>
           
 
