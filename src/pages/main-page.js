@@ -6,13 +6,13 @@ const blogdata = [
         "title": 'Python 教學',
         "image": '/img/py.jpg',
         "date": 'September 12, 2022',
-        "href": '/content/code-tutorial/python-tutorial'
+        "href": '/content/code-tutorial/python-tutorial/python-quick-tutorial'
     },
     {
         "title": 'linux 教學',
         "image": '/img/linux.jpeg',
         "date": 'September 12, 2022',
-        "href": '/content/code-tutorial/linux-tutorial'
+        "href": '/content/code-tutorial/linux-tutorial/simple_linux_cmd'
     }
 ];
 
