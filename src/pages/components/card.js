@@ -23,7 +23,7 @@ export function ArtiCard({children,data})   {
   const { classes } = useStyles();
 
   const cards =data.map((article) => (
-    <Card key={article.title} p="md" radius="md" component="a" href={article.href} className={classes.card}>
+    <Card key={article.name} p="md" radius="md" component="a" href={article.path} className={classes.card}>
       <AspectRatio ratio={1920 / 1080}>
         <Image src={article.img} alt = "card"/>
       </AspectRatio>
@@ -31,7 +31,7 @@ export function ArtiCard({children,data})   {
         {article.date}
       </Text>
       <Text className={classes.title} mt={5}>
-        {article.title}
+        {article.name}
       </Text>
     </Card>
   ));
