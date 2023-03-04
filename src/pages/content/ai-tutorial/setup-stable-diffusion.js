@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import {Code, Container,List,ThemeIcon,Image,Space} from '@mantine/core';
+import {Code, Container,List,ThemeIcon,Image,Space, Grid} from '@mantine/core';
 import { ConTitle,ConText} from '../../components/component';
 import { IconCircleCheck, IconCircleDashed } from '@tabler/icons-react';
 
@@ -12,7 +12,15 @@ export default function Page(){
 
             </Head>
             <Container>
-                <ConTitle order={1}>部署Stable Diffusion</ConTitle>
+                <Grid >
+                    <Grid.Col span="auto">
+                        <ConTitle order={1}>部署Stable Diffusion</ConTitle>
+                        
+                    </Grid.Col>
+                    <Grid.Col span='auto'> 
+                        <Image src="/img/stable-diffusion.webp" alt="main Image" />
+                    </Grid.Col>
+                </Grid>
                 <ConTitle order={2}>前置條件</ConTitle>
                 <List spacing="xs"
                         size="sm"
