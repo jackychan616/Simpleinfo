@@ -1,11 +1,12 @@
 import { Menu, Button, Text } from '@mantine/core';
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
-import ShareIcon from '@mui/icons-material/Share';
+import {Tooltip} from '@mui/material/Tooltip';
+import {IconButton} from '@mui/material/IconButton';
+import {ShareIcon} from '@mui/icons-material/Share';
 import dynamic from "next/dynamic"
 
-export function Sharebutton({url}) {
+export function Sharebutton({children,url}) {
     return(
+        <>
         <Menu shadow="md" width={200}>
             <Menu.Target>
                 <Tooltip title="Share" >
@@ -23,5 +24,8 @@ export function Sharebutton({url}) {
                 </Menu.item>
             </Menu.Dropdown>
         </Menu>
-    )
+        {children}
+        </>
+        
+    );
 }

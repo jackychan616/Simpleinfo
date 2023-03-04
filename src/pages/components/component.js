@@ -26,7 +26,7 @@ export function PyPrism({children}){
   );
 }
 
-export default function ConTitle({children,order}){
+export function ConTitle({children,order}){
   return(
     <>
       <Title order={order}
