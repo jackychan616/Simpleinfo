@@ -1,8 +1,8 @@
 import { Menu, Button, Text } from '@mantine/core';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
-import ShareIcon from '@mui/icons-material/Share';
-import dynamic from "next/dynamic"
+import { Share } from 'tabler-icons-react';
+              
 
 export function Sharebutton({children,url}) {
     return(
@@ -11,7 +11,7 @@ export function Sharebutton({children,url}) {
             <Menu.Target>
                 <Tooltip title="Share" >
                     <IconButton >
-                        <ShareIcon color='primary'/>
+                        <Share color='primary'/ >
                     </IconButton>
                 </Tooltip>
             </Menu.Target>
