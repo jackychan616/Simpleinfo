@@ -183,7 +183,7 @@ export default function HeaderMegaMenu() {
           </Group>
           <Group className={classes.hiddenMobile}>
             <Button>訂閱</Button>
-            <a href='https://ko-fi.com/B0B1AA09F' target='_blank'><img height='36' style={{border:"0px",height:"36px"}} src='https://storage.ko-fi.com/cdn/cup-border.png' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+            <Button ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' style ={{textDecoration:"none",color : "White"}}>給我們買杯咖啡</a></Button>
           </Group>
           <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
         </Group>
