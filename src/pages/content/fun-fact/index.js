@@ -10,7 +10,7 @@ const BlogData=[
 function ConPage(){
     return(
         <Container >
-            <ArtiCard data={BlogDatas}/>
+            <ArtiCard data={BlogData}/>
         </Container>
     );
 }
