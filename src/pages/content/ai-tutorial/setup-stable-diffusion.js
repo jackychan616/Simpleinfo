@@ -2,7 +2,7 @@ import Head from 'next/head';
 import {Code, Container,List,ThemeIcon,Image,Space, Grid} from '@mantine/core';
 import { ConTitle,ConText} from '../../components/component';
 import { IconCircleCheck, IconCircleDashed } from '@tabler/icons-react';
-
+import { Sharebutton } from 'src/pages/components/newshare';
 
 export function ConPage(){
     return(
@@ -12,6 +12,7 @@ export function ConPage(){
 
             </Head>
             <Container>
+                <Sharebutton url = {"https://simpleinfo.live/content/ai-tutorial/setup-stable-diffusion"}/>
                 <Grid >
                     <Grid.Col span="auto">
                         <ConTitle order={1}>部署Stable Diffusion</ConTitle>
