@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Meta from './components/meta';
 
 export default function Document() {
   return(
@@ -6,6 +7,8 @@ export default function Document() {
         <Head>
             <link rel="icon" type="image/png" href="/icon.png"/>
             <meta charSet="utf-8"/>
+
+
         </Head>
         <body>
             <Main/>

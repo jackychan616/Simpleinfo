@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { createStyles, SimpleGrid, Card,  Container, AspectRatio, Title,Text, Paper, Group, CloseButton , Image,Button} from '@mantine/core';
+import Head from 'next/head';
+import Meta from './components/meta';
 
 const blogdata = [
     {
@@ -52,6 +54,7 @@ const useStyles = createStyles((theme) => ({
   }
   }));
 
+
 function Body(){    
             const { classes } = useStyles();
             const cards = blogdata.map((article) => (
@@ -86,14 +89,20 @@ function Body(){
         
     )
 }   
-function newbody() {
-    
-}
+
 export default function App(){
     return(
-        <div>
-            <title>Simple info - 快速探索</title>
-            <Body />
-        </div>
+        <>
+            <Head>
+            <Meta keywords={"博客,中文,資訊,資訊平臺,香港,香港博客,Hong Kong Blog,Blog,教學,教學類型,教學博客,教學 Blog,AI教學,AI,有趣資訊 "}
+              description={"香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊"}
+              />
+            </Head>
+            <div>
+                
+                <Body />
+            </div>
+        </>
+        
     );
 }
