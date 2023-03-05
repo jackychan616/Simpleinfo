@@ -13,7 +13,7 @@ export default function Meta({ pageTitle, keywords, description ,subtitle}) {
         <meta property="og:description" content={description} />
         <meta property="og:site_name" content="brandonzhang.cn"/>
         <meta property='keyword' content={keywords}/>
-        <meta property='og:image' content = {"/img/simple_info.png"}/>
+        <meta property='og:image' content = {"https://simpleinfo.live/img/simple_info.png"}/>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3459129696587268"
         crossOrigin="anonymous"></script>
   
