@@ -5,14 +5,26 @@ const blogdata = [
     {
         "title": 'Python 教學',
         "image": '/img/py.jpg',
-        "date": 'September 12, 2022',
+        "date": '29/2/2023',
         "href": '/content/code-tutorial/python-tutorial/python-quick-tutorial'
     },
     {
         "title": 'linux 教學',
         "image": '/img/linux.jpeg',
-        "date": 'September 12, 2022',
+        "date": '1/3/2023',
         "href": '/content/code-tutorial/linux-tutorial/simple_linux_cmd'
+    },
+    {
+        "title": '如何在Windows本地部署Stable Diffusion?',
+        "image": '/img/stable-diffusion.webp',
+        "date": '1/3/2023',
+        "href": 'content/ai-tutorial/setup-stable-diffusion'
+    },
+    {
+        "title": '如何使用AI繒圖？',
+        "image": '/img/ai-generate-img.jpg',
+        "date": '28/2/2023',
+        "href": 'content/ai-tutorial/photo-ai-tutorial'
     }
 ];
 
@@ -74,7 +86,9 @@ function Body(){
         
     )
 }   
+function newbody() {
 
+}
 export default function App(){
     return(
         <div>
