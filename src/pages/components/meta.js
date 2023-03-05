@@ -1,11 +1,11 @@
 import Head from 'next/head';
 
-const siteTitle = "Simple Info";
+const siteTitle = "Simple Info HK";
 
-export default function Meta({ pageTitle, keywords, description }) {
+export default function Meta({ pageTitle, keywords, description ,subtitle}) {
   return (
     <Head>
-        <title>{pageTitle ? pageTitle : siteTitle}</title>
+        <title>{pageTitle ? pageTitle : siteTitle+subtitle}</title>
         <meta name="description" content={description} />
         <meta property="og:locale" content="zh-Hant-HK"/>
         <meta property="og:type" content="article"/>
