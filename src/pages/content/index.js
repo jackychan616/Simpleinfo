@@ -2,11 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@mantine/core";
 import {ArtiCard} from "../components/card";
-
+import Meta from "../components/meta";
 
 const PostData =[
     {
-        name: '電腦編程教學',img: '/img/coding.jpg',path: '/content/code-tutorial/python-tutorial',date:''
+        name: '電腦編程教學',img: '/img/coding.jpg',path: '/content/code-tutorial',date:''
     },
     {
         name: 'AI 教學',img: '/img/ai.jpg',path: '/content/ai-tutorial' ,date:''
@@ -23,9 +23,13 @@ const PostData =[
 
 export default function Page(){
     return (
+        <>
+        <Meta/>
         <Container>
             <ArtiCard data={PostData}/>
         </Container>
+        </>
+        
        
     );
 }
