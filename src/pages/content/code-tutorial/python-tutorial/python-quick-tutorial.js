@@ -1,7 +1,7 @@
-import Head from "next/head";
 import {TitleImage,Text,Table,Space,Image,Container} from "@mantine/core";
 import {ConText,OutputText,PyPrism,ConTitle} from "../../../components/component";
 import {Sharebutton} from "../../../components/newshare";
+import Meta from '../../../components/meta';
 
 const kbd1=`
 print('ok')
@@ -142,15 +142,11 @@ function Page(){
 
 export default function MainPage(){
     return(
-        <>
-            <Head>
-            <meta name="title" content="Python入門"></meta>
-            <meta name="description" content="入門快速學習Python,即使新手也很快速掌握"></meta>
-                <title>Simple Blog - Python 入門</title>
-            </Head>
+        <>  
+            <Meta description={"入門快速學習Python,即使新手也很快速掌握"} subtitle="Python入門"/>
             <Container>
                 <Sharebutton url={"https://simpleinfohk.tech/content/code-tutorial/python-tutorial/python-quick-tutorial"}/>
-            <Page />
+            <Page />    
             </Container>
             
         </>

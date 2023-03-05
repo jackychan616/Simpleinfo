@@ -1,12 +1,13 @@
 import Head from 'next/head';
 import Image from 'next/image';
 const siteTitle = "Simple Info HK";
+const defaultDescription ="香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊";
 
 export default function Meta({ pageTitle, keywords, description ,subtitle}) {
   return (
     <Head>
-        <title>{pageTitle ? pageTitle : siteTitle+subtitle}</title>
-        <meta name="description" content={description} />
+        <title>{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+ subtitle:'')}</title>
+        <meta name="description" content={defaultDescription ? defaultDescription: description + defaultDescription } />
         <meta property="og:locale" content="zh-Hant-HK"/>
         <meta property="og:type" content="article"/>
         <meta property="og:title" content={pageTitle || siteTitle} />
