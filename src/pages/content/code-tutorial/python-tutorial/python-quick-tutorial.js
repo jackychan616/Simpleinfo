@@ -149,8 +149,7 @@ export default function MainPage(){
                 <title>Simple Blog - Python 入門</title>
             </Head>
             <Container>
-
-                    <Sharebutton url={"url"}/>
+                <Sharebutton url={"https://simpleinfohk.tech/content/code-tutorial/python-tutorial/python-quick-tutorial"}/>
             <Page />
             </Container>
             
