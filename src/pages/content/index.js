@@ -6,13 +6,16 @@ import {ArtiCard} from "../components/card";
 
 const PostData =[
     {
-        name: '電腦編程教學',img: '/img/py.jpg',path: '/content/code-tutorial/python-tutorial',date:''
+        name: '電腦編程教學',img: '/img/coding.jpg',path: '/content/code-tutorial/python-tutorial',date:''
     },
     {
-        name: 'linux 教學',img: '/img/linux.jpeg',path: '/content/code-tutorial/linux-tutorial' ,date:''
+        name: 'AI 教學',img: '/img/ai.jpg',path: '/content/ai-tutorial' ,date:''
     },
     {
-        name:"[porker 撲克牌] 二十一點玩法教學 ",img:"/img/poker.jpg",path:"/content/card-game",date:''
+        name:"遊戲 ",img:"/img/game.jpg",path:"/content/card-game",date:''
+    },
+    {
+        name:"有趣知識",img:'/img/fact.jpg',path:"/content/fun-fact",date:''
     }
 
 
