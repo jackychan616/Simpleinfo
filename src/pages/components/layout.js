@@ -5,7 +5,7 @@ import { Text, Paper, Group ,Image, Box, TextInput} from '@mantine/core';
 function Down(){
 
     return(
-
+        
     <Paper withBorder p="lg" radius="md" shadow="md"  position = "down" style = {{backgroundColor : "rgba(82,113,255,255)"}}>
         <Group position="apart" mb="xs">
             <Image src ="/img/simple_info.png" alt = "icon" width = "120px" height="150px"/>

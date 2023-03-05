@@ -3,14 +3,11 @@ import {Code, Container,List,ThemeIcon,Image,Space, Grid} from '@mantine/core';
 import { ConTitle,ConText} from '../../components/component';
 import { IconCircleCheck, IconCircleDashed } from '@tabler/icons-react';
 import { Sharebutton } from 'src/pages/components/newshare';
+import Meta from '../../components/meta';
 
 export function ConPage(){
     return(
         <>
-            <Head>
-                <title>如何在Windows本地部署Stable Diffusion?</title>
-
-            </Head>
             <Container>
                 <Sharebutton url = {"https://simpleinfo.live/content/ai-tutorial/setup-stable-diffusion"}/>
                 <Grid >
@@ -66,10 +63,7 @@ export function ConPage(){
 export default function page(){
     return(
         <>
-            <Head>
-                <meta name='title' content='在Windows本地部署Stable Diffusion'/>
-                <meta name='description' content='如何在Windows部署AI畫圖, 使用Python在電腦搭建Stable diffusion'/>
-            </Head>
+            <Meta description={"如何在Windows部署AI畫圖, 使用Python在電腦搭建Stable diffusion"} pageTitle={"如何在Windows部署AI畫圖"} />
             <ConPage/>
         </>
     );
