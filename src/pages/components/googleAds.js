@@ -17,4 +17,4 @@ const GoogleAds = () => {
   )
 }
 
-export default GoogleAds
+export default GoogleAds;
