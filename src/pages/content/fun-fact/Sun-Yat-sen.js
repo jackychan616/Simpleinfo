@@ -2,8 +2,7 @@ import { ConTitle,ConText } from "../../components/component";
 import Head from 'next/head';
 import {Container,Image} from '@mantine/core';
 import { Sharebutton } from "src/pages/components/newshare";
-
-
+import Meta from "src/pages/components/meta";
 function Body(){
     return(
         <Container>
@@ -35,6 +34,8 @@ export default function Page() {
                 古人的性癖好 孫中山是蘿莉控？
             </Head>
             <Body/>
+            <Meta description={"孫中山有一位伴侶（非正妻），叫大月薰。據說孫中山在流亡日本時認識了友人的女兒，那人即大月薰（當時10歲）。過後孫文愛上了她並向其父大月素堂提親，在一番波折後大月薰在15歲時與孫文結婚。"}
+            Image = {"img/Sun-Yat-Sen.jpeg"}/>
             <Sharebutton url = {"https://simpleinfo.live/content/fun-fact/Sun-Yat-sen"}/>
         </>
     )
