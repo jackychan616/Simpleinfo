@@ -1,6 +1,6 @@
 import Header from './header';
 import { Text, Paper, Group ,Image, Box, TextInput} from '@mantine/core';
-
+import GoogleAds from './googleAds';
 
 function Down(){
 
@@ -24,6 +24,7 @@ export default function Layout({children}){
         <>
             <Header title=""/>
             <main>{children}</main>
+            <GoogleAds/>
             <Down/>
         </>
     );
