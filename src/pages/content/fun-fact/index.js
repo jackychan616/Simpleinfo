@@ -23,7 +23,7 @@ export default function Page (){
             <Head>
                 <title>有趣小知識</title>
             </Head>
-            <Meta description="有趣小知識,中國近代史,中國歷史"/>
+            <Meta description="有趣小知識,中國近代史,中國歷史"  Image = "img\Sun-Yat-Sen.jpeg"/>
             <ArtiCard data={BlogData}/>
         </>
     );
