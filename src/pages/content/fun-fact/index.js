@@ -4,21 +4,20 @@ import { ArtiCard } from '../../components/card';
 import Meta from '../../components/meta';
 import Page from '../../components/page_index';
 const BlogData=[
-    {name:'中國古代最重要的君主(上)',path:'chinese-king1',img:'/img/chinese-king1.jpg',date:'3/3/2023'},
-    {name:'中國古代最重要的君主(下)',path:'chinese-king2',img:'/img/chinese-king2.jpeg',date:'3/3/2023'},
-    {name:'古人的性癖好 孫中山是蘿莉控?',path:'Sun-Yat-sen',img:'/img/Sun-Yat-sen.jpeg',date:'6/3/2023'}
+    {name:'中國古代最重要的君主(上)',path:'/fun-fact/chinese-king1',img:'/img/chinese-king1.jpg',date:'3/3/2023'},
+    {name:'中國古代最重要的君主(下)',path:'/fun-fact/chinese-king2',img:'/img/chinese-king2.jpeg',date:'3/3/2023'},
+    {name:'古人的性癖好 孫中山是蘿莉控?',path:'/fun-fact/Sun-Yat-sen',img:'/img/Sun-Yat-Sen.jpeg',date:'6/3/2023'}
 ]
 
 
 export default function ConPage (){
     return(
         <>
-            <Meta description="有趣小知識,中國近代史,中國歷史" Image = "img\Sun-Yat-Sen.jpeg"/>
-            <Page title="有趣小知識" hTitle="上知天文下知地理" img="img\Sun-Yat-Sen.jpeg">
-                <ArtiCard data={BlogData}/>
-            </Page>
-            
-            
+            <Head>
+                <title>有趣小知識</title>
+            </Head>
+            <Meta description="有趣小知識,中國近代史,中國歷史"  Image = "img\Sun-Yat-Sen.jpeg"/>
+            <ArtiCard data={BlogData}/>
         </>
     );
 }
