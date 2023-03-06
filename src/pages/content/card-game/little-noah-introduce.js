@@ -12,7 +12,7 @@ function Body(){
             <ConText>《小小諾亞-樂園的繼承者》是由Cygames旗下子公司Blaze Games自主研发的一款手遊改編Roguelike 動作遊戲。《小小諾亞-樂園的繼承者》是手遊《小小諾亞》劇情的前傳，描繪了諾婭駕駛巨大古代兵器「方舟」参加世界第一炼金术师选拔大会的時候，與路途中其他偶遇的人，動物發生的奇妙故事。</ConText>
             <Image alt="Main Image" src="/img/little-noach-introduce/2.jpg"/>
             <Space h={"sm"}/>   
-            <ConText>《小小諾亞-樂園的繼承者》是由Cygames旗下子公司Blaze Games自主研发的一款手遊改編Roguelike 動作遊戲。《小小諾亞-樂園的繼承者》是手遊《小小諾亞》劇情的前傳，描繪了諾婭駕駛巨大古代兵器「方舟」参加世界第一炼金术师选拔大会的時候，與路途中其他偶遇的人，動物發生的奇妙故事。術師，在探索中邂逅性格各异、能力独特的魂靈们，和他们一起击败强敌，找回失散的朋友——同时，逐步发掘「遺蹟」的真相。</ConText>
+            <ConText>《小小諾亞-樂園的繼承者》描繪了諾婭駕駛巨大古代兵器「方舟」参加世界第一炼金术师选拔大会的時候，與路途中其他偶遇的人，動物發生的奇妙故事。術師，在探索中邂逅性格各异、能力独特的魂靈们，和他们一起击败强敌，找回失散的朋友——同时，逐步发掘「遺蹟」的真相。</ConText>
             <Space h={"lg"}/>
             <Image alt="Main Image 2" src="/img/little-noach-introduce/3.png"/>
             <Space h={"lg"}/>

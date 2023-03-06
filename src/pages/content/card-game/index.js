@@ -1,5 +1,4 @@
-import Head from 'next/head';
-import Link from 'next/link';
+
 import{ Page}  from '../../components/page_index';
 import{ ArtiCard }from '../../components/card';
 import Meta from '../../components/meta';
