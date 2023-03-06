@@ -67,10 +67,10 @@ function Page(){
 
                 <Container>
                     <ConTitle order={2}>下載Python</ConTitle>
-                    <ConText fz="lg">我們將介紹如何在電腦設置Python開發環境</ConText>
-                    <ConText fz="lg">Python能在大多數平臺使用包括Windows,MacOS,Linux 等等</ConText>
+                    <ConText  fz="lg">我們將介紹如何在電腦設置Python開發環境</ConText>
+                    <ConText  fz="lg">Python能在大多數平臺使用包括Windows,MacOS,Linux 等等</ConText>
                     <ConTitle order={3}>下載</ConTitle>
-                    <ConText fz="lg">一般建議在Python官網下載 <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></ConText>
+                    <ConText h1="sm" h2="sm" fz="lg">一般建議在Python官網下載 <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></ConText>
 
                     <ConTitle order={3}>安裝</ConTitle>
                     <ConText fz="lg">下載了合適的檔案後，按 <kbd>win + r </kbd>然後輸入<kbd>cmd</kbd > 打開終端，然後輸入python檢查是否安裝正確</ConText>
