@@ -1,4 +1,4 @@
-import { DevicesPc, DeviceGamepad2 ,Robot} from 'tabler-icons-react';
+import { DevicesPc, DeviceGamepad2 ,Robot,InfoCircle } from 'tabler-icons-react';
 
 export const topics = [
         {
@@ -21,6 +21,13 @@ export const topics = [
             page:1,
             description:"分享游戲中大小事",
             icon:DeviceGamepad2
+        },
+        {
+          name:"有趣知識",
+          path:"fun-fact",
+          page:2,
+          description:"與你分享不平凡的知識",
+          icon:InfoCircle
         }
 
 ];

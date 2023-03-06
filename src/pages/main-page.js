@@ -2,6 +2,7 @@ import Link from "next/link";
 import { createStyles, SimpleGrid, Card,  Container, AspectRatio, Title,Text, Paper, Group, CloseButton , Image,Button} from '@mantine/core';
 import Head from 'next/head';
 import Meta from './components/meta';
+import { ArticleCard } from "./components/articlecard";
 
 const blogdata = [
     {
