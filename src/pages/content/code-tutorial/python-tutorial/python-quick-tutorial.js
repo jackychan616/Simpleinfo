@@ -32,9 +32,9 @@ else:
     print('kids')
 `;
 const elements=[
-    {name:'str',type:'句子',example:`s='這是一行句子'`,kbd:`print(s+',這也是')`,output:`'這是一行句子,這也是`},
+    {name:'str',type:'句子',example:`s='這是一行句子'`,kbd:`print(s+',這也是')`,output:`'這是一行句子,這也是'`},
     {name:'int',type:'整數(1 , 2 ,3)',example:'number= 120',kbd:`print(number+50)`,output:'170'},
-    {name:"list",type:`列表,列表中可以包含多種變數,每個元素都有分配一個索引，第一個索引是0，第二個索引是1，如此類推`,example:`list=['apple','orange',1,2,3]`,kbd:`print(list[0]+list[0])`,output:`'appleorange`},
+    {name:"list",type:`列表,列表中可以包含多種變數,每個元素都有分配一個索引，第一個索引是0，第二個索引是1，如此類推`,example:`list=['apple','orange',1,2,3]`,kbd:`print(list[0]+list[0])`,output:`'appleorange'`},
     {name:'dict',type:'字典,能夠儲存變數,每個數據都有獨特的名稱作為索引',example:`dict={'number1':1,'number2':2}`,kbd:`print(dict['number1']+dict['number2'])`,output:'3'}];
 
 

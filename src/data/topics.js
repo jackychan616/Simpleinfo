@@ -1,4 +1,4 @@
-import { DevicesPc, DeviceGamepad2 ,Robot,InfoCircle } from 'tabler-icons-react';
+import { DevicesPc, DeviceGamepad2 ,Robot,InfoCircle ,HorseToy } from 'tabler-icons-react';
 
 export const topics = [
         {
@@ -28,6 +28,13 @@ export const topics = [
           page:2,
           description:"與你分享不平凡的知識",
           icon:InfoCircle
+        },
+        {
+          name:"玩具",
+          path:"toy",
+          page:1,
+          description:"形形色色的玩具介紹",
+          icon:HorseToy 
         }
 
 ];

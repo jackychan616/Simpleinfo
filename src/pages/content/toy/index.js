@@ -10,7 +10,7 @@ export default function ConPage(){
     return(
         <>
             <Meta/>
-                <Page title={"玩具"} hTitle={"形形色色的玩具介紹"} img="https://unsplash.com/photos/LEPhZkQbUrk" >
+                <Page title={"玩具"} hTitle={"形形色色的玩具介紹"} img="/img/toy.jpg" >
             </Page>
         </>
     );
