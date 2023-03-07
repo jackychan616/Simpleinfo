@@ -22,6 +22,9 @@ function ConPage(){
             <ConTitle order={2}>3.RG 1/144 MSN-02 Zeong</ConTitle>
             <Image alt="Zeong" src="/img/5-gundam/3.webp"/>
             <ConText>《機動戦士》0079中馬沙的MS，自護軍的新類型人專用MS ，亦是自護軍最後投入實戰的MS。靈活度與結構超乎想像。亦採用新型骨架，大大增強模型的穩定度。</ConText>
+            <Space h="lg"/>
+            <ConText>推薦度：⭐️⭐️⭐️⭐️⭐️</ConText>
+            <ConTitle order={2}>4. RG 1/144 MSN-04 Sazabi </ConTitle>
         </Container>
             
    );
