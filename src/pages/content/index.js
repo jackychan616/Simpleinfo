@@ -16,6 +16,9 @@ const PostData =[
     },
     {
         name:"有趣知識",img:'/img/fact.jpg',path:"/fun-fact",date:''
+    },
+    {
+        name:"玩具",img:"/img/toy.jpg",path:"/toy",date:''
     }
 
 
@@ -24,10 +27,10 @@ const PostData =[
 export default function Page(){
     return (
         <>
-        <Meta/>
-        <Container>
-            <ArtiCard data={PostData}/>
-        </Container>
+            <Meta/>
+            <Container>
+                <ArtiCard data={PostData}/>
+            </Container>
         </>
         
        
