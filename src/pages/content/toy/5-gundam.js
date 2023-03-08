@@ -25,6 +25,15 @@ function ConPage(){
             <Space h="lg"/>
             <ConText>推薦度：⭐️⭐️⭐️⭐️⭐️</ConText>
             <ConTitle order={2}>4. RG 1/144 MSN-04 Sazabi </ConTitle>
+            <Image alt="Sazabi" src="/img/5-gundam/4.webp"/>
+            <Space  h="lg"/>
+            <ConText>《機動戰士高達馬沙之反擊》中馬沙的MS，乃是為了配合新人類的能力而設，並裝有精神感應框架的究極MS。RG而言巨大的機體，鮮紅的配色，配合著巨大的靈活度，裂甲組件亦甚為豐富，是除了size之外比美MG Sazabi的RG機體，需注意在製作時小心肩部組件的鬆脫。</ConText>
+            <ConText>推薦度：⭐️⭐️⭐️⭐️⭐️(-⭐️肩部缺陷是減分點）</ConText>
+        
+            <ConTitle>5.RG 1/144 Evangelion Unit-01</ConTitle>
+            <Image alt="Unit-01" src="/img/5-gundam/5.webp"/>
+            <ConText>《新世紀福音戰士》中主角碇真嗣的EVA戰鬥測試模擬型，身為系列主題人類補完計劃的關鍵因素。紫色塗裝的外型，機內寄存有碇唯(碇真嗣母親）的靈魂。本機體擁有超高水準的分色設計及靈活度，提供一個非高達的不錯選擇給用家。另需注意組件容易掉下。</ConText>
+            <ConText h1={"lg"}>推薦度：⭐️⭐️⭐️⭐️</ConText>
         </Container>
             
    );
