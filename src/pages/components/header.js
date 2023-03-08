@@ -18,7 +18,6 @@ import {
   ScrollArea,
   Title,
   Flex,
-  Tooltip,
   ActionIcon
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -28,6 +27,7 @@ import Image from 'next/image';
 import { DevicesPc, DeviceGamepad2 } from 'tabler-icons-react';
 import { topics} from '../../data/topics'
 import { SiKofi } from "react-icons/si";
+import {BiChevronDown} from 'react-icons/bi';
 const useStyles = createStyles((theme) => ({
   link: {
     display: 'flex',
@@ -144,7 +144,7 @@ export default function HeaderMegaMenu() {
                     <Box component="span" mr={5}>
                       文章
                     </Box>
-
+                    < BiChevronDown size={16} color={theme.fn.primaryColor()}/>
                   </Center>
                 </Link>
               </HoverCard.Target>
@@ -195,7 +195,8 @@ export default function HeaderMegaMenu() {
           justify="flex-start"
           align="flex-start"
           direction="row"
-          wrap="wrap">
+          wrap="wrap"
+          className={classes.hiddenDesktop}>
             <Burger  opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
             <Link position={{right:"50px"}} href="/" 
                   style={{
@@ -214,7 +215,7 @@ export default function HeaderMegaMenu() {
         onClose={closeDrawer}
         size="100%"
         padding="md"
-        title="Navigation"
+        title="Simple Info"
         className={classes.hiddenDesktop}
         zIndex={1000000}
       >
@@ -225,16 +226,17 @@ export default function HeaderMegaMenu() {
             首頁
           </Link>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
-            <Link href="/content">
+            <Link href="/content">     
               <Center inline>
-                <Box component="span" mr={5}>
-                  文章
-                </Box>
+                    <Box component="span" mr={5}>
+                      文章
+                    </Box>
+                   < BiChevronDown size={16}/>
               </Center>
-            </Link>
-           
+              </Link>
           </UnstyledButton>
           
+          <Collapse in={linksOpened}>{links}</Collapse>
 
         </ScrollArea>
       </Drawer>
