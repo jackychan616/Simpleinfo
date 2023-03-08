@@ -203,8 +203,8 @@ export default function HeaderMegaMenu() {
                     textDecoration: 'none',
                   }} className={classes.hiddenDesktop}
             ><Title size="h3" >Simple Info</Title></Link>
-            <Button size="xs">訂閱</Button>
-            <ActionIcon variant="light" ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' ><SiKofi/></a></ActionIcon>
+            <Button size="xs" color={theme.fn.primaryColor()}>訂閱</Button>
+            <ActionIcon variant="light" color={theme.fn.primaryColor()}><a href='https://ko-fi.com/B0B1AA09F' target='_blank' ><SiKofi/></a></ActionIcon>
           </Flex>
         </Group>
       </Header>
