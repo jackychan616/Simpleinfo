@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Container } from "tabler-icons-react";
 import {ConTitle} from '../../../components/component';
 import {Container} from '@mantine/core';
 function ConContent(){
