@@ -52,10 +52,11 @@ function Page(){
     
     return(
         <>
-            <ConTitle order={1}>Python入門</ConTitle>
+        <Container>
+             <ConTitle order={1}>Python入門</ConTitle>
 
-            <Container>
-                <Container>
+            
+                
                     <ConTitle order={2}>簡介</ConTitle>
       
                     <ConText >Python 是一種易學、強大的程式語言，
@@ -63,9 +64,9 @@ function Page(){
                     尤其是使用空格縮排來劃分程式碼塊。相比於C或Java，
                     Python讓開發者能夠用更少的代碼表達想法。</ConText>
 
-                </Container>
+                
 
-                <Container>
+                
                     <ConTitle order={2}>下載Python</ConTitle>
                     <ConText  fz="lg">我們將介紹如何在電腦設置Python開發環境</ConText>
                     <ConText  fz="lg">Python能在大多數平臺使用包括Windows,MacOS,Linux 等等</ConText>
@@ -78,9 +79,9 @@ function Page(){
                     <ConText>如果輸出與圖片差不多，證明下載正確</ConText>
                     <Image src="/img/python-tutorial-cmd.png" alt="" ></Image>
 
-                </Container>
+                
 
-                <Container>
+                
                     <ConTitle order={3}>語法</ConTitle>
                     <ConText>文件輸入以下句子</ConText>
                     <PyPrism language="python">{kbd1}</PyPrism>
@@ -91,9 +92,9 @@ function Page(){
                     <Text>但不能由數字做開頭</Text>
                     <ConText>能夠以大小寫區分,例如<kbd>Print </kbd>和<kbd>print</kbd>不一樣</ConText>
                     <ConTitle order={4}>標識符例子</ConTitle>
-                </Container>
                 
-                <Container>
+                
+                
                     <ConTitle order={3}>變數</ConTitle>
                     <ConText>在設計程式當中，我們常常需要儲存數據，我們能使用<kbd>變數</kbd>儲存數字和字串</ConText>
                     <ul>
@@ -107,8 +108,8 @@ function Page(){
                         <PyPrism >{kbd2}</PyPrism>
                         <OutputText >結果:1</OutputText>
                         <PyPrism >{kbd3}</PyPrism>
-                </Container>
-        <Container>
+                
+        
             <ConTitle order={4}>變數類型</ConTitle>
             <ConText>Python 有很多變數類型,用來處理數字和文字</ConText>
             <Table horizontalSpacing="xs" striped highlightOnHover withBorder withColumnBorders >
@@ -123,9 +124,9 @@ function Page(){
                     <tbody>{rows}</tbody>
                 </thread>
             </Table>
-        </Container>    
+            
         
-        <Container>
+        
             <ConTitle order={2}>條件句</ConTitle>
             <ConText>條件句是基於布林(Boolean 即是True & False)執行不同段落</ConText>
             <ConTitle order={3}>例子 1 </ConTitle>
@@ -133,9 +134,11 @@ function Page(){
             <ConTitle order={4}>例子 2</ConTitle>
             <Text>結合運算符</Text>
             <PyPrism >{kbd5}</PyPrism>
-        </Container>
         
-        </Container>  
+        </Container>
+           
+        
+          
         </>
     );
 }
@@ -144,10 +147,10 @@ export default function MainPage(){
     return(
         <>  
             <Meta description={"入門快速學習Python,即使新手也很快速掌握"} pageTitle="Python入門"/>
-            <Container>
+            
                 <Sharebutton url={"https://simpleinfohk.tech/content/code-tutorial/python-tutorial/python-quick-tutorial"}/>
             <Page />    
-            </Container>
+            
             
         </>
     );
