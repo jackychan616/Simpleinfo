@@ -42,7 +42,9 @@ export default function Page(){
     return (
         <>
             <Meta description={"高達模型,必入手高達"} Image="/img/5-gundam/1.5.jifi"/>
-            <ConPage/>
+            <Container>
+                <ConPage/>
+            </Container>
         </>
     );
 }
