@@ -16,7 +16,10 @@ import {
   Drawer,
   Collapse,
   ScrollArea,
-  Title
+  Title,
+  Flex,
+  Tooltip,
+  ActionIcon
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { blue } from '@mui/material/colors';
@@ -24,7 +27,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { DevicesPc, DeviceGamepad2 } from 'tabler-icons-react';
 import { topics} from '../../data/topics'
-
+import { SiKofi } from "react-icons/si";
 const useStyles = createStyles((theme) => ({
   link: {
     display: 'flex',
@@ -118,17 +121,17 @@ export default function HeaderMegaMenu() {
 
 
   return (
-    <Box pb={20}  >
+    <Box pb={0}  >
       <Header height={60} px="md" >
+        
         <Group position="apart" sx={{ height: '100%' }}>
-          
           <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
             <Link href="/" 
                   style={{
                     textDecoration: 'none',
                   }}
             ><Title>Simple Info</Title></Link>
-            
+              
             <Link href="/" className={classes.link}>
               <Box component="span" mr={5}>
                       首頁
@@ -185,7 +188,23 @@ export default function HeaderMegaMenu() {
             <Button>訂閱</Button>
             <Button ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' style ={{textDecoration:"none",color : "White"}}>給我們買杯咖啡</a></Button>
           </Group>
-          <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
+          
+          
+          <Flex
+          gap="md"
+          justify="flex-start"
+          align="flex-start"
+          direction="row"
+          wrap="wrap">
+            <Burger  opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
+            <Link position={{right:"50px"}} href="/" 
+                  style={{
+                    textDecoration: 'none',
+                  }} className={classes.hiddenDesktop}
+            ><Title size="h3" >Simple Info</Title></Link>
+            <Button size="xs">訂閱</Button>
+            <ActionIcon variant="light" ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' ><SiKofi/></a></ActionIcon>
+          </Flex>
         </Group>
       </Header>
 
