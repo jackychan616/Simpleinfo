@@ -24,7 +24,6 @@ export default function Layout({children}){
         <>
             <Header title=""/>
             <main>{children}</main>
-            <GoogleAds/>
             <Down/>
         </>
     );
