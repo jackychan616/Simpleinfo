@@ -18,7 +18,7 @@ export default function content(){
                 <ArtiCard data={BlogList}/>
                 </Page>
             </Container>
-            <Meta  subtitle={" AI 教學"}description=" AI教學,包括Chatgpt,stable diffusion 等等的教學"/>
+            <Meta  subtitle=" AI 教學" description=" AI教學,包括Chatgpt,stable diffusion 等等的教學"/>
             
         </>
         
