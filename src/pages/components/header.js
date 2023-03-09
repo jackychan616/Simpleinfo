@@ -1,4 +1,5 @@
 import {
+  useMantineColorScheme,
   createStyles,
   Header,
   HoverCard,
@@ -13,18 +14,20 @@ import {
   Center,
   Box,
   Burger,
-  Drawer,
   Collapse,
   ScrollArea,
   Title,
   Flex,
-  ActionIcon
+  ActionIcon,
+  AppShell,
+  Navbar,
+  Drawer
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { blue } from '@mui/material/colors';
 import Link from 'next/link';
 import Image from 'next/image';
-import { DevicesPc, DeviceGamepad2 } from 'tabler-icons-react';
+import { IconSun, IconMoonStars } from '@tabler/icons-react';
 import { topics} from '../../data/topics'
 import { SiKofi } from "react-icons/si";
 import {BiChevronDown} from 'react-icons/bi';
@@ -93,7 +96,6 @@ export default function HeaderMegaMenu() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const { classes, theme } = useStyles();
-
   const links = topics.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.name}>
       <Link href={'/content/'+item.path} style={{
@@ -187,9 +189,8 @@ export default function HeaderMegaMenu() {
           <Group className={classes.hiddenMobile}>
             <Button>訂閱</Button>
             <Button ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' style ={{textDecoration:"none",color : "White"}}>給我們買杯咖啡</a></Button>
-          </Group>
-          
-          
+            
+        </Group>
           <Flex
           gap="md"
           justify="flex-start"
@@ -211,14 +212,14 @@ export default function HeaderMegaMenu() {
 
       
       <Drawer
-        opened={drawerOpened}
-        onClose={closeDrawer}
-        size="100%"
-        padding="md"
-        title="Simple Info"
-        className={classes.hiddenDesktop}
-        zIndex={1000000}
-      >
+      opened={drawerOpened}
+      onClose={closeDrawer}
+      size="50%"
+      padding="md"
+      title="Simple Info"
+      className={classes.hiddenDesktop}
+      zIndex={1000000}>
+      
         <ScrollArea sx={{ height: 'calc(100vh - 60px)' }} mx="-md">
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
@@ -241,5 +242,7 @@ export default function HeaderMegaMenu() {
         </ScrollArea>
       </Drawer>
     </Box>
+
+    
   );
 }

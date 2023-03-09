@@ -12,8 +12,12 @@ export default function ConPage(){
     return(
         <>
             <Meta subtitle={"體育"} description="體育"/>
-            <Page title="體育" img="https://library.sportingnews.com/styles/facebook_1200x630/s3/2021-08/world-cup-trophy-stand_133kk6nwawbmj16uhxvaiznup2.jpg?itok=bYPSCbur" hTitle="體育"/>
-            <ArtiCard data={BlogList}/>
+            <Container>
+               <Page title="體育" img="https://library.sportingnews.com/styles/facebook_1200x630/s3/2021-08/world-cup-trophy-stand_133kk6nwawbmj16uhxvaiznup2.jpg?itok=bYPSCbur" hTitle="體育">
+                    <ArtiCard data={BlogList}/> 
+                </Page>
+            </Container>
+            
         </>
     );
 }

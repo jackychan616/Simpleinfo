@@ -13,11 +13,11 @@ const BlogData=[
 export default function ConPage (){
     return(
         <>
-            <Head>
-                <title>有趣小知識</title>
-            </Head>
+            <Page hTitle={"有趣小知識"} img="/img/fact.jpg">
+                <ArtiCard data={BlogData}/>
+            </Page>
             <Meta description="有趣小知識,中國近代史,中國歷史"  img = "img/Sun-Yat-Sen.jpeg"/>
-            <ArtiCard data={BlogData}/>
+            
         </>
     );
 }
