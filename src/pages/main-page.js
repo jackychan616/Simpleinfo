@@ -6,7 +6,7 @@ import Meta from './components/meta';
 const blogdata = [
     {
         "title": 'Python 教學',
-        "image": '/img/py.jpg',
+        "image": '/img/py.webp',
         "date": '29/2/2023',
         "href": '/content/code-tutorial/python-tutorial/python-quick-tutorial'
     },
@@ -24,7 +24,7 @@ const blogdata = [
     },
     {
         "title": '如何使用AI繒圖？',
-        "image": '/img/ai-generate-img.jpg',
+        "image": '/img/ai-generate-img.webp',
         "date": '28/2/2023',
         "href": 'content/ai-tutorial/photo-ai-tutorial'
     }
