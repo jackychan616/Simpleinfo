@@ -25,7 +25,7 @@ export function ArtiCard({children,data})   {
   const cards =data.map((article) => (
     <Card key={article.name} p="md" radius="md" component="a" href={'/content/'+article.path} className={classes.card}>
       <AspectRatio ratio={1920 / 1080}>
-        <Image src={article.img} alt = "card"/>
+        <Image src={article.img} alt = "card" />
       </AspectRatio>
       <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
         {article.date}

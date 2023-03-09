@@ -13,7 +13,7 @@ export default function ConPage(){
     return (
         <>
             <Container>
-                <Page title="Simple Info - 遊戲" hTitle="分享游戲中大小事" img="/img/game.jpg">
+                <Page title="Simple Info - 遊戲" hTitle="分享游戲中大小事" img="/img/game.webp">
                     <ArtiCard data={Bloglist}/>
                 </Page>
             </Container>

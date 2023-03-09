@@ -12,7 +12,7 @@ export default function ConPage(){
         <>
             <Meta/>
             <Container>
-                <Page title={"玩具"} hTitle={"形形色色的玩具介紹"} img="/img/toy.jpg" >
+                <Page title={"玩具"} hTitle={"形形色色的玩具介紹"} img="/img/toy.wepb" >
                     <ArtiCard data={BlogData}/>
                 </Page>
             </Container>          
