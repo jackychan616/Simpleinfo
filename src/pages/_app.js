@@ -1,23 +1,34 @@
 import '../styles/globals.css'; 
 import Layout  from './components/layout';
 import { Analytics } from '@vercel/analytics/react';
-import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
-import { useColorScheme } from '@mantine/hooks';
+import { MantineProvider, Global,ColorScheme} from '@mantine/core';
 import { useState } from 'react';
 import Loading from './loading';
 import { Suspense } from 'react';
+
+function MyGlobalStyles() {
+  return (
+    <Global
+      styles={(theme) => ({
+        backgroundColor:'darkblue'
+      })}
+    />
+  );
+}
 export default function MyApp({ Component ,pageProps}) {
   return  (
+  <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS> 
     <Layout>
-
-        <Suspense fallback={<Loading/>}>
-          <Component {...pageProps} />
-        </Suspense>
+      
+          <MyGlobalStyles />
+          <Suspense fallback={<Loading/>}>
+            <Component {...pageProps} />  
+          </Suspense>
+          <Analytics/>
         
-        <Analytics/>
         
     </Layout>
-    
+    </MantineProvider>
   );
 }
   
