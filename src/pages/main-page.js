@@ -33,14 +33,14 @@ function Typing (){
     return (
     <TypeAnimation
         sequence={[
-          'Simple info', // Types 'One'
-        3000, // Waits 1s
-          '', // Deletes 'One' and types 'Two'
-          2000, // Waits 2s
-          'Simple Info HK', // Types 'Three' without deleting 'Two'
+          'Simple info',
+        3000, 
+          '', // Deletes 
+          2000, // 
+          'Simple Info HK', // '
           100000,
           () => {
-            console.log('Done typing!'); // Place optional callbacks anywhere in the array
+            console.log('Done typing!'); 
           }
         ]}
         wrapper="div"
