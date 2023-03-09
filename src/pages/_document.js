@@ -1,6 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import Meta from './components/meta';
-import { MantineProvider } from '@mantine/core';
 
 export default function Document() {
   return(
@@ -14,6 +12,7 @@ export default function Document() {
           <body>
             <Main/>
             <NextScript/>
+            
         </body>
         
     </Html>
