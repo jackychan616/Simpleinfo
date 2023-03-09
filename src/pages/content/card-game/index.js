@@ -14,8 +14,8 @@ export default function ConPage(){
         <>
             <Container>
                 <Page title="Simple Info - 遊戲" hTitle="分享游戲中大小事" img="/img/game.jpg">
-                <ArtiCard data={Bloglist}/>
-                <Page/>
+                    <ArtiCard data={Bloglist}/>
+                </Page>
             </Container>
             <Meta />
             
