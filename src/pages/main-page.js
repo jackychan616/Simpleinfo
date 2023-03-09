@@ -2,7 +2,7 @@ import Link from "next/link";
 import {Container, createStyles, SimpleGrid, Card,  AspectRatio, Text, Image,} from '@mantine/core';
 import Head from 'next/head';
 import Meta from './components/meta';
-
+import { TypeAnimation } from 'react-type-animation';
 const blogdata = [
     {
         "title": 'Python 教學',
@@ -29,7 +29,27 @@ const blogdata = [
         "href": 'content/ai-tutorial/photo-ai-tutorial'
     }
 ];
-
+function Typing (){
+    return (
+    <TypeAnimation
+        sequence={[
+          'Simple info', // Types 'One'
+        3000, // Waits 1s
+          '', // Deletes 'One' and types 'Two'
+          2000, // Waits 2s
+          'Simple Info HK', // Types 'Three' without deleting 'Two'
+          100000,
+          () => {
+            console.log('Done typing!'); // Place optional callbacks anywhere in the array
+          }
+        ]}
+        wrapper="div"
+        cursor={true}
+        repeat={Infinity}
+        style={{ fontSize: '3em' ,color :"white"}}
+    />
+    )
+}
 const useStyles = createStyles((theme) => ({
     card: {
       transition: 'transform 150ms ease, box-shadow 150ms ease',
@@ -73,8 +93,8 @@ function Body(){
             return(
                 <>
             <div className=" d-flex   justify-content-center align-items-center" style={{backgroundColor : "rgb(56,60,68)",height : "150px"}}>
-                <h1 className='display-5 'style={{color : "white"}}>Simple info</h1>
-                <p style={{color : "white"}}> Keep it simple </p>  
+
+                <Typing/>
             </div>
             <Container>
                 <div className={classes.bigtitle}>快速探索</div>
