@@ -36,16 +36,17 @@ function Typing (){
           'Simple info',
         3000, 
           '', // Deletes 
-          2000, // 
+          1000, // 
           'Simple Info HK', // '
-          100000,
-          () => {
-            console.log('Done typing!'); 
-          }
+          10000,
+          'Still here?',
+          3000,
+          'Lets Go !',
+          2000
         ]}
         wrapper="div"
         cursor={true}
-        repeat={Infinity}
+        repeat={3}
         style={{ fontSize: '3em' ,color :"white"}}
     />
     )
@@ -92,7 +93,7 @@ function Body(){
             ));
             return(
                 <>
-            <div className=" d-flex   justify-content-center align-items-center" style={{backgroundColor : "rgb(56,60,68)",height : "150px"}}>
+            <div className=" d-flex   justify-content-center align-items-center" style={{backgroundColor: 'transparent',height : "150px"}}>
 
                 <Typing/>
             </div>
