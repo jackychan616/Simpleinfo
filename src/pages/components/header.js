@@ -19,8 +19,7 @@ import {
   Title,
   Flex,
   ActionIcon,
-  AppShell,
-  Navbar,
+
   Drawer
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -92,7 +91,23 @@ const useStyles = createStyles((theme) => ({
 }));
 
 
-export default function HeaderMegaMenu() {
+function ActionToggle() {
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const dark = colorScheme === 'dark';
+
+  return (
+    <ActionIcon
+      variant="outline"
+      color={dark ? 'yellow' : 'blue'}
+      onClick={() => toggleColorScheme()}
+      title="Toggle color scheme"
+    >
+      {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
+    </ActionIcon>
+  );
+}
+
+export default function ConHeader() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const { classes, theme } = useStyles();
@@ -189,7 +204,7 @@ export default function HeaderMegaMenu() {
           <Group className={classes.hiddenMobile}>
             <Button>訂閱</Button>
             <Button ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' style ={{textDecoration:"none",color : "White"}}>給我們買杯咖啡</a></Button>
-            
+            <ActionToggle/>
         </Group>
           <Flex
           gap="md"

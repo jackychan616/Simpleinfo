@@ -1,4 +1,4 @@
-import {TitleImage,Text,Table,Space,Image,Container} from "@mantine/core";
+import {Text,Table,Image,Container,Kbd,Code,List,MantineProvider} from "@mantine/core";
 import {ConText,OutputText,PyPrism,ConTitle} from "../../../components/component";
 import {Sharebutton} from "../../../components/newshare";
 import Meta from '../../../components/meta';
@@ -38,7 +38,7 @@ const elements=[
     {name:'dict',type:'字典,能夠儲存變數,每個數據都有獨特的名稱作為索引',example:`dict={'number1':1,'number2':2}`,kbd:`print(dict['number1']+dict['number2'])`,output:'3'}];
 
 
-function Page(){
+function ConPage(){
     const rows = elements.map((element) => (
         <tr key={element.name}>
           <td>{element.name}</td>
@@ -51,7 +51,6 @@ function Page(){
     
     
     return(
-        <>
         <Container>
              <ConTitle order={1}>Python入門</ConTitle>
 
@@ -74,7 +73,7 @@ function Page(){
                     <ConText h1="sm" h2="sm" fz="lg">一般建議在Python官網下載 <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></ConText>
 
                     <ConTitle order={3}>安裝</ConTitle>
-                    <ConText fz="lg">下載了合適的檔案後，按 <kbd>win + r </kbd>然後輸入<kbd>cmd</kbd > 打開終端，然後輸入python檢查是否安裝正確</ConText>
+                    <ConText fz="lg">下載了合適的檔案後，按 <Kbd>win + r </Kbd>然後輸入<Kbd>cmd</Kbd> 打開終端，然後輸入python檢查是否安裝正確</ConText>
                     <Image src="/img/python-install-check.png" alt="" ></Image>
                     <ConText>如果輸出與圖片差不多，證明下載正確</ConText>
                     <Image src="/img/python-tutorial-cmd.png" alt="" ></Image>
@@ -86,23 +85,23 @@ function Page(){
                     <ConText>文件輸入以下句子</ConText>
                     <PyPrism language="python">{kbd1}</PyPrism>
                     <ConText>輸出</ConText>
-                    <samp>ok</samp>
+                    <Code block>ok</Code >
                     <ConTitle order={4}>Python 標識符</ConTitle>
                     <Text>在Python中, 標識符由英文字母、符號及橫綫{`(_)`}組成</Text>
                     <Text>但不能由數字做開頭</Text>
-                    <ConText>能夠以大小寫區分,例如<kbd>Print </kbd>和<kbd>print</kbd>不一樣</ConText>
+                    <ConText>能夠以大小寫區分,例如<Kbd>Print </Kbd>和<Kbd>print</Kbd>不一樣</ConText>
                     <ConTitle order={4}>標識符例子</ConTitle>
                 
                 
                 
                     <ConTitle order={3}>變數</ConTitle>
-                    <ConText>在設計程式當中，我們常常需要儲存數據，我們能使用<kbd>變數</kbd>儲存數字和字串</ConText>
-                    <ul>
-                        <li><ConText fz="lg">每個變數被使用前必須賦值</ConText></li>
-                        <li><ConText><kbd>=</kbd >用來賦值給變數</ConText></li>
-                        <li><ConText>每個變數被使用前必須賦值</ConText></li>
-                        <li><ConText><kbd>變數 = 值</kbd></ConText></li>
-                    </ul>
+                    <ConText>在設計程式當中，我們常常需要儲存數據，我們能使用<Kbd>變數</Kbd>儲存數字和字串</ConText>
+                    <List>
+                        <List.Item><ConText fz="lg">每個變數被使用前必須賦值</ConText></List.Item>
+                        <List.Item><ConText><Kbd>=</Kbd >用來賦值給變數</ConText></List.Item>
+                        <List.Item><ConText>每個變數被使用前必須賦值</ConText></List.Item>
+                        <List.Item><ConText><Kbd>變數 = 值</Kbd></ConText></List.Item>
+                    </List>
                             
 
                         <PyPrism >{kbd2}</PyPrism>
@@ -136,21 +135,16 @@ function Page(){
             <PyPrism >{kbd5}</PyPrism>
         
         </Container>
-           
-        
-          
-        </>
+
     );
 }
 
-export default function MainPage(){
+export default function Page(){
     return(
         <>  
             <Meta description={"入門快速學習Python,即使新手也很快速掌握"} img ={"https://simpleinfo.live/img/python.png"} pageTitle="Python入門"/>
-            
-                <Sharebutton url={"https://simpleinfohk.tech/content/code-tutorial/python-tutorial/python-quick-tutorial"}/>
-            <Page />    
-            
+        
+            <ConPage />    
             
         </>
     );
