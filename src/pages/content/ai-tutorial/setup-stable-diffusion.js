@@ -9,7 +9,6 @@ export function ConPage(){
     return(
         <>
             <Container>
-                <Sharebutton url = {"https://simpleinfo.live/content/ai-tutorial/setup-stable-diffusion"}/>
                 <Grid >
                     <Grid.Col span="auto">
                         <ConTitle order={1}>部署Stable Diffusion</ConTitle>
