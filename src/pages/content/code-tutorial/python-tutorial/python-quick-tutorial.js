@@ -146,7 +146,7 @@ function Page(){
 export default function MainPage(){
     return(
         <>  
-            <Meta description={"入門快速學習Python,即使新手也很快速掌握"} pageTitle="Python入門"/>
+            <Meta description={"入門快速學習Python,即使新手也很快速掌握"} img ={"https://simpleinfo.live/img/python.png"} pageTitle="Python入門"/>
             
                 <Sharebutton url={"https://simpleinfohk.tech/content/code-tutorial/python-tutorial/python-quick-tutorial"}/>
             <Page />    

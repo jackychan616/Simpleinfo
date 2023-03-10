@@ -16,7 +16,7 @@ export default function ConPage (){
             <Page hTitle={"有趣小知識"} img="/img/fact.webp">
                 <ArtiCard data={BlogData}/>
             </Page>
-            <Meta description="有趣小知識,中國近代史,中國歷史"  img = "img/Sun-Yat-Sen.jpeg"/>
+            <Meta description="有趣小知識,中國近代史,中國歷史"  img = "https://simpleinfo.live/img/Sun-Yat-Sen.jpeg"/>
             
         </>
     );
