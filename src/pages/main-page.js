@@ -7,6 +7,7 @@ import{ ArtiCard } from './components/card';
 
 export const Bloglist = require("../data/Blog.json")
 function Typing (){
+    const classes = useStyles();
     return (
     <TypeAnimation
         sequence={[
@@ -24,7 +25,7 @@ function Typing (){
         wrapper="div"
         cursor={true}
         repeat={3}
-        style={{ fontSize: '3em' ,color :"white"}}
+        style={{ fontSize: '3em' }}
     />
     )
 }
@@ -48,8 +49,11 @@ const useStyles = createStyles((theme) => ({
       fontSize: 55,
       lineHeight: 1,
       color: '#1c7ed6'
-    
-  }
+   
+  },
+   text:{
+       color:theme.colorScheme 
+    }
   }));
 
 
