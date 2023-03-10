@@ -5,8 +5,8 @@ import {ArtiCard} from "../../components/card";
 import Meta from "../../components/meta";
 import { Page } from '../../components/page_index';
 const Bloglist=[
-    {name:"海布里之王-亨利",path:"/sport/football-henry",date:'',img:'/img/football-henry.jpg'}
-]
+    {"name":"海布里之王-亨利","path":"/sport/football-henry","date":'',"img":'/img/football-henry.jpg'}
+];
 
 export default function ConPage(){
     return(
