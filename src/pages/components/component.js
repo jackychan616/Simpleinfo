@@ -1,11 +1,11 @@
-import {Text,Title,Space,List, ThemeIcon} from '@mantine/core';
+import {Text,Title,Space} from '@mantine/core';
 import { Prism } from '@mantine/prism';
 
 export function ConText({children,h1,h2}){
   return (
     <>
       <Space h={h1 ? h1: "sm"}/>
-      <Text fz="lg" c="dark.3">{children}</Text>
+      <Text fz="lg" >{children}</Text>
       <Space h={h2 ? 2: "sm"}></Space>
     </>
     
@@ -14,14 +14,14 @@ export function ConText({children,h1,h2}){
 
 export function OutputText({children}){
   return (
-    <Text fz="xs" c="gray">{children}</Text>
+    <Text fz="xs" >{children}</Text>
   );
 }
 
 
 export function PyPrism({children}){
   return (
-    <Prism language='python'>
+    <Prism language='python' colorScheme="dark">
       {children}
     </Prism>
   );

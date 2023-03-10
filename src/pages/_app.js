@@ -7,11 +7,22 @@ import Loading from './loading';
 import { Suspense } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-
+import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 
 export default function MyApp({ Component ,pageProps}) {
+  const [colorScheme, setColorScheme] = useLocalStorage({
+    key: 'mantine-color-scheme',
+    defaultValue: 'light',
+    getInitialValueInEffect: true,
+  });
 
+  const toggleColorScheme = ( ColorScheme) =>
+    setColorScheme((colorScheme === 'dark' ? 'light' : 'dark'));
+
+  useHotkeys([['mod+J', () => toggleColorScheme()]]);
   return  (
+    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+    <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
     <Layout>
       
           <Suspense fallback={<Loading/>}>
@@ -20,6 +31,8 @@ export default function MyApp({ Component ,pageProps}) {
           <Analytics/>
         
       </Layout>
+    </MantineProvider>  
+    </ColorSchemeProvider>
     
     
   );

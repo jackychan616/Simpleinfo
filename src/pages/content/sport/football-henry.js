@@ -6,7 +6,6 @@ function ConPage(){
     return(
         <Container>
             <ConTitle order={1}>海布里之王-亨利大帝</ConTitle>
-            <Sharebutton url = {"https://simpleinfo.live/content/sport/football-henry"}/>
             <ConText>亨利作為阿仙奴的標誌性人物於早年間便充滿天賦被摩洛哥青年軍收入旗下，
 因其飛快的速度及強大的一對一突破能力和較差的身體對抗，他最初被視為翼鋒的不二人選，他亦在此時與恩師雲加相遇。
 在雲加離開後亨利亦被售至祖雲達斯，但當時意甲的強盛和嚴密的防守令其一直無法適應。
@@ -33,7 +32,7 @@ function ConPage(){
 export default function Page(){
     return(
         <>
-            <Meta description={"海布里之王-亨利(Thierry Henry)，亨利作為阿仙奴的標誌性人物於早年間便充滿天賦被摩洛哥青年軍收入旗下..."} subtitle/>
+            <Meta description={"海布里之王-亨利(Thierry Henry)，亨利作為阿仙奴的標誌性人物於早年間便充滿天賦被摩洛哥青年軍收入旗下..."} subtitle="海布里之王-亨利"/>
             <Container>
                 <ConPage/>
             </Container>

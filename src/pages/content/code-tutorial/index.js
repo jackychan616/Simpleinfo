@@ -14,7 +14,7 @@ export default function page(){
         <>
             <Meta pageTitle={"電腦編程教學"} description="電腦編程教學,包括Python,Javascript語言等等,以及Linux和Windows的電腦資訊"/>
             <Container>
-                <Page title="電腦編程教學" img="/img/coding.jpg" hTitle="電腦編程教學"/>
+                <Page title="電腦編程教學" img="/img/coding.webp" hTitle="電腦編程教學"/>
                 <ArtiCard data={BlogList}/>
             </Container>
             

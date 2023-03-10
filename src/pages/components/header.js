@@ -93,19 +93,17 @@ const useStyles = createStyles((theme) => ({
 
 function ActionToggle() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const dark = colorScheme === 'dark';
 
   return (
-      <ActionIcon
-        onClick={() => toggleColorScheme()}
-        size="lg"
-        sx={(theme) => ({
-          backgroundColor:
-            theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-          color: theme.colorScheme === 'dark' ? theme.colors.yellow[4] : theme.colors.blue[6],
-        })}
-      >
-        {colorScheme === 'dark' ? <IconSun size="1.2rem" /> : <IconMoonStars size="1.2rem" />}
-      </ActionIcon>
+    <ActionIcon
+      variant="outline"
+      color={dark ? 'yellow' : 'blue'}
+      onClick={() => toggleColorScheme()}
+      title="Toggle color scheme"
+    >
+      {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
+    </ActionIcon>
   );
 }
 
@@ -206,6 +204,7 @@ export default function ConHeader() {
           <Group className={classes.hiddenMobile}>
             <Button>訂閱</Button>
             <Button ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' style ={{textDecoration:"none",color : "White"}}>給我們買杯咖啡</a></Button>
+            <ActionToggle/>
         </Group>
           <Flex
           gap="md"
