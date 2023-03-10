@@ -3,32 +3,9 @@ import {Container, createStyles, SimpleGrid, Card,  AspectRatio, Text, Image,} f
 import Head from 'next/head';
 import Meta from './components/meta';
 import { TypeAnimation } from 'react-type-animation';
-const blogdata = [
-    {
-        "title": 'Python 教學',
-        "image": '/img/py.webp',
-        "date": '29/2/2023',
-        "href": '/content/code-tutorial/python-tutorial/python-quick-tutorial'
-    },
-    {
-        "title": 'linux 教學',
-        "image": '/img/linux.jpeg',
-        "date": '1/3/2023',
-        "href": '/content/code-tutorial/linux-tutorial/simple_linux_cmd'
-    },
-    {
-        "title": '如何在Windows本地部署Stable Diffusion?',
-        "image": '/img/stable-diffusion.webp',
-        "date": '1/3/2023',
-        "href": 'content/ai-tutorial/setup-stable-diffusion'
-    },
-    {
-        "title": '如何使用AI繒圖？',
-        "image": '/img/ai-generate-img.webp',
-        "date": '28/2/2023',
-        "href": 'content/ai-tutorial/photo-ai-tutorial'
-    }
-];
+import{ ArtiCard } from './components/card';
+
+export const Bloglist = require("../data/Blog.json")
 function Typing (){
     const classes = useStyles();
     return (
@@ -82,16 +59,16 @@ const useStyles = createStyles((theme) => ({
 
 function Body(){    
             const { classes } = useStyles();
-            const cards = blogdata.map((article) => (
-            <Card key={article.title} p="md" radius="md" component="a" href={article.href} className={classes.card}> 
+            const cards = Bloglist.map((article) => (
+            <Card key={article.name} p="md" radius="md" component="a" href={'/content/'+article.path} className={classes.card}> 
             <AspectRatio ratio={1920 / 1080}>
-                <Image src={article.image} alt="" width = "650" height = "80"/> 
+                <Image src={article.img} alt="" width = "650" height = "80"/> 
             </AspectRatio>
             <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
                 {article.date}
             </Text>
-            <Text className={classes.title} mt={5}>
-                {article.title}
+            <Text className={classes.name} mt={5}>
+                {article.name}
             </Text>
             </Card>
             ));
