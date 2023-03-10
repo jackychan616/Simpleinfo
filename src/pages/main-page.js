@@ -36,16 +36,17 @@ function Typing (){
           'Simple info',
         3000, 
           '', // Deletes 
-          2000, // 
+          1000, // 
           'Simple Info HK', // '
-          100000,
-          () => {
-            console.log('Done typing!'); 
-          }
+          10000,
+          'Still here?',
+          3000,
+          'Lets Go !',
+          2000
         ]}
         wrapper="div"
         cursor={true}
-        repeat={Infinity}
+        repeat={3}
         style={{ fontSize: '3em' ,color :"white"}}
     />
     )
@@ -92,7 +93,7 @@ function Body(){
             ));
             return(
                 <>
-            <div className=" d-flex   justify-content-center align-items-center" style={{backgroundColor : "rgb(56,60,68)",height : "150px"}}>
+            <div className=" d-flex   justify-content-center align-items-center" style={{backgroundColor: 'transparent',height : "150px"}}>
 
                 <Typing/>
             </div>
@@ -122,7 +123,7 @@ export default function App(){
     return(
         <>
             <Meta keywords={"博客,中文,資訊,資訊平臺,香港,香港博客,Hong Kong Blog,Blog,教學,教學類型,教學博客,教學 Blog,AI教學,AI,有趣資訊 "}
-              description={"香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊"} img = {"img/simple_info.png"}
+              description={"香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊"} img = {"https://simpleinfo.live/img/simple_info.png"}
               />
 
             <Body />

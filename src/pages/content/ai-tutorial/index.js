@@ -4,7 +4,7 @@ import {Page }from '../../components/page_index';
 import { ArtiCard } from '../../components/card';
 import Meta from '../../components/meta';
 import { Container } from '@mantine/core';
-const BlogList=[
+const Bloglist=[
     {name:'如何使用AI繒圖？',path:'ai-tutorial/photo-ai-tutorial',img:'/img/ai-generate-img.webp',date:'1/3/2023'},
     {name:'如何在Windows本地部署Stable Diffusion?',path:'ai-tutorial/setup-stable-diffusion',img:'/img/stable-diffusion.webp',date:'1/3/2023'}
 ]
@@ -19,7 +19,7 @@ export default function content(){
                  sizes="(max-width: 768px) 100vw,
                          (max-width: 1200px) 50vw,
                          33vw">
-                <ArtiCard data={BlogList}/>
+                <ArtiCard data={Bloglist}/>
                 </Page>
             </Container>
             <Meta  subtitle=" AI 教學" description=" AI教學,包括Chatgpt,stable diffusion 等等的教學"/>
