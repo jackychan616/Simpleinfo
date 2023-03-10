@@ -6,7 +6,7 @@ export function ConText({children,h1,h2}){
     <>
       <Space h={h1 ? h1: "sm"}/>
       <Text fz="lg" >{children}</Text>
-      <Space h={h2 ? 2: "sm"}></Space>
+      <Space h={h2 ? h2: "sm"}/>
     </>
     
   );
