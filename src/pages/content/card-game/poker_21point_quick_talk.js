@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Script from 'next/script';
 
-import { Sharebutton } from 'src/pages/components/newshare';
 import Meta from '../../components/meta'
 
 const title = '[porker 撲克牌] 二十一點玩法教學 ';
@@ -90,9 +89,6 @@ export default function page(){
     return(
         <>
             <Meta description="本章是二十一點教學,二十一點是經典的啤牌遊戲" keywords={"啤牌,樸克牌,21點,二十一點,桌遊,教學,親子,聯誼,香港,臺灣,大學"}/>
-            <div>
-                    <Sharebutton url={"url"}/>
-            </div>
             <Page />
         </>
     );
