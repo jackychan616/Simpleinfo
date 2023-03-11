@@ -25,40 +25,40 @@ import Meta from '../../components/meta';
             <ConText> 1986年11月曼聯傳奇教頭費格遜上任。1987年費格遜拜訪並簽下賴恩·傑斯。在1992/93年球季曼聯結束了獎杯乾早期，奪得英超冠軍。在1991賽季中簽下了許多名將，例如：丹麥門將彼得·舒米高、「大帝」艾力·簡東拿等。 </ConText>
             <Timeline active={20} lineWidth={3} bulletSize={16}>
                 <Timeline.Item>
-                    <Text color="dimmed" size="sm">1992年簽下碧咸，並在翌年簽下中場史高斯。</Text>
+                    <Text color="dimmed" size="md">1992年簽下碧咸，並在翌年簽下中場史高斯。</Text>
                 </Timeline.Item>
                 <Timeline.Item>
-                    <Text color="dimmed" size="sm">1993年簽下愛爾蘭中場萊·堅尼。</Text>
+                    <Text color="dimmed" size="md">1993年簽下愛爾蘭中場萊·堅尼。</Text>
                 </Timeline.Item>
                 <Timeline.Item>
-                    <Text color="dimmed" size="sm"> 1998/99年球季英超聯賽中以1分優勢拿下英超冠軍，同季又奪得足總盃冠軍，最後更捧得了歐洲聯賽冠軍盃獎盃，「三冠王」的偉業得以達成。</Text>
+                    <Text color="dimmed" size="md"> 1998/99年球季英超聯賽中以1分優勢拿下英超冠軍，同季又奪得足總盃冠軍，最後更捧得了歐洲聯賽冠軍盃獎盃，「三冠王」的偉業得以達成。</Text>
                 </Timeline.Item>
                 <Timeline.Item>
-                    <Text color="dimmed" size="sm">在2002/03年球季，依靠着「禁區之王」雲尼斯達萊的表現，曼聯重奪英超錦標。這個球季結束後曼聯引進了當年掘起的C朗作為接任。同年又簽下朗尼，曼聯球隊陣容開始重建。</Text>
+                    <Text color="dimmed" size="md">在2002/03年球季，依靠着「禁區之王」雲尼斯達萊的表現，曼聯重奪英超錦標。這個球季結束後曼聯引進了當年掘起的C朗作為接任。同年又簽下朗尼，曼聯球隊陣容開始重建。</Text>
                 </Timeline.Item>
                 <Timeline.Item>
-                    <Text color="dimmed" size="sm">2005年球季簽下身高1.98米的門將雲達沙</Text>
+                    <Text color="dimmed" size="md">2005年球季簽下身高1.98米的門將雲達沙</Text>
                 </Timeline.Item>
                 <Timeline.Item>
-                    <Text color="dimmed" size="sm">在2006/07年球季，C朗、朗尼等球員的努力之下曼聯重奪英超冠軍，在歐聯上也殺入四強。</Text>
+                    <Text color="dimmed" size="md">在2006/07年球季，C朗、朗尼等球員的努力之下曼聯重奪英超冠軍，在歐聯上也殺入四強。</Text>
                 </Timeline.Item>
                 <Timeline.Item>
-                    <Text color="dimmed" size="sm">在2007/08年球季，曼聯在英超聯賽以奪得歷史上第三座歐洲冠軍獎盃</Text>
+                    <Text color="dimmed" size="md">在2007/08年球季，曼聯在英超聯賽以奪得歷史上第三座歐洲冠軍獎盃</Text>
                 </Timeline.Item>
                 <Timeline.Item>
-                    <Text color="dimmed" size="sm">在2008/09年球季，曼聯奪得世界冠軍球會盃、英格蘭聯賽盃和英格蘭超級聯賽冠軍，再次成就英超三連冠。</Text>
+                    <Text color="dimmed" size="md">在2008/09年球季，曼聯奪得世界冠軍球會盃、英格蘭聯賽盃和英格蘭超級聯賽冠軍，再次成就英超三連冠。</Text>
                 </Timeline.Item>
                 <Timeline.Item>
-                    <Text color="dimmed" size="sm">2009年，C朗以轉會皇家馬德里。為了填補損失，曼聯引進了路爾斯·華倫西亞和米高·奧雲。曼聯在歐洲聯賽冠軍盃，於八強賽敗在拜仁腳下出局，無緣冠軍。曼聯出局令英超球隊7年來首次未能在歐聯4強取得任何席位。聯賽也未能衛冕成功。慶幸的是聯賽盃決賽擊敗阿士東維拉成功衛冕。</Text>
+                    <Text color="dimmed" size="md">2009年，C朗以轉會皇家馬德里。為了填補損失，曼聯引進了路爾斯·華倫西亞和米高·奧雲。曼聯在歐洲聯賽冠軍盃，於八強賽敗在拜仁腳下出局，無緣冠軍。曼聯出局令英超球隊7年來首次未能在歐聯4強取得任何席位。聯賽也未能衛冕成功。慶幸的是聯賽盃決賽擊敗阿士東維拉成功衛冕。</Text>
                 </Timeline.Item>
                 <Timeline.Item>
-                    <Text color="dimmed" size="sm">2010年曼聯提前一輪奪得英格蘭超級聯賽冠軍。</Text>
+                    <Text color="dimmed" size="md">2010年曼聯提前一輪奪得英格蘭超級聯賽冠軍。</Text>
                 </Timeline.Item>
                 <Timeline.Item>
-                    <Text color="dimmed" size="sm">2011-12轉會期之初便迎來了西班牙門將大衛·迪基亞，2011年曼聯最終不敵曼城，未能衛冕英超冠軍。</Text>
+                    <Text color="dimmed" size="md">2011-12轉會期之初便迎來了西班牙門將大衛·迪基亞，2011年曼聯最終不敵曼城，未能衛冕英超冠軍。</Text>
                 </Timeline.Item>
                 <Timeline.Item>
-                    <Text color="dimmed" size="sm">2012年，曼聯成功邀請宿敵阿仙奴的前鋒羅賓雲佩斯加盟。在2013年提前奪得第13座英超冠軍。年中5月8日，領隊費格遜宣佈於本季球賽結束後退休，結束在曼聯26年間的執教生涯，費格遜時代結束。</Text>
+                    <Text color="dimmed" size="md">2012年，曼聯成功邀請宿敵阿仙奴的前鋒羅賓雲佩斯加盟。在2013年提前奪得第13座英超冠軍。年中5月8日，領隊費格遜宣佈於本季球賽結束後退休，結束在曼聯26年間的執教生涯，費格遜時代結束。</Text>
                 </Timeline.Item>
             </Timeline>
             <ConTitle order={2}>第三陛段：衰敗期</ConTitle>
@@ -67,18 +67,12 @@ import Meta from '../../components/meta';
             <ConText>2013年，莫耶斯上任。他帶領的曼聯成績不如人意，聯賽排名一直在前五名之外，更在足總盃第三圈出局。又宣佈無緣下屆歐聯，同時終止球隊連續十八年參加歐聯的紀錄。最後曼聯在這球季只取得聯賽第七名，並失去下季歐霸盃的參賽資格。4月22日，曼聯宣佈解僱莫耶斯，結束其不足10個月的任期，並由傑斯兼任暫代領隊。這個賽季季也是曼聯英超以來最黑暗的賽季。</ConText>
             <ConText>由此年至今，球隊經歷過雲高爾、摩連奴、蘇斯克查、蘭歷克和坦夏格時代，九年間僅獲一足總盃、歐霸冠軍、兩英超亞軍和季軍，這九年間曼聯表現欠佳，容我不逐一細說，在2023年更破球隊歷史上自1931年來的最大敗績，更見球隊的凋零。作為球迷，只能希望曼聯能夠重新改革，重奪昔日的光輝。 </ConText>
 
-            <ConText>1998勝利</ConText>
-            <Image src="/img/football-big-news/8.jpg" width={600} alt="1998"/>
-            <ConText>2003 勝利</ConText>
-            <Image src="/img/football-big-news/9.avif" width={650} alt="2003"/>
-            <ConText>舒米高</ConText>
-            <Image src="/img/football-big-news/10.jpg"  width={350} alt="舒米高"/>
-            <ConText>朗尼</ConText>
-            <Image src="/img/football-big-news/11.jpg"  width={800} alt="朗尼"/>
-            <ConText>迪基亞</ConText>
-            <Image src="/img/football-big-news/12.jpg" width={600 } alt="迪基亞"/>
-            <ConText>雲佩斯</ConText>
-            <Image src="/img/football-big-news/13.jpg" width={800} alt="雲佩斯"/>
+            <Image src="/img/football-big-news/8.jpg" caption="1998勝利"width={600} alt="1998"/>
+            <Image src="/img/football-big-news/9.avif" caption ="2003 勝利"width={650} alt="2003"/>
+            <Image src="/img/football-big-news/10.jpg"  caption="舒米高" width={350} alt="舒米高"/>
+            <Image src="/img/football-big-news/11.jpg" caption="朗尼" width={800} alt="朗尼"/>
+            <Image src="/img/football-big-news/12.jpg" caption="迪基亞" width={600 } alt="迪基亞"/>
+            <Image src="/img/football-big-news/13.jpg"caption="雲佩斯" width={800} alt="雲佩斯"/>
         </Container>
     );
 }
