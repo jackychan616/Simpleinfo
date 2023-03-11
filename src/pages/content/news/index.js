@@ -7,7 +7,7 @@ const Bloglist = [
     {
         "name":"不在藏了 王菲和謝霆鋒",
         "path":"/news/Faye-Wong",
-        "img":"/img/faye_Wong_03.jpg",
+        "img":"/img/Faye_Wong_03.jpg",
         "date":"11/3/23"
     }
 ];
