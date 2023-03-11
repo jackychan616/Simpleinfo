@@ -6,7 +6,7 @@ import {Container} from '@mantine/core';
 const Bloglist = [
     {
         "name":"不在藏了 王菲和謝霆鋒",
-        "path":"Faye-Wong",
+        "path":"/news/Faye-Wong",
         "img":"/img/faye_Wong_03.jpg",
         "date":"11/3/23"
     }

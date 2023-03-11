@@ -80,5 +80,11 @@
         "path": "/sport/football-big-news",
         "date": "",
         "img": "/img/football-big-news/1.webp"
+    },
+    {
+        "name": "不在藏了 王菲和謝霆鋒",
+        "path": "/news/Faye-Wong",
+        "img": "/img/faye_Wong_03.jpg",
+        "date": "11/3/23"
     }
 ]
