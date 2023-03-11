@@ -22,6 +22,7 @@ def getfromfile(path):
 files = []
 def scan():
     for p in os.listdir(f"{root}\pages\content"):
+            print(p)
             if ".js" in p:
                   continue
             for f in os.listdir(f"{root}\pages\content\{p}"):
@@ -34,7 +35,8 @@ def save(dic):
      with open(mode = "r+",file = f"{root}\data\Blog.json",encoding="utf-8") as b:
         d_b = json.load(b)
         for card in dic:
-            d_b.append(card)
+            if card not in d_b:
+                d_b.append(card)
             with open(mode = "r+",file = f"{root}\data\Blog.json",encoding="utf-8") as bp:
                 json.dump(d_b,bp,indent = 4,ensure_ascii=False) 
 scan()

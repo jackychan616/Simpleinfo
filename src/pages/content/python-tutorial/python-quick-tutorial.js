@@ -1,7 +1,7 @@
 import {Text,Table,Image,Container,Kbd,Code,List,MantineProvider} from "@mantine/core";
-import {ConText,OutputText,PyPrism,ConTitle} from "../../../components/component";
-import {Sharebutton} from "../../../components/newshare";
-import Meta from '../../../components/meta';
+import {ConText,OutputText,PyPrism,ConTitle} from "../../components/component";
+import {Sharebutton} from "../../components/newshare";
+import Meta from '../../components/meta';
 
 const kbd1=`
 print('ok')
