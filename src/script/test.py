@@ -17,4 +17,23 @@ def getfromfile(path):
     except:
         pass
 
-print(getfromfile(path=f"{root}\pages\content/ai-tutorial\index.js".replace(f"{chr(92)}","/")))
+def scan(P):
+        for p in os.listdir(P):
+            if ".js" in p:
+                  continue
+            for f in os.listdir(P + p):
+                if f == "index.js":
+                    pa = P+f"{p}\index.js".replace(f"{chr(92)}","/")
+                    l = getfromfile(pa)
+                    if l != None:
+                        print(l)
+                elif not ".js" in P + p + chr(92) + f:
+                     scan(P + p + chr(92) + f)
+scan(P = f"{root}\pages\content\code-tutorial{chr(92)}")        
+    
+                    
+
+
+                    
+
+#getfromfile(path=f"{root}\pages\content/code-turorial\index.js".replace(f"{chr(92)}","/"))

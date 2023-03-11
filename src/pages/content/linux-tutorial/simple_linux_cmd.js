@@ -1,5 +1,5 @@
 
-import {ConTitle} from '../../../components/component';
+import {ConTitle} from '../../components/component';
 import {Container,Image} from '@mantine/core';
 function ConContent(){
     return(
