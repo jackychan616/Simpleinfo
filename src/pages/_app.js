@@ -8,6 +8,25 @@ import { Suspense ,lazy} from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
+import Router from 'next/router';
+
+Router.onRouteChangeStart = () => {
+  console.log('onRouteChangeStart Triggered');
+  <Loading/>
+
+};
+
+Router.onRouteChangeComplete = () => {
+  console.log('onRouteChangeComplete Triggered');
+  <Loading/>
+
+};
+
+Router.onRouteChangeError = () => {
+  console.log('onRouteChangeError Triggered');
+  <Loading/>
+
+};
 
 export default function MyApp({ Component ,pageProps}) {
   const [colorScheme, setColorScheme] = useLocalStorage({

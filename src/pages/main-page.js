@@ -1,9 +1,8 @@
-import Link from "next/link";
+
 import {Container, createStyles, SimpleGrid, Card,  AspectRatio, Text, Image,} from '@mantine/core';
-import Head from 'next/head';
 import Meta from './components/meta';
 import { TypeAnimation } from 'react-type-animation';
-import{ ArtiCard } from './components/card';
+import { ArtiCard } from './components/card';
 
 export const Bloglist = require("../data/Blog.json")
 function Typing (){
