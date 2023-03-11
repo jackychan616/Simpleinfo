@@ -13,6 +13,7 @@ def getfromfile(path):
             o = data[data.find('const Bloglist') : data.rfind('];')+1]
             final = o[o.find('['): o.rfind(']')+1].replace("'",'"')
             ans = ast.literal_eval(final)
+            print(ans)
             return ans
     except:
             return None
