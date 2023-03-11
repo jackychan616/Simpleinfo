@@ -68,11 +68,17 @@ import Meta from '../../components/meta';
             <ConText>由此年至今，球隊經歷過雲高爾、摩連奴、蘇斯克查、蘭歷克和坦夏格時代，九年間僅獲一足總盃、歐霸冠軍、兩英超亞軍和季軍，這九年間曼聯表現欠佳，容我不逐一細說，在2023年更破球隊歷史上自1931年來的最大敗績，更見球隊的凋零。作為球迷，只能希望曼聯能夠重新改革，重奪昔日的光輝。 </ConText>
 
             <Image src="/img/football-big-news/8.jpg" caption="1998勝利"width={600} alt="1998"/>
+            <Space h="lg"/>
             <Image src="/img/football-big-news/9.avif" caption ="2003 勝利"width={650} alt="2003"/>
+            <Space h="lg"/>
             <Image src="/img/football-big-news/10.jpg"  caption="舒米高" width={350} alt="舒米高"/>
+            <Space h="lg"/>
             <Image src="/img/football-big-news/11.jpg" caption="朗尼" width={800} alt="朗尼"/>
+            <Space h="lg"/>
             <Image src="/img/football-big-news/12.jpg" caption="迪基亞" width={600 } alt="迪基亞"/>
+            <Space h="lg"/>
             <Image src="/img/football-big-news/13.jpg"caption="雲佩斯" width={800} alt="雲佩斯"/>
+            <Space h="lg"/>
         </Container>
     );
 }
