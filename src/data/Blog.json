@@ -68,5 +68,17 @@
         "path": "/toy/5-gundam",
         "img": "/img/5-gundam/1.jpg",
         "date": "6/3/2023"
+    },
+    {
+        "name": "不在藏了 王菲和謝霆鋒",
+        "path": "Faye-Wong",
+        "img": "/img/faye_Wong_03.jpg",
+        "date": "11/3/23"
+    },
+    {
+        "name": "球隊大事記—曼聯",
+        "path": "/sport/football-big-news",
+        "date": "",
+        "img": "/img/football-big-news/1.webp"
     }
 ]
