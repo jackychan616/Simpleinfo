@@ -30,7 +30,7 @@ export default function page(){
     return (
         <>
             <Meta description={"謝霆鋒和王菲合作過多首歌曲，其中最著名的是<<因為愛情>>、<<傳奇>>和<<曖昧>>。這些歌曲都非常成功，成為了中國音樂歷史上的經典作品。"} 
-            img = {"/img/Faye_Wong_03.jpg"}
+            img = {"https://simpleinfo.live/img/Faye_Wong_03.jpg"}
             keywords={"王菲,謝霆鋒,謝霆鋒王菲,流行音樂,王菲離婚"}/>
             <Body/>
         </>
