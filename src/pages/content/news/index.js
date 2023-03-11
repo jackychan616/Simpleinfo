@@ -2,12 +2,12 @@ import { ArtiCard } from '../../components/card';
 import Meta from '../../components/meta';
 import Page from '../../components/page_index';
 import {Container} from '@mantine/core';
-
+import Image from "next/image"
 const Bloglist = [
     {
         "name":"不在藏了 王菲和謝霆鋒",
         "path":"/news/Faye-Wong",
-        "img":"/img/faye_Wong_03.jpg",
+        "img":"/img/Faye_Wong_03.jpg",
         "date":"11/3/23"
     }
 ];
