@@ -32,7 +32,7 @@ function ConPage(){
 export default function Page(){
     return(
         <>
-            <Meta description={"海布里之王-亨利(Thierry Henry)，亨利作為阿仙奴的標誌性人物於早年間便充滿天賦被摩洛哥青年軍收入旗下..."} subtitle="海布里之王-亨利"/>
+            <Meta keywords = {"世界足壇法國最佳巨星,法國,海布里之王,亨利大帝,亨利,大帝,傳奇巨星,巴塞隆拿,足球,球星"}description={"海布里之王-亨利(Thierry Henry)，亨利作為阿仙奴的標誌性人物於早年間便充滿天賦被摩洛哥青年軍收入旗下..."} subtitle="海布里之王-亨利"/>
             <Container>
                 <ConPage/>
             </Container>
