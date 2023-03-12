@@ -71,9 +71,9 @@ import Meta from '../../components/meta';
             <Space h="lg"/>
             <Image src="/img/football-big-news/9.avif" caption ="2003 勝利"width={650} alt="2003"/>
             <Space h="lg"/>
-            <Image src="/img/football-big-news/10.jpg"  caption="舒米高" width={350} alt="舒米高"/>
+            <Image src="/img/football-big-news/10.jpg"  caption="朗尼" width={350} alt="朗尼"/>
             <Space h="lg"/>
-            <Image src="/img/football-big-news/11.jpg" caption="朗尼" width={800} alt="朗尼"/>
+            <Image src="/img/football-big-news/11.jpg" caption="C朗" width={800} alt="C朗"/>
             <Space h="lg"/>
             <Image src="/img/football-big-news/12.jpg" caption="迪基亞" width={600 } alt="迪基亞"/>
             <Space h="lg"/>
