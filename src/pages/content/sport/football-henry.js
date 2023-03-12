@@ -1,7 +1,7 @@
 import { Container,Image } from '@mantine/core';
 import {ConText,ConTitle} from '../../components/component';
 import Meta from '../../components/meta';
-import { Sharebutton } from 'src/pages/components/newshare';
+
 function ConPage(){
     return(
         <Container>
