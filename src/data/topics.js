@@ -1,4 +1,4 @@
-import { DevicesPc, DeviceGamepad2 ,Robot,InfoCircle ,HorseToy,BallFootball } from 'tabler-icons-react';
+import { DevicesPc, DeviceGamepad2 ,Robot,InfoCircle ,HorseToy,BallFootball ,News} from 'tabler-icons-react';
 
 export const topics = [
         {
@@ -42,6 +42,13 @@ export const topics = [
           page:1,
           description:"體育",
           icon:BallFootball
+        },
+        {
+          name:"新聞",
+          path:"news",
+          page:2,
+          description:"新聞,香港社會新聞,香港新聞,娛樂新聞",
+          icon:News
         }
 
 ];
