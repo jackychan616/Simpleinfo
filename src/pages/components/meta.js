@@ -8,7 +8,6 @@ export default function Meta({ pageTitle, keywords, description ,subtitle,img}) 
     <>
     <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3459129696587268"
           crossOrigin="anonymous"></Script>
-      <NextMeta />
       <Head>
           <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
           <meta property="og:locale" content="zh-Hant-HK"/>
