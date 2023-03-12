@@ -12,7 +12,7 @@ function Page(){
                     包括電腦科學、資料分析與統計資料、硬體與軟體工程、語言學、神經科學，甚至是哲學和心理學。
             </ConText>
             <ConTitle order={2}>AI類型</ConTitle>
-            <Image width={700} src="https://149695847.v2.pressablecdn.com/wp-content/uploads/2019/08/PEDRO-DOMiNGOS-8.jpg" alt="Pedro Domingos"/>
+            <Image maw={700} src="https://149695847.v2.pressablecdn.com/wp-content/uploads/2019/08/PEDRO-DOMiNGOS-8.jpg" alt="Pedro Domingos"/>
             <ConText><a href="https://en.wikipedia.org/wiki/Pedro_Domingos">Pedro Domingos</a> 是人工智能領域聲譽卓著的研究人員，提出機器學習的「五大流派」，
                     包括：符號主義 (Symbolists)，源自於邏輯和哲學；聯結主義 (Connectionists)，
                     神經科學的分支；進化主義 (Evolutionaries)，與進化生物學相關；貝葉斯派 (Bayesians)，採用統計學和概率方法；
