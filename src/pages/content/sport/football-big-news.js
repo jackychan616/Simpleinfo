@@ -13,7 +13,7 @@ import Meta from '../../components/meta';
             <ConText>然而在1958年2月6日發   生的慕尼黑空難使八名球員死於空難，球隊從此跌入低谷，該季結束後曼聯僅僅名列聯賽第九。</ConText>
             <Image src="/img/football-big-news/3.jpg" alt="1958年2月6日發生的慕尼黑空難使八名球員死於空難"/>
             <ConText>可是，曼聯的故事並未結束。畢士比不久後便開始重建球隊，簽下「大帝」丹尼士·羅{"（Denis Law)"} 、 </ConText>    
-            <Image src="/img/football-big-news/3.5.webp"  alt="大帝」丹尼士·羅"/>
+            <Image src="/img/football-big-news/3.5.jpg"  alt="大帝」丹尼士·羅"/>
             <ConText>佐治·貝斯(George Best) 等名將。 </ConText>
             <Image src="/img/football-big-news/4.webp" width={250} alt=""/>
             <ConText>球隊在67至68年球季歐聯決賽中大勝賓菲加，奪得曼聯史上第一座歐聯獎盃。</ConText>
