@@ -27,11 +27,11 @@ export function PyPrism({children}){
   );
 } 
 
-export function ConTitle({children,order,h1,h2}){
+export function ConTitle({children,order,h1,h2,size}){
   return(
     <>
       <Space h={h1 ? h1: "sm"}></Space>
-      <Title order={order}
+      <Title weight={100} size={size} order={order}
       >{children}</Title>
       <Space h={h2 ? h2: "sm"}></Space>
     </>
