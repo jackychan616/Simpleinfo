@@ -4,7 +4,7 @@ import Meta from '../../components/meta';
  function CPage(){
     return(
         <Container>
-            <Image src="/img/football-big-news/1.webp"  width ={500}alt=" 曼聯"/>
+            <Image src="/img/football-big-news/1.webp"  width ={400} alt=" 曼聯"/>
             <ConTitle order={1}>球隊大事記 曼聯</ConTitle>
             <conText>曼徹斯特聯足球俱樂部，簡稱曼聯，目前在英格蘭超級聯賽比賽。在22-23賽季，曼聯在創造了曼聯歷史最大失利被利物浦7比0大比數戰勝，這個歴史悠久的球會是如何在英超中掘起？又如何在近年沒落？讓我們一起回顧這段曼聯的歷史。</conText>
             <ConTitle order={2}>第一階段：畢士比皇朝（1945年至1969年）</ConTitle>
@@ -17,7 +17,7 @@ import Meta from '../../components/meta';
             <ConText>佐治·貝斯(George Best) 等名將。 </ConText>
             <Image src="/img/football-big-news/4.webp" width={250} alt=""/>
             <ConText>球隊在67至68年球季歐聯決賽中大勝賓菲加，奪得曼聯史上第一座歐聯獎盃。</ConText>
-            <Image src="/img/football-big-news/5.5.jpg" width={500} alt="曼聯史上第一座歐聯獎盃"/>
+            <Image src="/img/football-big-news/5.5.jpg" width={400} alt="曼聯史上第一座歐聯獎盃"/>
             <ConTitle order={2}>第二階段：費格遜皇朝（1986年至2013年）</ConTitle>
             <Image src="/img/football-big-news/5.webp" width={300} caption="畢士比" alt=""/>
             <Space h="lg"/>
@@ -63,21 +63,21 @@ import Meta from '../../components/meta';
             </Timeline>
             <ConTitle order={2}>第三陛段：衰敗期</ConTitle>
             <conText>2013年，莫耶斯上任。他帶領的曼聯成績不如人意，聯賽排名一直在前五名之外，更在足總盃第三圈出局。又宣佈無緣下屆歐聯，同時終止球隊連續十八年參加歐聯的紀錄。最後曼聯在這球季只取得聯賽第七名，並失去下季歐霸盃的參賽資格。4月22日，曼聯宣佈解僱莫耶斯，結束其不足10個月的任期，並由傑斯兼任暫代領隊。這個賽季季也是曼聯英超以來最黑暗的賽季。</conText>
-            <Image src="/img/football-big-news/7.jpg" width={600} alt="成績不如人意曼聯"/>
+            <Image src="/img/football-big-news/7.jpg" width={500} alt="成績不如人意曼聯"/>
             <ConText>2013年，莫耶斯上任。他帶領的曼聯成績不如人意，聯賽排名一直在前五名之外，更在足總盃第三圈出局。又宣佈無緣下屆歐聯，同時終止球隊連續十八年參加歐聯的紀錄。最後曼聯在這球季只取得聯賽第七名，並失去下季歐霸盃的參賽資格。4月22日，曼聯宣佈解僱莫耶斯，結束其不足10個月的任期，並由傑斯兼任暫代領隊。這個賽季季也是曼聯英超以來最黑暗的賽季。</ConText>
             <ConText>由此年至今，球隊經歷過雲高爾、摩連奴、蘇斯克查、蘭歷克和坦夏格時代，九年間僅獲一足總盃、歐霸冠軍、兩英超亞軍和季軍，這九年間曼聯表現欠佳，容我不逐一細說，在2023年更破球隊歷史上自1931年來的最大敗績，更見球隊的凋零。作為球迷，只能希望曼聯能夠重新改革，重奪昔日的光輝。 </ConText>
 
-            <Image src="/img/football-big-news/8.jpg" caption="1998勝利"width={500} alt="1998"/>
+            <Image src="/img/football-big-news/8.jpg" caption="1998勝利"width={400} alt="1998"/>
             <Space h="lg"/>
             <Image src="/img/football-big-news/9.avif" caption ="舒米高"width={50} alt="舒米高"/>
             <Space h="lg"/>
             <Image src="/img/football-big-news/10.jpg"  caption="朗尼" width={350} alt="朗尼"/>
             <Space h="lg"/>
-            <Image src="/img/football-big-news/11.jpg" caption="C朗" width={500} alt="C朗"/>
+            <Image src="/img/football-big-news/11.jpg" caption="C朗" width={400} alt="C朗"/>
             <Space h="lg"/>
-            <Image src="/img/football-big-news/12.jpg" caption="迪基亞" width={500 } alt="迪基亞"/>
+            <Image src="/img/football-big-news/12.jpg" caption="迪基亞" width={300 } alt="迪基亞"/>
             <Space h="lg"/>
-            <Image src="/img/football-big-news/13.jpg"caption="雲佩斯" width={500} alt="雲佩斯"/>
+            <Image src="/img/football-big-news/13.jpg"caption="雲佩斯" width={400} alt="雲佩斯"/>
             <Space h="lg"/>
         </Container>
     );
