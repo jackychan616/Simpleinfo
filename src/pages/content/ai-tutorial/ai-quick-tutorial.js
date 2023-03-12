@@ -4,7 +4,7 @@ import Meta from '../../components/meta';
 function Page(){
     return(
         <Container>
-            <ConTitle order={1}>什麼是AI?</ConTitle>
+            <ConTitle order={1}>什麼是AI? 10分鐘內學懂AI</ConTitle>
             <ConTitle  order={2}>定義AI</ConTitle>
             <ConText>AI(人工智慧)  是電腦科學的一個領域，用於解決與人類智慧相關的常見認知問題 ，例如學習、解決問題和模式辨識。
                     而這類行動原本需要人類智慧判斷或涉及超出人為分析能力上限的資料規模
