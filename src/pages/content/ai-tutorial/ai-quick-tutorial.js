@@ -1,4 +1,4 @@
-import { Container,List ,Highlight, Image} from "@mantine/core";
+import { Container,List ,Space,Image} from "@mantine/core";
 import { ConText,ConTitle } from "../../components/component";
 import Meta from '../../components/meta';
 function Page(){
@@ -13,7 +13,7 @@ function Page(){
             </ConText>
             <ConTitle order={2}>AI類型</ConTitle>
             <Image width={700} src="https://149695847.v2.pressablecdn.com/wp-content/uploads/2019/08/PEDRO-DOMiNGOS-8.jpg" alt="Pedro Domingos"/>
-            <ConText><a src="https://en.wikipedia.org/wiki/Pedro_Domingos">Pedro Domingos</a> 是人工智能領域聲譽卓著的研究人員，提出機器學習的「五大流派」，
+            <ConText><a href="https://en.wikipedia.org/wiki/Pedro_Domingos">Pedro Domingos</a> 是人工智能領域聲譽卓著的研究人員，提出機器學習的「五大流派」，
                     包括：符號主義 (Symbolists)，源自於邏輯和哲學；聯結主義 (Connectionists)，
                     神經科學的分支；進化主義 (Evolutionaries)，與進化生物學相關；貝葉斯派 (Bayesians)，採用統計學和概率方法；
                     以及類比主義 (Analogizers)，源自於心理學。
@@ -87,7 +87,12 @@ function Page(){
             <ConText>由輸出資料的節點組成。
 輸出「是」或「否」答案的深度學習模型在輸出層中只有兩個節點。
 範圍更廣的答案具有更多節點。 </ConText>
+            <ConTitle>參考:</ConTitle>
+            <ConText><a href="https://aws.amazon.com/tw/machine-learning/what-is-ai/">https://aws.amazon.com/tw/machine-learning/what-is-ai/</a></ConText>
+            <ConText><a href="https://www.oracle.com/tw/artificial-intelligence/what-is-ai/">https://www.oracle.com/tw/artificial-intelligence/what-is-ai/</a></ConText>
+            <ConText><a href="https://cloud.google.com/learn/what-is-artificial-intelligence?hl=zh-tw">https://cloud.google.com/learn/what-is-artificial-intelligence?hl=zh-tw</a></ConText>
         </Container>
+        
     );
 }
 
@@ -97,6 +102,7 @@ export default function ConPage(){
             <Meta pageTitle={"什麼是AI? 10分鐘內學懂AI"} img={"/img/ai.jpg"} description={"AI(人工智慧)  是電腦科學的一個領域，用於解決與人類智慧相關的常見認知問題 ，例如學習、解決問題和模式辨識。而這類行動原本需要人類智慧判斷或涉及超出人為分析能力上限的資料規模AI 是一個廣泛版圖，包含許多不同的專業領域，包括電"}/>
             <Container>
                 <Page/>
+                <Space h="lg"/>
             </Container>
         </>
     );
