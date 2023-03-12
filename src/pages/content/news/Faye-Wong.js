@@ -26,7 +26,7 @@ function Body(){
     )
 }
 
-export default function page(){
+export default function Page(){
     return (
         <>
             <Meta pageTitle= {"不在藏了? 王菲和謝霆鋒"}
