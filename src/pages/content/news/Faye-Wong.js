@@ -35,7 +35,10 @@ export default function page(){
             keywords={"王菲,謝霆鋒,謝霆鋒王菲,流行音樂,王菲離婚"}
             alt = {"王菲"}
             />
-            <Body/>
+            <Container>
+               <Body/> 
+            </Container>
+            
         </>
     )
 }

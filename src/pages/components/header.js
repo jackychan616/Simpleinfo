@@ -206,12 +206,8 @@ export default function ConHeader() {
             <Button ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' style ={{textDecoration:"none",color : "White"}}>給我們買杯咖啡</a></Button>
             <ActionToggle/>
         </Group>
-          <Flex
-          gap="md"
-          justify="flex-start"
-          align="flex-start"
-          direction="row"
-          wrap="wrap"
+          <Group
+          position='apart' 
           className={classes.hiddenDesktop}>
             <Burger  opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
             <Link position={{right:"50px"}} href="/" 
@@ -219,9 +215,12 @@ export default function ConHeader() {
                     textDecoration: 'none',
                   }} className={classes.hiddenDesktop}
             ><Title size="h2" >Simple Info</Title></Link>
-            <Button size="xs" color={theme.fn.primaryColor()}>訂閱</Button>
+            <Group position='right'>
+              <Button size="xs" color={theme.fn.primaryColor()}>訂閱</Button>
             <ActionIcon variant="light" color={theme.fn.primaryColor()}><a href='https://ko-fi.com/B0B1AA09F' target='_blank' ><SiKofi/></a></ActionIcon>
-          </Flex>
+            </Group>
+            
+          </Group>
         </Group>
       </Header>
 
