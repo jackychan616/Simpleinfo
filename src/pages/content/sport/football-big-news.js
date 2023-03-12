@@ -67,9 +67,9 @@ import Meta from '../../components/meta';
             <ConText>2013年，莫耶斯上任。他帶領的曼聯成績不如人意，聯賽排名一直在前五名之外，更在足總盃第三圈出局。又宣佈無緣下屆歐聯，同時終止球隊連續十八年參加歐聯的紀錄。最後曼聯在這球季只取得聯賽第七名，並失去下季歐霸盃的參賽資格。4月22日，曼聯宣佈解僱莫耶斯，結束其不足10個月的任期，並由傑斯兼任暫代領隊。這個賽季季也是曼聯英超以來最黑暗的賽季。</ConText>
             <ConText>由此年至今，球隊經歷過雲高爾、摩連奴、蘇斯克查、蘭歷克和坦夏格時代，九年間僅獲一足總盃、歐霸冠軍、兩英超亞軍和季軍，這九年間曼聯表現欠佳，容我不逐一細說，在2023年更破球隊歷史上自1931年來的最大敗績，更見球隊的凋零。作為球迷，只能希望曼聯能夠重新改革，重奪昔日的光輝。 </ConText>
 
-            <Image src="/img/football-big-news/8.jpg" caption="1998勝利"width={600} alt="1998"/>
+            <Image src="/img/football-big-news/8.jpg" caption="1998勝利"width={500} alt="1998"/>
             <Space h="lg"/>
-            <Image src="/img/football-big-news/9.avif" caption ="舒米高"width={650} alt="舒米高"/>
+            <Image src="/img/football-big-news/9.avif" caption ="舒米高"width={50} alt="舒米高"/>
             <Space h="lg"/>
             <Image src="/img/football-big-news/10.jpg"  caption="朗尼" width={350} alt="朗尼"/>
             <Space h="lg"/>
