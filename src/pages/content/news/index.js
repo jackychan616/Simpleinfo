@@ -9,13 +9,19 @@ const Bloglist = [
         "path":"/news/Faye-Wong",
         "img":"/img/Faye_Wong_03.jpg",
         "date":"11/3/23"
+    },
+    {
+        "name":"謝霆鋒和王菲的合作",
+        "path":"/news/Faye-Wong-song",
+        "img":"/img/Faye_Wong_04.jpg",
+        "date":"12/3/23"
     }
 ];
 
 export default function page(){
     return(
         <>  
-            <Meta description="新聞,香港社會新聞,香港新聞,娛樂新聞"/>
+            <Meta Pagetitle = "Simpleinfo - 新聞" description="新聞,香港社會新聞,香港新聞,娛樂新聞"/>
             <Container>
                 <Page hTitle={"新聞"} img="/img/simple_info.png" title = {"新聞"}>
                     <ArtiCard data={Bloglist}/>
