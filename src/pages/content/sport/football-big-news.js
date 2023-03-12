@@ -73,11 +73,11 @@ import Meta from '../../components/meta';
             <Space h="lg"/>
             <Image src="/img/football-big-news/10.jpg"  caption="朗尼" width={350} alt="朗尼"/>
             <Space h="lg"/>
-            <Image src="/img/football-big-news/11.jpg" caption="C朗" width={800} alt="C朗"/>
+            <Image src="/img/football-big-news/11.jpg" caption="C朗" width={500} alt="C朗"/>
             <Space h="lg"/>
-            <Image src="/img/football-big-news/12.jpg" caption="迪基亞" width={600 } alt="迪基亞"/>
+            <Image src="/img/football-big-news/12.jpg" caption="迪基亞" width={500 } alt="迪基亞"/>
             <Space h="lg"/>
-            <Image src="/img/football-big-news/13.jpg"caption="雲佩斯" width={800} alt="雲佩斯"/>
+            <Image src="/img/football-big-news/13.jpg"caption="雲佩斯" width={500} alt="雲佩斯"/>
             <Space h="lg"/>
         </Container>
     );
