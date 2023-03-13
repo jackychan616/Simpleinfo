@@ -26,8 +26,8 @@ function Kofi(){
             onLoad={() => {
                 kofiWidgetOverlay.draw('simpleinfo', {
                     'type': 'floating-chat',
-                    'floating-chat.donateButton.text': '',
-                    'floating-chat.donateButton.background-color': '',
+                    'floating-chat.donateButton.text': '幫我買杯咖啡',
+                    'floating-chat.donateButton.background-color': '#00b9fe',
                     'floating-chat.donateButton.text-color': '#fff'
                   });
             }}
