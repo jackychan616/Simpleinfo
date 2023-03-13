@@ -1,7 +1,7 @@
 import { Container,List ,Space,Image} from "@mantine/core";
 import { ConText,ConTitle } from "../../components/component";
 import Meta from '../../components/meta';
-import ContentTable  from "../../components/contentTable";
+import { Comments } from "../../components/comment";
 function Page(){
     return(
         <Container>
@@ -105,6 +105,7 @@ export default function ConPage(){
                 <Page/>
                 <Space h="lg"/>
             </Container>
+            <Comments url = "/content/ai-tutorial/ai-quick-tutorial"/>
         </>
     );
 }
