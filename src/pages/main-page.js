@@ -3,6 +3,7 @@ import {Container, createStyles, SimpleGrid, Card,  AspectRatio, Text, Image,} f
 import Meta from './components/meta';
 import { TypeAnimation } from 'react-type-animation';
 import { ArtiCard } from './components/card';
+import React from 'react'
 
 export const Bloglist = require("../data/Blog.json")
 function Typing (){
@@ -100,14 +101,13 @@ function kofi() {
 
 export default function App(){
     return(
-        <>
+        <div style ={{}}>
+
             <Meta keywords={"博客,中文,資訊,資訊平臺,香港,香港博客,Hong Kong Blog,Blog,教學,教學類型,教學博客,教學 Blog,AI教學,AI,有趣資訊 "}
               description={"香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊"} img = {"https://simpleinfo.live/img/simple_info.png"}
               />
-
             <Body />
-
-        </>
+        </div>
         
     );
 }
