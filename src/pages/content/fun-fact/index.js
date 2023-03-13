@@ -1,7 +1,7 @@
-import Head from 'next/head';
+
 import { ArtiCard } from '../../components/card';
 import Meta from '../../components/meta';
-import Page from '../../components/page_index';
+import{ Page} from '../../components/page_index';
 import {Container} from '@mantine/core';
 const Bloglist=[
     {"name":'中國古代最重要的君主(上)',"path":'/fun-fact/chinese-king1',"img":'/img/chinese-king1.jpg',"date":'3/3/2023'},

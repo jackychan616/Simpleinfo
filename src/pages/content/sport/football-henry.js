@@ -10,7 +10,7 @@ function ConPage(){
 因其飛快的速度及強大的一對一突破能力和較差的身體對抗，他最初被視為翼鋒的不二人選，他亦在此時與恩師雲加相遇。
 在雲加離開後亨利亦被售至祖雲達斯，但當時意甲的強盛和嚴密的防守令其一直無法適應。
 在一次飛機上遇上恩師雲加，亨利選擇向雲加表達想要離開意甲。</ConText>
-            <Image  alt="亨利"src="https://tmssl.akamaized.net/images/foto/galerie/thierry-henry-arsenal-jubel-2012-1592828479-41984.jpg?lm=1592828454"/>
+            <Image maw={400} alt="亨利"src="https://tmssl.akamaized.net/images/foto/galerie/thierry-henry-arsenal-jubel-2012-1592828479-41984.jpg?lm=1592828454"/>
             <ConText>隨即阿仙奴便買下亨利，亨利亦很快表現出強大的實力以26球聯賽入球結束賽季，
 值得一提的是亨利於阿仙奴開始轉型至前鋒位，雲加要求亨利有便強的身體對抗及組織力。
 </ConText>
