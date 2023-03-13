@@ -10,19 +10,18 @@ function Typing (){
     <TypeAnimation
         sequence={[
           'Simple info',
-        3000, 
-          '', // Deletes 
-          1000, // 
-          'Simple Info HK', // '
-          10000,
-          'Still here?',
+        2000, 
+          '前所未有的簡單', // '
+          2000,
+          '還在這𥚃?',
           3000,
-          'Lets Go !',
+          '找你所要的資訊吧！',
           2000
         ]}
         wrapper="div"
         cursor={true}
         repeat={3}
+        speed = {45}
         style={{ fontSize: '3em' }}
     />
     )

@@ -1,6 +1,7 @@
 import ConHeader from './header';
 import { Text, Paper, Group ,Image, Box, TextInput} from '@mantine/core';
 import GoogleAds from './googleAds';
+import Script from 'next/script'
 
 function Down(){
 
@@ -19,12 +20,28 @@ function Down(){
     </Paper>
     );
 }
+function Kofi(){
+    return (
+            <Script type='text/javascript' src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js' id="onload-id"
+            onLoad={() => {
+                kofiWidgetOverlay.draw('simpleinfo', {
+                    'type': 'floating-chat',
+                    'floating-chat.donateButton.text': '',
+                    'floating-chat.donateButton.background-color': '#00b9fe',
+                    'floating-chat.donateButton.text-color': '#fff'
+                  });
+            }}
+
+        />
+    );
+}
 export default function Layout({children}){
     return (
         <>
-            <ConHeader title=""/>
+            <ConHeader title="" />
             <main>{children}</main>
             <Down/>
+            <Kofi/>
         </>
     );
 }
