@@ -78,7 +78,6 @@ function Body(){
                 <Typing/>
             </div>
             <Container>
-                <div className={classes.bigtitle}>快速探索</div>
                 
                 <Container py="xl">
                     <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
