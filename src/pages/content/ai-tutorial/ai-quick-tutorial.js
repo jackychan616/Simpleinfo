@@ -66,7 +66,7 @@ function Page(){
             <ConText>人工神經元是節點的軟體模組，使用數學計算來處理資料。</ConText>
             
             <ConTitle size="h3" order={4}>人工神經網路</ConTitle>
-            <Image src="/img/ai-deep-learning-network.jpg"  width={500} alt="深度學習神經網路"/>
+            <Image src="/img/ai-deep-learning-network.jpg"  maw={500} alt="深度學習神經網路"/>
             <ConText>人工神經網路屬於深度學習演算法，可使用這些節點來解決複雜問題。</ConText>
             
             <ConTitle size="h3" order={4}>深度學習網路組成部分</ConTitle>
