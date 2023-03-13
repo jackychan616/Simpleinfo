@@ -1,17 +1,18 @@
 import { Container,List ,Space,Image} from "@mantine/core";
 import { ConText,ConTitle } from "../../components/component";
 import Meta from '../../components/meta';
+import ContentTable  from "../../components/contentTable";
 function Page(){
     return(
         <Container>
-            <ConTitle order={1}>什麼是AI? 10分鐘內學懂AI</ConTitle>
-            <ConTitle  order={2}>定義AI</ConTitle>
+            <ConTitle id="1-title" order={1}>什麼是AI? 10分鐘內學懂AI</ConTitle>
+            <ConTitle id="2-title" order={2}>定義AI</ConTitle>
             <ConText>AI(人工智慧)  是電腦科學的一個領域，用於解決與人類智慧相關的常見認知問題 ，例如學習、解決問題和模式辨識。
                     而這類行動原本需要人類智慧判斷或涉及超出人為分析能力上限的資料規模
                     AI 是一個廣泛版圖，包含許多不同的專業領域，
                     包括電腦科學、資料分析與統計資料、硬體與軟體工程、語言學、神經科學，甚至是哲學和心理學。
             </ConText>
-            <ConTitle order={2}>AI類型</ConTitle>
+            <ConTitle id="3-title" order={2}>AI類型</ConTitle>
             <Image maw={700} src="https://149695847.v2.pressablecdn.com/wp-content/uploads/2019/08/PEDRO-DOMiNGOS-8.jpg" alt="Pedro Domingos"/>
             <ConText><a href="https://en.wikipedia.org/wiki/Pedro_Domingos">Pedro Domingos</a> 是人工智能領域聲譽卓著的研究人員，提出機器學習的「五大流派」，
                     包括：符號主義 (Symbolists)，源自於邏輯和哲學；聯結主義 (Connectionists)，

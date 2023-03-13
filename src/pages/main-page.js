@@ -3,7 +3,6 @@ import {Container, createStyles, SimpleGrid, Card,  AspectRatio, Text, Image,} f
 import Meta from './components/meta';
 import { TypeAnimation } from 'react-type-animation';
 import { ArtiCard } from './components/card';
-
 export const Bloglist = require("../data/Blog.json")
 function Typing (){
     const classes = useStyles();
@@ -78,7 +77,6 @@ function Body(){
                 <Typing/>
             </div>
             <Container>
-                <div className={classes.bigtitle}>快速探索</div>
                 
                 <Container py="xl">
                     <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>

@@ -101,6 +101,7 @@ function ActionToggle() {
       color={dark ? 'yellow' : 'blue'}
       onClick={() => toggleColorScheme()}
       title="Toggle color scheme"
+      size={"lg"}
     >
       {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
     </ActionIcon>
@@ -205,22 +206,21 @@ export default function ConHeader() {
             <Button>訂閱</Button>
             <Button ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' style ={{textDecoration:"none",color : "White"}}>給我們買杯咖啡</a></Button>
             <ActionToggle/>
-        </Group>
-          <Group
-          position='apart' 
-          className={classes.hiddenDesktop}>
-            <Burger  opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
-            <Link position={{right:"50px"}} href="/" 
+          </Group>
+
+              <Burger  opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
+              <Link position={{right:"50px"}} href="/" 
                   style={{
                     textDecoration: 'none',
                   }} className={classes.hiddenDesktop}
-            ><Title size="h2" >Simple Info</Title></Link>
-            <Group position='right'>
-              <Button size="xs" color={theme.fn.primaryColor()}>訂閱</Button>
-            <ActionIcon variant="light" color={theme.fn.primaryColor()}><a href='https://ko-fi.com/B0B1AA09F' target='_blank' ><SiKofi/></a></ActionIcon>
-            </Group>
+                  >
+                    <Title size="h2" >Simple Info</Title>
+              </Link>
+              <Group className={classes.hiddenDesktop} >
+                <ActionIcon variant="outline" size={"lg"}   color={theme.fn.primaryColor()}><a href='https://ko-fi.com/B0B1AA09F' target='_blank' ><SiKofi/></a></ActionIcon>
+                <ActionToggle  />
+              </Group>
             
-          </Group>
         </Group>
       </Header>
 
@@ -252,8 +252,10 @@ export default function ConHeader() {
           </UnstyledButton>
           
           <Collapse in={linksOpened}>{links}</Collapse>
+          <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
         </ScrollArea>
+        
       </Drawer>
     </Box>
 
