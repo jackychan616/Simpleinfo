@@ -14,11 +14,11 @@ function Typing (){
         3000, 
           '', // Deletes 
           1000, // 
-          'Simple Info HK', // '
+          '前所未有的簡單', // '
           10000,
-          'Still here?',
+          '還在這𥚃?',
           3000,
-          'Lets Go !',
+          '找你所要的資訊吧！',
           2000
         ]}
         wrapper="div"
