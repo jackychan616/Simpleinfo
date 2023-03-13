@@ -7,7 +7,8 @@ import { Container } from '@mantine/core';
 const Bloglist=[
     {"name":'如何使用AI繒圖？',"path":'ai-tutorial/photo-ai-tutorial',"img":'/img/ai-generate-img.webp',"date":'1/3/2023'},
     {"name":'如何在Windows本地部署Stable Diffusion?',"path":'ai-tutorial/setup-stable-diffusion',"img":'/img/stable-diffusion.webp',"date":'1/3/2023'},
-    {"name":"什麼是AI?","path":"ai-tutorial/ai-quick-tutorial","img":"/img/ai.jpg","date":"12/3/2023"}
+    {"name":"什麼是AI?","path":"ai-tutorial/ai-quick-tutorial","img":"/img/ai.jpg","date":"12/3/2023"},
+    {"name":"淺談AI","path":"ai-tutorial/ai-light-talk","img":"/img/ai-2.jpg","date":'13/3/2023'}
 ];
 
 export default function content(){
