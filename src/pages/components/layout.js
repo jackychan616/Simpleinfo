@@ -2,12 +2,13 @@ import ConHeader from './header';
 import { Text, Paper, Group ,Image, Box, TextInput} from '@mantine/core';
 import GoogleAds from './googleAds';
 import Script from 'next/script'
+import { BatteryAutomotive } from 'tabler-icons-react';
 
 function Down(){
 
     return(
-        
-    <Paper withBorder p="lg" radius="md" shadow="md"  position = "down" style = {{backgroundColor : "rgba(82,113,255,255)"}}>
+    <div style = {{}}> 
+        <Paper withBorder p="lg" radius="md" shadow="md" style = {{backgroundColor : "rgba(82,113,255,255)"}}>
         <Group position="apart" mb="xs">
             <Image src ="/img/simple_info.png" alt = "icon" width = "120px" height="150px"/>
             <Box position= "right" width = "500" height = "500">
@@ -17,7 +18,8 @@ function Down(){
         <Text color="White"  fw ={1500}>
             built by simple info team
         </Text>
-    </Paper>
+        </Paper>
+    </div>
     );
 }
 function Kofi(){
