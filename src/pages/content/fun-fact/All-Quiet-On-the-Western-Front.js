@@ -5,11 +5,11 @@ import {Container,Image,Space} from '@mantine/core';
 function Conpage(){
     return(
         <Container>
-            <Contitle>
+            <ConTitle>
                 <strong>
                     西線無戰事
                 </strong>
-            </Contitle>
+            </ConTitle>
             <Image src="/img/西線無戰事.jpeg" height="650" width = "650" alt ="西線無戰事"></Image>
             <ConText>
             《西線無戰事》是一部德國反戰電影，改編自埃里希·瑪利亞·雷馬克的同名小說。該片由路易斯·邁爾斯執導，於 1979 年上映，獲得了眾多的好評與獎項，被譽為是史上最偉大的反戰電影之一。
