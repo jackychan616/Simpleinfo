@@ -31,6 +31,7 @@ function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
       <NextSeo
       title={pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}
       canonical="https://simpleinfohk.me/"
+      description= {description ? description : defaultDescription}
       openGraph={{
         url:"https://simpleinfohk.me/",
         Title:pageTitle,
