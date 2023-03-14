@@ -6,7 +6,8 @@ import Meta from '../../components/meta';
 
 const Bloglist=[
     {"name":'python 快速入門',"path":'code-tutorial/python-quick-tutorial',"date":'',"img":'/img/py-icon.png'},
-    {"name":'Linux幾個必學指令 ' ,"path":'code-tutorial/simple_linux_cmd',"date":'',"img":'/img/linux.jpeg'}
+    {"name":'Linux幾個必學指令 ' ,"path":'code-tutorial/simple_linux_cmd',"date":'',"img":'/img/linux.jpeg'},
+    {"name":"Python 教學 [第一章]基礎語法","path":"code-tutorial/python-ch1","date":"14/3/2023","img":"/img/python-2.png"}
 ];
 
 export default function page(){
