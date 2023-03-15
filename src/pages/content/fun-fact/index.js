@@ -6,7 +6,8 @@ import {Container} from '@mantine/core';
 const Bloglist=[
     {"name":'中國古代最重要的君主(上)',"path":'/fun-fact/chinese-king1',"img":'/img/chinese-king1.jpg',"date":'3/3/2023'},
     {"name":'中國古代最重要的君主(下)',"path":'/fun-fact/chinese-king2',"img":'/img/chinese-king2.jpeg',"date":'3/3/2023'},
-    {"name":'古人的性癖好 孫中山是蘿莉控?',"path":'/fun-fact/Sun-Yat-sen',"img":'/img/Sun-Yat-Sen.jpeg',"date":'6/3/2023'}
+    {"name":'古人的性癖好 孫中山是蘿莉控?',"path":'/fun-fact/Sun-Yat-sen',"img":'/img/Sun-Yat-Sen.jpeg',"date":'6/3/2023'},
+    {"name":"西線無戰事 - 為何奪得奧斯卡最佳國際影片獎","path":"/fun-fact/All-Quiet-On-the-Western-Front","date":"14/3/23"}
 ];
 
 

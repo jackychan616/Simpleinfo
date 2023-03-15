@@ -104,5 +104,16 @@
         "path": "ai-tutorial/ai-light-talk",
         "img": "/img/ai-light-talk/ai-2.jpg",
         "date": "13/3/2023"
+    },
+    {
+        "name": "Python 教學 [第一章]基礎語法",
+        "path": "code-tutorial/python-ch1",
+        "date": "14/3/2023",
+        "img": "/img/python-2.png"
+    },
+    {
+        "name": "西線無戰事 - 為何奪得奧斯卡最佳國際影片獎",
+        "path": "/fun-fact/All-Quiet-On-the-Western-Front",
+        "date": "14/3/23"
     }
 ]
