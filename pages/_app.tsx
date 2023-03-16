@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NextUIProvider } from '@nextui-org/react';
-import Layout from '../components/layout';
+
 export default function App({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -9,9 +9,16 @@ export default function App({ Component, pageProps }: AppProps) {
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-  }, []);  
-  return(<>
-      {isLoading ? <p>Loading</p>:
-        <NextUIProvider><Layout><Component {...pageProps} /></Layout></NextUIProvider> }
-        </>) ;
+  }, []);
+  return (
+    <>
+      {isLoading ? (
+        <p>Loading</p>
+      ) : (
+        <NextUIProvider>
+          <Component {...pageProps} />
+        </NextUIProvider>
+      )}
+    </>
+  );
 }

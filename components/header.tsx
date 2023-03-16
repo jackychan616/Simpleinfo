@@ -1,10 +1,12 @@
-import { Navbar ,Text} from "@nextui-org/react";
+import { Navbar, Text } from '@nextui-org/react';
 
-export default function Header(){
-  return(
+export default function Header() {
+  return (
     <Navbar isBordered variant="sticky">
       <Navbar.Brand>
-        <Text b color="inherit" hideIn="xs">Simple Info</Text>
+        <Text b color="inherit" hideIn="xs">
+          Simple Info
+        </Text>
       </Navbar.Brand>
       <Navbar.Content hideIn="xs">
         <Navbar.Link href="/">首頁</Navbar.Link>
