@@ -26,6 +26,7 @@ const Bloglist = [
     name: '西線無戰事 - 為何奪得奧斯卡最佳國際影片獎',
     path: '/fun-fact/All-Quiet-On-the-Western-Front',
     date: '14/3/23',
+    img: "/img/西線無戰事.jpeg"
   },
 ];
 
