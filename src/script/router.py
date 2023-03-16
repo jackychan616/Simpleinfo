@@ -39,9 +39,7 @@ for p in (root / "pages/content").glob("**"):
             if card not in d_b:
                 d_b.append(card)
 
-            with open(
-                mode="r+",
-                file=f"{root}/data/Blog.json",
+            blog_data.write_text(
+                json.dumps(d_b, indent=2, ensure_ascii=False),
                 encoding="utf-8",
-            ) as bp:
-                json.dump(d_b, bp, indent=2, ensure_ascii=False)
+            )
