@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 1000);
   }, []);  
   return(<>
       {isLoading ? <p>Loading</p>:

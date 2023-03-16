@@ -1,9 +1,15 @@
 import Header from  "./header" ;
+import {Box} from "./Box";
 export default function Layout({children}){
     return(
-        <>
-            <Header/>
-            <children/>
-        </>
+    <Box
+    css={{
+      maxW: "100%"
+    }}>
+    <Header/>
+    {children}
+    
+    </Box>
+
     );
 }
