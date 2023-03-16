@@ -1,6 +1,6 @@
 import { ConTitle, ConText } from '../../components/component';
 import Head from 'next/head';
-import { Container, Image } from '@mantine/core';
+import { Container, Image ,Space} from '@mantine/core';
 import Meta from 'src/pages/components/meta';
 
 function Body() {
@@ -23,6 +23,22 @@ function Body() {
         height={'600px'}
         width={'300px'}
       ></Image>
+      <ConTitle order = "2">
+       張飛
+      </ConTitle>
+      <Space h = "lg"/>
+      <Image 
+        src="張飛.jpeg" 
+        height = {"300px"}
+        width = {"300px"}
+        />
+      <ConText>
+      在三國時代，有位武將，無人不曉；他跟隨劉備征戰四方，又與關羽被世人稱為「萬人敵」之人：張飛。史書《魏略》記載，建安五年，劉備被曹操打敗，張飛有次外出，遇上小「蘿莉」夏侯氏（名不詳），她其實是夏侯淵的侄女，才十三四歲，張飛對其一見鍾情，就娶為妻了
+
+      </ConText>
+      <ConTitle>
+      
+      </ConTitle>
     </Container>
   );
 }

@@ -3,7 +3,6 @@ import Layout from './components/layout';
 import { Analytics } from '@vercel/analytics/react';
 import { MantineProvider, Global,ColorSchemeProvider,ColorScheme} from '@mantine/core';
 import { useState,useEffect } from 'react';
-import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import Loading from './loading';
 import { Suspense ,lazy} from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';

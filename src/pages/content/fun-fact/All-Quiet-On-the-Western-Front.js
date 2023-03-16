@@ -11,8 +11,8 @@ function Conpage() {
       </ConTitle>
       <Image
         src="/img/西線無戰事.jpeg"
-        height="650"
-        width="650"
+        height="650px"
+        width="650px"
         alt="西線無戰事"
       ></Image>
       <ConText>
@@ -27,8 +27,8 @@ function Conpage() {
       <Image
         src="/img/西線無戰事_02.jpg"
         caption="保羅"
-        height="500"
-        width="500"
+        height="500px"
+        width="500px"
         alt="保羅·包美爾"
       ></Image>
       <Space h="xl" />
@@ -42,8 +42,8 @@ function Conpage() {
       </ConText>
       <Image
         src="/img/西線無戰事_03.webp"
-        height="300"
-        width="120"
+        height="300px"
+        width="120px"
         caption="保羅和朋友偷鵝"
         alt="西線無戰事"
       />
@@ -53,8 +53,8 @@ function Conpage() {
       <Space h="lg" />
       <Image
         src="/img/西線無戰事_04.jpg"
-        height="300"
-        width="110"
+        height="300px"
+        width="110px"
         caption="戰場上的軍官"
         alt="西線無戰事"
       />
