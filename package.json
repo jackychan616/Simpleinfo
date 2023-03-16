@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/core": "^6.0.2",
     "@next/font": "13.2.4",
     "@types/node": "18.15.3",
     "@types/react": "18.0.28",

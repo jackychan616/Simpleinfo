@@ -1,3 +1,7 @@
+import {Conheader} from "./components/header"
+
 export default function Home() {
-  return <></>;
+  return <>
+          <Conheader/>
+        </>;
 }
