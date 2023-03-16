@@ -1,51 +1,47 @@
-import json
-from pathlib import Path
-import pathlib
-import ast
-import os
-
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
+
+import json
+from pathlib import Path
+import ast
+import re
+
 root = Path(__file__).parents[1]
-
-
-def getfromfile(path):
-    try:
-        with open(mode="r", file=path, encoding="utf-8") as fp:
-            data = fp.read()
-            o = data[data.find("const Bloglist") : data.rfind("];") + 1]
-            final = o[o.find("[") : o.rfind("]") + 1].replace("'", '"')
-            ans = ast.literal_eval(final)
-            print(ans)
-            return ans
-    except:
-        return None
-
+blog_data = root / "data/Blog.json"
 
 files = []
 
 
-def scan():
-    for p in os.listdir(f"{root}\pages\content"):
-        print(p)
-        if ".js" in p:
+for p in (root / "pages/content").glob("**"):
+    if (f := p / "index.js").is_file():
+        data = "["
+        isList = False
+        for line in f.read_text("utf-8").split("\n"):
+            if isList:
+                if line.startswith("];"):
+                    break
+                data += line.strip().strip("\n")
+                continue
+            if line.startswith("const Bloglist = ["):
+                isList = True
+        data = ast.literal_eval(
+            re.sub(
+                r"([,\]{}])([^,:[{\"\']+):",
+                '\\g<1>"\\g<2>":',
+                data.replace("'", '"').strip().strip(",") + "]",
+            )
+        )
+        if not data:
             continue
-        for f in os.listdir(f"{root}\pages\content\{p}"):
-            if f == "index.js":
-                pa = f"{root}\pages\content/{p}\index.js".replace(f"{chr(92)}", "/")
-                l = getfromfile(pa)
-                if l != None:
-                    save(l)
 
-
-def save(dic):
-    with open(mode="r+", file=f"{root}\data\Blog.json", encoding="utf-8") as b:
-        d_b = json.load(b)
-        for card in dic:
+        d_b = json.loads(blog_data.read_text("utf-8"))
+        for card in data:
             if card not in d_b:
                 d_b.append(card)
-            with open(mode="r+", file=f"{root}\data\Blog.json", encoding="utf-8") as bp:
-                json.dump(d_b, bp, indent=4, ensure_ascii=False)
 
-
-scan()
+            with open(
+                mode="r+",
+                file=f"{root}/data/Blog.json",
+                encoding="utf-8",
+            ) as bp:
+                json.dump(d_b, bp, indent=2, ensure_ascii=False)
