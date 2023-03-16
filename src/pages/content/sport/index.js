@@ -2,6 +2,7 @@ import { Container } from '@mantine/core';
 import { ArtiCard } from '../../components/card';
 import Meta from '../../components/meta';
 import { Page } from '../../components/page_index';
+
 const Bloglist = [
   {
     name: '海布里之王-亨利',
