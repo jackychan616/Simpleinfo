@@ -1,5 +1,3 @@
-import {Container} from '@mantine/core';
-
-export default function Page(){
-    return(<></>);
+export default function Page() {
+  return <></>;
 }
