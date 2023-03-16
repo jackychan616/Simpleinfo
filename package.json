@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prestart": "python /src/script/rounter.python",
+    "_prestart": "python ./src/script/router.py",
     "build": "next build ",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build && next export"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",

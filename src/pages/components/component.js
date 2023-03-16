@@ -5,7 +5,7 @@ export function ConText({children,h1,h2}){
   return (
     <>
       <Space h={h1 ? h1: "sm"}/>
-      <Text fz="md" >{children}</Text>
+      <Text fz="md">{children}</Text>
       <Space h={h2 ? h2: "sm"}/>
     </>
     
@@ -27,11 +27,11 @@ export function PyPrism({children}){
   );
 } 
 
-export function ConTitle({children,order,h1,h2,size,id}){
+export function ConTitle({children,order,h1,h2,size,id,styles}){
   return(
     <>
       <Space h={h1 ? h1: "sm"}></Space>
-      <Title  id={id}  size={size} order={order}
+      <Title  id={id}  size={size} order={order} style = {styles}
       >{children}</Title>
       <Space h={h2 ? h2: "sm"}></Space>
     </>
