@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { useEffect,useState } from 'react';
-
+import { NextUIProvider } from '@nextui-org/react';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,5 +11,5 @@ export default function App({ Component, pageProps }: AppProps) {
       setIsLoading(false);
     }, 3000);
   }, []);  
-  return <>{isLoading ? <p>Loading</p>:<Component {...pageProps} />}</>;
+  return <>{isLoading ? <p>Loading</p>:<NextUIProvider><Component {...pageProps} /></NextUIProvider> }</>;
 }
