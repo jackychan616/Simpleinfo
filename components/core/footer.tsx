@@ -4,10 +4,10 @@ export default function Footer() {
       <div
         style={{
           backgroundColor: '#00DEFF',
-          height: '100px',
-          width: '100px',
+          height: "100px",
+          width: "100%",
           position: 'fixed',
-          bottom: '10px',
+          bottom: '0px',
         }}
       >
         <text>Simpleinfo</text>
