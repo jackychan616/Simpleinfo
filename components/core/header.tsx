@@ -1,6 +1,4 @@
-import { Navbar, Text } from "@nextui-org/react";
-
-
+import { Navbar, Text } from '@nextui-org/react';
 
 export default function Header() {
   return (
@@ -12,9 +10,7 @@ export default function Header() {
         <Navbar.Link href="/">首頁</Navbar.Link>
         <Navbar.Link href="/">文章</Navbar.Link>
       </Navbar.Content>
-      <Navbar.Content>
-        
-      </Navbar.Content>
+      <Navbar.Content></Navbar.Content>
     </Navbar>
   );
 }

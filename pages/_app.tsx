@@ -1,18 +1,15 @@
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
-import { NextUIProvider,createTheme,ThemeProvider  } from '@nextui-org/react';
-import Layout from 'components/layout';
-import useDarkMode from 'use-dark-mode';
+import { NextUIProvider, createTheme } from '@nextui-org/react';
+import Layout from '#/layout';
 
 const lightTheme = createTheme({
-    type: 'light'
-  })
-  
-  const darkTheme = createTheme({
-    type: 'dark'
-  })
+  type: 'light',
+});
 
-
+const darkTheme = createTheme({
+  type: 'dark',
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,9 +22,11 @@ export default function App({ Component, pageProps }: AppProps) {
       {isLoading ? (
         <p>Loading</p>
       ) : (
-          <NextUIProvider >
-            <Layout><Component {...pageProps} /></Layout>
-          </NextUIProvider>
+        <NextUIProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </NextUIProvider>
       )}
     </>
   );
