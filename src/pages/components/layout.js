@@ -2,7 +2,6 @@ import ConHeader from './header';
 import { Text, Paper, Group ,Image, Box, TextInput} from '@mantine/core';
 import GoogleAds from './googleAds';
 import Script from 'next/script'
-import { BatteryAutomotive } from 'tabler-icons-react';
 
 function Down(){
 

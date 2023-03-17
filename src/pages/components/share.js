@@ -1,5 +1,5 @@
 
-import { Menu, Button, Text, Image } from '@mantine/core';
+import { Menu } from '@mantine/core';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';

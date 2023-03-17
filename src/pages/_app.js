@@ -5,8 +5,6 @@ import { MantineProvider, Global,ColorSchemeProvider,ColorScheme} from '@mantine
 import { useState,useEffect } from 'react';
 import Loading from './loading';
 import { Suspense ,lazy} from 'react';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 import Router from 'next/router';
 

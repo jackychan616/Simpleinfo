@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import {Title,Container,Image} from '@mantine/core';
 
 
