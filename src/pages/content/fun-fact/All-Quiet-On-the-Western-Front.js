@@ -1,5 +1,4 @@
 import { ConTitle, ConText } from '../../components/component';
-import Head from 'next/head';
 import { Container, Image, Space } from '@mantine/core';
 import Meta from 'src/pages/components/meta';
 
@@ -69,15 +68,12 @@ function Conpage() {
 export default function page() {
   return (
     <>
-      <Head>
-        <title>西線無戰事 - 奪4項奧斯卡獎</title>
         <Meta
           pageTitle="西線無戰事 - 為何奪得奧斯卡最佳國際影片獎"
           description="《西線無戰事》是一部德國反戰電影，改編自埃里希·瑪利亞·雷馬克的同名小說。該片由路易斯·邁爾斯執導，於 1979 年上映，獲得了眾多的好評與獎項，被譽為是史上最偉大的反戰電影之一。更奪得2023奧斯卡最佳國際電影、攝影、布景設計及配樂合共4個獎項 , 擊敗多個對手"
           keywords="西線無戰事2023奧斯卡最佳國際電影、攝影、布景設計及配樂合共4個獎項,西線無戰事,德國反戰電影,2023奧斯卡,最佳國際電影,第一次世界大戰"
           img="/img/西線無戰事_01.jpeg"
         />
-      </Head>
       <Conpage />
     </>
   );
