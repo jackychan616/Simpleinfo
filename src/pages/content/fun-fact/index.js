@@ -28,6 +28,12 @@ const Bloglist = [
     date: '14/3/23',
     img: "/img/西線無戰事.jpeg"
   },
+  {
+    name:'顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞',
+    path:'/fun-faact/shi-dudu',
+    date:'17/3/2023',
+    img:'https://upload.wikimedia.org/wikipedia/zh/7/73/Shi_Pei_Pu.jpeg'
+  },
 ];
 
 export default function ConPage() {
