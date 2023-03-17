@@ -22,7 +22,7 @@ function Page(){
 export default function ConPage(){
     return(
         <>
-            <Meta title="顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞" img="https://upload.wikimedia.org/wikipedia/zh/7/73/Shi_Pei_Pu.jpeg" description={"顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞《孫子兵法》有云：「因間者，因其鄉人而用之。」，指利用敵方人員作間諜，這次的主角使用「因間」的方式過於特殊。他身為男兒男扮女裝與法國駐華大使館職員維持了20年的伴侶關係，為中華人民共和國政府竊取法國政府情報，但是他是如何做到的？"}/>
+            <Meta PageTitle="顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞" img="https://upload.wikimedia.org/wikipedia/zh/7/73/Shi_Pei_Pu.jpeg" description={"顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞《孫子兵法》有云：「因間者，因其鄉人而用之。」，指利用敵方人員作間諜，這次的主角使用「因間」的方式過於特殊。他身為男兒男扮女裝與法國駐華大使館職員維持了20年的伴侶關係，為中華人民共和國政府竊取法國政府情報，但是他是如何做到的？"}/>
             <Page/>
         </>
     );

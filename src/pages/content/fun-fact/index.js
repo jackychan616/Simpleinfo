@@ -34,6 +34,12 @@ const Bloglist = [
     date:'17/3/2023',
     img:'https://upload.wikimedia.org/wikipedia/zh/7/73/Shi_Pei_Pu.jpeg'
   },
+  {
+    name:'孫中山、張飛是蘿莉控？',
+    path:'/fun-fact/ancient-3-sex-fun-fact',
+    date:'17/3/2023',
+    img:'/img/十二歲的大月薰.jpg'
+  }
 ];
 
 export default function ConPage() {

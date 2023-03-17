@@ -32,7 +32,7 @@ function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
       description= {description ? description : defaultDescription}
       openGraph={{
         url:"https://simpleinfohk.me/",
-        Title:pageTitle,
+        Title:pageTitle||siteTitle,
         description:description ? description : defaultDescription,
         images:[
           {
