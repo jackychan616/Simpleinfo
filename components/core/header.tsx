@@ -10,7 +10,6 @@ export default function Header() {
         <Navbar.Link href="/">首頁</Navbar.Link>
         <Navbar.Link href="/">文章</Navbar.Link>
       </Navbar.Content>
-      <Navbar.Content></Navbar.Content>
     </Navbar>
   );
 }

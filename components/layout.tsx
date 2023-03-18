@@ -12,7 +12,6 @@ export default function Layout({ children }: Props) {
   return (
     <>
       <Meta />
-
       <Header />
 
       <main>{children}</main>
