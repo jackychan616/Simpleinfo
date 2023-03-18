@@ -9,7 +9,7 @@ export interface Props {
   html: string;
 }
 
-export default function Post({ html: __html, post }: Props) {
+export default function Post({ html: __html, post }: Props ) {
   // date?: string;
   // author?: string;
   return (

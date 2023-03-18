@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import { NextUIProvider, createTheme } from '@nextui-org/react';
+import '../styles/globals.css';
 
 const lightTheme = createTheme({
   type: 'light',
