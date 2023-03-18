@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 import { NextUIProvider, createTheme } from '@nextui-org/react';
-import '../styles/globals.css';
-
+import Layout from '#/layout';
+import { useSSR } from '@nextui-org/react';
 const lightTheme = createTheme({
   type: 'light',
 });
@@ -11,9 +11,11 @@ const darkTheme = createTheme({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const { isBrowser } = useSSR()
   return (
-    <NextUIProvider>
-      <Component {...pageProps} />
-    </NextUIProvider>
-  );
+    isBrowser && (
+      <NextUIProvider>
+        <Layout><Component {...pageProps} /></Layout>
+      </NextUIProvider>
+    ));
 }

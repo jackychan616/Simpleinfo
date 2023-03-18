@@ -1,5 +1,6 @@
-import Layout from "#/layout";"../components/layout"
+import Layout from "#/layout";  
 import { TypeAnimation } from 'react-type-animation';
+import {Container} from '@nextui-org/react';
 function Typing() {
   return (
     <TypeAnimation
@@ -23,7 +24,7 @@ function Typing() {
 }
 export default function Home() {
   return <>
-          <Layout>
+
             <div
             className=" d-flex   justify-content-center align-items-center"
             style={{ backgroundColor: 'transparent', height: '150px' }}
@@ -33,6 +34,5 @@ export default function Home() {
             <body>
 
             </body>
-          </Layout>
         </>;
 }
