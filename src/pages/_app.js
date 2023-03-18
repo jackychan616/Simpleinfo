@@ -32,20 +32,23 @@ export default function MyApp({ Component, pageProps }) {
 
   const toggleColorScheme = (ColorScheme) =>
     setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
-
   useHotkeys([['mod+J', () => toggleColorScheme()]]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 1e3);
+  }, []);
   return  (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-    <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-    <Layout>
+      <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+        <Layout>
       
-          <Suspense fallback={<Loading/>}>
-           <Component {...pageProps} /> 
-          </Suspense>
+        {isLoading?<Loading/>: <Component {...pageProps} /> }
+          
           <Analytics/>
         
-      </Layout>
-    </MantineProvider>  
+        </Layout>
+      </MantineProvider>  
     </ColorSchemeProvider>
     
     
