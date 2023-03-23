@@ -49,7 +49,7 @@ export default function Page(){
             <ConText>隨著技術和算法不斷成熟，AI商業分析能夠協助企業迅速地應對商業挑戰，提高競爭力。然而，企業在使用AI商業分析時必須注意保障數據安全和保密性，并確保數據的真實性和準確性，以避免任何潛在的風險。</ConText>
             <ConTitle order={2} size="h2">四丶智慧城市</ConTitle>
             <ConText>智慧城市是指利用新興科技體系，裝置智慧感測器、自動化作業流程，來改善居民生活品質、增進城市運轉效率的城市模式。這些新興科技體系可以包括物聯網、大數據、人工智慧、區塊鏈等等。</ConText>
-            <ConTitle order={}></ConTitle>
+            <ConTitle order={2}></ConTitle>
         </Container>
     );
 }
