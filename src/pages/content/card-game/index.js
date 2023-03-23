@@ -14,6 +14,11 @@ const Bloglist = [
     path: '/card-game/little-noah-introduce',
     img: '/img/little-noach-introduce/4.png',
   },
+  {
+    name:'30秒學會成為csgo高手的必要技巧！',
+    path:'/card-game/csgo',
+    img:'/img/csgo.png'
+   }
 ];
 
 export default function ConPage() {
