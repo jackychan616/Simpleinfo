@@ -5,9 +5,11 @@ import { ReactElement } from "react";
 
 function Loading() {
   return (
+    <div className={styles.full}>
       <div className={styles.loader_div}>
           <Loader color="indigo" size="xl" variant="bars" />
       </div>
+    </div>
   );
 }
 Loading.getLayout = function getLayout(page) {

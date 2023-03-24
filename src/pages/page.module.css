@@ -31,8 +31,12 @@
   left: 50%;
   margin-top: -50px;
   margin-left: -50px;
-  width: 100px;
-  height: 100px;
-  
+  width: 100vw;
+  height: 100vh;  
 }
 
+.full {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
