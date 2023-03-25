@@ -155,6 +155,11 @@ export default function ConHeader() {
                       首頁
               </Box>
             </Link>
+            <Link href="#" className={classes.link}>
+                  <Box component='span' mr={5}>
+                    近期最熱
+                  </Box>
+            </Link>
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
                 <Link href="/content" className={classes.link} >
