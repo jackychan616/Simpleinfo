@@ -1,4 +1,4 @@
-import Header from './core/header';
+import HeaderMenu from './core/header';
 import { ReactNode } from 'react';
 import Meta from './core/meta';
 import Footer from './core/footer';
@@ -12,7 +12,7 @@ export default function Layout({ children }: Props) {
   return (
     <>
       <Meta />
-      <Header />
+      <HeaderMenu />
 
       <main>{children}</main>
       
