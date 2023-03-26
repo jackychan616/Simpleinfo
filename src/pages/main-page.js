@@ -121,6 +121,7 @@ export default function Home() {
   return (
     <div style={{}}>
       <Meta
+        pageTitle = {"Simple Info HK"}
         keywords={
           '博客,中文,資訊,資訊平臺,香港,香港博客,Hong Kong Blog,Blog,教學,教學類型,教學博客,教學 Blog,AI教學,AI,有趣資訊 '
         }
