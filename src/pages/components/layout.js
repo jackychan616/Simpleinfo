@@ -1,8 +1,6 @@
 import ConHeader from './header';
-import { Text, Paper, Group ,Image, Box, TextInput} from '@mantine/core';
-import GoogleAds from './googleAds';
+import { Text, Paper, Group ,Image, Box, TextInput,Button} from '@mantine/core';
 import Script from 'next/script'
-
 function Down(){
 
     return(
