@@ -6,7 +6,7 @@ import Script from 'next/script'
 function Down(){
 
     return(
-    <div style = {{}}> 
+    <div style = {{bottom:"0px"}}> 
         <Paper withBorder p="lg" radius="md" shadow="md" style = {{backgroundColor : "rgba(82,113,255,255)"}}>
         <Group position="apart" mb="xs">
             <Image src ="/img/simple_info.png" alt = "icon" width = "120px" height="150px"/>

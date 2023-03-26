@@ -92,6 +92,9 @@ function Page() {
         機器學習模型一開始並不知道這個關聯，但隨著給予其足夠的資料，模型的預測會越來越準確。
         每個機器學習演算法都是基於一個可修改的數學函數建立的。以下的例子可幫助您了解基本原理：
       </ConText>
+      <Image src = "/img/ml.webp"
+       width = {700}
+       alt = "機器學習"/>
       <List type="ordered">
         <List.Item>
           我們可以使用這些輸入/輸出資料對 (input,output) 來「訓練」演算法 –

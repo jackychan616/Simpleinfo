@@ -118,7 +118,7 @@ function kofi() {
   );
 }
 
-export default function App() {
+export default function Home() {
   return (
     <div style={{}}>
       <Meta
