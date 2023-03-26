@@ -23,9 +23,7 @@ import {
   Drawer
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { blue } from '@mui/material/colors';
 import Link from 'next/link';
-import Image from 'next/image';
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
 import { topics} from '../../data/topics'
 import { SiKofi } from "react-icons/si";
@@ -113,7 +111,7 @@ export default function ConHeader() {
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const { classes, theme } = useStyles();
   const links = topics.map((item) => (
-    <UnstyledButton className={classes.subLink} key={item.name}>
+    <UnstyledButton className={classes.subLink} key={item.name} onClick={closeDrawer}>
       <Link href={'/content/'+item.path} style={{
                     textDecoration: 'none',
                   }}>
@@ -134,9 +132,7 @@ export default function ConHeader() {
         
       
     </UnstyledButton>
-  ));
-
-
+  )); 
 
   return (
     <Box pb={0} >
@@ -242,7 +238,7 @@ export default function ConHeader() {
         <ScrollArea sx={{ height: 'calc(100vh - 60px)' }} mx="-md">
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
-          <Link href="/" className={classes.link}>
+          <Link href="/" className={classes.link} onClick={closeDrawer}>
             首頁
           </Link>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
@@ -258,7 +254,6 @@ export default function ConHeader() {
           
           <Collapse in={linksOpened}>{links}</Collapse>
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
-
         </ScrollArea>
         
       </Drawer>
