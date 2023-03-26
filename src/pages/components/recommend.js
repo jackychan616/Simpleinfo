@@ -1,6 +1,7 @@
 
 import { createStyles, Card, Image, Avatar, Text, Group } from '@mantine/core';
 import { SiWpexplorer } from 'react-icons/si';
+import { DatabaseOff } from 'tabler-icons-react/dist';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -21,39 +22,32 @@ const useStyles = createStyles((theme) => ({
 // Example data
 const R = [
     {
-    image: "https://images.unsplash.com/photo-1602080858428-57174f9431cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80",
-    category: "technology",
-    title: "The best laptop for Frontend engineers in 2022",
-    date: "Feb 6th",
-    author: {
-      name: "Elsa Brown",
-      avatar: "https://images.unsplash.com/photo-1628890923662-2cb23c2e0cfe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80"
-      },
-    path:"/card-game/"
+      "name": "如何使用AI繒圖？",
+      "path": "/ai-tutorial/photo-ai-tutorial",
+      "img": "/img/ai-generate-img.webp",
+      "date": "1/3/2023",
+      "tag": "AI 教學"
     },
     {
-      image: "https://images.unsplash.com/photo-1602080858428-57174f9431cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80",
-      category: "technology",
-      title: "The best laptop for Frontend engineers in 2022",
-      date: "Feb 6th",
-      author: {
-        name: "Elsa Brown",
-        avatar: "https://images.unsplash.com/photo-1628890923662-2cb23c2e0cfe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80"
-      }
-    } 
-  ];
+      "name": "如何在Windows本地部署Stable Diffusion?",
+      "path": "/ai-tutorial/setup-stable-diffusion",
+      "img": "/img/stable-diffusion.webp",
+      "date": "1/3/2023",
+      "tag": "AI 教學"
+    }
+  ]
 export function Recommend({chrilden,data}){
   const { classes } = useStyles();
-  const cards = data.map((Data) => (
-    <Card key={Data.title} withBorder radius="md" p={0} component="a" className={classes.card} href = {"/content" + Data.path}>
+  const cards = R.map((Data) => (
+    <Card key={Data.name} withBorder radius="md" p={0} component="a" className={classes.card} href = {"/content" + Data.path}>
     <Group noWrap spacing={0}>
-      <Image src={Data.image} height={140} width={140} />
+      <Image src={Data.img} height={140} width={140} />
       <div className={classes.body}>
         <Text transform="uppercase" color="dimmed" weight={700} size="xs">
-          {Data.category}
+          {Data.tag}
         </Text>
-        <Text className={classes.title} mt="xs" mb="md">
-          {Data.title}
+        <Text className={classes.name} mt="xs" mb="md">
+          {Data.name}
         </Text>
         <Group noWrap spacing="xs">
 

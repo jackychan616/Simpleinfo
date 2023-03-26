@@ -10,6 +10,7 @@ import {
 import Meta from './components/meta';
 import { TypeAnimation } from 'react-type-animation';
 import React from 'react';
+import { Recommend } from './components/recommend';
 export const Bloglist = require('../data/Blog.json');
 function Typing() {
   return (

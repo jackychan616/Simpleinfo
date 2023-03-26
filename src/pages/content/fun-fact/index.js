@@ -9,36 +9,42 @@ const Bloglist = [
     path: '/fun-fact/chinese-king1',
     img: '/img/chinese-king1.jpg',
     date: '3/3/2023',
+    tag: '有趣知識'
   },
   {
     name: '中國古代最重要的君主(下)',
     path: '/fun-fact/chinese-king2',
     img: '/img/chinese-king2.jpeg',
     date: '3/3/2023',
+    tag: '有趣知識'
   },
   {
     name: '古人的性癖好 孫中山是蘿莉控?',
     path: '/fun-fact/Sun-Yat-sen',
     img: '/img/Sun-Yat-Sen.jpeg',
     date: '6/3/2023',
+    tag: '有趣知識'
   },
   {
     name: '西線無戰事 - 為何奪得奧斯卡最佳國際影片獎',
     path: '/fun-fact/All-Quiet-On-the-Western-Front',
     date: '14/3/23',
-    img: "/img/西線無戰事.jpeg"
+    img: "/img/西線無戰事.jpeg",
+    tag: '有趣知識'
   },
   {
     name:'顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞',
     path:'/fun-fact/shi-dudu',
     date:'17/3/2023',
-    img:'https://upload.wikimedia.org/wikipedia/zh/7/73/Shi_Pei_Pu.jpeg'
+    img:'https://upload.wikimedia.org/wikipedia/zh/7/73/Shi_Pei_Pu.jpeg',
+    tag: '有趣知識'  
   },
   {
     name:'孫中山、張飛是蘿莉控？',
     path:'/fun-fact/ancient-3-sex-fun-fact',
     date:'17/3/2023',
-    img:'/img/十二歲的大月薰.jpg'
+    img:'/img/十二歲的大月薰.jpg',
+    tag: '有趣知識'
   }
 ];
 
