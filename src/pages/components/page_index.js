@@ -6,7 +6,9 @@ export function Page({children,title,hTitle,img}){
         <>
             <Container >
                 <Title order={1}>{hTitle}</Title>
-                <Image maw={700} src={img} alt=""/>   
+                <div>
+                    <Image maw={700} src={img} alt=""/>   
+                </div>
             </Container>
             {children}
             

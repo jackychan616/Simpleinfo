@@ -9,8 +9,8 @@ export default function page(){
         <>  
             <title>about us</title>
             <Container>
-                
+
             </Container>
         </>
-    )
+    )   
 }

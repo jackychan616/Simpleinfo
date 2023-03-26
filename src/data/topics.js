@@ -52,3 +52,4 @@ export const topics = [
         }
 
 ];
+export var topic = ["/content/code-tutorial","/content/ai-tutorial","/content/card-game","/content/fun-fact","/content/toy","/content/sport","/content/news"];
