@@ -8,7 +8,6 @@ import { Suspense ,lazy} from 'react';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 import Router from 'next/router';
 import {topic} from '../data/topics'
-
 Router.onRouteChangeStart = () => {
   console.log('onRouteChangeStart Triggered');
   <Loading />;
@@ -31,12 +30,12 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       defaultValue: 'light',
       getInitialValueInEffect: true,
     });
-    
+  
     const toggleColorScheme = (ColorScheme) =>
       setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
     useHotkeys([['mod+J', () => toggleColorScheme()]]);
     const [isLoading, setIsLoading] = useState(true);
-
+  
     useEffect(() => {
       setTimeout(() => setIsLoading(false), 1e3);
     }, []);
@@ -51,8 +50,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       </MantineProvider>  
       </ColorSchemeProvider>
     )
-  }    
-
+  }
     topic.push("/");
     if (topic.includes(appProps.router.pathname))
       return(
@@ -62,6 +60,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         <>
           <Basic_lay/>
         </>
+        
       )
-}
-
+    }

@@ -9,14 +9,12 @@ const Bloglist = [
     path: '/news/Faye-Wong',
     img: '/img/Faye_Wong_03.jpg',
     date: '11/3/23',
-    tag:'news'
   },
   {
     name: '謝霆鋒和王菲的合作',
     path: '/news/Faye-Wong-song',
     img: '/img/Faye_Wong_04.jpg',
     date: '12/3/23',
-    tag:'news'
   },
 ];
 

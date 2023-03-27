@@ -9,7 +9,6 @@ const Bloglist = [
     path: '/toy/5-gundam',
     img: '/img/5-gundam/1.jpg',
     date: '6/3/2023',
-    tag:"toy"
   },
 ];
 
