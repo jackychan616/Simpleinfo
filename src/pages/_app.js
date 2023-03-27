@@ -11,7 +11,7 @@ import { Recommend } from './components/recommend';
 import {Get} from './components/getrecomm'
 import { useRouter } from 'next/router';
 import { ConTitle} from './components/component';
-import { Container,Space } from '@mantine/core';
+import { Space } from '@mantine/core';
 
 Router.onRouteChangeStart = () => {
   console.log('onRouteChangeStart Triggered');
@@ -68,14 +68,14 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       );
       return (
         <>
-          <Basic_lay children={[
+          <Basic_lay>
             <>
               <Space h ="lg"/>
               <ConTitle>閱讀更多</ConTitle>
               <Space h = "xl"/>
               <Recommend data = {Get(asPath.replace("/content",''))}/>
             </>
-          ]}/>
+          </Basic_lay>
         </>
       )
 }
