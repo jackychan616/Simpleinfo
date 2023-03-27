@@ -1,14 +1,30 @@
 [
   {
     "name": "如何使用AI繒圖？",
-    "path": "ai-tutorial/photo-ai-tutorial",
+    "path": "/ai-tutorial/photo-ai-tutorial",
     "img": "/img/ai-generate-img.webp",
     "date": "1/3/2023"
   },
   {
     "name": "如何在Windows本地部署Stable Diffusion?",
-    "path": "ai-tutorial/setup-stable-diffusion",
+    "path": "/ai-tutorial/setup-stable-diffusion",
     "img": "/img/stable-diffusion.webp",
+    "date": "1/3/2023",
+    "tag": "AI 教學l"
+  },
+  {
+    "name": "什麼是AI?",
+    "path": "/ai-tutorial/ai-quick-tutorial",
+    "img": "/img/ai.jpg",
+    "date": "12/3/2023",
+    "tag": "AI 教學"
+  },
+  {
+    "name": "淺談AI",
+    "path": "/ai-tutorial/ai-light-talk",
+    "img": "/img/ai-light-talk/ai-2.jpg",
+    "date": "13/3/2023",
+    "tag": "AI 教學"
     "date": "1/3/2023"
   },
   {
@@ -19,7 +35,35 @@
   {
     "name": "《小小諾亞-樂園的繼承者》介紹",
     "path": "/card-game/little-noah-introduce",
-    "img": "/img/little-noach-introduce/4.png"
+    "img": "/img/little-noach-introduce/4.png",
+    "tag": "遊戲"
+  },
+  {
+    "name": "30秒學會成為csgo高手的必要技巧！",
+    "path": "/card-game/csgo",
+    "img": "/img/csgo.png",
+    "tag": "遊戲"
+  },
+  {
+    "name": "python 快速入門",
+    "path": "code-tutorial/python-quick-tutorial",
+    "date": "",
+    "img": "/img/py-icon.png",
+    "tag": "電腦編程教學"
+  },
+  {
+    "name": "Linux幾個必學指令 ",
+    "path": "code-tutorial/simple_linux_cmd",
+    "date": "",
+    "img": "/img/linux.jpeg",
+    "tag": "電腦編程教學"
+  },
+  {
+    "name": "Python 教學 [第一章]基礎語法",
+    "path": "code-tutorial/python-ch1",
+    "date": "14/3/2023",
+    "img": "/img/python-2.png",
+    "tag": "電腦編程教學"
   },
   {
     "name": "中國古代最重要的君主(上)",
