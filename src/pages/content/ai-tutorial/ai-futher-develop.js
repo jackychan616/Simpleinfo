@@ -1,5 +1,5 @@
-import {Container} from '@mantine/core';
-import {ConText,ConTitle,List} from '../../components/component';
+import {Container,List} from '@mantine/core';
+import {ConText,ConTitle} from '../../components/component';
 
 export default function Page(){
     return(
