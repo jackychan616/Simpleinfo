@@ -38,7 +38,7 @@ const R = [
   ]
 export function Recommend({chrilden,data}){
   const { classes } = useStyles();
-  const cards = R.map((Data) => (
+  const cards = data.map((Data) => (
     <Card key={Data.name} withBorder radius="md" p={0} component="a" className={classes.card} href = {"/content" + Data.path}>
        <Group noWrap spacing={0}>
        <Image src={Data.img} height={140} width={140} />
