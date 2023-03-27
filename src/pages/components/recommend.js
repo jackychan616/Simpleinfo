@@ -1,7 +1,7 @@
 
 import { createStyles, Card, Image, Avatar, Text, Group } from '@mantine/core';
 import { SiWpexplorer } from 'react-icons/si';
-import { DatabaseOff } from 'tabler-icons-react/dist';
+import { DatabaseOff } from 'tabler-icons-react';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -14,12 +14,12 @@ const useStyles = createStyles((theme) => ({
     lineHeight: 1.2,
   },
 
-  body: {
+  bomdy: {
     padding: theme.spacing.md,
   },
 }));
 
-// Example data
+// Exaple data
 const R = [
     {
       "name": "如何使用AI繒圖？",
