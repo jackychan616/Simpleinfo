@@ -12,7 +12,7 @@ const Bloglist = [
   },
 ];
 
-export default function page() {
+export default function ConPage() {
   return (
     <>
       <Meta />

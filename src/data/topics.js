@@ -1,5 +1,5 @@
 import { DevicesPc, DeviceGamepad2 ,Robot,InfoCircle ,HorseToy,BallFootball ,News} from 'tabler-icons-react';
-
+import {SiWeb3Dotjs} from 'react-icons/si';
 export const topics = [
         {
           name:"電腦編程教學",
@@ -49,6 +49,13 @@ export const topics = [
           page:2,
           description:"新聞,香港社會新聞,香港新聞,娛樂新聞",
           icon:News
+        },
+        {
+          name:"Web 3",
+          path:"web3",
+          page:1,
+          description:"追蹤最新Web 3資訊",
+          icon:SiWeb3Dotjs
         }
 
 ];

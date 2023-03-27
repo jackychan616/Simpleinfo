@@ -7,7 +7,7 @@ import Meta from './components/meta';
 export default function page(){
     return(
         <>  
-            <title>about us</title>
+            <title>About us</title>
             <Container>
 
             </Container>
