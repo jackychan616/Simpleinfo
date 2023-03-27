@@ -1,10 +1,9 @@
 
 const Bloglist = require('../../data/Blog.json');
 export function Get(path){
-    const R = new Array();
+    const R = [];
     for (const i in Bloglist) {
         if (Bloglist[i]['path'] == path ){
-						console.log(Bloglist[i]["name"])
             var tag = Bloglist[i]["tag"];
             break;
         }
@@ -17,7 +16,6 @@ export function Get(path){
     }
 		return R;
 }
-
 function Context(){
     return(
         <></>

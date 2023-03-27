@@ -1,7 +1,6 @@
 
 import { createStyles, Card, Image, Avatar, Text, Group } from '@mantine/core';
-import { SiWpexplorer } from 'react-icons/si';
-import { DatabaseOff } from 'tabler-icons-react/dist';
+
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -20,22 +19,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 // Example data
-const R = [
-    {
-      "name": "如何使用AI繒圖？",
-      "path": "/ai-tutorial/photo-ai-tutorial",
-      "img": "/img/ai-generate-img.webp",
-      "date": "1/3/2023",
-      "tag": "AI 教學"
-    },
-    {
-      "name": "如何在Windows本地部署Stable Diffusion?",
-      "path": "/ai-tutorial/setup-stable-diffusion",
-      "img": "/img/stable-diffusion.webp",
-      "date": "1/3/2023",
-      "tag": "AI 教學"
-    }
-  ]
+
 export function Recommend({chrilden,data}){
   const { classes } = useStyles();
   const cards = data.map((Data) => (
