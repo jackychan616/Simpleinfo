@@ -40,9 +40,9 @@ export function Recommend({chrilden,data}){
   const { classes } = useStyles();
   const cards = R.map((Data) => (
     <Card key={Data.name} withBorder radius="md" p={0} component="a" className={classes.card} href = {"/content" + Data.path}>
-    <Group noWrap spacing={0}>
-      <Image src={Data.img} height={140} width={140} />
-      <div className={classes.body}>
+       <Group noWrap spacing={0}>
+       <Image src={Data.img} height={140} width={140} />
+       <div className={classes.body}>
         <Text transform="uppercase" color="dimmed" weight={700} size="xs">
           {Data.tag}
         </Text>
@@ -50,29 +50,28 @@ export function Recommend({chrilden,data}){
           {Data.name}
         </Text>
         <Group noWrap spacing="xs">
-
           <Text size="xs" color="dimmed">
             {Data.date}
           </Text>
         </Group>
       </div>
-    </Group>
-  </Card>
-  )
-);
-    return (
+      </Group>
+    </Card>
+    )
+   );
+   return (
         <>
             {cards}
             {chrilden}
         </>
   );
 }
-function Context(){
+export default function Context(){
     return (
       <>
       </>
     );
   }
-export default Context;
+
 
   
