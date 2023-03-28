@@ -9,18 +9,21 @@ const Bloglist = [
     path: '/sport/football-henry',
     date: '16/3/2023',
     img: '/img/football-henry.jpg',
+    tag: 'sport'
   },
   {
     name: '足球界的革新和希望  國王聯賽',
     path: '/sport/football-new-hope',
     date: '11/3/2023',
     img: 'https://webcdn.guangming.com.my/wp-content/uploads/2023/02/%E6%9C%AA%E5%91%BD%E5%90%8D-1-144.jpg',
+    tag: 'sport'
   },
   {
     name: '球隊大事記—曼聯',
     path: '/sport/football-big-news',
     date: '15/3/2023',
     img: '/img/football-big-news/1.webp',
+    tag: 'sport'
   },
 ];
 
