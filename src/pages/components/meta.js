@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Script from 'next/script';
 const siteTitle = "Simple Info HK";
 const defaultDescription ="香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊";
 import { NextSeo } from 'next-seo';
