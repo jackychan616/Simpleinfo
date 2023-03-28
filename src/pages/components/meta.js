@@ -6,20 +6,18 @@ import { NextSeo } from 'next-seo';
 export default function Meta({ pageTitle, keywords, description ,subtitle,img}) {
   return (
     <>
-    <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3459129696587268"
-          crossOrigin="anonymous"></Script>
       <Head>
-          <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
+          <title>{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
           <meta property="og:locale" content="zh-Hant-HK"/>
           <meta property="og:type" content="article"/>
           <meta property="og:title" content={pageTitle || siteTitle} />
           <meta property="og:description" content={description}  />
           <meta property="og:site_name" content="simpleinfohk.me"/>
-          <meta property='og:keyword' content={keywords}/>
-          <meta property='og:image' content = {img}/ >
+          <meta property='keyword' content={keywords}/>
+          <meta property='og:image' content = {img}/>
       </Head>    
     </>
-  );
+  )
 }
 
 function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){

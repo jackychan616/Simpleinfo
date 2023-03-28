@@ -16,6 +16,15 @@ export function Get(path){
     }
 		return R;
 }
+export function Gettag(path){
+    for (const i in Bloglist) {
+        if (Bloglist[i]['path'] == path) {
+            var tag = Bloglist[i]['tag'];
+            break;
+        }
+    }
+    return tag
+}
 function Context(){
     return(
         <></>

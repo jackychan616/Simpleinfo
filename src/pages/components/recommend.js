@@ -15,7 +15,7 @@ const useStyles = createStyles((theme) => ({
     lineHeight: 1.2,
   },
 
-  bomdy: {
+  body: {
     padding: theme.spacing.md,
   },
 }));
@@ -40,15 +40,15 @@ const R = [
 export function Recommend({chrilden,data}){
   const { classes } = useStyles();
   const cards = data.map((Data) => (
-    <Card key={Data.title} withBorder radius="md" p={0} component="a" className={classes.card} href = {"/content" + Data.path}>
+    <Card key={Data.name} withBorder radius="md" p={0} component="a" className={classes.card} href = {"/content" + Data.path}>
     <Group noWrap spacing={0}>
-      <Image src={Data.image} height={140} width={140} />
+      <Image src={Data.img} height={140} width={140} />
       <div className={classes.body}>
         <Text transform="uppercase" color="dimmed" weight={700} size="xs">
-          {Data.category}
+          {Data.name}
         </Text>
-        <Text className={classes.title} mt="xs" mb="md">
-          {Data.title}
+        <Text className={classes.name} mt="xs" mb="md">
+          {Data.name}
         </Text>
         <Group noWrap spacing="xs">
 

@@ -40,3 +40,7 @@
   height: 100vh;
   position: relative;
 }
+.tag_div {
+  position :absolute;
+  left : 50px;
+}

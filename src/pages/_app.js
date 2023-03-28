@@ -1,18 +1,18 @@
 import '../styles/globals.css';
 import Layout from './components/layout';
 import { Analytics } from '@vercel/analytics/react';
-import { MantineProvider, Global,ColorSchemeProvider,ColorScheme} from '@mantine/core';
+import { MantineProvider, Global,ColorSchemeProvider,ColorScheme,Badge} from '@mantine/core';
 import { useState,useEffect } from 'react';
 import Loading from './loading';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 import Router from 'next/router';
 import {topic} from '../data/topics'
 import { Recommend } from './components/recommend';
-import {Get} from './components/getrecomm'
+import {Get,Gettag} from './components/getrecomm'
 import { useRouter } from 'next/router';
 import { ConTitle} from './components/component';
 import { Space } from '@mantine/core';
-
+import stlyes from './page.module.css';
 Router.onRouteChangeStart = () => {
   console.log('onRouteChangeStart Triggered');
   <Loading />;
@@ -30,7 +30,7 @@ Router.onRouteChangeError = () => {
 
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
-  function Basic_lay({children}){
+  function Basic_lay({children,tag}){
     const [colorScheme, setColorScheme] = useLocalStorage({
       key: 'mantine-color-scheme',
       defaultValue: 'light',
@@ -49,7 +49,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
         <Layout>
-      
+          {tag}
         {isLoading?<Loading/>: <Component {...pageProps} /> }
         {children}
           <Analytics/>
@@ -66,9 +66,16 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
           <Basic_lay/>
         </>
       );
+      const Tag = () => {
+        return(
+          <div className={stlyes.tag_div}>
+            <Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge>
+          </div>
+        )
+      }
       return (
         <>
-          <Basic_lay>
+          <Basic_lay order = {Tag}>
             <>
               <Space h ="lg"/>
               <ConTitle>閱讀更多</ConTitle>
