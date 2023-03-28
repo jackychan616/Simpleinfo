@@ -13,7 +13,7 @@ export default function Meta({ pageTitle, keywords, description ,subtitle,img}) 
           <meta property="og:title" content={pageTitle || siteTitle} />
           <meta property="og:description" content={description}  />
           <meta property="og:site_name" content="simpleinfohk.me"/>
-          <meta property='keyword' content={keywords}/>
+          <meta property='og:keyword' content={keywords}/>
           <meta property='og:image' content = {img}/>
       </Head>    
     </>
