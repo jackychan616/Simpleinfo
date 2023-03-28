@@ -13,6 +13,8 @@ import { useRouter } from 'next/router';
 import { ConTitle} from './components/component';
 import { Space } from '@mantine/core';
 import stlyes from './page.module.css';
+import GoogleAds from './components/googleAds';
+
 Router.onRouteChangeStart = () => {
   console.log('onRouteChangeStart Triggered');
   <Loading />;
@@ -52,6 +54,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
           {tag}
         {isLoading?<Loading/>: <Component {...pageProps} /> }
         {children}
+        <GoogleAds />
           <Analytics/>
         </Layout>
       </MantineProvider>  

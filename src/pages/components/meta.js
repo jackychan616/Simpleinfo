@@ -6,6 +6,7 @@ import { NextSeo } from 'next-seo';
 export default function Meta({ pageTitle, keywords, description ,subtitle,img}) {
   return (
     <>
+      <NextMeta/>
       <Head>
           <title>{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
           <meta property="og:locale" content="zh-Hant-HK"/>
