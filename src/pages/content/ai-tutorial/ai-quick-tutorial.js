@@ -93,7 +93,8 @@ function Page() {
         每個機器學習演算法都是基於一個可修改的數學函數建立的。以下的例子可幫助您了解基本原理：
       </ConText>
       <Image src = "/img/ml.webp"
-       width = {700}
+       max
+ = {700}
        alt = "機器學習"/>
       <List type="ordered">
         <List.Item>
