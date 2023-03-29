@@ -6,11 +6,12 @@ import {
   Image,
   Space,
   Grid,
+  Badge
 } from '@mantine/core';
 import { ConTitle, ConText } from '../../components/component';
 import { IconCircleCheck } from '@tabler/icons-react';
 import Meta from '../../components/meta';
-
+import styles from '../../page.module.css'
 export function ConPage() {
   return (
     <>
