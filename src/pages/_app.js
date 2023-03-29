@@ -71,14 +71,17 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       );
       const Tag = () => {
         return(
-          <div className={stlyes.tag_div}>
-            <Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge>
-          </div>
+          <>
+            <div className={stlyes.tag_div}>
+              <Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge>
+            </div>
+            <Space h = "lg"/>
+          </>
         )
       }
       return (
         <>
-          <Basic_lay order = {Tag}>
+          <Basic_lay tag = {<Tag/>}>
             <>
               <Space h ="lg"/>
               <ConTitle>閱讀更多</ConTitle>

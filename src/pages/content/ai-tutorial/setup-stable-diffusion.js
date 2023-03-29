@@ -15,10 +15,6 @@ import styles from '../../page.module.css'
 export function ConPage() {
   return (
     <>
-      <div className={styles.tag_div}>
-        <span><Badge variant="filled" >idk</Badge></span>
-        <span><Badge variant="filled" >idks</Badge></span>
-      </div>
       <Container>
         <Grid>
           <Grid.Col span="auto">
