@@ -11,7 +11,7 @@ function ConPage(){
             <ConText>然而，在他人生的晚年，張國榮宣布自己是同性戀者，這在當時的香港社會引起了不小的震動。他在2003年4月1日跳樓自殺身亡，給他的粉絲們帶來了極大的悲痛。他的音樂和電影作品至今仍然受到人們的喜愛和推崇。</ConText>
             <ConTitle order={2} size="h2">《最愛是誰》</ConTitle>
             <Space h={"lg"}/>
-            <iframe height={300}  width={500} src="https://www.youtube.com/embed/xa0pCqd-n0Q" title="張國榮 - 《最愛是誰 My Dearest》MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe height={300}  width={400} src="https://www.youtube.com/embed/xa0pCqd-n0Q" title="張國榮 - 《最愛是誰 My Dearest》MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <ConText>今年是哥哥張國榮逝世20周年，環球唱片推出 《REMEMBRANCE Leslie》，當中有從未曝光的《最愛是誰》，更找來李麗珍擔任女主角。專輯裡的歌曲沿用Leslie的原聲錄音聲軌由御用音樂人Alvin Leong任監製，並邀請到Ted Lo重新編曲。</ConText>
             <Image  maw={500} src="https://is2-ssl.mzstatic.com/image/thumb/Music116/v4/66/33/8f/66338ffc-19bf-e779-0898-6f983474df13/23UMGIM24614.rgb.jpg/600x600bf-60.jpg" alt="《最愛是誰 My Dearest》Cover" caption="《最愛是誰 My Dearest》Cover"/>
             <ConText>《最愛是誰 My Dearest》是一首完整的作品，從1989年張國榮推出的專輯《Salute》的母帶中被發現，但卻從未曝光。</ConText>
