@@ -241,11 +241,14 @@ export default function ConHeader() {
           <Link href="/" className={classes.link} onClick={closeDrawer}>
             首頁
           </Link>
+          <Link href="/content" className={classes.link} onClick={closeDrawer}>
+            文章
+          </Link>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
-            <Link href="/content">     
+            <Link href="#">     
               <Center inline>
                     <Box component="span" mr={5}>
-                      文章
+                      類型
                     </Box>
                    < BiChevronDown size={16}/>
               </Center>
