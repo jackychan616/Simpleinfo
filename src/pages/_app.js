@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import Layout from './components/layout';
 import { Analytics } from '@vercel/analytics/react';
-import { MantineProvider, Global,ColorSchemeProvider,ColorScheme,Badge} from '@mantine/core';
+import { MantineProvider, ColorSchemeProvider,Badge} from '@mantine/core';
 import { useState,useEffect } from 'react';
 import Loading from './loading';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
