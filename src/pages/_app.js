@@ -61,7 +61,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
     )
   }    
 
-    topic.concat(["/","/content"]);
+    topic.push(...["/","/content"]);
     if (topic.includes(appProps.router.pathname))
       return(
         <>
