@@ -9,8 +9,8 @@ export default function Meta({ pageTitle, keywords, description ,subtitle,img}) 
   )
 }
 
-function NextMeta({ pageTitle, keywords, Description ,subtitle,img,alt}){
-  const D=Description ? Description : defaultDescription;
+function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
+  const D=description ? description : defaultDescription;
   return(
       <NextSeo
       title={pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}
