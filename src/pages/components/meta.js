@@ -3,7 +3,6 @@ const defaultDescription ="香港資訊類型博客,專注於提供最新的電�
 import { NextSeo } from 'next-seo';
 
 export default function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
-function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
   const D=description ? description : defaultDescription;
   return(
       <NextSeo
