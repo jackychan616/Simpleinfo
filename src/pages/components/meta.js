@@ -9,17 +9,18 @@ export default function Meta({ pageTitle, keywords, description ,subtitle,img}) 
   )
 }
 
-function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
+function NextMeta({ pageTitle, keywords, Description ,subtitle,img,alt}){
   return(
     <>
       <NextSeo
       title={pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}
       canonical="https://simpleinfohk.me/"
-      description= {description ? description : defaultDescription}
+      description= {Description ? Description : defaultDescription}
       openGraph={{
         url:"https://simpleinfohk.me/",
+        siteName:'Simple Info',
         Title:pageTitle||siteTitle,
-        description:description ? description : defaultDescription,
+        description:Description ? Description : defaultDescription,
         images:[
           {
             url:img,
