@@ -1,20 +1,20 @@
-import Head from 'next/head';
-import Script from 'next/script';
 const siteTitle = "Simple Info HK";
 const defaultDescription ="香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊";
 import { NextSeo } from 'next-seo';
 
 export default function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
+function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
+  const D=description ? description : defaultDescription;
   return(
-    <>
       <NextSeo
       title={pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}
       canonical="https://simpleinfohk.me/"
-      description= {description ? description : defaultDescription}
+      description={D}
       openGraph={{
         url:"https://simpleinfohk.me/",
-        Title:pageTitle||siteTitle,
-        description:description ? description : defaultDescription,
+        siteName:'Simple Info',
+        title:pageTitle||siteTitle,
+        description:D,
         images:[
           {
             url:img,
@@ -23,9 +23,6 @@ export default function NextMeta({ pageTitle, keywords, description ,subtitle,im
         ]
 
       }}
-      >
-
-      </NextSeo>
-    </>
+      />
   );
 }

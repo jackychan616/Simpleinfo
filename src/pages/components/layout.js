@@ -1,5 +1,6 @@
 import ConHeader from './header';
-import { Text, Paper, Group ,Image, Box, TextInput,Button} from '@mantine/core';
+import { Text, Paper, Group ,Image, Box, TextInput} from '@mantine/core';
+import { useState,useEffect } from 'react';
 import Script from 'next/script'
 function Down(){
 
@@ -35,9 +36,13 @@ function Kofi(){
     );
 }
 export default function Layout({children}){
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        setTimeout(() => setIsLoading(false), 1e3);
+      }, []);
     return (
         <>
-            <ConHeader title="" />
+            {isLoading ? <></>: <ConHeader title="" />}
             <main>{children}</main>
             <Down/>
             <Kofi/>

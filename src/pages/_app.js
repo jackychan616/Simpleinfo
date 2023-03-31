@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import Layout from './components/layout';
 import { Analytics } from '@vercel/analytics/react';
-import { MantineProvider, Global,ColorSchemeProvider,ColorScheme,Badge} from '@mantine/core';
+import { MantineProvider, ColorSchemeProvider,Badge} from '@mantine/core';
 import { useState,useEffect } from 'react';
 import Loading from './loading';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
@@ -13,7 +13,6 @@ import { useRouter } from 'next/router';
 import { ConTitle} from './components/component';
 import { Space } from '@mantine/core';
 import stlyes from './page.module.css';
-import GoogleAds from './components/googleAds';
 
 Router.onRouteChangeStart = () => {
   console.log('onRouteChangeStart Triggered');
@@ -61,7 +60,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
     )
   }    
 
-    topic.push("/");
+    topic.push(...["/","/content"]);
     if (topic.includes(appProps.router.pathname))
       return(
         <>
