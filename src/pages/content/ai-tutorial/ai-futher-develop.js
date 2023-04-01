@@ -1,4 +1,5 @@
 import {Container,List} from '@mantine/core';
+import { func } from 'prop-types';
 import {ConText,ConTitle} from '../../components/component';
 
 export default function Page(){
@@ -52,4 +53,15 @@ export default function Page(){
             <ConTitle order={2}></ConTitle>
         </Container>
     );
+}
+
+export default function page(){
+    return (
+        <>
+        <Meta/>
+        <Container>
+            <Page />
+        </Container>       
+        </>
+    )
 }
