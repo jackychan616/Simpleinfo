@@ -33,6 +33,13 @@ const Bloglist = [
     date: '13/3/2023',
     tag : "AI 教學"
   },
+  {
+    name:'解構GPT-3工作原理',
+    path:'/ai-tutorial/openai-chatgpt-how-to-work',
+    img:'/img/openai.jpg',
+    date:'1/4/2023',
+    tag:'GPT'
+  }
 ];
 
 export default function content() {
