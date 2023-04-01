@@ -3,9 +3,10 @@ import Head from 'next/head';
 const siteTitle = "Simple Info HK";
 const defaultDescription ="香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊";
 import { NextSeo } from 'next-seo';
-export default function Meta({ pageTitle, keywords, description ,subtitle,img,alt}){
+export default function Meta({ children,pageTitle, keywords, description ,subtitle,img,alt}){
   return(
-      <Head>
+    <>
+    <Head>
           <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
           <meta property="description" content={description?description:defaultDescription}/>
           <meta property="image" content={img}/>
@@ -17,6 +18,8 @@ export default function Meta({ pageTitle, keywords, description ,subtitle,img,al
           <meta property='keyword' content={keywords}/>
           <meta property='og:image' content = {img}/>
       </Head>    
+    </>
+      
 
   );
 }
