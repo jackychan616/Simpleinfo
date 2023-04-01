@@ -12,7 +12,7 @@ export default function Meta({ children,pageTitle, keywords, description ,subtit
           <meta name="description" content={description?description:defaultDescription}/>
           <meta property="og:locale" content="zh-Hant-HK"/>
           <meta property="og:type" content="article"/>
-          <meta property="og:title" content={pageTitle || siteTitle} />
+          <meta property="og:title" content={pageTitle || siteTitle}  key="title"/>
           <meta property="og:description" content={description} />
           <meta property="og:site_name" content="simpleinfohk.me"/>
           <meta property="keyword" content={keywords}/>
