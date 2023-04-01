@@ -9,8 +9,8 @@ export default function Meta({ pageTitle, keywords, description ,subtitle,img,al
       <NextMeta />
       <Head>
           <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
-          <meta name="description" content={description?description:defaultDescription}/>
-          <meta name="image" content={img}/>
+          <meta property="description" content={description?description:defaultDescription}/>
+          <meta property="image" content={img}/>
           <meta property="og:locale" content="zh-Hant-HK"/>
           <meta property="og:type" content="article"/>
           <meta property="og:title" content={pageTitle || siteTitle} />
