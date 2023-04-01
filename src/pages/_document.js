@@ -1,7 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 import GoogleAds from './components/googleAds';
 import TrafficStarsAds from './components/trafficstars';
-import Meta from './components/meta';
 export default function Document() {
   return (
     <Html lang="zh-Hant-HK">
