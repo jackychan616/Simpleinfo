@@ -6,7 +6,6 @@ import { NextSeo } from 'next-seo';
 export default function Meta({ pageTitle, keywords, description ,subtitle,img,alt}){
   return(
     <>
-      <NextMeta />
       <Head>
           <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
           <meta property="description" content={description?description:defaultDescription}/>
