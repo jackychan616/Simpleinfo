@@ -14,11 +14,9 @@ export default function Meta({ pageTitle, keywords, description ,subtitle,img,al
           <meta property="og:site_name" content="simpleinfohk.me"/>
           <meta property='keyword' content={keywords}/>
           <meta property='og:image' content = {img}/>
-          
-    
-      </Head>
-      
+      </Head>    
     </>
+
   );
 }
 
@@ -28,7 +26,6 @@ function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
       <NextSeo
       title={pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}
       canonical="https://simpleinfohk.me/"
-      description={D}
       openGraph={{
         url:"https://simpleinfohk.me/",
         siteName:'Simple Info',
