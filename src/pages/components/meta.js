@@ -5,6 +5,7 @@ import Head from 'next/head';
 export default function Meta({ pageTitle, keywords, description ,subtitle,img,alt}){
   return(
     <>
+      <NextMeta />
       <Head>
           <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
           <meta property="og:locale" content="zh-Hant-HK"/>
@@ -19,18 +20,16 @@ export default function Meta({ pageTitle, keywords, description ,subtitle,img,al
 
   );
 }
-
 function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
-  const D=description ? description : defaultDescription;
   return(
+    <>
       <NextSeo
       title={pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}
       canonical="https://simpleinfohk.me/"
       openGraph={{
         url:"https://simpleinfohk.me/",
-        siteName:'Simple Info',
-        title:pageTitle||siteTitle,
-        description:D,
+        Title:pageTitle,
+        description:description ? description : defaultDescription,
         images:[
           {
             url:img,
@@ -39,6 +38,9 @@ function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
         ]
 
       }}
-      />
+      >
+
+      </NextSeo>
+    </>
   );
 }
