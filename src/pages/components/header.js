@@ -244,15 +244,13 @@ export default function ConHeader() {
           <Link href="/content" className={classes.link} onClick={closeDrawer}>
             文章
           </Link>
-          <UnstyledButton className={classes.link} onClick={toggleLinks}>
-            <Link href="#">     
+          <UnstyledButton className={classes.link}  onClick={toggleLinks}>  
               <Center inline>
                     <Box component="span" mr={5}>
                       類型
                     </Box>
                    < BiChevronDown size={16}/>
               </Center>
-              </Link>
           </UnstyledButton>
           
           <Collapse in={linksOpened}>{links}</Collapse>
