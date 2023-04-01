@@ -128,10 +128,10 @@ export default function Home() {
         description={'香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊'}
         img={'https://simpleinfo.live/img/simple_info.png'}
       />
-    <div style={{}}>
+      <Container>
+        <Body />
+      </Container>
       
-      <Body />
-    </div>
   </>
   );
 }

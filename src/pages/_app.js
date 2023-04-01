@@ -51,8 +51,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
         <Layout>
           {tag}
-        {isLoading?<Loading/>: <Component {...pageProps} /> }
-        {children}
+         {isLoading?<Loading/>: <Component {...pageProps} /> }
           <Analytics/>
         </Layout>
       </MantineProvider>  

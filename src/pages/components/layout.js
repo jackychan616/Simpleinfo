@@ -45,7 +45,6 @@ export default function Layout({children}){
             {isLoading ? <></>: <ConHeader title="" />}
             <main>{children}</main>
             <Down/>
-            <Kofi/>
         </>
     );
 }
