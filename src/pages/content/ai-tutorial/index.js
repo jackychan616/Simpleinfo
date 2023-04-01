@@ -39,6 +39,13 @@ const Bloglist = [
     img:'/img/openai.jpg',
     date:'1/4/2023',
     tag:'GPT'
+  },
+  {
+    name:"AI未來發展的前景 商業分析竟佔重要地位",
+    path:"/ai-tutorial/ai-futher-develop.js",
+    img:"",
+    date:"1/4/2023",
+    tag:"AI 教學"
   }
 ];
 
