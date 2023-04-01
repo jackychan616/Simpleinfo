@@ -8,7 +8,6 @@ export default function Document() {
       <Head>
         <link rel="icon" type="image/png" href="/icon.png" />
         <meta charSet="utf-8" />
-        <Meta/>
       </Head>
       <body>
         <Main />
