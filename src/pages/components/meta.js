@@ -5,7 +5,6 @@ const defaultDescription ="香港資訊類型博客,專注於提供最新的電�
 import { NextSeo } from 'next-seo';
 export default function Meta({ pageTitle, keywords, description ,subtitle,img,alt}){
   return(
-    <>
       <Head>
           <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
           <meta property="description" content={description?description:defaultDescription}/>
@@ -18,7 +17,6 @@ export default function Meta({ pageTitle, keywords, description ,subtitle,img,al
           <meta property='keyword' content={keywords}/>
           <meta property='og:image' content = {img}/>
       </Head>    
-    </>
 
   );
 }
