@@ -6,14 +6,6 @@ export default function Meta({ pageTitle, keywords, description ,subtitle,img,al
   return(
     <>
       <NextMeta/>
-      <Head>
-        <meta name="title" content={pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}/>
-        <meta name="description" content={description ? description : defaultDescription}/>
-        <meta name="og:title" content={pageTitle ? pageTitle : siteTitle}/>
-        <meta mame="og:image" content={img}/>
-        <meta property="og:description" content={description ? description : defaultDescription} />
-      </Head>
-      
     </>
   );
 }
