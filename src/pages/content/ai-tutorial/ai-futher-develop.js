@@ -57,7 +57,12 @@ export default function Page(){
 export default function Conpage(){
     return (
         <>
-         <Meta/>
+      <Meta
+        img={'/img/ai-light-talk/ai-1.jpg'}
+        pageTitle="AI未來發展的前景 商業分析竟佔重要地位"
+        description={
+          '隨著科技快速發展，人工智慧 (AI) 已經成為一個越來越受到關注的技術領域。AI的應用可以幫助企業提高效率、改善產品品質、為人類解決許多問題。未來，AI的發展前景非常廣闊， 亦能接手很多人類的工作。'
+        }/>
          <Container>
             <Page />
          </Container>       
