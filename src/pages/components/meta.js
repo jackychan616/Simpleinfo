@@ -6,11 +6,16 @@ export default function Meta({ pageTitle, keywords, description ,subtitle,img,al
   return(
     <>
       <Head>
-        <meta name="title" content={pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}/>
-        <meta name="description" content={description ? description : defaultDescription}/>
-        <meta name="og:title" content={pageTitle ? pageTitle : siteTitle}/>
-        <meta mame="og:image" content={img}/>
-        <meta property="og:description" content={description ? description : defaultDescription} />
+          <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
+          <meta property="og:locale" content="zh-Hant-HK"/>
+          <meta property="og:type" content="article"/>
+          <meta property="og:title" content={pageTitle || siteTitle} />
+          <meta property="og:description" content={description} />
+          <meta property="og:site_name" content="simpleinfohk.me"/>
+          <meta property='keyword' content={keywords}/>
+          <meta property='og:image' content = {img}/>
+          
+    
       </Head>
       
     </>
