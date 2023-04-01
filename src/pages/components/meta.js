@@ -5,7 +5,6 @@ import Head from 'next/head';
 export default function Meta({ pageTitle, keywords, description ,subtitle,img,alt}){
   return(
     <>
-      <NextMeta/>
       <Head>
         <meta name="title" content={pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}/>
         <meta name="description" content={description ? description : defaultDescription}/>
