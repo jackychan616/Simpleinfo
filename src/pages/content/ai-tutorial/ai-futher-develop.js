@@ -54,13 +54,13 @@ export default function Page(){
     );
 }
 
-export default function page(){
+export default function Conpage(){
     return (
         <>
-        <Meta/>
-        <Container>
+         <Meta/>
+         <Container>
             <Page />
-        </Container>       
-        </>
+         </Container>       
+         </>
     )
 }
