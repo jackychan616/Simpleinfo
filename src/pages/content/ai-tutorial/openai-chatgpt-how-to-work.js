@@ -17,7 +17,7 @@ function ConPage(){
                 <Timeline.Item title="微調階段"><Text color="dimmed" size="sm">對預訓練好的模型進行微調，以便針對特定的任務進行優化。</Text></Timeline.Item>
                 <Timeline.Item title="應用階段"><Text color="dimmed" size="sm">將微調後的模型應用於實際的自然語言處理任務中，如文本分類、機器翻譯、對話生成等。</Text></Timeline.Item>
             </Timeline>
-            <ConText order={2} size="h2">無監督學習</ConText>
+            <ConTitle order={2} size="h2">無監督學習</ConTitle>
             <ConText>GPT的訓練過程中，主要使用無監督學習的方法，即不需要人工標注的數據。具體來說，GPT將輸入的語言序列分成若幹個token，然後通過多層的自注意力機制和前向神經網絡來預測每個token的下一個token。預測時，GPT會給出一個概率分布，表示每個token能夠成為下一個token的可能性大小，然後根據這個概率分布進行采樣，從而得到下一個token。通過這種方式，GPT可以不斷地生成新的文本，從而實現對自然語言的生成。</ConText>
             <ConTitle order={3} size="h3">GPT的優勢</ConTitle>
             <ConText>GPT的優勢在於它能夠對大規模語料庫進行預訓練，從而建立起一個通用的語言模型。這種通用性使得GPT可以應用於多種自然語言處理任務，而且只需要微調就可以適應不同的任務。此外，GPT還具備語義理解和上下文感知能力，可以識別不同單詞之間的關聯關系，從而生成更加自然的文本。</ConText>
