@@ -52,6 +52,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         <Layout>
           {tag}
          {isLoading?<Loading/>: <Component {...pageProps} /> }
+         {children}
           <Analytics/>
         </Layout>
       </MantineProvider>  

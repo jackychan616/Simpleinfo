@@ -44,3 +44,33 @@
   position :absolute;
   left : 200px;
 }
+.div_simple{
+  position: absolute;
+  text-align: center;
+  top: 200px;
+  left:565px;
+}
+.s {
+	color: rgb(30, 144, 255);
+  font-size: 40px;
+}
+.i {
+	color: rgb(0, 0, 205);
+  font-size: 40px;
+}
+.m {
+	color: rgb(72, 61, 139);
+  font-size: 40px;
+}
+.p {
+	color: rgb(25, 25, 112);
+  font-size: 40px;
+}
+.l {
+	color: rgb(0, 191, 255);
+  font-size: 40px;
+}
+.e {
+	color: rgb(65 105 225	);
+  font-size: 40px;
+}
