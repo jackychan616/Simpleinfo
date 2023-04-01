@@ -1,7 +1,6 @@
 import {Container,List} from '@mantine/core';
-import { func } from 'prop-types';
 import {ConText,ConTitle} from '../../components/component';
-
+import Meta from '../../components/meta';
 export default function Page(){
     return(
         <Container>
