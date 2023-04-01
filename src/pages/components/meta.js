@@ -1,10 +1,12 @@
+
+import Head from 'next/head';
 const siteTitle = "Simple Info HK";
 const defaultDescription ="香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊";
 import { NextSeo } from 'next-seo';
-import Head from 'next/head';
 export default function Meta({ pageTitle, keywords, description ,subtitle,img,alt}){
   return(
     <>
+      <NextMeta />
       <Head>
           <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
           <meta name="description" content={description?description:defaultDescription}/>
@@ -16,24 +18,21 @@ export default function Meta({ pageTitle, keywords, description ,subtitle,img,al
           <meta property="og:site_name" content="simpleinfohk.me"/>
           <meta property='keyword' content={keywords}/>
           <meta property='og:image' content = {img}/>
-      </Head>
-      
+      </Head>    
     </>
+
   );
 }
-
 function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
-  const D=description ? description : defaultDescription;
   return(
+    <>
       <NextSeo
       title={pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}
       canonical="https://simpleinfohk.me/"
-      description={D}
       openGraph={{
         url:"https://simpleinfohk.me/",
-        siteName:'Simple Info',
-        title:pageTitle||siteTitle,
-        description:D,
+        Title:pageTitle,
+        description:description ? description : defaultDescription,
         images:[
           {
             url:img,
@@ -42,6 +41,9 @@ function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
         ]
 
       }}
-      />
+      >
+
+      </NextSeo>
+    </>
   );
 }
