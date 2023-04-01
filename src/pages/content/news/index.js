@@ -9,18 +9,21 @@ const Bloglist = [
     path: '/news/Faye-Wong',
     img: '/img/Faye_Wong_03.jpg',
     date: '11/3/23',
+    tag: '新聞'
   },
   {
     name: '謝霆鋒和王菲的合作',
     path: '/news/Faye-Wong-song',
     img: '/img/Faye_Wong_04.jpg',
     date: '12/3/23',
+    tag: "新聞"
   },
   {
     name:'《最愛是誰》懷念張國榮',
     path:'/news/leslie-quick-talk',
     img:'https://is2-ssl.mzstatic.com/image/thumb/Music116/v4/66/33/8f/66338ffc-19bf-e779-0898-6f983474df13/23UMGIM24614.rgb.jpg/600x600bf-60.jpg',
     date:'28/3/2023',
+    tag: "新聞"
   }
 ];
 
