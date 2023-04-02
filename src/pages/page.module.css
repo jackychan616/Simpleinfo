@@ -74,3 +74,8 @@
 	color: rgb(65 105 225	);
   font-size: 40px;
 }
+.share {
+  background-color: blue;
+  position: absolute;
+  left:50px
+}

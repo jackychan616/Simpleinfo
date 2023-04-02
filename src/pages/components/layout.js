@@ -2,6 +2,7 @@ import ConHeader from './header';
 import { Text, Paper, Group ,Image, Box, TextInput} from '@mantine/core';
 import { useState,useEffect } from 'react';
 import Script from 'next/script'
+import { Sharebutton } from './share';
 function Down(){
 
     return(

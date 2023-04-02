@@ -1,33 +1,34 @@
-
-import { Menu } from '@mantine/core';
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
-import ShareIcon from '@mui/icons-material/Share';
+import { Menu ,Button } from '@mantine/core';
+import { Share ,Copy,BrandFacebook} from 'tabler-icons-react';
 
 
-export function Sharebutton({children,url}) {
+export function Sharebutton({url}) {
     return(
-        <>
-        <Menu shadow="md" width={200}>
+    <>
+        <Menu shadow="md" width={200} position="right-end">
             <Menu.Target>
-                <Tooltip title="Share" >
-                    <IconButton >
-                        <ShareIcon color='primary'/ >
-                    </IconButton>
-                </Tooltip>
+                <Button
+                leftIcon = {<Share/>}
+                compact
+                fullWidth variant="outline"
+                >分享</Button>
             </Menu.Target>
             <Menu.Dropdown>
-                <Menu.Item component='a' onClick={() => {navigator.clipboard.writeText(url)}}>
+                <Menu.Item 
+                component='a' 
+                onClick={() => {navigator.clipboard.writeText(url)}} 
+                icon = {<Copy/>}
+                >
                     複製鏈結
                 </Menu.Item>
-                <Menu.Item scr = "/img/facebook.png">
+                <Menu.Item 
+                icon = {<BrandFacebook/>}
+                >
                     Share to facebook
                 </Menu.Item>
             </Menu.Dropdown>
         </Menu>
-        {children}
-        </>
-        
+    </>
     );
 }
 

@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import styles from '../styles/globals.css';
 import Layout from './components/layout';
 import { Analytics } from '@vercel/analytics/react';
 import { MantineProvider, ColorSchemeProvider,Badge} from '@mantine/core';
@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 import { ConTitle} from './components/component';
 import { Space } from '@mantine/core';
 import stlyes from './page.module.css';
-
+import { Sharebutton } from './components/share';
 Router.onRouteChangeStart = () => {
   console.log('onRouteChangeStart Triggered');
   <Loading />;
@@ -50,7 +50,8 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
         <Layout>
-          {tag}
+
+            {tag}
          {isLoading?<Loading/>: <Component {...pageProps} /> }
          {children}
           <Analytics/>
@@ -72,8 +73,13 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
           <>
             <div className={stlyes.tag_div}>
               <Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge>
+              <Space h = "lg"/>
+              <Sharebutton url = {"https://simpleinfohk.me" + appProps.router.pathname}/>
             </div>
             <Space h = "lg"/>
+            <Space h = "lg"/>
+            <Space h = "lg"/>
+
           </>
         )
       }
