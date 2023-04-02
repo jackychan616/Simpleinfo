@@ -31,9 +31,7 @@ function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
         ]
 
       }}
-      >
-
-      </NextSeo>
+      />
     </>
   );
 }
