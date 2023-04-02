@@ -25,6 +25,13 @@ export function Gettag(path){
     }
     return tag
 }
+export function Getblogdata(path){
+    for (const i in Bloglist) {
+        if (Bloglist[i]['path'] == path) {
+            return Bloglist[i];
+        }
+    }
+}
 function Context(){
     return(
         <></>
