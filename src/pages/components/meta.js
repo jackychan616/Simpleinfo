@@ -12,6 +12,7 @@ export default function Meta({ children,pageTitle, keywords, description ,subtit
 }
 function ConMeta({ children,pageTitle, keywords, description ,subtitle,img,alt,path}){
   <Head>
+          <title>{pageTitle?pageTitle?siteTitle}</title>
           <meta name="description" content={description} key={uuidv4()}/>
           <meta property="og:locale" content="zh-Hant-HK" key={uuidv4()}/>
           <meta property="og:type" content="article" key={uuidv4()}/>
