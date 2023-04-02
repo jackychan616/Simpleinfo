@@ -6,22 +6,28 @@ import { NextSeo } from 'next-seo';
 import { v4 as uuidv4 } from 'uuid';
 export default function Meta({ children,pageTitle, keywords, description ,subtitle,img,alt,path}){
   return(
-      <ConMeta/>
+      <ConMeta pageTitle={pageTitle}
+      description={description}
+      img = {img}
+      />
     
   );
 }
 function ConMeta({ children,pageTitle, keywords, description ,subtitle,img,alt,path}){
-  <Head>
-          <title>{pageTitle?pageTitle:siteTitle}</title>
-          <meta name="description" content={description} key={uuidv4()}/>
-          <meta property="og:locale" content="zh-Hant-HK" key={uuidv4()}/>
-          <meta property="og:type" content="article" key={uuidv4()}/>
-          <meta property="og:description" content={description}  key={uuidv4()}/>
-          <meta property="og:site_name" content="simpleinfohk.me" key={uuidv4()}/>
-          <meta property="keyword" content={keywords} key={uuidv4()}/>
-          <meta property="og:image" content = {img} key={uuidv4()}/>  
-      </Head>
+  return(
+    <Head>
+      <title>{pageTitle?pageTitle:siteTitle}</title>
+      <meta name="description" content={description} key={uuidv4()}/>
+      <meta property="og:locale" content="zh-Hant-HK" key={uuidv4()}/>
+      <meta property="og:type" content="article" key={uuidv4()}/>
+      <meta property="og:description" content={description}  key={uuidv4()}/>
+      <meta property="og:site_name" content="simpleinfohk.me" key={uuidv4()}/>
+      <meta property="keyword" content={keywords} key={uuidv4()}/>
+      <meta property="og:image" content = {img} key={uuidv4()}/>  
+    </Head>
+  );
 }
+
 
 function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
   return(
