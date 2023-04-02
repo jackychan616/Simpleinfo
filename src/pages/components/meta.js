@@ -7,7 +7,7 @@ export default function Meta({ children,pageTitle, keywords, description ,subtit
   return(
     <>
     <Head>
-          <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
+          <title >Simple info hk</title>
           <meta name="description" content={description?description:defaultDescription} key="description"/>
           <meta property="og:locale" content="zh-Hant-HK" key="og:locale"/>
           <meta property="og:type" content="article" key="og:type"/>
