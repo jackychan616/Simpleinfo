@@ -18,10 +18,8 @@ export default function Meta({ children,pageTitle, keywords, description ,subtit
           <meta property="og:image" content = {img} key="og:image"/>
       </Head>    
     </>
-      
-
-  );
 }
+
 function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
   return(
     <>
