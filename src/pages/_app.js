@@ -14,6 +14,8 @@ import { ConTitle} from './components/component';
 import { Space } from '@mantine/core';
 import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
+import Meta from './components/meta';
+import Head from 'next/head';
 Router.onRouteChangeStart = () => {
   console.log('onRouteChangeStart Triggered');
   <Loading />;
@@ -49,6 +51,9 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
     return(
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+        <Head>
+          <title>test</title>
+        </Head>
         <Layout>
 
             {tag}
