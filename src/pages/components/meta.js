@@ -9,14 +9,14 @@ export default function Meta({ children,pageTitle, keywords, description ,subtit
     <NextMeta pageTitle={pageTitle} description={description} img={img}/>
     <Head>
           <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
-          <meta name="description" content={description?description:defaultDescription}/>
-          <meta property="og:locale" content="zh-Hant-HK"/>
-          <meta property="og:type" content="article"/>
+          <meta name="description" content={description?description:defaultDescription} key="description"/>
+          <meta property="og:locale" content="zh-Hant-HK" key="og:locale"/>
+          <meta property="og:type" content="article" key="og:type"/>
           <meta property="og:title" content={pageTitle || siteTitle}  key="title"/>
-          <meta property="og:description" content={description} />
-          <meta property="og:site_name" content="simpleinfohk.me"/>
-          <meta property="keyword" content={keywords}/>
-          <meta property="og:image" content = {img}/>
+          <meta property="og:description" content={description} key="og:description"/>
+          <meta property="og:site_name" content="simpleinfohk.me" key="og:site_name"/>
+          <meta property="keyword" content={keywords} key="keyword"/>
+          <meta property="og:image" content = {img} key="og:image"/>
       </Head>    
     </>
       
