@@ -2,7 +2,7 @@ import { Container, List, Space, Image } from '@mantine/core';
 import { ConText, ConTitle } from '../../components/component';
 import Meta from '../../components/meta';
 import { Comments } from '../../components/comment';
-
+import Head from 'next/head';
 function Page() {
   return (
     <Container>
@@ -204,6 +204,10 @@ export default function ConPage() {
           'AI(人工智慧)  是電腦科學的一個領域，用於解決與人類智慧相關的常見認知問題 ，例如學習、解決問題和模式辨識。而這類行動原本需要人類智慧判斷或涉及超出人為分析能力上限的資料規模AI 是一個廣泛版圖，包含許多不同的專業領域，包括電'
         }
       />
+      <Head>
+        <meta property='og:image' content={'/img/ai.jpg'}/>
+        <meta name='description' content='AI(人工智慧)  是電腦科學的一個領域，用於解決與人類智慧相關的常見認知問題 ，例如學習、解決問題和模式辨識。而這類行動原本需要人類智慧判斷或涉及超出人為分析能力上限的資料規模AI 是一個廣泛版圖，包含許多不同的專業領域，包括電'/>
+      </Head>
       <Container>
         <Page />
         <Space h="lg" />
