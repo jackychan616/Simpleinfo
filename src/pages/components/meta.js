@@ -19,8 +19,7 @@ function ConMeta({ children,pageTitle, keywords, description ,subtitle,img,alt,p
       <meta property="og:type" content="article" key={uuidv4()}/>
       <meta property="og:description" content={description}  key={uuidv4()}/>
       <meta property="og:site_name" content="simpleinfohk.me" key={uuidv4()}/>
-      <meta property="keyword" content={keywords} key={uuidv4()}/>
-      <meta property="og:image" content = {img} key={uuidv4()}/>  
+      <meta property="og:image" content = {"https://simpleinfo.live"+img} key={uuidv4()}/>  
     </Head>
   );
 }
