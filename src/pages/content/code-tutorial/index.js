@@ -1,7 +1,7 @@
 import { Container } from '@mantine/core';
 import { ArtiCard } from '../../components/card';
 import { Page } from '../../components/page_index';
-import Meta from '../../components/meta';
+import {Meta} from '../../components/meta';
 
 const Bloglist = [
   {

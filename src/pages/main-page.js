@@ -7,7 +7,7 @@ import {
   Text,
   Image,
 } from '@mantine/core';
-import Meta from './components/meta';
+import {Meta} from './components/meta';
 import { TypeAnimation } from 'react-type-animation';
 import React from 'react';
 export const Bloglist = require('../data/Blog.json');

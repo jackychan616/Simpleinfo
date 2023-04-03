@@ -1,4 +1,4 @@
-import Meta from '../../components/meta';
+import {Meta} from '../../components/meta';
 
 const title = '[porker 撲克牌] 二十一點玩法教學 ';
 function Page() {

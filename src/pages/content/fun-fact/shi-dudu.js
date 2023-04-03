@@ -1,6 +1,6 @@
 import {Container,Image} from '@mantine/core';
 import {ConText,ConTitle} from '../../components/component';
-import Meta from '../../components/meta';
+import {Meta} from '../../components/meta';
 function Page(){
     return(
         <Container>

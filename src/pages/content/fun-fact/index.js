@@ -1,5 +1,5 @@
 import { ArtiCard } from '../../components/card';
-import Meta from '../../components/meta';
+import {Meta} from '../../components/meta';
 import { Page } from '../../components/page_index';
 import { Container } from '@mantine/core';
 

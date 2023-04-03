@@ -1,6 +1,6 @@
 import { ConTitle, ConText } from '../../components/component';
 import { Container, Image, Space } from '@mantine/core';
-import Meta from 'src/pages/components/meta';
+import {Meta} from 'src/pages/components/meta';
 
 function Conpage() {
   return (

@@ -1,6 +1,6 @@
 import { ConText, ConTitle, PyPrism } from '../../components/component';
 import { Container, Space } from '@mantine/core';
-import Meta from '../../components/meta';
+import {Meta} from '../../components/meta';
 
 function Page() {
   const code1 = `

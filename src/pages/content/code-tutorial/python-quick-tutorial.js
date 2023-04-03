@@ -14,7 +14,7 @@ import {
   PyPrism,
   ConTitle,
 } from '../../components/component';
-import Meta from '../../components/meta';
+import {Meta} from '../../components/meta';
 
 const kbd1 = `
 print('ok')

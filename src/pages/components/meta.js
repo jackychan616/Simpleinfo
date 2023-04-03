@@ -4,27 +4,12 @@ const siteTitle = "Simple Info HK";
 const defaultDescription ="香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊";
 import { NextSeo } from 'next-seo';
 import { v4 as uuidv4 } from 'uuid';
-export default function Meta({ children,pageTitle, keywords, description ,subtitle,img,alt,path}){
+export function Meta({ children,pageTitle, keywords, description ,subtitle,img,alt,path}){
   return(
-    <div>
-      <ConMeta pageTitle={pageTitle} description={description} img={img}/>
-    </div>
+      <NextMeta pageTitle={pageTitle} description={description} img={img} alt={alt}/>
+    
   );
 }
-function ConMeta({ children,pageTitle, keywords, description ,subtitle,img,alt,path}){
-  return(
-    <Head>
-      <title>{pageTitle?pageTitle:siteTitle}</title>
-      <meta name="description" content={description} key={uuidv4()}/>
-      <meta property="og:locale" content="zh-Hant-HK" key={uuidv4()}/>
-      <meta property="og:type" content="article" key={uuidv4()}/>
-      <meta property="og:description" content={description}  key={uuidv4()}/>
-      <meta property="og:site_name" content="simpleinfohk.me" key={uuidv4()}/>
-      <meta property="og:image" content = {"https://simpleinfo.live"+img} key={uuidv4()}/>  
-    </Head>
-  );
-}
-
 
 function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
   return(
@@ -39,7 +24,7 @@ function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
         description:description ? description : defaultDescription,
         images:[
           {
-            url:img,
+            url:'https://simpleinfohk.me'+img,
             alt:alt 
           }
         ]
@@ -48,4 +33,8 @@ function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
       />
     </>
   );
+}
+
+export default function Page(){
+  return(<></>);
 }
