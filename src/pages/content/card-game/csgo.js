@@ -1,4 +1,4 @@
-import Meta from '../../components/meta';
+import {Meta} from '../../components/meta';
 import { Container, Space, Image } from '@mantine/core';
 import { ConTitle, ConText } from '../../components/component';
 

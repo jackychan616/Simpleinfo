@@ -1,6 +1,6 @@
 import { Container, List, Space, Image } from '@mantine/core';
 import { ConText, ConTitle } from '../../components/component';
-import Meta from '../../components/meta';
+import{ Meta} from '../../components/meta';
 import { Comments } from '../../components/comment';
 import Head from 'next/head';
 function Page() {

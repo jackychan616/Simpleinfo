@@ -1,6 +1,6 @@
 import { ConTitle, ConText } from '../../components/component';
 import { Container, Image } from '@mantine/core';
-import Meta from 'src/pages/components/meta';
+import {Meta} from 'src/pages/components/meta';
 import { Blockquote } from '@mantine/core';
 function Page(){
     return(

@@ -1,7 +1,7 @@
 import { ConTitle, ConText } from '../../components/component';
 import { Container } from '@mantine/core';
 import Image from 'next/image';
-import Meta from 'src/pages/components/meta';
+import {Meta} from 'src/pages/components/meta';
 
 function Body() {
   return (

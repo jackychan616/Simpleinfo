@@ -1,6 +1,6 @@
 import { Container } from '@mantine/core';
 import { ArtiCard } from '../components/card';
-import Meta from '../components/meta';
+import{ Meta }from '../components/meta';
 
 const PostData = [
   {
