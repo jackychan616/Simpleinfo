@@ -6,8 +6,9 @@ import { NextSeo } from 'next-seo';
 import { v4 as uuidv4 } from 'uuid';
 export function Meta({ children,pageTitle, keywords, description ,subtitle,img,alt,path}){
   return(
+    <div>
       <NextMeta pageTitle={pageTitle} description={description} img={img} alt={alt}/>
-    
+    </div>
   );
 }
 
