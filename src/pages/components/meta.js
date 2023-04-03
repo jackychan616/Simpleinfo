@@ -8,15 +8,12 @@ export function Meta({ children,pageTitle, keywords, description ,subtitle,img,a
   return(
     <div>
       <Head>
-          <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta property="og:locale" content="zh-Hant-HK"/>
-          <meta property="og:type" content="article"/>
-          <meta property="og:title" content={pageTitle || siteTitle} />
-          <meta property="og:description" content={description} />
-          <meta property="og:site_name" content="simpleinfohk.me"/>
-          <meta property='keyword' content={keywords}/>
-          <meta property='og:image' content = {"https://simpleinfo.live" + img}/>
+          <title>{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
+          <meta property="og:title" content={pageTitle || siteTitle} key = {description + img} />
+          <meta property="og:description" content={description} key = {description} />
+          <meta property="og:site_name" content="simpleinfohk.me" key = {pageTitle}/>
+          <meta property='keyword' content={keywords} key = {pageTitle + description}/>
+          <meta property='og:image' content = {"https://simpleinfo.live" + img} key = {img}/>
       </Head>
     </div>
   );

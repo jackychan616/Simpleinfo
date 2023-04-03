@@ -37,6 +37,10 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
     return(
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+        <Head>
+          <meta property="og:locale" content="zh-Hant-HK"/>
+          <meta property="og:type" content="article"/>
+        </Head>
         <Layout>
             {tag}
             {isLoading?<Loading/>: <Component {...pageProps} /> }
