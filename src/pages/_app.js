@@ -37,11 +37,11 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
     return(
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+        <div><Head><title>test</title></Head> </div>
         <Layout>
-
             {tag}
-         {isLoading?<Loading/>: <Component {...pageProps} /> }
-         {children}
+            {isLoading?<Loading/>: <Component {...pageProps} /> }
+            {children}
           <Analytics/>
         </Layout>
       </MantineProvider>  
