@@ -34,3 +34,7 @@ function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
     </>
   );
 }
+
+export default function Page(){
+  return(<></>);
+}
