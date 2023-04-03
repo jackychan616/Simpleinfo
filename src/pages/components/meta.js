@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 export function Meta({ children,pageTitle, keywords, description ,subtitle,img,alt,path}){
   return(
     <div>
+      <NextMeta/>
       <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <title >{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
