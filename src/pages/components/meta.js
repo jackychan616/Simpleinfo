@@ -14,7 +14,7 @@ export function Meta({ children,pageTitle, keywords, description ,subtitle,img,a
 
 function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
   return(
-    <>
+    <div>
       <NextSeo
       title={pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}
       description={description?description:defaultDescription}
@@ -32,7 +32,7 @@ function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
 
       }}
       />
-    </>
+    </div>
   );
 }
 
