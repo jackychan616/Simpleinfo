@@ -37,6 +37,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
     return(
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+        <div><Head><title></title></Head> </div>
         <Layout>
             {tag}
             {isLoading?<Loading/>: <Component {...pageProps} /> }
