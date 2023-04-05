@@ -3,6 +3,8 @@ import { Text, Paper, Group ,Image, Box, TextInput} from '@mantine/core';
 import { useState,useEffect } from 'react';
 import Script from 'next/script'
 import { Sharebutton } from './share';
+import { FooterLinks } from './footer';
+
 function Down(){
 
     return(
@@ -46,7 +48,7 @@ export default function Layout({children}){
             {isLoading ? <></>: <ConHeader title="" />}
             <main>
                 {children}
-                <Down/>
+                <FooterLinks/>
             </main>
         </>
     );

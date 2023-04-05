@@ -47,9 +47,8 @@
 .div_simple{
   position: absolute;
   text-align: center;
-  zoom: 1.5;
-  top: 50%;
-  left :50%
+  top: 200px;
+  left:565px;
 }
 .s {
 	color: rgb(30, 144, 255);

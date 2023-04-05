@@ -5,7 +5,6 @@ import { MantineProvider, ColorSchemeProvider,Badge,Container} from '@mantine/co
 import { useState,useEffect } from 'react';
 import Loading from './loading';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
-import Router from 'next/router';
 import {topic} from '../data/topics'
 import { Recommend } from './components/recommend';
 import {Get,Gettag} from './components/getrecomm'
@@ -14,9 +13,7 @@ import { ConTitle} from './components/component';
 import { Space } from '@mantine/core';
 import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
-import Meta from './components/meta';
 import Head from 'next/head';
-
 
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
@@ -59,6 +56,9 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         </>
       );
       const Tag = () => {
+        if (Gettag(asPath.replace("/content",'')) == ""){
+          return <></>
+        }
         return(
           <>
             <div className={stlyes.tag_div}>
@@ -73,6 +73,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
           </>
         )
       }
+      
       return (
         <>
           <Basic_lay tag = {<Tag/>}>

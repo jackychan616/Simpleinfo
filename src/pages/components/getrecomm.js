@@ -14,9 +14,10 @@ export function Get(path){
                 R.push(Bloglist[j]);
         }
     }
-		return R;
+	return R;
 }
 export function Gettag(path){
+    var tag = "";
     for (const i in Bloglist) {
         if (Bloglist[i]['path'] == path) {
             var tag = Bloglist[i]['tag'];
