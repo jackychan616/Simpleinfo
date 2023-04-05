@@ -45,7 +45,7 @@ export function Recommend({chrilden,data}){
       <Image src={Data.img} height={140} width={140} />
       <div className={classes.body}>
         <Text transform="uppercase" color="dimmed" weight={700} size="xs">
-          {Data.name}
+          {Data.tag}
         </Text>
         <Text className={classes.name} mt="xs" mb="md">
           {Data.name}

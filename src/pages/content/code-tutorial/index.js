@@ -7,14 +7,14 @@ const Bloglist = [
   {
     name: 'python 快速入門',
     path: '/code-tutorial/python-quick-tutorial',
-    date: '',
+    date: '15/3/2023',
     img: '/img/py-icon.png',
     tag: '電腦編程教學'
   },
   {
     name: 'Linux幾個必學指令 ',
     path: '/code-tutorial/simple_linux_cmd',
-    date: '',
+    date: '15/3/2023',
     img: '/img/linux.jpeg',
     tag: '電腦編程教學'
   },
