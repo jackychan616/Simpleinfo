@@ -1,6 +1,7 @@
 import { Menu ,Button } from '@mantine/core';
 import { Share ,Copy,BrandFacebook} from 'tabler-icons-react';
-
+import {FacebookShareButton  ,FacebookIcon
+} from 'next-share'
 
 export function Sharebutton({url}) {
     return(
@@ -21,10 +22,13 @@ export function Sharebutton({url}) {
                 >
                     複製鏈結
                 </Menu.Item>
-                <Menu.Item 
+                <Menu.Item
                 icon = {<BrandFacebook/>}
+                component='a'
+                href={'https://www.facebook.com/sharer/sharer.php?u=https://simpleinfohk.me' + url}
+                target = "_blank"
                 >
-                    Share to facebook
+                    分享至facebook
                 </Menu.Item>
             </Menu.Dropdown>
         </Menu>
