@@ -44,8 +44,10 @@ export default function Layout({children}){
     return (
         <>
             {isLoading ? <></>: <ConHeader title="" />}
-            <main>{children}</main>
-            <Down/>
+            <main>
+                {children}
+                <Down/>
+            </main>
         </>
     );
 }

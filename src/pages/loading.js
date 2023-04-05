@@ -1,4 +1,4 @@
-import { Loader, Container, Space } from '@mantine/core';
+import { Loader, Container, Space, Center } from '@mantine/core';
 import styles from './page.module.css';
 import { ReactElement } from "react";
 
@@ -6,7 +6,6 @@ import { ReactElement } from "react";
 function Loading() {
   return (
     <div className={styles.full}>
-
       <div className={styles.div_simple}>
             <Loader color="indigo" size="xl" variant="bars" />
             <span><Space h="xm" /></span>

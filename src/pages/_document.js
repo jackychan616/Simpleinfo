@@ -12,7 +12,6 @@ export default function Document() {
         <Main />
         <NextScript />
         <GoogleAds />
-        <TrafficStarsAds/>
       </body>
     </Html>
   );
