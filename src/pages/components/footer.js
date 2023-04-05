@@ -184,3 +184,6 @@ export function FooterLinks() {
     </footer>
   );
 }
+export default function Conpage(){
+  return <></>
+}
