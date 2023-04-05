@@ -18,6 +18,7 @@ export default function Page(){
     return(
         <>
             <Meta pageTitle={"香港進軍AV第一人!素海霖中學時曾因一事被指鍾情「賣肉」"}/>
+            <ConPage/>
         </>
     );
 }
