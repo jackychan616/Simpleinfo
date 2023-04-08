@@ -1,7 +1,5 @@
 import { Menu ,Button } from '@mantine/core';
 import { Share ,Copy,BrandFacebook} from 'tabler-icons-react';
-import {FacebookShareButton  ,FacebookIcon
-} from 'next-share'
 
 export function Sharebutton({url}) {
     return(

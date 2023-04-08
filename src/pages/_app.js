@@ -15,6 +15,7 @@ import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
 import Head from 'next/head';
 
+
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
   function Basic_lay({children,tag}){

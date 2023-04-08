@@ -46,6 +46,13 @@ const Bloglist = [
     img:"/img/Ai_2.jpg",
     date:"1/4/2023",
     tag:"AI 教學"
+  },
+  {
+    name:'OpenXLA:史上最強開源項目，Google、微軟、蘋果、Meta，整合現有框架和硬件',
+    path:'/ai-tutorial/openxla-quick-tutorial',
+    img:'https://avatars.githubusercontent.com/u/107584881?s=200&v=4',
+    date:'8/4/2023',
+    tag:'AI 教學'
   }
 ];
 
