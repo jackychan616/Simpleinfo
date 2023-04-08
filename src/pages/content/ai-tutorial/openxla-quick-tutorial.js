@@ -47,6 +47,12 @@ function Page(){
             <ConText>“在研究方面，在 Meta AI，我們一直在使用 OpenXLA 項目的核心技術 XLA 來為雲 TPU 啟用 PyTorch 模型，並能夠在重要項目上實現顯著的性能改進。 我們相信開源加速了世界創新的步伐，很高興成為 OpenXLA 項目的一部分。” – Soumith Chintala，PyTorch 首席維護者</ConText>
             <ConTitle order={3} size="h3">AMD</ConTitle>
             <ConText>“我們對 OpenXLA 在廣泛的 AMD 設備系列（CPU、GPU、AIE）上的未來發展方向感到興奮，並為成為這個社區的一員而感到自豪。 我們重視具有開放治理、靈活廣泛的適用性、尖端功能和一流性能的項目，並期待繼續合作，為 ML 開發人員擴展開源生態系統。” – Alan Lee，AMD 公司軟件開發副總裁</ConText>
+            <ConTitle order={2} size="h2">參考文章</ConTitle>
+            <List>
+                <List.Item><a href="https://opensource.googleblog.com/2023/03/openxla-is-ready-to-accelerate-and-simplify-ml-development.html">Google OpenXLA</a></List.Item>
+                <List.Item><a href="https://zh.wikipedia.org/zh-hk/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97">平行計算</a></List.Item>
+                <List.Item><a href="https://github.com/openxla/xla">OpenXLA 開源代碼庫</a></List.Item>
+            </List>
         </Container>
     );
 }
