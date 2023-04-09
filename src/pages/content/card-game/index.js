@@ -24,6 +24,12 @@ const Bloglist = [
     img:'/img/csgo.png',
     date: '2/3/2023',
     tag: '遊戲'
+   },{
+    name:'Steam 移植遊戲-浮島物語 (Forager)',
+    path:'/card-game/steam-game-forager',
+    img:'/img/浮島物語/1.jpg',
+    date:'9/4/2023',
+    tag:'Steam遊戲'
    }
 ];
 
