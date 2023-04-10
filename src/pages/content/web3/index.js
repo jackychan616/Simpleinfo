@@ -9,7 +9,8 @@ const Bloglist = [{
     img:'/img/what-is-web4/blockchain.jpg',
     date:'10/4/2023',
     tag:'web 3.0'
-}];
+},
+];
 
 export default function ConPage(){
     <>

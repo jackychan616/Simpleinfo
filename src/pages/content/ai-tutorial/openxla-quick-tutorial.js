@@ -40,13 +40,17 @@ function Page(){
             <ConText>OpenXLA 讓用戶可以靈活地手動調整模型。Custom-call等擴展機制使用戶能夠使用CUDA、HIP、SYCL、Triton等內核語言編寫深度學習原語，從而充分利用硬件特性。</ConText>
             <ConTitle order={2} size="h2">OpenXLA 開發成員的說話</ConTitle>
             <ConTitle order={3} size="h3">Google</ConTitle>
-            <ConText>“開源軟件讓每個人都有機會幫助在 AI 領域取得突破。 在谷歌，我們正在 OpenXLA 項目上進行合作，以進一步實現我們對開源的承諾，並促進人工智能工具的採用，這些工具提高了 ML 性能的標準，解決了框架和硬件之間的不兼容性問題，並且可以重新配置以解決開發人員的定制用例。 我們很高興與 OpenXLA 社區一起開發這些工具，以便開發人員可以推動 AI 堆棧的許多不同層的進步。” – Jeff Dean，Google Research 和 AI 高級研究員兼高級副總裁</ConText>
+            <ConText>“開源軟件讓每個人都有機會幫助在 AI 領域取得突破。 在谷歌，我們正在 OpenXLA 項目上進行合作，以進一步實現我們對開源的承諾，並促進人工智能工具的採用，這些工具提高了 ML 性能的標準，解決了框架和硬件之間的不兼容性問題，並且可以重新配置以解決開發人員的定制用例。 我們很高興與 OpenXLA 社區一起開發這些工具，以便開發人員可以推動 AI 堆棧的許多不同層的進步。” </ConText>
+            <ConText>– Jeff Dean，Google Research 和 AI 高級研究員兼高級副總裁</ConText>
             <ConTitle order={3} size="h3">亞馬遜</ConTitle>
-            <ConText>“我們很高興成為 OpenXLA 項目的創始成員，該項目將使對高性能、可擴展和可擴展的 AI 基礎設施的訪問民主化，並在開源社區內進一步合作以推動創新。 在 AWS，我們的客戶在 AWS Trainium 和 Inferentia 上擴展他們的生成 AI 應用程序，我們的 Neuron SDK 依靠 XLA 來優化 ML 模型以獲得高性能和一流的每瓦性能。 借助強大的 OpenXLA 生態系統，開發人員可以繼續創新並通過可持續的 ML 基礎架構提供出色的性能，並且知道他們的代碼可以移植到他們選擇的硬件上使用。” – AWS 副總裁兼傑出工程師 Nafea Bshara</ConText>
+            <ConText>“我們很高興成為 OpenXLA 項目的創始成員，該項目將使對高性能、可擴展和可擴展的 AI 基礎設施的訪問民主化，並在開源社區內進一步合作以推動創新。 在 AWS，我們的客戶在 AWS Trainium 和 Inferentia 上擴展他們的生成 AI 應用程序，我們的 Neuron SDK 依靠 XLA 來優化 ML 模型以獲得高性能和一流的每瓦性能。 借助強大的 OpenXLA 生態系統，開發人員可以繼續創新並通過可持續的 ML 基礎架構提供出色的性能，並且知道他們的代碼可以移植到他們選擇的硬件上使用。” </ConText>
+            <ConText>– AWS 副總裁兼傑出工程師 Nafea Bshara</ConText>
             <ConTitle order={3} size="h3">Meta</ConTitle>
-            <ConText>“在研究方面，在 Meta AI，我們一直在使用 OpenXLA 項目的核心技術 XLA 來為雲 TPU 啟用 PyTorch 模型，並能夠在重要項目上實現顯著的性能改進。 我們相信開源加速了世界創新的步伐，很高興成為 OpenXLA 項目的一部分。” – Soumith Chintala，PyTorch 首席維護者</ConText>
+            <ConText>“在研究方面，在 Meta AI，我們一直在使用 OpenXLA 項目的核心技術 XLA 來為雲 TPU 啟用 PyTorch 模型，並能夠在重要項目上實現顯著的性能改進。 我們相信開源加速了世界創新的步伐，很高興成為 OpenXLA 項目的一部分。” </ConText>
+            <ConText>– Soumith Chintala，PyTorch 首席維護者</ConText>
             <ConTitle order={3} size="h3">AMD</ConTitle>
-            <ConText>“我們對 OpenXLA 在廣泛的 AMD 設備系列（CPU、GPU、AIE）上的未來發展方向感到興奮，並為成為這個社區的一員而感到自豪。 我們重視具有開放治理、靈活廣泛的適用性、尖端功能和一流性能的項目，並期待繼續合作，為 ML 開發人員擴展開源生態系統。” – Alan Lee，AMD 公司軟件開發副總裁</ConText>
+            <ConText>“我們對 OpenXLA 在廣泛的 AMD 設備系列（CPU、GPU、AIE）上的未來發展方向感到興奮，並為成為這個社區的一員而感到自豪。 我們重視具有開放治理、靈活廣泛的適用性、尖端功能和一流性能的項目，並期待繼續合作，為 ML 開發人員擴展開源生態系統。” </ConText>
+            <ConText>– Alan Lee，AMD 公司軟件開發副總裁</ConText>
             <ConTitle order={2} size="h2">參考文章</ConTitle>
             <List>
                 <List.Item><a href="https://opensource.googleblog.com/2023/03/openxla-is-ready-to-accelerate-and-simplify-ml-development.html">Google OpenXLA</a></List.Item>
