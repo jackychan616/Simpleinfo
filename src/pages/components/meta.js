@@ -8,6 +8,7 @@ export function Meta({ children,pageTitle, keywords, description ,subtitle,img,a
   return(
     <div>
       <Head>
+          <meta name="description" content={description?description:defaultDescription}/>
           <title>{pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}</title>
           <meta property="og:title" content={pageTitle || siteTitle} key = {description + img} />
           <meta property="og:description" content={description} key = {description} />
