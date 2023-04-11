@@ -1,3 +1,4 @@
+import styles from '../styles/globals.css';
 import Layout from './components/layout';
 import { Analytics } from '@vercel/analytics/react';
 import { MantineProvider, ColorSchemeProvider,Badge,Container} from '@mantine/core';
