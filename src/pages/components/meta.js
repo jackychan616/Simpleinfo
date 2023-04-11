@@ -14,7 +14,7 @@ export function Meta({ children,pageTitle, keywords, description ,subtitle,img,a
           <meta property="og:description" content={description} key = {description} />
           <meta property="og:site_name" content="simpleinfohk.me" key = {pageTitle}/>
           <meta property='keyword' content={keywords ? keywords: pageTitle + description} key = {pageTitle + description}/>
-          <meta property='og:image' content = {"https://simpleinfo.live" + img} key = {img}/>
+          <meta property='og:image' content = {"h\.ttps://simpleinfo.live" + img} key = {img}/>
       </Head>
     </div>
   );
