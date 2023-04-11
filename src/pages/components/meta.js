@@ -19,32 +19,6 @@ export function Meta({ children,pageTitle, keywords, description ,subtitle,img,a
     </div>
   );
 }
-
-function NextMeta({ pageTitle, keywords, description ,subtitle,img,alt}){
-  return(
-    <div>
-
-      <NextSeo
-      title={pageTitle ? pageTitle : siteTitle+(subtitle ?'-'+subtitle:'')}
-      description={description?description:defaultDescription}
-      canonical="https://simpleinfohk.me/"
-      openGraph={{
-        url:"https://simpleinfohk.me/",
-        Title:pageTitle,
-        description:description ? description : defaultDescription,
-        images:[
-          {
-            url:'https://simpleinfohk.me'+img,
-            alt:alt 
-          }
-        ]
-
-      }}
-      />
-    </div>
-  );
-}
-
 export default function Page(){
   return(<></>);
 }
