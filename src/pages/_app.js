@@ -14,7 +14,7 @@ import { Space } from '@mantine/core';
 import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
 import Head from 'next/head';
-
+import { NotificationsProvider } from '@mantine/notifications';
 
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
@@ -35,6 +35,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
     return(
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+        <NotificationsProvider>
         <Head>
           <meta property="og:locale" content="zh-Hant-HK"/>
           <meta property="og:type" content="article"/>
@@ -45,6 +46,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
             {children}
           <Analytics/>
         </Layout>
+        </NotificationsProvider>
       </MantineProvider>  
       </ColorSchemeProvider>
     )
@@ -74,7 +76,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
           </>
         )
       }
-      
+
       return (
         <>
           <Basic_lay tag = {<Tag/>}>
@@ -82,7 +84,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
                 <Space h ="lg"/>
                 <span><ConTitle>閱讀更多</ConTitle></span>
                 <span><Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge></span>
-                <Space h = "xl"/>
+                <Space h = "xl"/>   
                 <Recommend data = {Get(asPath.replace("/content",''))}/>
               </Container>
           </Basic_lay>

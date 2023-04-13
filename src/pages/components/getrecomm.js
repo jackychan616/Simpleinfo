@@ -17,7 +17,6 @@ export function Get(path){
 	return R;
 }
 export function Gettag(path){
-    var tag = "";
     for (const i in Bloglist) {
         if (Bloglist[i]['path'] == path) {
             var tag = Bloglist[i]['tag'];

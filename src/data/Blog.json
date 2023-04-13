@@ -4,21 +4,21 @@
     "path": "/ai-tutorial/photo-ai-tutorial",
     "img": "/img/ai-generate-img.webp",
     "date": "1/3/2023",
-    "tag ": "AI 教學"
+    "tag": "AI 教學"
   },
   {
     "name": "如何在Windows本地部署Stable Diffusion?",
     "path": "/ai-tutorial/setup-stable-diffusion",
     "img": "/img/stable-diffusion.webp",
     "date": "1/3/2023",
-    "tag ": "AI 教學"
+    "tag": "AI 教學"
   },
   {
     "name": "什麼是AI?",
     "path": "/ai-tutorial/ai-quick-tutorial",
     "img": "/img/ai.jpg",
     "date": "12/3/2023",
-    "tag ": "AI 教學"
+    "tag": "AI 教學"
   },
   {
     "name": "淺談AI",
@@ -173,5 +173,40 @@
     "img": "/img/5-gundam/1.jpg",
     "date": "6/3/2023",
     "tag": "toy"
+  },
+  {
+    "name": "如何使用AI繒圖？",
+    "path": "/ai-tutorial/photo-ai-tutorial",
+    "img": "/img/ai-generate-img.webp",
+    "date": "1/3/2023",
+    "tag ": "AI 教學"
+  },
+  {
+    "name": "如何在Windows本地部署Stable Diffusion?",
+    "path": "/ai-tutorial/setup-stable-diffusion",
+    "img": "/img/stable-diffusion.webp",
+    "date": "1/3/2023",
+    "tag ": "AI 教學"
+  },
+  {
+    "name": "什麼是AI?",
+    "path": "/ai-tutorial/ai-quick-tutorial",
+    "img": "/img/ai.jpg",
+    "date": "12/3/2023",
+    "tag ": "AI 教學"
+  },
+  {
+    "name": "OpenXLA:史上最強開源項目，Google、微軟、蘋果、Meta，整合現有框架和硬件",
+    "path": "/ai-tutorial/openxla-quick-tutorial",
+    "img": "https://avatars.githubusercontent.com/u/107584881?s=200&v=4",
+    "date": "8/4/2023",
+    "tag": "AI 教學"
+  },
+  {
+    "name": "Steam 移植遊戲-浮島物語 (Forager)",
+    "path": "/card-game/steam-game-forager",
+    "img": "/img/浮島物語/1.jpg",
+    "date": "9/4/2023",
+    "tag": "Steam遊戲"
   }
 ]
