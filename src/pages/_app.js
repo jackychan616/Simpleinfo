@@ -19,6 +19,7 @@ import { DefaultSeo } from 'next-seo';
 
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
+  const tag = Gettag(asPath.replace("/content",''));
   function Basic_lay({children,tag}){
     const [colorScheme, setColorScheme] = useLocalStorage({
       key: 'mantine-color-scheme',
@@ -66,20 +67,20 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
     )
   }    
     topic.push(...["/","/content"]);
-    if (topic.includes(appProps.router.pathname))
+    if (topic.includes(appProps.router.pathname) || tag == "")
       return(
         <>
           <Basic_lay/>
         </>
       );
       const Tag = () => {
-        if (Gettag(asPath.replace("/content",'')) == ""){
+        if (tag == ""){
           return <></>
         }
         return(
           <>
             <div className={stlyes.tag_div}>
-              <Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge>
+              <Badge variant="filled" >{tag}</Badge>
               <Space h = "lg"/>
               <Sharebutton url = {"https://simpleinfohk.me" + appProps.router.pathname}/>
             </div>
@@ -90,7 +91,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
           </>
         )
       }
-
       return (
         <>
           <Basic_lay tag = {<Tag/>}>
