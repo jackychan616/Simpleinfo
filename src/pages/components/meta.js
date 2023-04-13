@@ -4,7 +4,7 @@ const siteTitle = "Simple Info HK";
 const defaultDescription ="香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊";
 import { NextSeo } from 'next-seo';
 import { v4 as uuidv4 } from 'uuid';
-export function Meta({ children,pageTitle, keywords, description ,subtitle,img,alt,path}){
+function DefaultMeta({ children,pageTitle, keywords, description ,subtitle,img,alt,path}){
   return(
     <div>
       <Head>
@@ -21,6 +21,28 @@ export function Meta({ children,pageTitle, keywords, description ,subtitle,img,a
           <meta name="googlebot" content="notranslate"/>
       </Head>
     </div>
+  );
+}
+export function Meta(pageTitle, keywords, description ,subtitle,img,alt,path){
+  return(
+    <NextSeo
+      title={pageTitle ? pageTitle :siteTitle}
+      description={description ? description : defaultDescription}
+      canonical="https://simpleinfohk.me/"
+      openGraph={{
+        title:pageTitle?pageTitle:siteTitle,
+        description:description?description:defaultDescription,
+        images:[
+          {
+            url:'https://simpleinfohk.me/icon.png',
+            height:512,
+            width:512,
+            alt:'Simple Info HK',
+            type:'image/png',
+          }
+        ]
+      }}
+    />
   );
 }
 export default function Page(){
