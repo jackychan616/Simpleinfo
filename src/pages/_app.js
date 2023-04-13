@@ -15,6 +15,7 @@ import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
 import Head from 'next/head';
 import { NotificationsProvider } from '@mantine/notifications';
+import { DefaultSeo } from 'next-seo';
 
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
@@ -40,6 +41,19 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
           <meta property="og:locale" content="zh-Hant-HK"/>
           <meta property="og:type" content="article"/>
         </Head>
+      <DefaultSeo
+          openGraph={{
+            type: 'website',
+            locale: 'zh-Hant-HK',
+            url: 'https://simpleinfohk.me/',
+            siteName: 'Simple Info HK',
+          }}
+          twitter={{
+            handle: '@handle',
+            site: '@site',
+            cardType: 'summary_large_image',
+          }}
+        />
         <Layout>
             {tag}
             {isLoading?<Loading/>: <Component {...pageProps} /> }
