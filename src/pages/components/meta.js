@@ -17,7 +17,7 @@ export function Meta({ children,pageTitle, keywords, description ,subtitle,img,a
           <meta property='og:image' content = {"https://simpleinfo.live" + img} key = {img}/>
           <meta name="googlebot" content="notranslate"></meta>
           <link rel="icon" type="image/png" href="/icon.png" />
-          <meta charSet="utf-8" />
+          <meta charset="utf-8" />
           <meta name="googlebot" content="notranslate"/>
       </Head>
     </div>
