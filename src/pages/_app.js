@@ -35,7 +35,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       setTimeout(() => setIsLoading(false), 1e3);
     }, []);
     return(
-      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}> 
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
         <NotificationsProvider>
         <Head>
