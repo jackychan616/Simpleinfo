@@ -14,15 +14,6 @@ export function Meta(pageTitle, keywords, description ,subtitle,img,alt,path){
       openGraph={{
         title:pageTitle?pageTitle:siteTitle,
         description:description?description:defaultDescription,
-        images:[
-          {
-            url:'https://simpleinfohk.me/icon.png',
-            height:512,
-            width:512,
-            alt:'Simple Info HK',
-            type:'image/png',
-          }
-        ]
       }}
       twitter={{
         handle: '@handle',
