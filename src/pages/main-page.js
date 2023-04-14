@@ -6,6 +6,8 @@ import {
   AspectRatio,
   Text,
   Image,
+  Group,
+  Badge
 } from '@mantine/core';
 import {Meta} from './components/meta';
 import { TypeAnimation } from 'react-type-animation';
@@ -72,9 +74,14 @@ function Body() {
       <AspectRatio ratio={1920 / 1080}>
         <Image src={article.img} alt="" width="650" height="80" />
       </AspectRatio>
-      <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
+      <Group position="apart" mt="md" mb="xs">
+        <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
         {article.date}
-      </Text>
+        </Text>
+        <Badge variant="filled">
+          {article.tag}
+        </Badge>
+      </Group>
       <Text className={classes.name} mt={5}>
         {article.name}
       </Text>

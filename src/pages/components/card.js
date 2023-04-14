@@ -1,4 +1,4 @@
-import { createStyles, SimpleGrid, Card, Image, Text, Container, AspectRatio } from '@mantine/core';
+import { createStyles, SimpleGrid, Card, Image, Text, Container, AspectRatio ,Group,Badge} from '@mantine/core';
 
 
 
@@ -31,9 +31,14 @@ export function ArtiCard({children,data})   {
                  (max-width: 1200px) 50vw,
                  33vw" />
       </AspectRatio>
-      <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
+      <Group position="apart" mt="md" mb="xs">
+        <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
         {article.date}
-      </Text>
+        </Text>
+        <Badge variant="filled">
+          {article.tag}
+        </Badge>
+      </Group>
       <Text className={classes.name} mt={5}>
         {article.name}
       </Text>
