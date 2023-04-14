@@ -53,8 +53,8 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
             images:[
               {
                 url:'https://simpleinfohk.me/icon.png',
-                height:512,
-                width:512,
+                height:128,
+                width:128,
                 alt:'Simple Info HK',
                 type:'image/png',
               }],
