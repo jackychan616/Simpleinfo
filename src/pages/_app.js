@@ -41,6 +41,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
             locale: 'zh-Hant-HK',
             url: 'https://simpleinfohk.me/',
             siteName: 'Simple Info HK',
+            description: 'Simple Info Hk',
           }}
           twitter={{
             handle: '@handle',
