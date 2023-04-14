@@ -6,8 +6,8 @@ import { NextSeo } from 'next-seo';
 import { v4 as uuidv4 } from 'uuid';
 
 export function Meta(pageTitle, keywords, description ,subtitle,img,alt,path){
-  return(
-    <NextSeo
+  return <></>
+  /*     <NextSeo
       title={pageTitle ? pageTitle :siteTitle}
       description={description ? description : defaultDescription}
       canonical="https://simpleinfohk.me/"
@@ -21,7 +21,7 @@ export function Meta(pageTitle, keywords, description ,subtitle,img,alt,path){
         cardType: 'summary_large_image',
       }}
     />
-  );
+    */
 }
 export default function Page(){
   return(<></>);
