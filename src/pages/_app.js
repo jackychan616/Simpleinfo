@@ -48,7 +48,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
             locale: 'zh-Hant-HK',
             url: 'https://simpleinfohk.me/',
             siteName: 'Simple Info HK',
-            description: 'Simple Info Hk',
+            description: '香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊',
           }}
           twitter={{
             handle: '@handle',
