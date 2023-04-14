@@ -14,10 +14,12 @@ import { Space } from '@mantine/core';
 import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
 import Head from 'next/head';
+import { NotificationsProvider } from '@mantine/notifications';
 import { DefaultSeo } from 'next-seo';
 
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
+  const tag = Gettag(asPath.replace("/content",''));
   function Basic_lay({children,tag}){
     const [colorScheme, setColorScheme] = useLocalStorage({
       key: 'mantine-color-scheme',
@@ -35,6 +37,11 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
     return(
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+        <NotificationsProvider>
+        <Head>
+          <meta property="og:locale" content="zh-Hant-HK"/>
+          <meta property="og:type" content="article"/>
+        </Head>
       <DefaultSeo
           openGraph={{
             type: 'website',
@@ -55,25 +62,26 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
             {children}
           <Analytics/>
         </Layout>
+        </NotificationsProvider>
       </MantineProvider>  
       </ColorSchemeProvider>
     )
   }    
     topic.push(...["/","/content"]);
-    if (topic.includes(appProps.router.pathname))
+    if (topic.includes(appProps.router.pathname) || tag == "")
       return(
         <>
           <Basic_lay/>
         </>
       );
       const Tag = () => {
-        if (Gettag(asPath.replace("/content",'')) == ""){
+        if (tag == ""){
           return <></>
         }
         return(
           <>
             <div className={stlyes.tag_div}>
-              <Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge>
+              <Badge variant="filled" >{tag}</Badge>
               <Space h = "lg"/>
               <Sharebutton url = {"https://simpleinfohk.me" + appProps.router.pathname}/>
             </div>
@@ -84,7 +92,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
           </>
         )
       }
-      
       return (
         <>
           <Basic_lay tag = {<Tag/>}>
@@ -92,7 +99,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
                 <Space h ="lg"/>
                 <span><ConTitle>閱讀更多</ConTitle></span>
                 <span><Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge></span>
-                <Space h = "xl"/>
+                <Space h = "xl"/>   
                 <Recommend data = {Get(asPath.replace("/content",''))}/>
               </Container>
           </Basic_lay>
