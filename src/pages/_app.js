@@ -39,7 +39,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
         <NotificationsProvider>
       <DefaultSeo
-        title='Simple Info Hk'
+        defaultTitle='Simple Info Hk'
           description='香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊'
           openGraph={{
             type: 'website',

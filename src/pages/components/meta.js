@@ -13,9 +13,7 @@ export function Meta(pageTitle, keywords, description ,subtitle,img,alt,path){
           openGraph={{
             title:pageTitle?pageTitle:siteTitle,
             description:description?description:defaultDescription,
-          }}
-          
-          
+          }}         
           twitter={{
             handle: '@handle',
             site: '@site',
