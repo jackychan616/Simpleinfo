@@ -6,7 +6,10 @@
   padding: 6rem;
   min-height: 100vh;
 }
-
+.footer {
+  position: relative;
+  bottom: 0%;
+}
 .description {
   display: inherit;
   justify-content: inherit;
@@ -78,4 +81,8 @@
   background-color: blue;
   position: absolute;
   left:50px
+}
+.footer_page {
+  position: relative;
+  left : 0%;
 }

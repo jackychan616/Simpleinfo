@@ -25,7 +25,7 @@
     "path": "/ai-tutorial/ai-light-talk",
     "img": "/img/ai-light-talk/ai-2.jpg",
     "date": "13/3/2023",
-    "tag ": "AI 教學"
+    "tag": "AI 教學"
   },
   {
     "name": "解構GPT-3工作原理",
@@ -180,13 +180,6 @@
     "img": "/img/浮島物語/1.jpg",
     "date": "9/4/2023",
     "tag": "Steam遊戲"
-  },
-  {
-    "name": "什麼是AI?",
-    "path": "/ai-tutorial/ai-quick-tutorial",
-    "img": "/img/ai.jpg",
-    "date": "12/3/2023",
-    "tag ": "AI 教學"
   },
   {
     "name": "OpenXLA:史上最強開源項目，Google、微軟、蘋果、Meta，整合現有框架和硬件",

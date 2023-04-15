@@ -1,6 +1,6 @@
 import { createStyles, Text, Container, ActionIcon, Group ,Image} from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
- 
+import styles from "../page.module.css"
 const data = [
         {
             "title": "Support",
