@@ -38,10 +38,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}> 
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
         <NotificationsProvider>
-        <Head>
-          <meta property="og:locale" content="zh-Hant-HK"/>
-          <meta property="og:type" content="article"/>
-        </Head>
       <DefaultSeo
           description='香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊'
           openGraph={{
@@ -49,6 +45,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
             locale: 'zh-Hant-HK',
             url: 'https://simpleinfohk.me/',
             siteName: 'Simple Info HK',
+            title:'Simple Info HK',
             description: '香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊',
             images:[
               {
