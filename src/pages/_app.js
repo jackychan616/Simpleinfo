@@ -48,8 +48,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
             locale: 'zh-Hant-HK',
             url: 'https://simpleinfohk.me/',
             siteName: 'Simple Info HK',
-            title:'Simple Info HK',
-            description: '香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊',
             images:[
               {
                 url:'https://simpleinfohk.me/icon.png',
