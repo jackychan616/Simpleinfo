@@ -42,7 +42,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         <link rel='icon' href="/icon.png"/>
       </Head>
       <DefaultSeo
-          defaultTitle='Simple Info Hk'
           description='香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊'
           openGraph={{
             type: 'website',
