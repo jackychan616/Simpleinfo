@@ -41,7 +41,6 @@ function Kofi(){
 export default function Layout({children}){
     return (
         <>
-            {isLoading ? <></>: <ConHeader title="" />}
             {children}
             <FooterLinks/>
         </>
