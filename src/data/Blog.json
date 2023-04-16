@@ -194,5 +194,12 @@
     "img": "/img/what-is-web4/blockchain.jpg",
     "date": "10/4/2023",
     "tag": "web3"
+  },
+  {
+    "name": "Elon Musk 創立了 X.AI 公司對抗OpenAI",
+    "path": "/ai-tutorial/xai-quick-talk",
+    "img": "/img/xai-quick-talk/elon-musk.jpg",
+    "date": "16/4/2023",
+    "tag": "AI"
   }
 ]

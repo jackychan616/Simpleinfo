@@ -136,8 +136,7 @@ export default function ConHeader() {
 
   return (
     <Box pb={0} >
-      <Header height={60} px="md">
-        
+      <Header height={60} px="md">    
         <Group position="apart" sx={{ height: '100%' }}>
           <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
             <Link href="/" 
