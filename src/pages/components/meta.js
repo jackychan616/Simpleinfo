@@ -4,7 +4,7 @@ const siteTitle = "Simple Info HK";
 const defaultDescription ="香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊";
 import { NextSeo } from 'next-seo';
 
-export function Meta(children,pageTitle, keywords, description ,subtitle,img,alt,path){
+export function Meta({children,pageTitle, keywords, description ,subtitle,img,alt,path}){
   return (
     <NextSeo
           title={pageTitle ? pageTitle :siteTitle}
