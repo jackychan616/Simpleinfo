@@ -2,7 +2,6 @@ import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
 import { createStyles, Paper, Text, Title, Button, useMantineTheme, Container } from '@mantine/core';
 import { topics } from 'src/data/topics';
-import { Topic_card } from './components/topic_card';
 const Bloglist = require('../../data/Blog.json');
 function getrandomblog(){
     var n = [];
