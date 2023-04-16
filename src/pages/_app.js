@@ -15,11 +15,12 @@ import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
 import Head from 'next/head';
 import { NotificationsProvider } from '@mantine/notifications';
-import { DefaultSeo } from 'next-seo';
+import { DefaultSeo ,NextSeo } from 'next-seo';
 
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
   const tag = Gettag(asPath.replace("/content",''));
+  const { openGraphData = [] } = pageProps;
   function Basic_lay({children,tag}){
     const [colorScheme, setColorScheme] = useLocalStorage({
       key: 'mantine-color-scheme',
@@ -62,6 +63,11 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
             cardType: 'summary_large_image',
           }}
         />
+        <Head>
+        {openGraphData.map((og,index) => (
+          <meta {...og} key={index}/>
+        ))}
+      </Head>
         <Layout>
             {tag}
             {isLoading?<Loading/>: <Component {...pageProps} /> }
