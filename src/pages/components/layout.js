@@ -41,6 +41,7 @@ function Kofi(){
 export default function Layout({children}){
     return (
         <>
+            <ConHeader/>
             {children}
             <FooterLinks/>
         </>
