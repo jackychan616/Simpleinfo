@@ -70,10 +70,7 @@ export default function content() {
         <Page
           hTitle="AI 教學"
           img="/img/ai.webp"
-          fill
-          sizes="(max-width: 768px) 100vw,
-                (max-width: 1200px) 50vw,
-                33vw"
+          maw={500}
         >
           <ArtiCard data={Bloglist} />
         </Page>
