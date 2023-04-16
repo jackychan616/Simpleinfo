@@ -4,7 +4,7 @@ import { createStyles, Paper, Text, Title, Button, useMantineTheme, Container } 
 import { topics } from 'src/data/topics';
 import { Topic_card } from './components/topic_card';
 import { Cards } from './components/topic_card';
-const Bloglist = require('../../data/Blog.json');
+const Bloglist = require('../data/Blog.json');
 function getrandomblog(){
     var n = [];
     var num = []
