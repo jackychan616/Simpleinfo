@@ -146,8 +146,8 @@ export function CardsCarousel() {
   );
 }
 function Content(){
-    const blogs = topics.map((item) => (
-        <Text>
+    const blogs = topics.map((item,index) => (
+        <Text key={index}>
             {item.name}
         </Text>
     ))
