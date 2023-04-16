@@ -5,7 +5,7 @@ const defaultDescription ="香港資訊類型博客,專注於提供最新的電�
 import { NextSeo } from 'next-seo';
 
 export function Meta({children,pageTitle, keywords, description ,subtitle,img,alt,path}){
-  var type ='image/'+ img.split('.')[1];
+  var type =img ? 'image/'+ img.split('.')[1] :'';
   return (
     <NextSeo
           title={pageTitle ? pageTitle :siteTitle}
