@@ -20,6 +20,7 @@ import { DefaultSeo ,NextSeo } from 'next-seo';
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
   const tag = Gettag(asPath.replace("/content",''));
+  const { openGraphData = [] } = pageProps;
   function Basic_lay({children,tag}){
     const [colorScheme, setColorScheme] = useLocalStorage({
       key: 'mantine-color-scheme',
