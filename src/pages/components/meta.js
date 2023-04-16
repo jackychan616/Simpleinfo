@@ -13,6 +13,14 @@ export function Meta({children,pageTitle, keywords, description ,subtitle,img,al
           openGraph={{
             title:pageTitle?pageTitle:siteTitle,
             description:description?description:defaultDescription,
+            images:[
+              {
+                height:150,
+                width:300,
+                url:'https://simpleinfohk.me/'+{img},
+                alt:alt?alt:''
+              }
+            ]
           }}         
           twitter={{
             handle: '@handle',
