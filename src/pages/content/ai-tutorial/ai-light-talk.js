@@ -1,7 +1,7 @@
 import { Container, List } from '@mantine/core';
 import { ConText, ConTitle } from '../../components/component';
 import {Meta} from '../../components/meta';
-
+import Head from 'next/head';
 function Page() {
   return (
     <Container>
@@ -43,6 +43,9 @@ function Page() {
 export default function ConPage() {
   return (
     <>
+      <Head>
+
+      </Head>
       <Meta
         img={'/img/ai-light-talk/ai-1.jpg'}
         pageTitle="淺談AI"

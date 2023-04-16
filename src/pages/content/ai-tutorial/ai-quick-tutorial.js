@@ -197,6 +197,9 @@ function Page() {
 export default function ConPage() {
   return (
     <>
+      <Head>
+        <title>什麼是AI? 10分鐘內學懂AI</title>
+      </Head>
       <Container>
         <Page />
         <Space h="lg" />

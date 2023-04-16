@@ -1,7 +1,7 @@
 import { Container, Image,Space } from '@mantine/core';
 import { ConText, ConTitle} from '../../components/component';
 import {Meta} from '../../components/meta';
-
+import Head from 'next/head';
 function Page(){
     return(
         <Container>
@@ -27,6 +27,9 @@ function Page(){
 export default function ConPage(){
     return(
         <>
+            <Head>
+                <title>Elon Musk 創立了 X.AI 公司對抗OpenAI</title>
+            </Head>
             <Page/>
         </>
     );
