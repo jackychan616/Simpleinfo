@@ -39,7 +39,7 @@ export const getStaticProps = async () => {
           {
             property: "og:image",
             content:
-              "/img/xai-quick-talk/elon-musk.jpg",
+              "https://simpleinfohk.me/img/xai-quick-talk/elon-musk.jpg",
           },
           {
             property: "og:image:width",
