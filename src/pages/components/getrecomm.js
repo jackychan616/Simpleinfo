@@ -33,6 +33,18 @@ export function Getblogdata(path){
         }
     }
 }
+export function Getblogbytag(tag,name){
+    const R = [];
+    for (const i in Bloglist) {
+        if (Bloglist[i]['tag'] == tag){
+            R.push(Bloglist[i]);
+        }
+        if (Bloglist[i]['tag'] == name){
+            R.push(Bloglist[i])
+        }
+    }
+    return R;
+}
 function Context(){
     return(
         <></>
