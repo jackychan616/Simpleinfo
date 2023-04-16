@@ -53,6 +53,13 @@ const Bloglist = [
     img:'https://avatars.githubusercontent.com/u/107584881?s=200&v=4',
     date:'8/4/2023',
     tag:'AI 教學'
+  },
+  {
+    name:'Elon Musk 創立了 X.AI 公司對抗OpenAI',
+    path:'/ai-tutorial/xai-quick-talk',
+    img:'/img/xai-quick-talk/elon-musk.jpg',
+    date:'16/4/2023',
+    tag:'AI'
   }
 ];
 
