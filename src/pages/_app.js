@@ -37,7 +37,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
     return(
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}> 
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-        <NotificationsProvider>
       <Head>
         <link rel='icon' href="/icon.png"/>
       </Head>
@@ -69,7 +68,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
             {children}
           <Analytics/>
         </Layout>
-        </NotificationsProvider>
       </MantineProvider>  
       </ColorSchemeProvider>
     )
