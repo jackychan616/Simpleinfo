@@ -197,17 +197,6 @@ function Page() {
 export default function ConPage() {
   return (
     <>
-      <Meta
-        pageTitle={'什麼是AI? 10分鐘內學懂AI'}
-        img={'/img/ai.jpg'}
-        description={
-          'AI(人工智慧)  是電腦科學的一個領域，用於解決與人類智慧相關的常見認知問題 ，例如學習、解決問題和模式辨識。而這類行動原本需要人類智慧判斷或涉及超出人為分析能力上限的資料規模AI 是一個廣泛版圖，包含許多不同的專業領域，包括電'
-        }
-      />
-      <Head>
-        <meta property='og:image' content={'/img/ai.jpg'}/>
-        <meta name='description' content='AI(人工智慧)  是電腦科學的一個領域，用於解決與人類智慧相關的常見認知問題 ，例如學習、解決問題和模式辨識。而這類行動原本需要人類智慧判斷或涉及超出人為分析能力上限的資料規模AI 是一個廣泛版圖，包含許多不同的專業領域，包括電'/>
-      </Head>
       <Container>
         <Page />
         <Space h="lg" />
@@ -216,3 +205,46 @@ export default function ConPage() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      openGraphData: [
+        {
+          name:'description',
+          content:'AI(人工智慧)  是電腦科學的一個領域，用於解決與人類智慧相關的常見認知問題 ，例如學習、解決問題和模式辨識。而這類行動原本需要人類智慧判斷或涉及超出人為分析能力上限的資料規模AI 是一個廣泛版圖，包含許多不同的專業領域，包括電'
+
+        },
+        {
+          name:'title',
+          content:'什麼是AI? 10分鐘內學懂AI'
+        },
+        {
+          property: "og:image",
+          content:
+            "https://simpleinfohk.me/img/ai.jpg",
+        },
+        {
+          property: "og:image:width",
+          content: "400",
+        },
+        {
+          property: "og:image:height",
+          content: "300",
+        },
+        {
+          property: "og:title",
+          content: "什麼是AI? 10分鐘內學懂AI",
+        },
+        {
+          property: "og:description",
+          content: "AI(人工智慧)  是電腦科學的一個領域，用於解決與人類智慧相關的常見認知問題 ，例如學習、解決問題和模式辨識。而這類行動原本需要人類智慧判斷或涉及超出人為分析能力上限的資料規模AI 是一個廣泛版圖，包含許多不同的專業領域，包括電",
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+      ],
+    },
+  };
+};

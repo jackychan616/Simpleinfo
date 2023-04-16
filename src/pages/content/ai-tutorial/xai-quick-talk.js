@@ -52,11 +52,11 @@ export const getStaticProps = async () => {
           },
           {
             property: "og:image:width",
-            content: "400",
+            content: "300",
           },
           {
             property: "og:image:height",
-            content: "300",
+            content: "200",
           },
           {
             property: "og:title",

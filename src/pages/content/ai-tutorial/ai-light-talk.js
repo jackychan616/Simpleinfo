@@ -56,3 +56,46 @@ export default function ConPage() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      openGraphData: [
+        {
+          name:'description',
+          content:'AI（Artificial Intelligence）也被稱為人工智能，是一項研究如何讓計算機實現類似人類智能的技術。它是一個廣泛的研究領域，涉及到計算機科學、統計學、數學和神經科學等多個學科。AI可以分為兩大類：一是“強人工智能”，這種人工智能可以像人類一樣思考，甚至超過人類思維水平；二是“弱人工智能”，這種人工智能只能執行特定任務，例如語音識別、圖像識別、自然語言處理等。'
+
+        },
+        {
+          name:'title',
+          content:'淺談AI'
+        },
+        {
+          property: "og:image",
+          content:
+            "https://simpleinfohk.me/img/ai-light-talk/ai-1.jpg",
+        },
+        {
+          property: "og:image:width",
+          content: "400",
+        },
+        {
+          property: "og:image:height",
+          content: "300",
+        },
+        {
+          property: "og:title",
+          content: "淺談AI",
+        },
+        {
+          property: "og:description",
+          content: "AI（Artificial Intelligence）也被稱為人工智能，是一項研究如何讓計算機實現類似人類智能的技術。它是一個廣泛的研究領域，涉及到計算機科學、統計學、數學和神經科學等多個學科。AI可以分為兩大類：一是“強人工智能”，這種人工智能可以像人類一樣思考，甚至超過人類思維水平；二是“弱人工智能”，這種人工智能只能執行特定任務，例如語音識別、圖像識別、自然語言處理等。",
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+      ],
+    },
+  };
+};
