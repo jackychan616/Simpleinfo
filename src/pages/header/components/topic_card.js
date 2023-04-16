@@ -39,7 +39,7 @@ export function Topic_card(
   ...others){
   const { classes, cx, theme } = useStyles();   
   const load = topics.map((item)=>(    
-        <Container>
+        <Container key = {item.name}>
           <Card
           radius="md"
           style={{ backgroundImage: `url(${""})`, ...style }}
