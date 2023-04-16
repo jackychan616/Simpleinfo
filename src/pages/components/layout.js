@@ -39,10 +39,6 @@ function Kofi(){
     );
 }
 export default function Layout({children}){
-    const [isLoading, setIsLoading] = useState(true);
-    useEffect(() => {
-        setTimeout(() => setIsLoading(false), 1e3);
-      }, []);
     return (
         <>
             {isLoading ? <></>: <ConHeader title="" />}
