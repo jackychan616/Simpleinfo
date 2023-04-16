@@ -151,7 +151,7 @@ export default function ConHeader() {
                       首頁
               </Box>
             </Link>
-            <Link href="/header/hot" className={classes.link}>
+            <Link href="/hot" className={classes.link}>
                   <Box component='span' mr={5}>
                     近期最熱
                   </Box>
