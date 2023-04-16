@@ -82,3 +82,6 @@ export function Topic_card(
     </Container>
   );
 }
+export default function Conpage(){
+  return <></>
+}
