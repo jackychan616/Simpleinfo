@@ -40,33 +40,11 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
       <Head>
         <link rel='icon' href="/icon.png"/>
-      </Head>
-      <DefaultSeo
-          description='香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊'
-          openGraph={{
-            type: 'website',
-            locale: 'zh-Hant-HK',
-            url: 'https://simpleinfohk.me/',
-            siteName: 'Simple Info HK',
-            images:[
-              {
-                url:'https://simpleinfohk.me/icon.png',
-                height:128,
-                width:128,
-                alt:'Simple Info HK',
-                type:'image/png',
-              }],
-          }}
-          twitter={{
-            handle: '@handle',
-            site: '@site',
-            cardType: 'summary_large_image',
-          }}
-        />
-        <Head>
         {openGraphData.map((og,index) => (
           <meta {...og} key={index}/>
         ))}
+        <meta name="charSet" content="utf-8"/>
+        <meta property="og:locale" content="zh-Hant-HK"/>
       </Head>
         <Layout>
             {tag}
