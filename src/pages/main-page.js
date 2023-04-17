@@ -129,7 +129,7 @@ export default function Home() {
   return (
   <>
       <Head>
-         <title>Simple Info Hk</Head>
+         <title>Simple Info Hk</title>
       </Head>
       <Container>
         <Body />
