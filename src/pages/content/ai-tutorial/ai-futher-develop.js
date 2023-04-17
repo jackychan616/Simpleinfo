@@ -1,6 +1,6 @@
 import {Container,List} from '@mantine/core';
 import {ConText,ConTitle} from '../../components/component';
-import {Meta} from '../../components/meta';
+import Head from 'next/head';
 function Page(){
     return(
         <Container>
@@ -57,15 +57,55 @@ function Page(){
 export default function Conpage(){
     return (
         <>
-      <Meta
-        img={'/img/ai-light-talk/ai-1.jpg'}
-        pageTitle="AI未來發展的前景 商業分析竟佔重要地位"
-        description={
-          '隨著科技快速發展，人工智慧 (AI) 已經成為一個越來越受到關注的技術領域。AI的應用可以幫助企業提高效率、改善產品品質、為人類解決許多問題。未來，AI的發展前景非常廣闊， 亦能接手很多人類的工作。'
-        }/>
+            <Head>
+                <title>AI未來發展的前景 商業分析竟佔重要地位</title>
+            </Head>
          <Container>
             <Page/>
          </Container>       
          </>
     )
 }
+
+export const getStaticProps = async () => {
+    return {
+      props: {
+        openGraphData: [
+          {
+            name:'description',
+            content:'隨著科技快速發展，人工智慧 (AI) 已經成為一個越來越受到關注的技術領域。AI的應用可以幫助企業提高效率、改善產品品質、為人類解決許多問題。未來，AI的發展前景非常廣闊， 亦能接手很多人類的工作。'
+  
+          },
+          {
+            name:'title',
+            content:'AI未來發展的前景 商業分析竟佔重要地位'
+          },
+          {
+            property: "og:image",
+            content:
+              "https://simpleinfohk.me/img/ai-light-talk/ai-1.jpg",
+          },
+          {
+            property: "og:image:width",
+            content: "400",
+          },
+          {
+            property: "og:image:height",
+            content: "300",
+          },
+          {
+            property: "og:title",
+            content: "AI未來發展的前景 商業分析竟佔重要地位",
+          },
+          {
+            property: "og:description",
+            content: "隨著科技快速發展，人工智慧 (AI) 已經成為一個越來越受到關注的技術領域。AI的應用可以幫助企業提高效率、改善產品品質、為人類解決許多問題。未來，AI的發展前景非常廣闊， 亦能接手很多人類的工作。",
+          },
+          {
+            property: "og:type",
+            content: "website",
+          },
+        ],
+      },
+    };
+  };
