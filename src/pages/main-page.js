@@ -154,7 +154,7 @@ export const getStaticProps = async () => {
         },
         {
           name:'title',
-          content:'史上最強開源項目，Google、微軟、Apple、Meta共同開發OpenXLA項目'
+          content:'Simple Info HK'
         },
         {
           property: "og:image",
@@ -175,7 +175,7 @@ export const getStaticProps = async () => {
         },
         {
           property: "og:description",
-          content: "2022年 10 月的 Google Cloud Next 2022 活動中，OpenXLA 項目正式浮出水面，Google與包括Meta、Apple、AMD、Arm、亞馬遜、英特爾、英偉達、阿里巴巴等科技公司推動的開源 AI 框架合作，致力於匯集不同機器學習框架，讓機器學習開發人員獲得能主動選擇框架、硬件的能力。",
+          content: "on={'香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊",
         },
         {
           property: "og:type",
