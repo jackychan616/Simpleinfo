@@ -5,14 +5,14 @@ export const topics = [
           name:"電腦編程教學",
           path:"code-tutorial",
           page:1,
-          description:"詳細易明的教學",
+          description:"詳細易明的編程教學 , python , c++ , javascript",
           icon:DevicesPc
         },
         {
             name:"AI 教學",
             path:"ai-tutorial",
             page:0,
-            description:"掌握最新AI資訊",
+            description:"掌握最新AI資訊, 最新Openai教學 , Gpt-4應用操作",
             icon:Robot
         },
         {
@@ -40,14 +40,14 @@ export const topics = [
           name:"體育",
           path:'sport',
           page:1,
-          description:"體育",
+          description:"分享體育大小事, 足球, 英超 ,西甲,各大聯賽等",
           icon:BallFootball
         },
         {
           name:"新聞",
           path:"news",
           page:2,
-          description:"新聞,香港社會新聞,香港新聞,娛樂新聞",
+          description:"報道各地時事新聞,香港社會新聞,香港新聞,娛樂新聞",
           icon:News
         },
         {

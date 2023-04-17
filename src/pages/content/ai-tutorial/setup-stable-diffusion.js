@@ -103,3 +103,45 @@ export default function page() {
     </>
   );
 }
+export const getStaticProps = async () => {
+  return {
+    props: {
+      openGraphData: [
+        {
+          name:'description',
+          content:'如何在Windows部署AI畫圖, 使用Python在電腦搭建Stable diffusion'
+
+        },
+        {
+          name:'title',
+          content:'如何在Windows部署AI畫圖'
+        },
+        {
+          property: "og:image",
+          content:
+            "https://simpleinfohk.me/img/stable-diffusion.webp",
+        },
+        {
+          property: "og:image:width",
+          content: "300",
+        },
+        {
+          property: "og:image:height",
+          content: "200",
+        },
+        {
+          property: "og:title",
+          content: "如何在Windows部署AI畫圖",
+        },
+        {
+          property: "og:description",
+          content: "如何在Windows部署AI畫圖, 使用Python在電腦搭建Stable diffusion",
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+      ],
+    },
+  };
+};

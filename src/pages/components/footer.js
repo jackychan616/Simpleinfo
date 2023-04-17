@@ -135,7 +135,6 @@ export function FooterLinks() {
         className={classes.link}
         component="a"
         href={link.link}
-        onClick={(event) => event.preventDefault()}
       >
         {link.label}
       </Text>
@@ -159,7 +158,7 @@ export function FooterLinks() {
           </Group>
           
           <Text size="xs" color="dimmed" className={classes.description}>
-            Build fully functional accessible web applications faster than ever
+            香港資訊性網站 ,追求穩定 ,內容豐富的各類型資訊
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>
