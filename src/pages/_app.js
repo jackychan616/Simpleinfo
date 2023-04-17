@@ -14,8 +14,7 @@ import { Space } from '@mantine/core';
 import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
 import Head from 'next/head';
-import { NotificationsProvider } from '@mantine/notifications';
-import { DefaultSeo ,NextSeo } from 'next-seo';
+import GoogleAds from './components/googleAds';
 
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
@@ -47,6 +46,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         <meta property="og:locale" content="zh-Hant-HK"/>
       </Head>
         <Layout>
+          <GoogleAds />
             {tag}
             {isLoading?<Loading/>: <Component {...pageProps} /> }
             {children}
