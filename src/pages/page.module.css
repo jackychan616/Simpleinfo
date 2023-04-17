@@ -50,8 +50,12 @@
 .div_simple{
   position: absolute;
   text-align: center;
-  top: 200px;
-  left:565px;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  width: 100px;
+  height: 100px;
 }
 .s {
 	color: rgb(30, 144, 255);

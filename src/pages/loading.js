@@ -5,7 +5,6 @@ import { ReactElement } from "react";
 
 function Loading() {
   return (
-    <div className={styles.full}>
       <div className={styles.div_simple}>
             <Loader color="indigo" size="xl" variant="bars" />
             <span><Space h="xm" /></span>
@@ -16,7 +15,6 @@ function Loading() {
             <span><h className = {styles.l}>l</h></span>
             <span><h className = {styles.e}>e</h></span>
       </div>
-    </div>
   );
 }
 Loading.getLayout = function getLayout(page) {

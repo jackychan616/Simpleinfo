@@ -4,6 +4,7 @@ import { useState,useEffect } from 'react';
 import Script from 'next/script'
 import { Sharebutton } from './share';
 import { FooterLinks } from './footer';
+import Loading from '../loading';
 
 function Down(){
 
@@ -45,9 +46,12 @@ export default function Layout({children}){
       }, []);
     return (
         <>
-            {isLoading ? <></>: <ConHeader title="" />}
-            {children}
-            <FooterLinks/>
+            {isLoading ? <><Loading/></>: <div>
+                                <ConHeader title=""></ConHeader>
+                                    {children}
+                                <FooterLinks></FooterLinks></div>
+                                }
+            
         </>
     );
 }

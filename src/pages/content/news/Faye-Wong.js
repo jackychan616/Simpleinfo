@@ -57,3 +57,45 @@ export default function Page() {
     </>
   );
 }
+export const getStaticProps = async () => {
+  return {
+    props: {
+      openGraphData: [
+        {
+          name:'description',
+          content:'謝霆鋒和王菲合作過多首歌曲，其中最著名的是<<因為愛情>>、<<傳奇>>和<<曖昧>>。這些歌曲都非常成功，成為了中國音樂歷史上的經典作品。'
+
+        },
+        {
+          name:'title',
+          content:'不在藏了? 王菲和謝霆鋒',
+        },
+        {
+          property: "og:image",
+          content:
+            "https://simpleinfohk.me/img/xai-quick-talk/elon-musk.jpg",
+        },
+        {
+          property: "og:image:width",
+          content: "300",
+        },
+        {
+          property: "og:image:height",
+          content: "200",
+        },
+        {
+          property: "og:title",
+          content: "不在藏了? 王菲和謝霆鋒",
+        },
+        {
+          property: "og:description",
+          content: "謝霆鋒和王菲合作過多首歌曲，其中最著名的是<<因為愛情>>、<<傳奇>>和<<曖昧>>。這些歌曲都非常成功，成為了中國音樂歷史上的經典作品。",
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+      ],
+    },
+  };
+};
