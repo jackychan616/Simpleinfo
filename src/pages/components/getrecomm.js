@@ -33,6 +33,15 @@ export function Getblogdata(path){
         }
     }
 }
+export function Gethottopicimg(name,tag){
+    const R =[];
+    for(const i in Bloglist){
+        if (Bloglist[i]["tag"] == name || Bloglist[i]["tag"] == tag){
+            R.push(Bloglist[i]["img"]);
+        }
+    }
+    return R.slice(-1)[0] 
+}
 export function Getblogbytag(tag,name){
     const R = [];
     for (const i in Bloglist) {

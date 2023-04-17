@@ -21,7 +21,7 @@ const Bloglist = [
   {
     name:'《最愛是誰》懷念張國榮',
     path:'/news/leslie-quick-talk',
-    img:'https://is2-ssl.mzstatic.com/image/thumb/Music116/v4/66/33/8f/66338ffc-19bf-e779-0898-6f983474df13/23UMGIM24614.rgb.jpg/600x600bf-60.jpg',
+    img:'/img/leslie.jpg',
     date:'28/3/2023',
     tag: "新聞"
   }

@@ -1,7 +1,7 @@
 import { createStyles, Card, Overlay, CardProps, Button, Text, Container } from '@mantine/core';
 import { topics } from 'src/data/topics';
-import { Getblogbytag } from '../../components/getrecomm';
-import { ArtiCard } from '../../components/card';
+import { Getblogbytag, Gethottopicimg} from '../../components/getrecomm';
+import { ArtiCard} from '../../components/card';
 const useStyles = createStyles((theme) => ({
   card: {
     height: 240,
@@ -42,7 +42,7 @@ export function Topic_card(
         <Container key = {item.name}>
           <Card
           radius="md"
-          style={{ backgroundImage: `url(${""})`, ...style }}
+          style={{ backgroundImage: `url(${"https://simpleinfo.live" + Gethottopicimg(item.name,item.path)})`, ...style }}
         className={cx(classes.card, className)}
           {...others}
           >

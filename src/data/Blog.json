@@ -1,16 +1,16 @@
 [
   {
-    "name": "如何使用AI繒圖？",
-    "path": "/ai-tutorial/photo-ai-tutorial",
-    "img": "/img/ai-generate-img.webp",
-    "date": "1/3/2023",
-    "tag": "AI 教學"
-  },
-  {
     "name": "如何在Windows本地部署Stable Diffusion?",
     "path": "/ai-tutorial/setup-stable-diffusion",
     "img": "/img/stable-diffusion.webp",
     "date": "1/3/2023",
+    "tag": "AI 教學"
+  },
+  {
+    "name": "OpenXLA:史上最強開源項目，Google、微軟、蘋果、Meta，整合現有框架和硬件",
+    "path": "/ai-tutorial/openxla-quick-tutorial",
+    "img": "/img/xla.png",
+    "date": "8/4/2023",
     "tag": "AI 教學"
   },
   {
@@ -142,7 +142,7 @@
   {
     "name": "《最愛是誰》懷念張國榮",
     "path": "/news/leslie-quick-talk",
-    "img": "https://is2-ssl.mzstatic.com/image/thumb/Music116/v4/66/33/8f/66338ffc-19bf-e779-0898-6f983474df13/23UMGIM24614.rgb.jpg/600x600bf-60.jpg",
+    "img": "/img/leslie.jpg",
     "date": "28/3/2023",
     "tag": "新聞"
   },
@@ -182,16 +182,9 @@
     "tag": "Steam遊戲"
   },
   {
-    "name": "OpenXLA:史上最強開源項目，Google、微軟、蘋果、Meta，整合現有框架和硬件",
-    "path": "/ai-tutorial/openxla-quick-tutorial",
-    "img": "https://avatars.githubusercontent.com/u/107584881?s=200&v=4",
-    "date": "8/4/2023",
-    "tag": "AI 教學"
-  },
-  {
     "name": "Web 3.0和區塊鏈是什麼?是否對現實生活和環境的潛在環境有影響？",
     "path": "/web3/what-is-web3",
-    "img": "/img/what-is-web4/blockchain.jpg",
+    "img": "/img/what-is-web3/blockchain.jpg",
     "date": "10/4/2023",
     "tag": "web3"
   },

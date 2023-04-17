@@ -5,14 +5,6 @@ import { Container } from '@mantine/core';
 
 const Bloglist = [
   {
-    name: '如何使用AI繒圖？',
-    path: '/ai-tutorial/photo-ai-tutorial',
-    img: '/img/ai-generate-img.webp',
-    date: '1/3/2023',
-    tag: "AI 教學"
-
-  },
-  {
     name: '如何在Windows本地部署Stable Diffusion?',
     path: '/ai-tutorial/setup-stable-diffusion',
     img: '/img/stable-diffusion.webp',
@@ -25,6 +17,13 @@ const Bloglist = [
     img: '/img/ai.jpg',
     date: '12/3/2023',
     tag: "AI 教學"
+  },
+  {
+    name:'OpenXLA:史上最強開源項目，Google、微軟、蘋果、Meta，整合現有框架和硬件',
+    path:'/ai-tutorial/openxla-quick-tutorial',
+    img:'https://avatars.githubusercontent.com/u/107584881?s=200&v=4',
+    date:'8/4/2023',
+    tag:'AI 教學'
   },
   {
     name: '淺談AI',
@@ -46,13 +45,6 @@ const Bloglist = [
     img:"/img/Ai_2.jpg",
     date:"1/4/2023",
     tag:"AI 教學"
-  },
-  {
-    name:'OpenXLA:史上最強開源項目，Google、微軟、蘋果、Meta，整合現有框架和硬件',
-    path:'/ai-tutorial/openxla-quick-tutorial',
-    img:'https://avatars.githubusercontent.com/u/107584881?s=200&v=4',
-    date:'8/4/2023',
-    tag:'AI 教學'
   },
   {
     name:'Elon Musk 創立了 X.AI 公司對抗OpenAI',
