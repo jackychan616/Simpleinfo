@@ -10,6 +10,7 @@ import {
   Badge
 } from '@mantine/core';
 import {Meta} from './components/meta';
+import Head  from 'next/head';
 import { TypeAnimation } from 'react-type-animation';
 import React from 'react';
 export const Bloglist = require('../data/Blog.json');
@@ -148,17 +149,17 @@ export const getStaticProps = async () => {
       openGraphData: [
         {
           name:'description',
-          content:'香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊'
+          content:'2022年 10 月的 Google Cloud Next 2022 活動中，OpenXLA 項目正式浮出水面，Google與包括Meta、Apple、AMD、Arm、亞馬遜、英特爾、英偉達、阿里巴巴等科技公司推動的開源 AI 框架合作，致力於匯集不同機器學習框架，讓機器學習開發人員獲得能主動選擇框架、硬件的能力。'
 
         },
         {
           name:'title',
-          content:'Simple Info HK'
+          content:'史上最強開源項目，Google、微軟、Apple、Meta共同開發OpenXLA項目'
         },
         {
           property: "og:image",
           content:
-            "https://simpleinfo.live/img/simple_info.png",
+            "https://avatars.githubusercontent.com/u/107584881?s=200&v=4",
         },
         {
           property: "og:image:width",
@@ -170,11 +171,11 @@ export const getStaticProps = async () => {
         },
         {
           property: "og:title",
-          content: "Simple Info HK",
+          content: "史上最強開源項目，Google、微軟、Apple、Meta共同開發OpenXLA項目",
         },
         {
           property: "og:description",
-          content: "香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊",
+          content: "2022年 10 月的 Google Cloud Next 2022 活動中，OpenXLA 項目正式浮出水面，Google與包括Meta、Apple、AMD、Arm、亞馬遜、英特爾、英偉達、阿里巴巴等科技公司推動的開源 AI 框架合作，致力於匯集不同機器學習框架，讓機器學習開發人員獲得能主動選擇框架、硬件的能力。",
         },
         {
           property: "og:type",
