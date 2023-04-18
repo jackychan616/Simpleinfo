@@ -64,7 +64,7 @@ export const getStaticProps = async () => {
           {
             property: "og:image",
             content:
-              "https://simpleinfohk.me//img/what-is-web3/blockchain.jpg",
+              "https://simpleinfohk.me/img/what-is-web3/blockchain.jpg",
           },
           {
             property: "og:image:width",

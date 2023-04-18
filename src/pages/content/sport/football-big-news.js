@@ -185,16 +185,53 @@ function CPage() {
 export default function ConPage() {
   return (
     <>
-      <Meta
-        pageTitle={'球隊大事記—曼聯'}
-        img="/img/football-big-news/1.webp"
-        description={
-          '曼聯的發展歷史--曼徹斯特聯足球俱樂部，簡稱曼聯，目前在英格蘭超級聯賽比賽。在22-23賽季，曼聯在創造了曼聯歷史最大失利被利物浦7比0大比數戰勝，這個歴史悠久的球會是如何在英超中掘起？又如何在近年沒落？讓我們一起回顧這段曼聯的歷史。'
-        }
-      />
+      
       <Container>
         <CPage />
       </Container>
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      openGraphData: [
+        {
+          name:'description',
+          content:'曼聯的發展歷史--曼徹斯特聯足球俱樂部，簡稱曼聯，目前在英格蘭超級聯賽比賽。在22-23賽季，曼聯在創造了曼聯歷史最大失利被利物浦7比0大比數戰勝，這個歴史悠久的球會是如何在英超中掘起？又如何在近年沒落？讓我們一起回顧這段曼聯的歷史。'
+
+        },
+        {
+          name:'title',
+          content:'球隊大事記—曼聯'
+        },
+        {
+          property: "og:image",
+          content:
+            "https://simpleinfohk.me/img/football-big-news/1.webp",
+        },
+        {
+          property: "og:image:width",
+          content: "300",
+        },
+        {
+          property: "og:image:height",
+          content: "200",
+        },
+        {
+          property: "og:title",
+          content: "球隊大事記—曼聯",
+        },
+        {
+          property: "og:description",
+          content: "曼聯的發展歷史--曼徹斯特聯足球俱樂部，簡稱曼聯，目前在英格蘭超級聯賽比賽。在22-23賽季，曼聯在創造了曼聯歷史最大失利被利物浦7比0大比數戰勝，這個歴史悠久的球會是如何在英超中掘起？又如何在近年沒落？讓我們一起回顧這段曼聯的歷史。",
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+      ],
+    },
+  };
+};

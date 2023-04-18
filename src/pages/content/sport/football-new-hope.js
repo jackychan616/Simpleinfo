@@ -43,3 +43,50 @@ export default function Cpage() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      openGraphData: [
+        {
+          name:'description',
+          content:'足球界的革新和希望  國王聯賽國王聯賽由不久前退役的職業足球員碧基成立，於23年一月一日開始首賽季，分為冬、夏兩個實季。此賽事是七人制賽事，聯賽中有12支球隊，在各交手一次共11場比賽後，前8名將進入季後賽。賽事分上下半場各20分鐘，共四十分鐘，當40分鐘時平局將以不同規則的十二碼決勝。每支球隊共12人，10人將從報名者選出，任何人都可報名，別外2人就由客串球員擔任，2位中1位會每周更換，當中乏知名現役或退役球星例如細哨、朗拿甸奴、阿古露等人。'
+
+        },
+        {
+          name:'keywords',
+          content:'世界足壇法國最佳巨星,法國,海布里之王,亨利大帝,亨利,大帝,傳奇巨星,巴塞隆拿,足球,球星'
+        },
+        {
+          name:'title',
+          content:'足球界的革新和希望???  國王聯賽'
+        },
+        {
+          property: "og:image",
+          content:
+            "https://resource01-proxy.ulifestyle.com.hk/res/v3/image/content/1990000/1992752/18JSA003__20180118_L.jpg",
+        },
+        {
+          property: "og:image:width",
+          content: "300",
+        },
+        {
+          property: "og:image:height",
+          content: "200",
+        },
+        {
+          property: "og:title",
+          content: "足球界的革新和希望???  國王聯賽",
+        },
+        {
+          property: "og:description",
+          content: "足球界的革新和希望  國王聯賽國王聯賽由不久前退役的職業足球員碧基成立，於23年一月一日開始首賽季，分為冬、夏兩個實季。此賽事是七人制賽事，聯賽中有12支球隊，在各交手一次共11場比賽後，前8名將進入季後賽。賽事分上下半場各20分鐘，共四十分鐘，當40分鐘時平局將以不同規則的十二碼決勝。每支球隊共12人，10人將從報名者選出，任何人都可報名，別外2人就由客串球員擔任，2位中1位會每周更換，當中乏知名現役或退役球星例如細哨、朗拿甸奴、阿古露等人。",
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+      ],
+    },
+  };
+};

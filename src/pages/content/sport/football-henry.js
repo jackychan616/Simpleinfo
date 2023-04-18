@@ -38,21 +38,50 @@ function ConPage() {
   );
 }
 
-export default function Page() {
-  return (
-    <>
-      <Meta
-        keywords={
-          '世界足壇法國最佳巨星,法國,海布里之王,亨利大帝,亨利,大帝,傳奇巨星,巴塞隆拿,足球,球星'
-        }
-        description={
-          '海布里之王-亨利(Thierry Henry)，亨利作為阿仙奴的標誌性人物於早年間便充滿天賦被摩洛哥青年軍收入旗下...'
-        }
-        subtitle="海布里之王-亨利"
-      />
-      <Container>
-        <ConPage />
-      </Container>
-    </>
-  );
-}
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      openGraphData: [
+        {
+          name:'description',
+          content:'海布里之王-亨利(Thierry Henry)，亨利作為阿仙奴的標誌性人物於早年間便充滿天賦被摩洛哥青年軍收入旗下...'
+
+        },
+        {
+          name:'keywords',
+          content:'世界足壇法國最佳巨星,法國,海布里之王,亨利大帝,亨利,大帝,傳奇巨星,巴塞隆拿,足球,球星'
+        },
+        {
+          name:'title',
+          content:'海布里之王-亨利'
+        },
+        {
+          property: "og:image",
+          content:
+            "https://simpleinfohk.me//img/football-big-news/1.webp",
+        },
+        {
+          property: "og:image:width",
+          content: "300",
+        },
+        {
+          property: "og:image:height",
+          content: "200",
+        },
+        {
+          property: "og:title",
+          content: "海布里之王-亨利",
+        },
+        {
+          property: "og:description",
+          content: "海布里之王-亨利(Thierry Henry)，亨利作為阿仙奴的標誌性人物於早年間便充滿天賦被摩洛哥青年軍收入旗下...",
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+      ],
+    },
+  };
+};
