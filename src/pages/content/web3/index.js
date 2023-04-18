@@ -14,11 +14,13 @@ const Bloglist = [
 ];
 
 export default function ConPage(){
-    <>
-        <Meta/>
+    return(
+      <>
         <Container>
             <Page title="Web 3" hTitle="最新區塊鏈資訊" img="/img/web3.jpg"/>
         </Container>
-    </>
+    </>  
+    );
+    
    
 }
