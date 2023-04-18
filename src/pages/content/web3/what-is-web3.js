@@ -1,6 +1,7 @@
 import { ConText, ConTitle } from '../../components/component';
 import {Meta} from '../../components/meta';
 import { Container, List,Image} from '@mantine/core';
+import Head from 'next/head';
 
 function Page(){
     return(
@@ -39,8 +40,53 @@ function Page(){
 export default function ConPage(){
     return (
         <>
-            <Meta img="/img/what-is-web3/blockchain.jpg" pageTitle={"Web 3.0和區塊鏈是什麼?是否對現實生活和環境的潛在環境有影響？"} description={"Web 3.0是指第三代網際網路，也稱為分佈式網路，其重點在於將網際網路從僅將信息分發給被動接收者轉變為一個更去中心化的互動平台，其中用戶可以使用自己的資料、數位貨幣和智能合約，進行更安全、更透明和更互動的操作。Web 3 的核心特點是去中心化和去信任化，這使得每個人都可以受益，而無需與任何中心化組織或機構相關聯。"}/>
+            <Head>
+                <title>Web 3.0和區塊鏈是什麼?是否對現實生活和環境的潛在環境有影響？</title>
+            </Head>
             <page/>
         </>
     );
 }
+
+export const getStaticProps = async () => {
+    return {
+      props: {
+        openGraphData: [
+          {
+            name:'description',
+            content:'Web 3.0是指第三代網際網路，也稱為分佈式網路，其重點在於將網際網路從僅將信息分發給被動接收者轉變為一個更去中心化的互動平台，其中用戶可以使用自己的資料、數位貨幣和智能合約，進行更安全、更透明和更互動的操作。Web 3 的核心特點是去中心化和去信任化，這使得每個人都可以受益，而無需與任何中心化組織或機構相關聯。'
+  
+          },
+          {
+            name:'title',
+            content:'Web 3.0和區塊鏈是什麼?是否對現實生活和環境的潛在環境有影響？'
+          },
+          {
+            property: "og:image",
+            content:
+              "https://simpleinfohk.me//img/what-is-web3/blockchain.jpg",
+          },
+          {
+            property: "og:image:width",
+            content: "300",
+          },
+          {
+            property: "og:image:height",
+            content: "200",
+          },
+          {
+            property: "og:title",
+            content: "Web 3.0和區塊鏈是什麼?是否對現實生活和環境的潛在環境有影響？",
+          },
+          {
+            property: "og:description",
+            content: "Web 3.0是指第三代網際網路，也稱為分佈式網路，其重點在於將網際網路從僅將信息分發給被動接收者轉變為一個更去中心化的互動平台，其中用戶可以使用自己的資料、數位貨幣和智能合約，進行更安全、更透明和更互動的操作。Web 3 的核心特點是去中心化和去信任化，這使得每個人都可以受益，而無需與任何中心化組織或機構相關聯。",
+          },
+          {
+            property: "og:type",
+            content: "website",
+          },
+        ],
+      },
+    };
+  };
