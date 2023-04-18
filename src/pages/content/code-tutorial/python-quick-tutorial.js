@@ -14,8 +14,7 @@ import {
   PyPrism,
   ConTitle,
 } from '../../components/component';
-import {Meta} from '../../components/meta';
-
+import Head from 'next/head';
 const kbd1 = `
 print('ok')
 `;
@@ -197,13 +196,53 @@ function ConPage() {
 export default function Page() {
   return (
     <>
-      <Meta
-        description={'入門快速學習Python,即使新手也很快速掌握'}
-        img={'https://simpleinfo.live/img/python.png'}
-        pageTitle="Python入門"
-      />
-
+      <Head>
+        <title>Python入門</title>
+      </Head>
       <ConPage />
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      openGraphData: [
+        {
+          name:'description',
+          content:'入門快速學習Python,即使新手也很快速掌握'
+
+        },
+        {
+          name:'title',
+          content:'Python入門'
+        },
+        {
+          property: "og:image",
+          content:
+            "https://simpleinfo.me/img/python.png",
+        },
+        {
+          property: "og:image:width",
+          content: "300",
+        },
+        {
+          property: "og:image:height",
+          content: "200",
+        },
+        {
+          property: "og:title",
+          content: "Python入門",
+        },
+        {
+          property: "og:description",
+          content: "入門快速學習Python,即使新手也很快速掌握",
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+      ],
+    },
+  };
+};

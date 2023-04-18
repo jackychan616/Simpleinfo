@@ -1,6 +1,6 @@
 import { Container, Image } from '@mantine/core';
 import { ConText, ConTitle } from '../../components/component';
-import {Meta} from '../../components/meta';
+import Head from 'next/head';
 
 function Page() {
   return (
@@ -40,9 +40,15 @@ function Page() {
 
 export default function ConPage() {
   return(
-    <Container>
-      <Page/>
-    </Container>
+    <>
+      <Container>
+        <Page/>
+      </Container>
+      <Head>
+        <title>海布里之王-亨利</title>
+      </Head>
+    </>
+    
   );
 }
 

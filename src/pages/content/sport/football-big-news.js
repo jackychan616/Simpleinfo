@@ -1,6 +1,6 @@
 import { Container, Timeline, Text, Image, Space } from '@mantine/core';
 import { ConTitle, ConText } from '../../components/component';
-import {Meta} from '../../components/meta';
+import Head from 'next/head'
 
 function CPage() {
   return (
@@ -185,7 +185,9 @@ function CPage() {
 export default function ConPage() {
   return (
     <>
-      
+      <Head>
+        <title>球隊大事記—曼聯</title>
+      </Head>
       <Container>
         <CPage />
       </Container>

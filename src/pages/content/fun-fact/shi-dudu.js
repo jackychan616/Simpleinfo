@@ -1,6 +1,6 @@
 import {Container,Image} from '@mantine/core';
 import {ConText,ConTitle} from '../../components/component';
-import {Meta} from '../../components/meta';
+import Head from 'next/head';
 function Page(){
     return(
         <Container>
@@ -22,8 +22,53 @@ function Page(){
 export default function ConPage(){
     return(
         <>
-            <Meta PageTitle="顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞" img="https://upload.wikimedia.org/wikipedia/zh/7/73/Shi_Pei_Pu.jpeg" description={"顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞《孫子兵法》有云：「因間者，因其鄉人而用之。」，指利用敵方人員作間諜，這次的主角使用「因間」的方式過於特殊。他身為男兒男扮女裝與法國駐華大使館職員維持了20年的伴侶關係，為中華人民共和國政府竊取法國政府情報，但是他是如何做到的？"}/>
+            <Head>
+                <title>顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞</title>
+            </Head>
             <Page/>
         </>
     );
 }
+
+export const getStaticProps = async () => {
+    return {
+      props: {
+        openGraphData: [
+          {
+            name:'description',
+            content:'顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞《孫子兵法》有云：「因間者，因其鄉人而用之。」，指利用敵方人員作間諜，這次的主角使用「因間」的方式過於特殊。他身為男兒男扮女裝與法國駐華大使館職員維持了20年的伴侶關係，為中華人民共和國政府竊取法國政府情報，但是他是如何做到的？'
+  
+          },
+          {
+            name:'title',
+            content:'顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞'
+          },
+          {
+            property: "og:image",
+            content:
+              "https://upload.wikimedia.org/wikipedia/zh/7/73/Shi_Pei_Pu.jpeg",
+          },
+          {
+            property: "og:image:width",
+            content: "300",
+          },
+          {
+            property: "og:image:height",
+            content: "200",
+          },
+          {
+            property: "og:title",
+            content: "顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞",
+          },
+          {
+            property: "og:description",
+            content: "顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞《孫子兵法》有云：「因間者，因其鄉人而用之。」，指利用敵方人員作間諜，這次的主角使用「因間」的方式過於特殊。他身為男兒男扮女裝與法國駐華大使館職員維持了20年的伴侶關係，為中華人民共和國政府竊取法國政府情報，但是他是如何做到的？",
+          },
+          {
+            property: "og:type",
+            content: "website",
+          },
+        ],
+      },
+    };
+  };
