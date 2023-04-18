@@ -43,7 +43,7 @@ export default function ConPage(){
             <Head>
                 <title>Web 3.0和區塊鏈是什麼?是否對現實生活和環境的潛在環境有影響？</title>
             </Head>
-            <page/>
+            <Page/>
         </>
     );
 }
