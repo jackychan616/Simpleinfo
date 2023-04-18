@@ -2,7 +2,7 @@ import { Container, Image } from '@mantine/core';
 import { ConText, ConTitle } from '../../components/component';
 import {Meta} from '../../components/meta';
 
-function ConPage() {
+function Page() {
   return (
     <Container>
       <ConTitle order={1}>海布里之王-亨利大帝</ConTitle>
@@ -38,6 +38,13 @@ function ConPage() {
   );
 }
 
+export default function ConPage() {
+  return(
+    <Container>
+      <Page/>
+    </Container>
+  );
+}
 
 export const getStaticProps = async () => {
   return {
