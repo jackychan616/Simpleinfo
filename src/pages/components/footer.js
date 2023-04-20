@@ -175,7 +175,7 @@ export function FooterLinks() {
           <ActionIcon size="lg">
             <IconBrandYoutube size="1.05rem" stroke={1.7} color={'#2d4686'} />
           </ActionIcon>
-          <ActionIcon size="lg">
+          <ActionIcon size="lg" component='a' href='https://www.instagram.com/simpleinfohk/'>
             <IconBrandInstagram size="1.05rem" stroke={1.7}  color={'#2d4686'}/>
           </ActionIcon>
         </Group>
