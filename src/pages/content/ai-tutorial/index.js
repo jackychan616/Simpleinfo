@@ -59,6 +59,13 @@ const Bloglist = [
     date:'21/4/2023',
     tag:'AI'
   },
+  {
+    name:'馬斯克將推出TruthGpt , 強過 ChatGPT ?',
+    path:'/ai-tutorial/truthgpt',
+    img:'/img/truthgpt/truthgpt.jpg',
+    date:'21/4/2023',
+    tag:'AI'
+  }
 ];
 
 export default function content() {
