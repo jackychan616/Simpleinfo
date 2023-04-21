@@ -14,7 +14,7 @@ function Page (){
             <Image src="/img/claude-quick-talk/meet-claude.webp" alt="Claude 由Anthropic與Notion、Quora和DuckDuckGo等夥伴合作研發"maw ={800}/>
             <ConText>Claude 是基於人工智能系統研究的下一代智能助手。Claude 能夠幫助處理包括文章總結、資料搜索、創作、合作寫作、問答以及編寫程式。它還可以調教語氣、個性以及行為等等的參數</ConText>
             <ConTitle order={2} size="h2">Claude整合Notion</ConTitle>
-            <ConText>Claude還通過與Notion的整合提高了人們在工作和學習中的生產力{`；`}Notion的聯合創始人兼首席運營官Akshay Kothari說{`：`}"Anthropic和Notion的共同目標是幫助個人和企業利用AI提高生產力。Claude獨特的創造性寫作和總結能力有助於我們的聯網人工智能助手Notion AI的發展。Notion用戶現在可以更有效地工作，提高他們的寫作能力，所有這些都在Notion工作空間內進行。{`"`}</ConText>
+            <ConText>Claude還通過與Notion的整合提高了人們在工作和學習中的生產力{`；`}Notion的聯合創始人兼首席運營官Akshay Kothari說{`："`}Anthropic和Notion的共同目標是幫助個人和企業利用AI提高生產力。Claude獨特的創造性寫作和總結能力有助於我們的聯網人工智能助手Notion AI的發展。Notion用戶現在可以更有效地工作，提高他們的寫作能力，所有這些都在Notion工作空間內進行。{`"`}</ConText>
             <Space h="lg"/>
             <Image src="/img/claude-quick-talk/claude-request-access.webp" maw={600} alt="申請註冊Claude" caption="申請註冊Claude"/>
             <ConTitle order={2} size="h2">Claude-v1 與 Claude Instant </ConTitle>
