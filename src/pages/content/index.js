@@ -51,3 +51,46 @@ export default function Page() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      openGraphData: [
+        {
+          name:'description',
+          content:'香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊'
+
+        },
+        {
+          name:'title',
+          content:'Simple Info HK - 目錄'
+        },
+        {
+          property: "og:image",
+          content:
+            "https://simpleinfohk.me/icon.png",
+        },
+        {
+          property: "og:image:width",
+          content: "300",
+        },
+        {
+          property: "og:image:height",
+          content: "200",
+        },
+        {
+          property: "og:title",
+          content: "Simple Info HK - 目錄",
+        },
+        {
+          property: "og:description",
+          content: "香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊",
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+      ],
+    },
+  };
+};
