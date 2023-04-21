@@ -5,7 +5,7 @@ export function ConText({children,h1,h2}){
   return (
     <>
       <Space h={h1 ? h1: "sm"}/>
-      <Text fz="md">{children}</Text>
+      <Text fz="lg">{children}</Text>
       <Space h={h2 ? h2: "sm"}/>
     </>
     

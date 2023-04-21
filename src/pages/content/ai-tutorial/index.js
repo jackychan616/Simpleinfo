@@ -52,6 +52,13 @@ const Bloglist = [
     img:'/img/xai-quick-talk/elon-musk.jpg',
     date:'16/4/2023',
     tag:'AI'
+  },
+  {
+    name:"馬斯克將推出TruthGpt , 強過 ChatGPT ?",
+    path:'/ai-tutorial/truthgpt',
+    img:'/img/truthgpt/truthgpt.jpg',
+    date:'21/4/2023',
+    tag:'AI'
   }
 ];
 
@@ -63,6 +70,7 @@ export default function content() {
           hTitle="AI 教學"
           img="/img/ai.webp"
           maw={500}
+          
         >
           <ArtiCard data={Bloglist} />
         </Page>

@@ -5,7 +5,6 @@ import {
   Card,
   AspectRatio,
   Text,
-  Image,
   Group,
   Badge
 } from '@mantine/core';
@@ -13,6 +12,7 @@ import {Meta} from './components/meta';
 import Head  from 'next/head';
 import { TypeAnimation } from 'react-type-animation';
 import React from 'react';
+import Image from 'next/image'
 export const Bloglist = require('../data/Blog.json');
 function Typing() {
   return (
@@ -73,7 +73,7 @@ function Body() {
       className={classes.card}
     >
       <AspectRatio ratio={1920 / 1080}>
-        <Image src={article.img} alt="" width="650" height="80" />
+        <Image src={article.img} alt={article.img.replace("/img","")} width="650" height="80" quality = "70" />
       </AspectRatio>
       <Group position="apart" mt="md" mb="xs">
         <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
