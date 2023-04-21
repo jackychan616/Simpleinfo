@@ -10,16 +10,16 @@ export default function Page(){
                 馬斯克將推出TruthGpt , 強過 ChatGPT ?
             </ConTitle>
             <Space h = "md"/>
-            <Image src = "/img/truthgpt/truthgpt.jpg" width="300" height="300" alt = "Truthgpt" quality  = "70"/>
+            <Image maw={500}src = "/img/truthgpt/truthgpt.jpg" width="300" height="300" alt = "Truthgpt" quality  = "70"/>
             <ConText>
                 馬斯克在接受福克斯新聞採訪時表示，新公司「X.AI」正在開發一個名叫「TruthGPT」的大型語言模型（LLM） TruthGPT，這將是“最大程度尋求真相的人工智能”——不管這意味著什麼。
             </ConText>
-            <Image src = "/img/truthgpt/elon_musk.png" width="450" height = "345" alt = "Elon musk"/>
+            <Image maw={600} src = "/img/truthgpt/elon_musk.png" width="450" height = "345" alt = "Elon musk"/>
             <Space h = "md"/>
             <ConText>
             「我將開始做一些稱之為TruthGPT的東西，或者是一個極致地尋求真相、會試圖理解宇宙的本質的AI」，並稱「我認為這可能是(開發AI)最佳的安全途徑，一個在乎於理解宇宙的AI，不太可能消滅人類，因為我們是宇宙的有趣組成部分。」他承認自己現在才開發AI有點遲，但冀提供微軟和Google AI系統以外的「第三選擇」。
             </ConText>
-            <Image src = "/img/truthgpt/Elon_musk_2.jpg" maw = "500" width = "450" height="250" alt = "Elon musk" quality="70"/>
+            <Image maw={650} src = "/img/truthgpt/Elon_musk_2.jpg" width = "450" height="250" alt = "Elon musk" quality="70"/>
             <Space h = "lg"/>
             <ConText>
                 馬斯克在推出自己的版本之前談到了快速人工智能發展的危險，聲稱像 ChatGPT 和谷歌的巴德這樣的聊天機器人正在接受“政治正確”的訓練，表示 ChatGPT 是由左翼的專家編寫，那些專家會訓練 ChatGPT 說謊，久而久之，ChatGPT 就會以一種不誠實的方式控制了人類對現實的理解，讓我們成為奴隸。同時他亦補充：「人工智能比保養不善的飛機或設計糟糕的汽車更加危險，因為人工智能具有很大潛力。如果管理不當時，人工智能將會對整個人類文明產生災難性影響。」。他沒有為這些說法提供證據，也沒有詳細說明“尋求真相的人工智能”可能需要什麼。
