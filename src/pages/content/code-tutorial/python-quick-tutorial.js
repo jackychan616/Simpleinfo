@@ -6,7 +6,6 @@ import {
   Kbd,
   Code,
   List,
-  MantineProvider,
 } from '@mantine/core';
 import {
   ConText,
