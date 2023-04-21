@@ -52,13 +52,6 @@ const Bloglist = [
     img:'/img/xai-quick-talk/elon-musk.jpg',
     date:'16/4/2023',
     tag:'AI'
-  },
-  {
-    name:'最強AI聊天機械人來襲 - Claude，告別繁瑣的註冊過程，被譽為ChatGPT的最強對手',
-    path:'/ai-tutorial/claude-quick-talk',
-    img:'/img/claude-quick-talk/meet-claude.webp',
-    date:'21/4/2023',
-    tag:'AI'
   }
 ];
 
@@ -70,6 +63,7 @@ export default function content() {
           hTitle="AI 教學"
           img="/img/ai.webp"
           maw={500}
+          
         >
           <ArtiCard data={Bloglist} />
         </Page>

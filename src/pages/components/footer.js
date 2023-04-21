@@ -97,8 +97,8 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 700,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     marginBottom: `calc(${theme.spacing.xs} / 2)`,
-    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-  },
+    color :'#0968fc'
+    },
 
   afterFooter: {
     display: 'flex',
@@ -142,7 +142,7 @@ export function FooterLinks() {
 
     return (
       <div className={classes.wrapper} key={group.title}>
-        <Text className={classes.title}>{group.title}</Text>
+        <Text className={classes.title} >{group.title}</Text>
         {links}
       </div>
     );
@@ -154,7 +154,7 @@ export function FooterLinks() {
         <div className={classes.logo}>
           <Group>
             <Image src = "/icon.png" alt = "Simple info" maw = {60} mah = {60}/>
-            <Text fw = {700} size = {23}>Simple info</Text>
+            <Text fw = {700} size = {23} color='#0968fc'>Simple info</Text>
           </Group>
           
           <Text size="xs" color="dimmed" className={classes.description}>
@@ -170,13 +170,13 @@ export function FooterLinks() {
 
         <Group spacing={0} className={classes.social} position="right" noWrap>
           <ActionIcon size="lg">
-            <IconBrandTwitter size="1.05rem" stroke={1.5} />
+            <IconBrandTwitter size="1.05rem" stroke={1.7} color={'#2d4686'} />
           </ActionIcon>
           <ActionIcon size="lg">
-            <IconBrandYoutube size="1.05rem" stroke={1.5} />
+            <IconBrandYoutube size="1.05rem" stroke={1.7} color={'#2d4686'} />
           </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandInstagram size="1.05rem" stroke={1.5} />
+          <ActionIcon size="lg" component='a' href='https://www.instagram.com/simpleinfohk/'>
+            <IconBrandInstagram size="1.05rem" stroke={1.7}  color={'#2d4686'}/>
           </ActionIcon>
         </Group>
       </Container>

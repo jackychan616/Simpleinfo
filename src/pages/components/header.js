@@ -19,7 +19,7 @@ import {
   Title,
   Flex,
   ActionIcon,
-
+  Container,
   Drawer
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -157,14 +157,14 @@ export default function ConHeader() {
             </Link>
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
-                <Link href="/content" className={classes.link} >
+                <Container className={classes.link} >
                   <Center inline>
                     <Box component="span" mr={5}>
                       文章
                     </Box>
                     < BiChevronDown size={16} color={theme.fn.primaryColor()}/>
                   </Center>
-                </Link>
+                </Container>
               </HoverCard.Target>
 
               <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>

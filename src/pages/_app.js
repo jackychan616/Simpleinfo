@@ -15,6 +15,7 @@ import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
 import Head from 'next/head';
 import GoogleAds from './components/googleAds';
+import { NotificationsProvider } from '@mantine/notifications';
 
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
@@ -37,6 +38,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
     return(
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}> 
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+      <NotificationsProvider>
       <Head>
         <link rel='icon' href="/icon.png"/>
         {openGraphData.map((og,index) => (
@@ -52,6 +54,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
             {children}
           <Analytics/>
         </Layout>
+      </NotificationsProvider>
       </MantineProvider>  
       </ColorSchemeProvider>
     )
