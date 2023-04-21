@@ -72,7 +72,7 @@ export const getStaticProps = async () => {
         {
           property: "og:image",
           content:
-            "https://simpleinfohk.me//img/football-big-news/1.webp",
+            "https://simpleinfohk.me/img/football-big-news/1.webp",
         },
         {
           property: "og:image:width",
