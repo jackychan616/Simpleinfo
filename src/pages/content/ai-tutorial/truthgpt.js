@@ -30,9 +30,6 @@ export default function Page(){
                 <List.Item>
                     <a href='https://truthgpt.one/'>TruthGPT 官方網站</a>
                 </List.Item>
-                <List.Item>
-                    <a href= "https://unwire.hk/2023/04/18/elon-musk-new-ai-truthgpt/fun-tech/">Elon Musk 開發新 AI「TruthGPT」   「不說謊也不會毀滅人類」- unwire.hk</a>
-                </List.Item>
                 <List.Item><a href='https://www.cnbc.com/2023/04/19/elon-musk-says-he-wants-to-create-chatgpt-competitor-called-truthgpt.html'>Elon Musk now says he wants to create a ChatGPT competitor to avoid ‘A.I. dystopia’—he’s calling it ‘TruthGPT’ - make it </a></List.Item>
             </List>
         </Container>
