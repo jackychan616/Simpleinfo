@@ -8,7 +8,7 @@ function Page(){
             <ConTitle>《Unrecord》極逼真戰術射擊遊戲 畫質猶如隨身攝錄器</ConTitle>
             
             <Space h="lg"/>
-            <ConText>由游戲開發團隊 Drama製作的FPS新作《Unrecord》登上了Steam商店，但未有發售日期。官方在YouTube上釋出遊戲預告後，在外國遊戲論壇引起一片討論</ConText>
+            <ConText>由游戲開發團隊 Drama製作的FPS新作《Unrecord》登上了Steam商店，但未有發售日期。官方在YouTube上釋出遊戲預告後，在外國遊戲論壇引起一片討論。</ConText>
             <Space h="lg"/>
             <YouTube videoId='5qvVNzsJyB0' opts={{height: '390',width: '640',playerVars: {autoplay: 1}}}/>
             <Space h="lg"/>
@@ -34,3 +34,45 @@ export default function ConPage(){
         </>
     );
 }
+export const getStaticProps = async () => {
+    return {
+      props: {
+        openGraphData: [
+          {
+            name:'description',
+            content:'由游戲開發團隊 Drama製作的FPS新作《Unrecord》登上了Steam商店，但未有發售日期。官方在YouTube上釋出遊戲預告後，在外國遊戲論壇引起一片討論。'
+  
+          },
+          {
+            name:'title',
+            content:'《Unrecord》極逼真戰術射擊遊戲 畫質猶如隨身攝錄器'
+          },
+          {
+            property: "og:image",
+            content:
+              "https://simpleinfohk.me/img/unrecord/unrecord-game-sence.jpg",
+          },
+          {
+            property: "og:image:width",
+            content: "300",
+          },
+          {
+            property: "og:image:height",
+            content: "200",
+          },
+          {
+            property: "og:title",
+            content: "《Unrecord》極逼真戰術射擊遊戲 畫質猶如隨身攝錄器",
+          },
+          {
+            property: "og:description",
+            content: "由游戲開發團隊 Drama製作的FPS新作《Unrecord》登上了Steam商店，但未有發售日期。官方在YouTube上釋出遊戲預告後，在外國遊戲論壇引起一片討論。",
+          },
+          {
+            property: "og:type",
+            content: "website",
+          },
+        ],
+      },
+    };
+  };
