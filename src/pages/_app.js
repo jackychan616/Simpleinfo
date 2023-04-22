@@ -1,7 +1,7 @@
 import styles from '../styles/globals.css';
 import Layout from './components/layout';
 import { Analytics } from '@vercel/analytics/react';
-import { MantineProvider, ColorSchemeProvider,Badge,Container} from '@mantine/core';
+import { MantineProvider, ColorSchemeProvider,Badge,Container,createStyles} from '@mantine/core';
 import { useState,useEffect } from 'react';
 import Loading from './loading';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
@@ -16,9 +16,19 @@ import { Sharebutton } from './components/share';
 import Head from 'next/head';
 import GoogleAds from './components/googleAds';
 import { NotificationsProvider } from '@mantine/notifications';
-
+import { updatelike } from './components/like';
+const useStyles = createStyles((theme) => ({
+  tag_on_top :{
+    position :"absolute",
+    left : "10px",
+  }
+}))
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
+  const { classes, theme } = useStyles();
+  if (asPath.includes("/savejson")){
+    return<></>
+  }
   const tag = Gettag(asPath.replace("/content",''));
   const { openGraphData = [] } = pageProps;
   function Basic_lay({children,tag}){
@@ -72,7 +82,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         }
         return(
           <>
-            <div className={stlyes.tag_div}>
+            <div className={classes.tag_on_top}>
               <Badge variant="filled" >{tag}</Badge>
               <Space h = "lg"/>
               <Sharebutton url = {"https://simpleinfohk.me" + appProps.router.pathname}/>
@@ -88,6 +98,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         <>
           <Basic_lay tag = {<Tag/>}>
               <Container size="30rem">
+                <button onClick={updatelike(asPath.replace("/content",''))}>{}</button>
                 <Space h ="lg"/>
                 <span><ConTitle>閱讀更多</ConTitle></span>
                 <span><Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge></span>
