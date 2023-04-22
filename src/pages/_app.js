@@ -16,7 +16,6 @@ import { Sharebutton } from './components/share';
 import Head from 'next/head';
 import GoogleAds from './components/googleAds';
 import { NotificationsProvider } from '@mantine/notifications';
-import { updatelike } from './components/like';
 const useStyles = createStyles((theme) => ({
   tag_on_top :{
     position :"absolute",
