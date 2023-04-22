@@ -65,6 +65,12 @@ const Bloglist = [
     img:'/img/truthgpt/truthgpt.jpg',
     date:'21/4/2023',
     tag:'AI'
+  },
+  {
+    name:'Google宣布將會合拼燈DeepMind 和 Google Brain',
+    path:'/ai-tutorial/google-mix-deepmind-and-googlebrain',
+    img:'/img/googlebrain-mix-deepmind/deepmind.webp',
+    date:'21'
   }
 ];
 
