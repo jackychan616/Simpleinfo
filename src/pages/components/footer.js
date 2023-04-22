@@ -1,5 +1,5 @@
 import { createStyles, Text, Container, ActionIcon, Group ,Image} from '@mantine/core';
-import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
+import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram,IconBrandFacebook} from '@tabler/icons-react';
 import styles from "../page.module.css"
 const data = [
         {
@@ -172,8 +172,8 @@ export function FooterLinks() {
           <ActionIcon size="lg">
             <IconBrandTwitter size="1.05rem" stroke={1.7} color={'#2d4686'} />
           </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandYoutube size="1.05rem" stroke={1.7} color={'#2d4686'} />
+          <ActionIcon size="lg" component = 'a' href='https://www.facebook.com/profile.php?id=100092233176369&sk=followers'>
+            <IconBrandFacebook size="1.05rem" stroke={1.7} color={'#2d4686'} />
           </ActionIcon>
           <ActionIcon size="lg" component='a' href='https://www.instagram.com/simpleinfohk/'>
             <IconBrandInstagram size="1.05rem" stroke={1.7}  color={'#2d4686'}/>
@@ -181,7 +181,7 @@ export function FooterLinks() {
         </Group>
       </Container>
     </footer>
-  );
+  );  
 }
 export default function Conpage(){
   return <></>

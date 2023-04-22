@@ -4,216 +4,239 @@
     "path": "/ai-tutorial/setup-stable-diffusion",
     "img": "/img/stable-diffusion.webp",
     "date": "1/3/2023",
-    "tag": "AI 教學"
-  },
-  {
-    "name": "OpenXLA:史上最強開源項目，Google、微軟、蘋果、Meta，整合現有框架和硬件",
-    "path": "/ai-tutorial/openxla-quick-tutorial",
-    "img": "/img/xla.png",
-    "date": "8/4/2023",
-    "tag": "AI 教學"
+    "tag": "AI 教學",
+    "like": 5
   },
   {
     "name": "什麼是AI?",
     "path": "/ai-tutorial/ai-quick-tutorial",
     "img": "/img/ai.jpg",
     "date": "12/3/2023",
-    "tag": "AI 教學"
-  },
-  {
-    "name": "淺談AI",
-    "path": "/ai-tutorial/ai-light-talk",
-    "img": "/img/ai-light-talk/ai-2.jpg",
-    "date": "13/3/2023",
-    "tag": "AI 教學"
-  },
-  {
-    "name": "解構GPT-3工作原理",
-    "path": "/ai-tutorial/openai-chatgpt-how-to-work",
-    "img": "/img/openai.jpg",
-    "date": "1/4/2023",
-    "tag": "GPT"
-  },
-  {
-    "name": "AI未來發展的前景 商業分析竟佔重要地位",
-    "path": "/ai-tutorial/ai-futher-develop",
-    "img": "/img/Ai_2.jpg",
-    "date": "1/4/2023",
-    "tag": "AI 教學"
-  },
-  {
-    "name": "[porker 撲克牌] 二十一點玩法教學",
-    "path": "/card-game/poker_21point_quick_talk",
-    "img": "/img/poker.jpg",
-    "date": "2/3/2023",
-    "tag": "遊戲"
-  },
-  {
-    "name": "《小小諾亞-樂園的繼承者》介紹",
-    "path": "/card-game/little-noah-introduce",
-    "img": "/img/little-noach-introduce/4.png",
-    "date": "2/3/2023",
-    "tag": "遊戲"
-  },
-  {
-    "name": "30秒學會成為csgo高手的必要技巧！",
-    "path": "/card-game/csgo",
-    "img": "/img/csgo.png",
-    "date": "2/3/2023",
-    "tag": "遊戲"
-  },
-  {
-    "name": "python 快速入門",
-    "path": "/code-tutorial/python-quick-tutorial",
-    "date": "15/3/2023",
-    "img": "/img/py-icon.png",
-    "tag": "電腦編程教學"
-  },
-  {
-    "name": "Linux幾個必學指令 ",
-    "path": "/code-tutorial/simple_linux_cmd",
-    "date": "15/3/2023",
-    "img": "/img/linux.jpeg",
-    "tag": "電腦編程教學"
-  },
-  {
-    "name": "Python 教學 [第一章]基礎語法",
-    "path": "/code-tutorial/python-ch1",
-    "date": "14/3/2023",
-    "img": "/img/python-2.png",
-    "tag": "電腦編程教學"
-  },
-  {
-    "name": "中國古代最重要的君主(上)",
-    "path": "/fun-fact/chinese-king1",
-    "img": "/img/chinese-king1.jpg",
-    "date": "3/3/2023",
-    "tag": "有趣知識"
-  },
-  {
-    "name": "中國古代最重要的君主(下)",
-    "path": "/fun-fact/chinese-king2",
-    "img": "/img/chinese-king2.jpeg",
-    "date": "3/3/2023",
-    "tag": "有趣知識"
-  },
-  {
-    "name": "古人的性癖好 孫中山是蘿莉控?",
-    "path": "/fun-fact/Sun-Yat-sen",
-    "img": "/img/Sun-Yat-Sen.jpeg",
-    "date": "6/3/2023",
-    "tag": "有趣知識"
-  },
-  {
-    "name": "西線無戰事 - 為何奪得奧斯卡最佳國際影片獎",
-    "path": "/fun-fact/All-Quiet-On-the-Western-Front",
-    "date": "14/3/23",
-    "img": "/img/西線無戰事.jpeg",
-    "tag": "有趣知識"
-  },
-  {
-    "name": "顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞",
-    "path": "/fun-fact/shi-dudu",
-    "date": "17/3/2023",
-    "img": "https://upload.wikimedia.org/wikipedia/zh/7/73/Shi_Pei_Pu.jpeg",
-    "tag": "有趣知識"
-  },
-  {
-    "name": "孫中山、張飛是蘿莉控？",
-    "path": "/fun-fact/ancient-3-sex-fun-fact",
-    "date": "17/3/2023",
-    "img": "/img/十二歲的大月薰.jpg",
-    "tag": "有趣知識"
-  },
-  {
-    "name": "不在藏了 王菲和謝霆鋒",
-    "path": "/news/Faye-Wong",
-    "img": "/img/Faye_Wong_03.jpg",
-    "date": "11/3/23",
-    "tag": "新聞"
-  },
-  {
-    "name": "謝霆鋒和王菲的合作",
-    "path": "/news/Faye-Wong-song",
-    "img": "/img/Faye_Wong_04.jpg",
-    "date": "12/3/23",
-    "tag": "新聞"
-  },
-  {
-    "name": "《最愛是誰》懷念張國榮",
-    "path": "/news/leslie-quick-talk",
-    "img": "/img/leslie.jpg",
-    "date": "28/3/2023",
-    "tag": "新聞"
-  },
-  {
-    "name": "海布里之王-亨利",
-    "path": "/sport/football-henry",
-    "date": "16/3/2023",
-    "img": "/img/football-henry.jpg",
-    "tag": "sport"
-  },
-  {
-    "name": "足球界的革新和希望  國王聯賽",
-    "path": "/sport/football-new-hope",
-    "date": "11/3/2023",
-    "img": "https://webcdn.guangming.com.my/wp-content/uploads/2023/02/%E6%9C%AA%E5%91%BD%E5%90%8D-1-144.jpg",
-    "tag": "sport"
-  },
-  {
-    "name": "球隊大事記—曼聯",
-    "path": "/sport/football-big-news",
-    "date": "15/3/2023",
-    "img": "/img/football-big-news/1.webp",
-    "tag": "sport"
-  },
-  {
-    "name": "RG 1/144系列必入手的商品",
-    "path": "/toy/5-gundam",
-    "img": "/img/5-gundam/1.jpg",
-    "date": "6/3/2023",
-    "tag": "toy"
-  },
-  {
-    "name": "Steam 移植遊戲-浮島物語 (Forager)",
-    "path": "/card-game/steam-game-forager",
-    "img": "/img/浮島物語/1.jpg",
-    "date": "9/4/2023",
-    "tag": "Steam遊戲"
-  },
-  {
-    "name": "Web 3.0和區塊鏈是什麼?是否對現實生活和環境的潛在環境有影響？",
-    "path": "/web3/what-is-web3",
-    "img": "/img/what-is-web3/blockchain.jpg",
-    "date": "10/4/2023",
-    "tag": "web3"
-  },
-  {
-    "name": "Elon Musk 創立了 X.AI 公司對抗OpenAI",
-    "path": "/ai-tutorial/xai-quick-talk",
-    "img": "/img/xai-quick-talk/elon-musk.jpg",
-    "date": "16/4/2023",
-    "tag": "AI"
+    "tag": "AI 教學",
+    "like": 12
   },
   {
     "name": "OpenXLA:史上最強開源項目，Google、微軟、蘋果、Meta，整合現有框架和硬件",
     "path": "/ai-tutorial/openxla-quick-tutorial",
     "img": "https://avatars.githubusercontent.com/u/107584881?s=200&v=4",
     "date": "8/4/2023",
-    "tag": "AI 教學"
+    "tag": "AI 教學",
+    "like": 3
   },
   {
-    "name": "馬斯克將推出TruthGpt , 強過 ChatGPT ?",
-    "path": "/ai-tutorial/truthgpt",
-    "img": "/img/truthgpt/truthgpt.jpg",
-    "date": "21/4/2023",
-    "tag": "AI"
+    "name": "淺談AI",
+    "path": "/ai-tutorial/ai-light-talk",
+    "img": "/img/ai-light-talk/ai-2.jpg",
+    "date": "13/3/2023",
+    "tag": "AI 教學",
+    "like": 4
+  },
+  {
+    "name": "解構GPT-3工作原理",
+    "path": "/ai-tutorial/openai-chatgpt-how-to-work",
+    "img": "/img/openai.jpg",
+    "date": "1/4/2023",
+    "tag": "GPT",
+    "like": 1
+  },
+  {
+    "name": "AI未來發展的前景 商業分析竟佔重要地位",
+    "path": "/ai-tutorial/ai-futher-develop",
+    "img": "/img/Ai_2.jpg",
+    "date": "1/4/2023",
+    "tag": "AI 教學",
+    "like": 1
+  },
+  {
+    "name": "Elon Musk 創立了 X.AI 公司對抗OpenAI",
+    "path": "/ai-tutorial/xai-quick-talk",
+    "img": "/img/xai-quick-talk/elon-musk.jpg",
+    "date": "16/4/2023",
+    "tag": "AI",
+    "like": 1
   },
   {
     "name": "最強AI聊天機械人來襲 - Claude，告別繁瑣的註冊過程，被譽為ChatGPT的最強對手",
     "path": "/ai-tutorial/claude-quick-talk",
     "img": "/img/claude-quick-talk/meet-claude.webp",
     "date": "21/4/2023",
-    "tag": "AI"
+    "tag": "AI",
+    "like": 1
+  },
+  {
+    "name": "馬斯克將推出TruthGpt , 強過 ChatGPT ?",
+    "path": "/ai-tutorial/truthgpt",
+    "img": "/img/truthgpt/truthgpt.jpg",
+    "date": "21/4/2023",
+    "tag": "AI",
+    "like": 1
+  },
+  {
+    "name": "[porker 撲克牌] 二十一點玩法教學",
+    "path": "/card-game/poker_21point_quick_talk",
+    "img": "/img/poker.jpg",
+    "date": "2/3/2023",
+    "tag": "遊戲",
+    "like": 1
+  },
+  {
+    "name": "《小小諾亞-樂園的繼承者》介紹",
+    "path": "/card-game/little-noah-introduce",
+    "img": "/img/little-noach-introduce/4.png",
+    "date": "2/3/2023",
+    "tag": "遊戲",
+    "like": 1
+  },
+  {
+    "name": "30秒學會成為csgo高手的必要技巧！",
+    "path": "/card-game/csgo",
+    "img": "/img/csgo.png",
+    "date": "2/3/2023",
+    "tag": "遊戲",
+    "like": 1
+  },
+  {
+    "name": "Steam 移植遊戲-浮島物語 (Forager)",
+    "path": "/card-game/steam-game-forager",
+    "img": "/img/浮島物語/1.jpg",
+    "date": "9/4/2023",
+    "tag": "Steam遊戲",
+    "like": 1
+  },
+  {
+    "name": "python 快速入門",
+    "path": "/code-tutorial/python-quick-tutorial",
+    "date": "15/3/2023",
+    "img": "/img/py-icon.png",
+    "tag": "電腦編程教學",
+    "like": 1
+  },
+  {
+    "name": "Linux幾個必學指令 ",
+    "path": "/code-tutorial/simple_linux_cmd",
+    "date": "15/3/2023",
+    "img": "/img/linux.jpeg",
+    "tag": "電腦編程教學",
+    "like": 1
+  },
+  {
+    "name": "Python 教學 [第一章]基礎語法",
+    "path": "/code-tutorial/python-ch1",
+    "date": "14/3/2023",
+    "img": "/img/python-2.png",
+    "tag": "電腦編程教學",
+    "like": 1
+  },
+  {
+    "name": "中國古代最重要的君主(上)",
+    "path": "/fun-fact/chinese-king1",
+    "img": "/img/chinese-king1.jpg",
+    "date": "3/3/2023",
+    "tag": "有趣知識",
+    "like": 1
+  },
+  {
+    "name": "中國古代最重要的君主(下)",
+    "path": "/fun-fact/chinese-king2",
+    "img": "/img/chinese-king2.jpeg",
+    "date": "3/3/2023",
+    "tag": "有趣知識",
+    "like": 1
+  },
+  {
+    "name": "古人的性癖好 孫中山是蘿莉控?",
+    "path": "/fun-fact/Sun-Yat-sen",
+    "img": "/img/Sun-Yat-Sen.jpeg",
+    "date": "6/3/2023",
+    "tag": "有趣知識",
+    "like": 1
+  },
+  {
+    "name": "西線無戰事 - 為何奪得奧斯卡最佳國際影片獎",
+    "path": "/fun-fact/All-Quiet-On-the-Western-Front",
+    "date": "14/3/23",
+    "img": "/img/西線無戰事.jpeg",
+    "tag": "有趣知識",
+    "like": 1
+  },
+  {
+    "name": "顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞",
+    "path": "/fun-fact/shi-dudu",
+    "date": "17/3/2023",
+    "img": "https://upload.wikimedia.org/wikipedia/zh/7/73/Shi_Pei_Pu.jpeg",
+    "tag": "有趣知識",
+    "like": 1
+  },
+  {
+    "name": "孫中山、張飛是蘿莉控？",
+    "path": "/fun-fact/ancient-3-sex-fun-fact",
+    "date": "17/3/2023",
+    "img": "/img/十二歲的大月薰.jpg",
+    "tag": "有趣知識",
+    "like": 1
+  },
+  {
+    "name": "不在藏了 王菲和謝霆鋒",
+    "path": "/news/Faye-Wong",
+    "img": "/img/Faye_Wong_03.jpg",
+    "date": "11/3/23",
+    "tag": "新聞",
+    "like": 1
+  },
+  {
+    "name": "謝霆鋒和王菲的合作",
+    "path": "/news/Faye-Wong-song",
+    "img": "/img/Faye_Wong_04.jpg",
+    "date": "12/3/23",
+    "tag": "新聞",
+    "like": 1
+  },
+  {
+    "name": "《最愛是誰》懷念張國榮",
+    "path": "/news/leslie-quick-talk",
+    "img": "/img/leslie.jpg",
+    "date": "28/3/2023",
+    "tag": "新聞",
+    "like": 1
+  },
+  {
+    "name": "海布里之王-亨利",
+    "path": "/sport/football-henry",
+    "date": "16/3/2023",
+    "img": "/img/football-henry.jpg",
+    "tag": "sport",
+    "like": 1
+  },
+  {
+    "name": "足球界的革新和希望  國王聯賽",
+    "path": "/sport/football-new-hope",
+    "date": "11/3/2023",
+    "img": "https://webcdn.guangming.com.my/wp-content/uploads/2023/02/%E6%9C%AA%E5%91%BD%E5%90%8D-1-144.jpg",
+    "tag": "sport",
+    "like": 1
+  },
+  {
+    "name": "球隊大事記—曼聯",
+    "path": "/sport/football-big-news",
+    "date": "15/3/2023",
+    "img": "/img/football-big-news/1.webp",
+    "tag": "sport",
+    "like": 1
+  },
+  {
+    "name": "RG 1/144系列必入手的商品",
+    "path": "/toy/5-gundam",
+    "img": "/img/5-gundam/1.jpg",
+    "date": "6/3/2023",
+    "tag": "toy",
+    "like": 1
+  },
+  {
+    "name": "Web 3.0和區塊鏈是什麼?是否對現實生活和環境的潛在環境有影響？",
+    "path": "/web3/what-is-web3",
+    "img": "/img/what-is-web3/blockchain.jpg",
+    "date": "10/4/2023",
+    "tag": "web3",
+    "like": 1
   }
 ]
