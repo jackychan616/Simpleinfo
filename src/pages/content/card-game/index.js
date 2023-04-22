@@ -30,6 +30,13 @@ const Bloglist = [
     img:'/img/浮島物語/1.jpg',
     date:'9/4/2023',
     tag:'Steam遊戲'
+   },
+   {
+    name:'《Unrecord》極逼真戰術射擊遊戲 畫質猶如隨身攝錄器',
+    path:'/card-game/unrecord',
+    img:'/img/unrecord/unrecord-game-sence.jpg',
+    date:'22/4/2023',
+    tag:'Steam遊戲'
    }
 ];
 
