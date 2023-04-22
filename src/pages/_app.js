@@ -98,7 +98,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         <>
           <Basic_lay tag = {<Tag/>}>
               <Container size="30rem">
-                <button onClick={updatelike(asPath.replace("/content",''))}>{}</button>
                 <Space h ="lg"/>
                 <span><ConTitle>閱讀更多</ConTitle></span>
                 <span><Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge></span>
