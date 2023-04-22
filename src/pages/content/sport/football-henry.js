@@ -83,10 +83,6 @@ export const getStaticProps = async () => {
           content: "200",
         },
         {
-          property: "og:title",
-          content: "海布里之王-亨利",
-        },
-        {
           property: "og:description",
           content: "海布里之王-亨利(Thierry Henry)，亨利作為阿仙奴的標誌性人物於早年間便充滿天賦被摩洛哥青年軍收入旗下...",
         },
