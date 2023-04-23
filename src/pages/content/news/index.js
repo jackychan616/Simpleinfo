@@ -28,7 +28,7 @@ const Bloglist = [
   {
     name:'如何制定一個科學合理、適合自己的學習計劃？',
     path:'/news/learing-strategy',
-    img:'/img/lesring-strategy/learing.webp',
+    img:'/img/listening-strategy/learing.webp',
     date:'23/4/2023',
     tag:'學習'
   }
