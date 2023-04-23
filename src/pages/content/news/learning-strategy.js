@@ -48,7 +48,7 @@ export const getStaticProps = async () => {
           {
             property: "og:image",
             content:
-              "https://simpleinfohk.me/img/lesring-strategy/learing.webp",
+              "https://simpleinfohk.me/img/learning-strategy/learing.webp",
           },
           {
             property: "og:image:width",
