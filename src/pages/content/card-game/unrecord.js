@@ -1,6 +1,5 @@
 import { ConText, ConTitle } from '../../components/component';
-import { Container, Image, Space } from '@mantine/core';
-import YouTube from "react-youtube";
+import { Container, Image,AspectRatio, Space } from '@mantine/core';
 
 function Page(){
     return(
@@ -10,7 +9,9 @@ function Page(){
             <Space h="lg"/>
             <ConText>由游戲開發團隊 Drama製作的FPS新作《Unrecord》登上了Steam商店，但未有發售日期。官方在YouTube上釋出遊戲預告後，在外國遊戲論壇引起一片討論。</ConText>
             <Space h="lg"/>
-            <YouTube videoId='5qvVNzsJyB0' opts={{height: '300',width: '550',playerVars: {autoplay: 1}}}/>
+            <AspectRatio ratio={16/9}>
+              <iframe width="1280" height="480" src="https://www.youtube.com/embed/5qvVNzsJyB0" title="Unrecord - Official Early Gameplay Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </AspectRatio>
             <Space h="lg"/>
             <ConText>Unrecord是一款戰術射擊遊戲，玩家扮演一名警員進行複雜的案件調查，過程中會面對歹徒發生槍戰。Unrecord的特點是與敵人覆雜的對話，創新的遊戲機制，艱難的道德困境，以及獨特的射擊系統。</ConText>
             <Space h="lg"/>
