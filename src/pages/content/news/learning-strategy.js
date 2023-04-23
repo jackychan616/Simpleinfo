@@ -5,7 +5,7 @@ function Page(){
     return(
         <Container>
             <ConTitle>如何制定一個科學合理、適合自己的學習計劃？</ConTitle>
-            <Image src="/img/lesring-strategy/learing.webp" alt="學習計劃"/>
+            <Image src="/img/lesring-strategy/learning.webp" alt="學習計劃"/>
             <ConText>學習計劃是學習過程中非常重要的一個環節，它關繫到學習的效率、成果和未來的職業發展。因此，如何制定一個科學合理、適合自己的學習計劃，成為了每個學生都需要思考的問題。在本文中，我將為大家介紹如何制定學習計劃，併使用不同的例子來解析學習計劃的重要性。</ConText>
             <ConTitle order={2} size="h2">找出學習目標和需求</ConTitle>
             <ConText>首先，我們需要明確自己的學習目標和需求，確定想要達到的成果和成績。這一步是非常重要的，因為只有明確自己的目標，才能夠有針對性地制定學習計劃。例如，如果妳想成為一名優秀的工程師，那麽妳需要在數學、物理、化學等方面有著紮實的基礎，併且需要註重實踐能力的培養。</ConText>
