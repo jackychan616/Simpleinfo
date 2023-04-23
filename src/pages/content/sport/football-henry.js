@@ -70,6 +70,10 @@ export const getStaticProps = async () => {
           content:'海布里之王-亨利'
         },
         {
+          name:'og:title',
+          content:'海布里之王-亨利'
+        },
+        {
           property: "og:image",
           content:
             "https://simpleinfohk.me/img/football-big-news/1.webp",
