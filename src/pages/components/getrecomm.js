@@ -11,7 +11,14 @@ export function Get(path){
 
     for (const j in Bloglist){
         if (Bloglist[j]["tag"] == tag){    
+            if (Bloglist[j]["path"] != path){
                 R.push(Bloglist[j]);
+            }
+        }
+    }
+    if (R.length < 2){
+        for (let i = 0; i<3; i++){
+            R.push(Bloglist[Math.floor(Math.random() * Bloglist.length)])
         }
     }
 	return R;
@@ -53,6 +60,13 @@ export function Getblogbytag(tag,name){
         }
     }
     return R;
+}
+export function Getblogint(path){
+    for (const i in Bloglist) {
+        if (Bloglist[i]["path"] == path){
+            return i
+        }
+    }
 }
 function Context(){
     return(

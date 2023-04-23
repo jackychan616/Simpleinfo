@@ -6,13 +6,16 @@ import {
   AspectRatio,
   Text,
   Group,
-  Badge
+  Badge,
+  Button,
+  Box
 } from '@mantine/core';
 import {Meta} from './components/meta';
 import Head  from 'next/head';
 import { TypeAnimation } from 'react-type-animation';
-import React from 'react';
 import Image from 'next/image'
+import React, { useState } from 'react';
+import styles from './page.module.css'
 export const Bloglist = require('../data/Blog.json');
 function Typing() {
   return (
@@ -61,80 +64,64 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function Body() {
+export default function Home() {
   const { classes } = useStyles();
-  const cards = Bloglist.map((article) => (
-    <Card
-      key={article.name}
-      p="md"
-      radius="md"
-      component="a"
-      href={'/content/' + article.path}
-      className={classes.card}
+  const [ postNum, setPostNum] = useState(6); // Default number of posts dislplayed
+
+  function handleClick() {
+    setPostNum(prevPostNum => prevPostNum + 6) // 3 is the number of posts you want to load per click
+  }
+  return (
+<>      
+  <Head>
+    <title>Simple Info HK</title>
+  </Head>
+  <Container>
+    <div
+    className=" d-flex   justify-content-center align-items-center"
+    style={{ backgroundColor: 'transparent', height: '150px' }}
     >
-      <AspectRatio ratio={1920 / 1080}>
-        <Image src={article.img} alt={article.img.replace("/img","")} width="650" height="80" quality = "70" />
-      </AspectRatio>
-      <Group position="apart" mt="md" mb="xs">
-        <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
-        {article.date}
-        </Text>
-        <Badge variant="filled">
-          {article.tag}
-        </Badge>
-      </Group>
-      <Text className={classes.name} mt={5}>
-        {article.name}
-      </Text>
-    </Card>
-  ));
-  return (
-    <>
-      <div
-        className=" d-flex   justify-content-center align-items-center"
-        style={{ backgroundColor: 'transparent', height: '150px' }}
-      >
-        <Typing />
-      </div>
-      <Container>
-        <Container py="xl">
-          <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-            {cards}
-          </SimpleGrid>
+    <Typing />
+    </div>
+    <Container>
+      <Container py="xl">
+        <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+          {Bloglist.slice(0, postNum).map(article => (
+              <Card
+                key={article.name}
+                p="md"
+                radius="md"
+                component="a"
+                href={'/content/' + article.path}
+                className={classes.card}
+              >
+                <AspectRatio ratio={1920 / 1080}>
+                  <Image src={article.img} alt={article.img?.replace("/img","")} width="650" height="80" quality = "70" />
+                </AspectRatio>
+                <Group position="apart" mt="md" mb="xs">
+                  <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
+                    {article.date}
+                  </Text>
+                  <Badge variant="filled">
+                    {article.tag}
+                  </Badge>
+                </Group>
+                <Text className={classes.name} mt={5}>
+                  {article.name}
+                </Text>
+               </Card>
+              ))}
+            </SimpleGrid>
+          </Container>
+          <Box w={200}>
+            <div className={styles.load_more}>
+              <Button onClick={handleClick} fullWidth variant="outline">載入更多</Button>
+            </div>
+          </Box>
         </Container>
-      </Container>
-    </>
-  );
-}
-function kofi() {
-  return (
-    <>
-      <iframe
-        id="kofiframe"
-        src="https://ko-fi.com/jackychan616/?hidefeed=true&widget=true&embed=true&preview=true"
-        style={{
-          border: 'none',
-          width: '100%',
-          padding: '4px',
-          background: '#f9f9f9',
-        }}
-        height="712"
-        title="jackychan616"
-      ></iframe>
-    </>
+  </Container>
+</>
   );
 }
 
-export default function Home() {
-  return (
-  <>
-      <Head>
-         <title>Simple Info Hk</title>
-      </Head>
-      <Container>
-        <Body />
-      </Container>
-      
-  </>
-  );
-}
+

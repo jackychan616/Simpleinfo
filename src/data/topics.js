@@ -1,4 +1,4 @@
-import { DevicesPc, DeviceGamepad2 ,Robot,InfoCircle ,HorseToy,BallFootball ,News} from 'tabler-icons-react';
+import { DevicesPc, DeviceGamepad2 ,Robot,InfoCircle ,HorseToy,BallFootball ,News,Brain} from 'tabler-icons-react';
 import {SiWeb3Dotjs} from 'react-icons/si';
 export const topics = [
         {
@@ -56,6 +56,13 @@ export const topics = [
           page:1,
           description:"追蹤最新Web 3資訊",
           icon:SiWeb3Dotjs
+        },
+        {
+          name:"AI",
+          path:"ai-tutorial",
+          page:1,
+          description:"Ai",
+          icon:Brain
         }
 
 ];
