@@ -10,9 +10,10 @@ function Conpage() {
       </ConTitle>
       <Image
         src="/img/西線無戰事.jpeg"
-        height="650px"
-        width="650px"
+        height="500px"
+        width="500px"
         alt="西線無戰事"
+        maw = {500}
       ></Image>
       <ConText>
         《西線無戰事》是一部德國反戰電影，改編自埃里希·瑪利亞·雷馬克的同名小說。該片由路易斯·邁爾斯執導，於
@@ -29,6 +30,7 @@ function Conpage() {
         height="500px"
         width="500px"
         alt="保羅·包美爾"
+        maw = {500}
       ></Image>
       <Space h="xl" />
       <ConTitle>電影的有趣之處</ConTitle>
@@ -45,6 +47,7 @@ function Conpage() {
         width="120px"
         caption="保羅和朋友偷鵝"
         alt="西線無戰事"
+        maw = {500}
       />
       <ConText>
         除此之外，該片在技術製作方面也很出色。攝影師所拍攝的場景呈現出真實的感覺，並且音效將戰爭場景的氣氛展現得淋漓盡致。電影的配樂也非常精彩，強調了戰爭的緊張和悲傷。
@@ -56,6 +59,7 @@ function Conpage() {
         width="110px"
         caption="戰場上的軍官"
         alt="西線無戰事"
+        maw = {500}
       />
       <ConText>
         總體而言，《西線無戰事》是一部非常優秀的反戰電影，以其幽默、真實和殘酷的方式呈現出戰爭的大恐懼。觀眾可以從中體會到戰爭的荒唐和人性的扭曲。影片在思想深度和制作技術上都可圈可點，不仅仅是一部反戰電影，更是一部關於人性的作品。

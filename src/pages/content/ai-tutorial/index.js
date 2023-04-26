@@ -14,7 +14,7 @@ const Bloglist = [
   {
     name: '什麼是AI?',
     path: '/ai-tutorial/ai-quick-tutorial',
-    img: '/img/ai.jpg',
+    img: '/img/ai_quick.webp',
     date: '12/3/2023',
     tag: "AI 教學"
   },

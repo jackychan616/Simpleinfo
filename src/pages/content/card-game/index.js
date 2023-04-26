@@ -21,7 +21,7 @@ const Bloglist = [
   {
     name:'30秒學會成為csgo高手的必要技巧！',
     path:'/card-game/csgo',
-    img:'/img/csgo.png',
+    img:'/img/csgo.webp',
     date: '2/3/2023',
     tag: '遊戲'
    },{
