@@ -9,7 +9,7 @@
   {
     "name": "什麼是AI?",
     "path": "/ai-tutorial/ai-quick-tutorial",
-    "img": "/img/ai.jpg",
+    "img": "/img/ai_quick.webp",
     "date": "12/3/2023",
     "tag": "AI 教學"
   },
@@ -86,7 +86,7 @@
   {
     "name": "30秒學會成為csgo高手的必要技巧！",
     "path": "/card-game/csgo",
-    "img": "/img/csgo.png",
+    "img": "/img/csgo.webp",
     "date": "2/3/2023",
     "tag": "遊戲"
   },

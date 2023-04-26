@@ -14,6 +14,7 @@ import { Space } from '@mantine/core';
 import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
 import Head from 'next/head';
+import {GoogleAds} from './components/googleAds';
 import { NotificationsProvider } from '@mantine/notifications';
 const useStyles = createStyles((theme) => ({
   tag_on_top :{
@@ -56,6 +57,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         <meta property="og:locale" content="zh-Hant-HK"/>
       </Head>
         <Layout>
+            <GoogleAds />
             {tag}
             {isLoading?<Loading/>: <Component {...pageProps} /> }
             {children}

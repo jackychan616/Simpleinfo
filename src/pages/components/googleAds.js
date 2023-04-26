@@ -21,4 +21,6 @@ export const GoogleAds = () => {
   )
 }
 
-
+export default function Page(){
+  return(<></>);
+}
