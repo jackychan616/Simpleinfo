@@ -56,13 +56,6 @@ export const topics = [
           page:1,
           description:"追蹤最新Web 3資訊",
           icon:SiWeb3Dotjs
-        },
-        {
-          name:"AI",
-          path:"ai-tutorial",
-          page:1,
-          description:"Ai",
-          icon:Brain
         }
 
 ];
