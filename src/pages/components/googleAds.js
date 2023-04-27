@@ -28,7 +28,28 @@ export const GoogleAds = () => {
     
   )
 }
+export const recommend_blog_ads =() => {
+  useEffect(() => {
+    try {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (error) {
+      console.log(error);
+    }
+  }, [])
 
+  return(
+  <>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4293438601126518"
+     crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-fc+1g-6h-ix+1mw"
+     data-ad-client="ca-pub-4293438601126518"
+     data-ad-slot="4947807756"></ins>
+</>
+)
+}
 export default function Page(){
   return(<></>);
 }
