@@ -104,9 +104,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
                 <Recommend data = {Get(asPath.replace("/content",''))}/>
               </Container>
               <Blogads/>
-              <div style = {{backgroundColor: "blue" , width : "300px" , height: "300px"}}>
-
-              </div>
           </Basic_lay>
         </>
         
