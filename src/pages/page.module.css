@@ -94,3 +94,7 @@
   position: relative;
   right : 7%;
 }
+.load_more {
+  position:absolute;
+  left:50%;
+}

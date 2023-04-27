@@ -37,8 +37,6 @@ for p in (root / "pages/content").glob("**"):
         d_b = json.loads(blog_data.read_text("utf-8"))
         for card in data:
             if card not in d_b:
-                if "like" not in list(card):
-                    card["like"] = 1
                 d_b.append(card)
 
             blog_data.write_text(
