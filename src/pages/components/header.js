@@ -204,7 +204,7 @@ export default function ConHeader() {
           </Group>
           <Group className={classes.hiddenMobile}>
             <Button>訂閱</Button>
-            <Button ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' style ={{textDecoration:"none",color : "White"}}>給我們買杯咖啡</a></Button>
+            <Button ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' style ={{textDecoration:"none",color : "White"}}>買杯咖啡俾我哋</a></Button>
             <ActionToggle/>
           </Group>
 
