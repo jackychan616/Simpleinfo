@@ -22,18 +22,18 @@ function Typing() {
     <TypeAnimation
       sequence={[
         'Simple info',
-        2000,
+        3500,
         '前所未有嘅簡單', // '
-        2000,
+        3500,
         '仲喺度?',
         3000,
         '搵你所要嘅資訊啦！',
-        2000,
+        10000,
       ]}
       wrapper="div"
       cursor={true}
       repeat={3}
-      speed={20}
+      speed={12}
       style={{ fontSize: '3em' }}
     />
   );
