@@ -14,7 +14,7 @@ import { Space } from '@mantine/core';
 import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
 import Head from 'next/head';
-import {GoogleAds,Blogads,recommend_blog_ads} from './components/googleAds';
+import {GoogleAds,Blogads} from './components/googleAds';
 import { NotificationsProvider } from '@mantine/notifications';
 const useStyles = createStyles((theme) => ({
   tag_on_top :{
