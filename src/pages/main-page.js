@@ -33,7 +33,7 @@ function Typing() {
       wrapper="div"
       cursor={true}
       repeat={3}
-      speed={45}
+      speed={20}
       style={{ fontSize: '3em' }}
     />
   );
