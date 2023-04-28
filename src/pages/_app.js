@@ -105,9 +105,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
                 <Recommend data = {Get(asPath.replace("/content",''))}/>
                 <recommend_blog_ads/>
               </Container>
-              <div>
-                <Blogads/>
-              </div>
             </Group>
           </Basic_lay>
         </>
