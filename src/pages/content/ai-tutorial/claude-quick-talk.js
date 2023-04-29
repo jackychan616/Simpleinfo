@@ -1,9 +1,13 @@
 import { ConText, ConTitle } from '../../components/component';
 import { Container, Image, Space } from '@mantine/core';
-
+import Head from 'next/head';
 function Page (){
     return(
-        <Container>
+      <>
+      <Head>
+        <title>最強AI聊天機械人來襲 - Claude，告別繁瑣的註冊過程，被譽為ChatGPT的最強對手</title>
+      </Head>
+      <Container>
             <ConTitle order={2} size="h1">最強AI聊天機械人來襲 - Claude，告別繁瑣的註冊過程，被譽為ChatGPT的最強對手</ConTitle>
             <Image src="/img/claude-quick-talk/claude.webp" maw={450} alt="最強AI聊天機械人Claude" caption="Claude"/>
             <ConText>對比ChatGPT凡所的註冊門檻，Claude可以說是{`"零過程"`}，只要注冊一個 Slack 免費賬號就能註冊</ConText>
@@ -20,6 +24,8 @@ function Page (){
             <ConText>Claude 有2個版本，價錢與性能也有所不同。Claude Instant 擁有更低的延遲，吞吐量較高，成本效益是Claude-v1的1/6，收費更低;Claude-v1 經過了優化，在處理任務上有更出色的表現，能夠解決更複雜的問題</ConText>
 
         </Container>
+      </>
+        
     );
 }
 

@@ -1,10 +1,15 @@
 import { Container, Timeline,Text,Image,Space } from '@mantine/core';
 import { ConText, ConTitle} from '../../components/component';
-import {Meta} from '../../components/meta';
+import Head from 'next/head';
 
 function ConPage(){
     return(
-        <Container>
+      <>
+      <Head>
+        <title>OpenAI ChatGPT 如何運作? 解構GPT-3工作原理</title>
+      </Head>
+
+      <Container>
             <ConTitle order={1} size="h1">OpenAI ChatGPT 如何運作? 解構GPT-3工作原理</ConTitle>
             <ConTitle order={2} size="h2">ChatGPT</ConTitle>
             <ConText>ChatGPT作為一種 AI 語言模型，由 OpenAI 創建。OpenAI 是一個人工智能研究實驗室，專注於開發先進的 AI 技術並使它們為世界各地的人們所用。為 ChatGPT 提供支持的生成式預訓練轉換器 (GPT) 語言模型由 OpenAI 創建，作為他們對自然語言處理和機器學習正在進行的研究的一部分。GPT 和其他類似語言模型的目標是使機器能夠理解人類語言並生成與人類產生的響應相似的真實響應。</ConText>
@@ -31,13 +36,14 @@ function ConPage(){
             <ConText>總之，GPT是一種基於深度學習技術的自然語言處理模型，其核心是Transformer結構和自注意力機制。它能夠對語言序列進行建模，並可以生成類人的自然語言文本，因而廣泛應用於自然語言理解和生成領域。</ConText>
             <ConText>ChatGPT能回答提出的問題、提供信息和指導以及參與與常識、瑣事、建議和娛樂等各種主題相關的對話來幫助使用者。ChatGPT亦可以幫助完成諸如解決數學問題、提供定義、就各種主題發表意見等任務，提供有關科學、技術、歷史、娛樂等一系列主題的真實且公正的信息。還可以查找與可能感興趣的特定主題相關的資源和信息。簡而言之，ChatGPT會在編程限制範圍內盡其所能幫助使用者。如果使用者有任何問題，能夠儘管提問，它會盡力為您提供準確而有用的答覆！但是需要注意，GPT的回復是根據算法和結構化數據生成的，無法提供情感支持或專業建議。</ConText>
         </Container>
+      </>
+        
     );
 }
 
 export default function Page(){
     return(
         <>
-            <Meta alt="OpenAI" img="/img/openai.jpg" pageTitle="OpenAI ChatGPT 如何運作? 解構GPT-3工作原理" description={"GPT的訓練過程中，主要使用無監督學習的方法，即不需要人工標注的數據。具體來說，GPT將輸入的語言序列分成若幹個token，然後通過多層的自注意力機制和前向神經網絡來預測每個token的下一個token。預測時，GPT會給出一個概率分布，表示每個token能夠成為下一個token的可能性大小，然後根據這個概率分布進行采樣，從而得到下一個token。通過這種方式，GPT可以不斷地生成新的文本，從而實現對自然語言的生成。"}/>
             <ConPage/>
         </>
     );

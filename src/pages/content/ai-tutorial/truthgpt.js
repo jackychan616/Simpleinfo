@@ -1,11 +1,14 @@
 import {Container,List,Space,Image} from '@mantine/core';
 import {ConText,ConTitle} from '../../components/component';
-import {Meta} from '../../components/meta';
 import Head  from 'next/head';
 
 export default function Page(){
     return (
-        <Container>
+      <>
+      <Head>
+        <title>馬斯克將推出TruthGpt , 強過 ChatGPT ?</title>
+      </Head>
+      <Container>
             <ConTitle id ="1-title" size = {'h1'} order = {1}>
                 馬斯克將推出TruthGpt , 強過 ChatGPT ?
             </ConTitle>
@@ -33,6 +36,8 @@ export default function Page(){
                 <List.Item><a href='https://www.cnbc.com/2023/04/19/elon-musk-says-he-wants-to-create-chatgpt-competitor-called-truthgpt.html'>Elon Musk now says he wants to create a ChatGPT competitor to avoid ‘A.I. dystopia’—he’s calling it ‘TruthGPT’ - make it </a></List.Item>
             </List>
         </Container>
+      </>
+        
     )
 }
 export const getStaticProps = async () => {
