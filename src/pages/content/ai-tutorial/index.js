@@ -75,9 +75,16 @@ const Bloglist = [
   },
   {
     name:'Pomo.rhythm 用於番茄工作法的 歌單生成AI',
-    path:'/ai-tutorial/pomo-rhyythm',
+    path:'/ai-tutorial/pomo-rhythm',
     img:'/img/pomo-rhythm/pomo-rhythm.png',
     date:'29/4/2023',
+    tag:'AI'
+  },
+  {
+    name:'HuggingChat 登場，因免費、開源被喻為「ChatGPT第一替代品」',
+    path:'/ai-tutorial/hugging-chat',
+    img:'/img/huggingchat/huggingface.png',
+    path:'28/9/2023',
     tag:'AI'
   }
 ];
