@@ -30,6 +30,7 @@ const Bloglist = [
     img:'/img/浮島物語/1.jpg',
     date:'9/4/2023',
     tag:'Steam遊戲'
+
    },
    {
     name:'《Unrecord》極逼真戰術射擊遊戲 畫質猶如隨身攝錄器',
@@ -42,7 +43,14 @@ const Bloglist = [
     name:'新手必須知道的崩壞：星穹鐵道攻略',
     path:'/card-game/honkai',
     img:'/img/honkai/Honkai：Star_Rail崩壞：星穹鐵道.webp',
-    date:'29/4/23',
+    date:'29/4/2023',
+    tag:'遊戲'
+   },
+   {
+    name:'如何解決 Steam 平台問題 (更新時發生錯誤或應用配置文件不可用等)',
+    path:'/card-game/how-to-solve-steam-error',
+    img:'/steam.jpg',
+    date:'29/4/2023',
     tag:'遊戲'
    }
 ];
