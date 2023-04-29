@@ -23,7 +23,7 @@ export default function Page(){
             <ConTitle order={2} sized="h2">重新安裝 Steam 客戶端</ConTitle>
             <ConText>如果玩家們仍然遇到配置文件不可用的問題，可以嘗試重新安裝 Steam 客戶端或更新到最新版本。如果玩家們無法解決 Steam 更新時發生錯誤或應用配置文件不可用等問題，建議咨詢 Steam 客服或尋找其他玩家的解決方案。此外，玩家們也可以在遊戲中遇到問題時，前往 Steam 社區或遊戲論壇尋求幫助。</ConText>
             <ConTitle order={2} size="h2">卸載並重新安裝</ConTitle>
-            <ConText>如果玩家們無法通過上述方法解決問題，建議卸載 Steam 客戶端，並重新安裝 Steam。在重新安裝 Steam 之前，建議玩家們備份重要的遊戲文件和個人資料。總的來說，Steam 更新時發生錯誤等問題是常見的問題，但是通過上述解決方法，玩家們可以有效解決這些問題，從而暢玩 Steam 平台的各種遊戲。如果玩家們無法解決問題，建議尋求 Steam 客服的幫助，或者前往 Steam 社區或遊戲論壇尋求幫助。</ConText>
+            <ConText>如果玩家們無法通過上述方法解決問題，建議卸載 Steam 客戶端，並重新安裝 Steam。在重新安裝 Steam 之前，建議玩家們備份重要的遊戲文件和個人資料。總的來說，Steam 更新時發生錯誤等問題是常見的問題，但是通過上述解決方法，玩家們可以有效解決這些問題，從而暢玩 Steam 平台的各種遊戲。如果玩家們無法解決問題，建議尋求 Steam 客服的幫助，或者前往 <a href="https://steamcommunity.com/discussions/">Steam 社區或遊戲論壇</a>尋求幫助。</ConText>
         </Container>
         </>
         
