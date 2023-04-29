@@ -69,7 +69,7 @@ export const getStaticProps = async () => {
           {
             property: "og:image",
             content:
-              "https://simpleinfohk.me/img/unrecord/unrecord-game-sence.jpg",
+              "https://simpleinfohk.me/img/honkai/Honkai：Star_Rail崩壞：星穹鐵道.webp",
           },
           {
             property: "og:image:width",
