@@ -64,6 +64,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+
 export default function Home() {
   const { classes } = useStyles();
   const [ postNum, setPostNum] = useState(6); // Default number of posts dislplayed
@@ -84,42 +85,9 @@ export default function Home() {
     <Typing />
     </div>
     <Container>
-      <Container py="xl">
-        <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-          {Bloglist.slice(0, postNum).map(article => (
-              <Card
-                key={article.name}
-                p="md"
-                radius="md"
-                component="a"
-                href={'/content/' + article.path}
-                className={classes.card}
-              >
-                <AspectRatio ratio={1920 / 1080}>
-                  <Image src={article.img} alt={article.img?.replace("/img","")} width="650" height="80" quality = "70" />
-                </AspectRatio>
-                <Group position="apart" mt="md" mb="xs">
-                  <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
-                    {article.date}
-                  </Text>
-                  <Badge variant="filled">
-                    {article.tag}
-                  </Badge>
-                </Group>
-                <Text className={classes.name} mt={5}>
-                  {article.name}
-                </Text>
-               </Card>
-              ))}
-            </SimpleGrid>
-          </Container>
-          <Box w={200}>
-            <div className={styles.load_more}>
-              <Button onClick={handleClick} fullWidth variant="outline">載入更多</Button>
-            </div>
-          </Box>
-        </Container>
-  </Container>
+     
+    </Container>
+    </Container>
 </>
   );
 }
