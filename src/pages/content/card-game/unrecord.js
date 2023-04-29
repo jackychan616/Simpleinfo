@@ -23,16 +23,6 @@ function Page(){
             <Space h="lg"/>
             <ConText>《Unrecord》尚未公布發售時間，大家如有興趣可以把遊戲加入願望清單。</ConText>
             <Image maw={700} src="/img/unrecord/unrecord-steam.png" alt="Unrecord Steam頁面"/>
-            <AspectRatio ratio={16 / 9}>
-              <iframe
-                src="https://www.youtube.com/watch?v=IK76q13Aqt0"
-                title="unrecord 遊戲片段"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-               />
-            </AspectRatio>
-
         </Container>
     );
 }
