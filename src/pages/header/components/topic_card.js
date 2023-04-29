@@ -42,7 +42,7 @@ export function Topic_card(
         <Container key = {item.name}>
           <Card
           radius="md"
-          style={{ backgroundImage: `url(${"https://simpleinfo.live" + Gethottopicimg(item.name,item.path)})`, ...style }}
+          style={{ backgroundImage: `url(${"https://simpleinfohk.me" + Gethottopicimg(item.name,item.path)})`, ...style }}
         className={cx(classes.card, className)}
           {...others}
           >
