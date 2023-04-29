@@ -4,6 +4,10 @@ import Head  from 'next/head';
 
 export default function Page(){
     return(
+        <>
+        <Head>
+            <title>如何解決 Steam 平台問題 (更新時發生錯誤或應用配置文件不可用等)</title>
+        </Head>
         <Container>
             <ConTitle>如何解決 Steam 平台問題 (更新時發生錯誤或應用配置文件不可用等)</ConTitle>
             <Image src="/img/fix-steam-error/steam.jpg" maw={600} alt="Steam 平台問題"/>
@@ -21,6 +25,8 @@ export default function Page(){
             <ConTitle order={2} size="h2">卸載並重新安裝</ConTitle>
             <ConText>如果玩家們無法通過上述方法解決問題，建議卸載 Steam 客戶端，並重新安裝 Steam。在重新安裝 Steam 之前，建議玩家們備份重要的遊戲文件和個人資料。總的來說，Steam 更新時發生錯誤等問題是常見的問題，但是通過上述解決方法，玩家們可以有效解決這些問題，從而暢玩 Steam 平台的各種遊戲。如果玩家們無法解決問題，建議尋求 Steam 客服的幫助，或者前往 Steam 社區或遊戲論壇尋求幫助。</ConText>
         </Container>
+        </>
+        
     );
 }
 
