@@ -29,31 +29,31 @@ export function GroudedCard({
 }) {
   const { classes } = useStyles();
   return (
-    <Card withBorder radius="md" p={0} className={classes.card}>
-      <Group noWrap spacing={0}>
-        <Image src={image} height={140} width={140} alt={title} />
-        <div className={classes.body}>
-          <Text transform="uppercase" color="dimmed" weight={700} size="xs">
-            {category}
-          </Text>
-          <Text className={classes.title} mt="xs" mb="md">
-            {title}
-          </Text>
-          <Group noWrap spacing="xs">
-            <Group spacing="xs" noWrap>
-              <Avatar size={20} src={authorAvatar} />
-              <Text size="xs">{authorName}</Text>
-            </Group>
-            <Text size="xs" color="dimmed">
-              •
-            </Text>
-            <Text size="xs" color="dimmed">
-              {date}
-            </Text>
+  <Card withBorder radius="md" p={0} className={classes.card}>
+    <Group noWrap spacing={0}>
+      <Image src={image} height={140} width={140} alt={title} />
+      <div className={classes.body}>
+        <Text transform="uppercase" color="dimmed" weight={700} size="xs">
+          {category}
+        </Text>
+        <Text className={classes.title} mt="xs" mb="md">
+          {title}
+        </Text>
+        <Group noWrap spacing="xs">
+          <Group spacing="xs" noWrap>
+            <Avatar size={20} src={authorAvatar} />
+            <Text size="xs">{authorName}</Text>
           </Group>
-        </div>
-      </Group>
-    </Card>
+          <Text size="xs" color="dimmed">
+            •
+          </Text>
+          <Text size="xs" color="dimmed">
+            {date}
+          </Text>
+        </Group>
+      </div>
+    </Group>
+  </Card>
   );
 }
 

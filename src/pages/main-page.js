@@ -16,6 +16,7 @@ import { TypeAnimation } from 'react-type-animation';
 import Image from 'next/image'
 import React, { useState } from 'react';
 import styles from './page.module.css'
+import GroudedCard from './components/groupedcard'
 export const Bloglist = require('../data/Blog.json');
 function Typing() {
   return (
@@ -85,6 +86,7 @@ export default function Home() {
     <Typing />
     </div>
     <Container>
+    <GroudedCard/>
     <Container py="xl">
         <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
           {Bloglist.slice(0, postNum).map(article => (
