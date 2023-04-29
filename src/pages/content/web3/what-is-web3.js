@@ -1,5 +1,4 @@
 import { ConText, ConTitle } from '../../components/component';
-import {Meta} from '../../components/meta';
 import { Container, List,Image} from '@mantine/core';
 import Head from 'next/head';
 

@@ -72,6 +72,13 @@ const Bloglist = [
     img:'/img/googlebrain-mix-deepmind/deepmind.webp',
     date:'21/4/2023',
     tag:'AI'
+  },
+  {
+    name:'Pomo.rhythm 用於番茄工作法的 歌單生成AI',
+    path:'/ai-tutorial/pomo-rhyythm',
+    img:'/img/pomo-rhythm/pomo-rhythm.png',
+    date:'29/4/2023',
+    tag:'AI'
   }
 ];
 
