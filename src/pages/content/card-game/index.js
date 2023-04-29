@@ -37,6 +37,13 @@ const Bloglist = [
     img:'/img/unrecord/unrecord-game-sence.jpg',
     date:'22/4/2023',
     tag:'Steam遊戲'
+   },
+   {
+    name:'新手必須知道的崩壞：星穹鐵道攻略',
+    path:'/card-game/honkai',
+    img:'/img/honkai/Honkai：Star_Rail崩壞：星穹鐵道.webp',
+    date:'29/4/23',
+    tag:'遊戲'
    }
 ];
 
