@@ -15,7 +15,7 @@ export default function Page(){
       <Image src="/img/huggingchat/chat.webp" maw={850} alt="Hugging chat"/>
       <ConText>HuggingChat是完全免費的，而模型訓練方法與ChatGPT類似，用大量文本數據進行訓練，不過HuggingChat的數據比較廣泛，使它比ChatGPT優勝。</ConText>
       <ConText>Hugging Chat 現已開始公測，大家有興趣可以開去試用。</ConText>
-      <a href="https://huggingface.co/chat/">Hugging Chat</a>
+      <ConText>網址:<a href="https://huggingface.co/chat/">https://huggingface.co/chat/</a></ConText>
     </Container>
     </>
   
