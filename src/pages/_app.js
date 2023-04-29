@@ -1,7 +1,7 @@
 import styles from '../styles/globals.css';
 import Layout from './components/layout';
 import { Analytics } from '@vercel/analytics/react';
-import { MantineProvider, ColorSchemeProvider,Badge,Container,createStyles} from '@mantine/core';
+import { MantineProvider, ColorSchemeProvider,Badge,Container,createStyles,Group} from '@mantine/core';
 import { useState,useEffect } from 'react';
 import Loading from './loading';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
@@ -96,14 +96,16 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       return (
         <>
           <Basic_lay tag = {<Tag/>}>
+            <Group>
               <Container size="30rem">
                 <Space h ="lg"/>
                 <span><ConTitle>閱讀更多</ConTitle></span>
                 <span><Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge></span>
                 <Space h = "xl"/>   
                 <Recommend data = {Get(asPath.replace("/content",''))}/>
+                <recommend_blog_ads/>
               </Container>
-              <Blogads/>
+            </Group>
           </Basic_lay>
         </>
         
