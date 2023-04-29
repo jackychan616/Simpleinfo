@@ -175,7 +175,7 @@ export function FooterLinks() {
           <ActionIcon size="lg" component = 'a' href='https://www.facebook.com/profile.php?id=100092233176369&sk=followers'>
             <IconBrandFacebook size="1.05rem" stroke={1.5} color={'#2d4686'} />
           </ActionIcon>
-          <ActionIcon size="lg" component='a' href='https://www.instagram.com/simpleinfohk/'>
+          <ActionIcon size="lg" component='a' href='https://www.instagram.com/simpleinfo_hk/'>
             <IconBrandInstagram size="1.05rem" stroke={1.5}  color={'#2d4686'}/>
           </ActionIcon>
         </Group>
