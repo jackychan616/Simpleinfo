@@ -84,7 +84,7 @@ const Bloglist = [
     name:'HuggingChat 登場，因免費、開源被喻為「ChatGPT第一替代品」',
     path:'/ai-tutorial/hugging-chat',
     img:'/img/huggingchat/huggingface.png',
-    path:'28/9/2023',
+    date:'28/9/2023',
     tag:'AI'
   }
 ];
