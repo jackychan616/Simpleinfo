@@ -49,7 +49,7 @@ const Bloglist = [
    {
     name:'如何解決 Steam 平台問題 (更新時發生錯誤或應用配置文件不可用等)',
     path:'/card-game/how-to-solve-steam-error',
-    img:'/steam.jpg',
+    img:'/fix-steam-error/steam.jpg',
     date:'29/4/2023',
     tag:'遊戲'
    }
