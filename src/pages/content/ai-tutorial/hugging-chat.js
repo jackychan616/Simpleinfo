@@ -10,8 +10,9 @@ export default function Page(){
     </Head>
     <Container>
       <ConTitle>HuggingChat 登場，因免費、開源被喻為「ChatGPT第一替代品」</ConTitle>
+      <Image src="/img/huggingchat/huggingface.png"/>
       <ConText>Hugging Face在4 月 26 日發布了 大語言模型 HuggingChat，官方自信地表示:{`"`}這是當下最好的開源聊天模型，也是 ChatGPT 的第一個開源替代品{`"`}。</ConText>
-      <Image src="/img/huggingchat/chat.wepb" alt="Hugging chat"/>
+      <Image src="/img/huggingchat/chat.webp" alt="Hugging chat"/>
       <ConText>HuggingChat是完全免費的，而模型訓練方法與ChatGPT類似，用大量文本數據進行訓練，不過HuggingChat的數據比較廣泛，使它比ChatGPT優勝。</ConText>
       <ConText>Hugging Chat 現已開始公測，大家有興趣可以開去試用。</ConText>
       <a href="https://huggingface.co/chat/">Hugging Chat</a>
