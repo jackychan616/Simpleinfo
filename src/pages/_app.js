@@ -106,7 +106,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
                 <Space h = "xl"/>   
                 <Recommend data = {Get(asPath.replace("/content",''))}/>
               </Container>
-              <Recommend_ads/>
             </Group>
           </Basic_lay>
         </>
