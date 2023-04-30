@@ -9,7 +9,7 @@ export default function Page(){
             </Head>
             <Container>
                 <ConTitle>內附星穹鐵道最新兌換碼 直接送400星瓊!</ConTitle>
-                <Image src="/img/honkai-code/Honkai-Star-Rail-new-year.webp" alt="[2023] 直接送400星瓊! 星穹鐵道最新兌換碼"/>
+                <Image src="/img/honkai-code/honkai-star-rail-new-year.webp" alt="[2023] 直接送400星瓊! 星穹鐵道最新兌換碼"/>
                 <ConText>各位登上了星穹列車了嗎? 我們為大家收集了所有崩壞：星穹鐵道的兌換碼，幫助您進行星際冒險。我們會定期更新本教學，請務必回來查看以知道所有最新的兌換碼。</ConText>
                 <Space h="lg"/>
                 <ConTitle order={2} size="h2">最新的兌換碼</ConTitle>
