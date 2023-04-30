@@ -18,6 +18,19 @@ export const Blogads = () => {
      format="fluid"/>
   )
 }
+export const recommend_ads = () => {
+  return(
+    <>
+      <Adsense
+        style = {{display:"block"}}
+        client = "ca-pub-3459129696587268"
+        slot = "9908328699"
+        layout = "in-article"
+        format = "fluid"
+      />
+    </>
+  )
+}
 export const GoogleAds = () => {
   return (<>
    <ins className="adsbygoogle"
