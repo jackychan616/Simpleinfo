@@ -14,7 +14,7 @@ export default function Page(){
             <Image src="/img/deepfloydif/nabla.jpg" maw={850} alt="DeepFloyd" caption="DeepFloyd IF生成的圖片"/>
             <ConTitle order={2} size="h2">DeepFloyd IF</ConTitle>
             <ConText>DeepFloyd IF具有高度的逼真度和語言理解能力，它具備兩個強大功能，分別是開能夠精確繪製文字以及理解空間關係</ConText>
-            <Image maw={650} src="/img/deepfloydif/photo1.png" maw={600} alt="AI生成霓虹燈" caption="霓虹燈"/>
+            <Image maw={650} src="/img/deepfloydif/photo1.png" alt="AI生成霓虹燈" caption="霓虹燈"/>
             <ConText> DeepFloyd IF 能夠巧妙地把指定的文本放置在任何地方，如霓虹燈招牌、街頭塗鴉、服飾、手繪插圖等去，並以最適合的字體、風格、排版的方式出現在最合適的位置。</ConText>
             <Image src="/img/deepfloydif/photo2.png" maw={650} alt="DeepFloyd IF 文字生成"/>
             <Space h="lg"/>
@@ -25,7 +25,7 @@ export default function Page(){
             <ConTitle order={2} size="h2">DeepFloyd 開發團隊</ConTitle>
             <ConText>DeepFloyd AI Research 是 Stability AI 旗下的獨立研發團隊，名字來源於平克弗洛伊德樂隊，自稱為“研發樂隊”，團隊成員主要來自東歐，成員僅有四人。</ConText>
         </Container>
-        </>
+      </>
         
     );
 }
