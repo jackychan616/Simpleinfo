@@ -54,7 +54,7 @@ const Bloglist = [
     tag:'遊戲'
    },
    {
-    name:'直接送400星瓊! 星穹鐵道最新兌換碼',
+    name:'直接送400星瓊! 內附星穹鐵道最新兌換碼',
     path:'/card-game/honkai-code',
     img:'/img/honkai-code/1.png',
     date:'30/4/2023',
