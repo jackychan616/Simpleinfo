@@ -24,7 +24,7 @@ const useStyles = createStyles((theme) => ({
 }))
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
-  const { classes, theme } = useStyles();
+  const canonicalUrl = "https://simpleinfohk.me" + asPath;
   if (asPath.includes("/savejson")){
     return<></>
   }
@@ -94,6 +94,9 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       }
       return (
         <>
+          <Head>
+            <link rel="canonical" href={canonicalUrl} />
+          </Head>
           <Basic_lay tag = {<Tag/>}>
             <Group>
               <Container size="30rem">

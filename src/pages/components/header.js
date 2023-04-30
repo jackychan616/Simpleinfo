@@ -240,7 +240,7 @@ export default function ConHeader() {
           <Link href="/" className={classes.link} onClick={closeDrawer}>
             首頁
           </Link>
-          <Link href="/content" className={classes.link} onClick={closeDrawer}>
+          <Link href="/hot" className={classes.link} onClick={closeDrawer}>
             文章
           </Link>
           <UnstyledButton className={classes.link}  onClick={toggleLinks}>  
