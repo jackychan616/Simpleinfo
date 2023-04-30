@@ -29,3 +29,46 @@ export default function Page(){
         
     );
 }
+
+export const getStaticProps = async () => {
+    return {
+      props: {
+        openGraphData: [
+          {
+            name:'description',
+            content:'Stable diffusion 背後公司StabilityAI最近又有新打算了。他們在Github發表了全新的開源模型 DeepFloyd IF'
+  
+          },
+          {
+            name:'title',
+            content:'Stable diffusion 公司全新模型!直出AI海報，超高清圖像生成'
+          },
+          {
+            property: "og:image",
+            content:
+              "https://simpleinfohk.me/img/deepfloydif/photo1.png",
+          },
+          {
+            property: "og:image:width",
+            content: "600",
+          },
+          {
+            property: "og:image:height",
+            content: "450",
+          },
+          {
+            property: "og:title",
+            content: "Stable diffusion 公司全新模型!直出AI海報，超高清圖像生成",
+          },
+          {
+            property: "og:description",
+            content: "Stable diffusion 背後公司StabilityAI最近又有新打算了。他們在Github發表了全新的開源模型 DeepFloyd IF",
+          },
+          {
+            property: "og:type",
+            content: "website",
+          },
+        ],
+      },
+    };
+  };
