@@ -90,7 +90,7 @@ export const getStaticProps = async () => {
           {
             property: "og:type",
             content: "website",
-          },
+          }
         ],
       },
     };

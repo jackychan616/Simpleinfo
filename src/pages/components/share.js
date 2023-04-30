@@ -10,7 +10,7 @@ export function Sharebutton({url}) {
                 <Button
                 leftIcon = {<Share/>}
                 compact
-                fullWidth variant="outline"
+                variant="outline"
                 >分享</Button>
             </Menu.Target>
             <Menu.Dropdown>

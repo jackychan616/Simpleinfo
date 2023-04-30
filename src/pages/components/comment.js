@@ -2,7 +2,7 @@ import {DiscussionEmbed} from "disqus-react"
   
 export function  Comments(page,title){
   const disqusShortname = "simpleinfo"
-  const url = "https://simpleinfo.live"
+  const url = "https://simpleinfohk.me"
   const disqusConfig = {
     url: url.concat(page),
     identifier:'123', 

@@ -12,7 +12,6 @@ export function Meta({children,pageTitle, keywords, description ,subtitle,img,al
       <NextSeo
       title={pageTitle ? pageTitle :siteTitle}
       description={description ? description : defaultDescription}
-      canonical="https://simpleinfohk.me/"
       openGraph={{
         title:pageTitle?pageTitle:siteTitle,
         description:description?description:defaultDescription,

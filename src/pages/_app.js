@@ -24,7 +24,7 @@ const useStyles = createStyles((theme) => ({
 }))
 export default function MyApp({ Component, pageProps, ...appProps}) {
   const { asPath } = useRouter();
-  const { classes, theme } = useStyles();
+  const canonicalUrl = "https://simpleinfohk.me" + asPath;
   if (asPath.includes("/savejson")){
     return<></>
   }
@@ -81,12 +81,11 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         }
         return(
           <>
-            <div className={classes.tag_on_top}>
-              <Badge variant="filled" >{tag}</Badge>
-              <Space h = "lg"/>
-              <Sharebutton url = {"https://simpleinfohk.me" + appProps.router.pathname}/>
-            </div>
-            <Space h = "lg"/>
+            <Container>
+                <Badge variant="filled" >{tag}</Badge>
+                <Space h = "lg"/>
+                <Sharebutton url = {"https://simpleinfohk.me" + appProps.router.pathname}/>
+            </Container>
             <Space h = "lg"/>
             <Space h = "lg"/>
 
@@ -95,6 +94,9 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       }
       return (
         <>
+          <Head>
+            <link rel="canonical" href={canonicalUrl} />
+          </Head>
           <Basic_lay tag = {<Tag/>}>
             <Group>
               <Container size="30rem">

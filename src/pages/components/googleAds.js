@@ -14,7 +14,7 @@ export const Blogads = () => {
      data-ad-client="ca-pub-3459129696587268"
      data-ad-slot="8401458294"
      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
+     data-full-width-responsive="true"></ins>
   </>
   )
 }
