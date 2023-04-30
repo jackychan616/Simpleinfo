@@ -14,7 +14,7 @@ export const Blogads = () => {
      style={{display:"block"}}
      client="ca-pub-3459129696587268"
      slot="8401458294"
-     layout="in-article"
+     layout="-74+ex-1i-2r+a"
      format="fluid"/>
   )
 }
