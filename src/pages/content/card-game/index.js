@@ -52,6 +52,13 @@ const Bloglist = [
     img:'/img/fix-steam-error/steam.jpg',
     date:'29/4/2023',
     tag:'遊戲'
+   },
+   {
+    name:'直接送400星瓊! 星穹鐵道最新兌換碼',
+    path:'/card-game/honkai-code',
+    img:'',
+    date:'30/4/2023',
+    tag:'遊戲'
    }
 ];
 
