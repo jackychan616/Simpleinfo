@@ -1,5 +1,13 @@
 import React, { useEffect } from 'react'
 export const Blogads = () => {
+  useEffect(() => {
+    var ads = document.getElementsByClassName("adsbygoogle").length;
+    for (var i = 0; i < ads; i++) {
+      try {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) { }
+    }
+}, []);
   return(
   <div>
     <ins className="adsbygoogle"
@@ -8,7 +16,7 @@ export const Blogads = () => {
       data-ad-layout-key="-74+ex-1i-2r+ay"
       data-ad-client="ca-pub-3459129696587268"
       data-ad-slot="8411360296">
-      </ins>
+      </ins>  
 
   </div>
   )
