@@ -86,6 +86,12 @@ const Bloglist = [
     img:'/img/huggingchat/huggingface.png',
     date:'28/9/2023',
     tag:'AI'
+  },{
+    name:'Stable diffusion 公司全新模型!直出AI海報，超高清圖像生成',
+    path:'/ai-tutorial/deepfloydif',
+    img:'/img/deepfloydif/photo1.png',
+    date:'30/9/2023',
+    tag:'AI'
   }
 ];
 
