@@ -81,12 +81,11 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         }
         return(
           <>
-            <div className={classes.tag_on_top}>
-              <Badge variant="filled" >{tag}</Badge>
-              <Space h = "lg"/>
-              <Sharebutton url = {"https://simpleinfohk.me" + appProps.router.pathname}/>
-            </div>
-            <Space h = "lg"/>
+            <Container>
+                <Badge variant="filled" >{tag}</Badge>
+                <Space h = "lg"/>
+                <Sharebutton url = {"https://simpleinfohk.me" + appProps.router.pathname}/>
+            </Container>
             <Space h = "lg"/>
             <Space h = "lg"/>
 

@@ -128,9 +128,9 @@ export function CardsCarousel() {
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   /*const data = getrandomblog();*/
   const slides = datas.map((item) => (
-    <Carousel.Slide key={item.name}>
-      <Card {...item} />
-    </Carousel.Slide>
+      <Carousel.Slide key={item.name}>
+        <Card {...item} />
+      </Carousel.Slide>
   ));
 
   return (
@@ -148,21 +148,19 @@ export function CardsCarousel() {
 }
 function Content(){
     return(
-        <Container>
+        <div>
             <Topic_card/>
-        </Container>
+        </div>
     ) 
 }
 export default function Page(){
     return(
     <div>
-        <Container>
             <CardsCarousel/>
             <Space h= "lg"/>
-            <div>
-                <Content/>
+             <div>      
+              <Content/>
             </div>
-        </Container>
     </div>
     )
 }

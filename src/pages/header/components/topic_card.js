@@ -70,10 +70,14 @@ export function Topic_card(
               href={"/content/" + item.path}
             >
               {label}
-            </Button>
+            </Button> 
             </div>
           </Card>
-          <ArtiCard data = {Getblogbytag(item.name,item.path).slice(0,2)}/>
+          <div style = {{  
+          "border-radius":"10px",
+          "border": "2px solid #3399FF"}}>
+            <ArtiCard data = {Getblogbytag(item.name,item.path).slice(0,2)}/>
+          </div>
         </Container>
   ))
   return( 
