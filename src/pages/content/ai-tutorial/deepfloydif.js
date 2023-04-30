@@ -11,7 +11,7 @@ export default function Page(){
         <Container>
             <ConTitle>Stable diffusion 公司全新模型!直出AI海報，超高清圖像生成</ConTitle>
             <ConText>Stable diffusion 背後公司StabilityAI最近又有新打算了。他們在Github發表了全新的開源模型 <a href="https://github.com/deep-floyd/IF">DeepFloyd IF</a></ConText>
-            <Image src="https://github.com/deep-floyd/IF/blob/develop/pics/nabla.jpg" maw={850} alt="DeepFloyd" caption="DeepFloyd IF生成的圖片"/>
+            <Image src="/img/deepfloydif/nabla.jpg" maw={850} alt="DeepFloyd" caption="DeepFloyd IF生成的圖片"/>
             <ConTitle order={2} size="h2">DeepFloyd IF</ConTitle>
             <ConText>DeepFloyd IF具有高度的逼真度和語言理解能力，它具備兩個強大功能，分別是開能夠精確繪製文字以及理解空間關係</ConText>
             <Image maw={650} src="/img/deepfloydif/photo1.png" maw={600} alt="AI生成霓虹燈" caption="霓虹燈"/>
