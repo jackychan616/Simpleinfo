@@ -86,9 +86,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
                 <Space h = "lg"/>
                 <Sharebutton url = {"https://simpleinfohk.me" + appProps.router.pathname}/>
             </Container>
-            <Space h = "lg"/>
-            <Space h = "lg"/>
-
           </>
         )
       }
