@@ -9,16 +9,15 @@ export const Blogads = () => {
     }
 }, []);
   return(
-  <div>
+  <>
     <ins className="adsbygoogle"
-      style={{display:"block"}}
+      style={{display:"block", maxWidth:"500px" ,maxHeight:"500px"}}
       data-ad-format="fluid"
       data-ad-layout-key="-74+ex-1i-2r+ay"
       data-ad-client="ca-pub-3459129696587268"
       data-ad-slot="8411360296">
       </ins>  
-
-  </div>
+  </>
   )
 }
 export const GoogleAds = () => {
