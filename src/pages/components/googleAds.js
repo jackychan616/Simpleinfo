@@ -19,13 +19,6 @@ export const Blogads = () => {
   )
 }
 export const Recommend_ads = () => {
-  useEffect(() => {
-    try {
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (error) {
-      console.log(error);
-    }
-  }, [])
   return(
     <>
       <Adsense
