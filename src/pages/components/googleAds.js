@@ -9,7 +9,7 @@ export const Blogads = () => {
   }, [])
   return(
   <>
-    <ins class="adsbygoogle"
+    <ins className="adsbygoogle"
      style={{display:"block"}}
      data-ad-client="ca-pub-3459129696587268"
      data-ad-slot="8401458294"
