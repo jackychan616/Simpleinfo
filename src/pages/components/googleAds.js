@@ -13,14 +13,20 @@ export const Blogads = () => {
     <Adsense
      style={{display:"block"}}
      client="ca-pub-3459129696587268"
-     slot="8401458294"
+     slot="6528321033"
      layout="in-article"
      format="fluid"/>
   )
 }
 export const Recommend_ads = () => {
+  useEffect(() => {
+    try {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (error) {
+      console.log(error);
+    }
+  }, [])
   return(
-    <>
       <Adsense
         style = {{display:"block"}}
         client = "ca-pub-3459129696587268"
@@ -28,7 +34,6 @@ export const Recommend_ads = () => {
         layout = "in-article"
         format = "fluid"
       />
-    </>
   )
 }
 export const GoogleAds = () => {
