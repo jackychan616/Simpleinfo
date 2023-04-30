@@ -245,17 +245,38 @@
     "tag": "AI"
   },
   {
+    "name": "如何制定一個科學合理、適合自己的學習計劃？",
+    "path": "/news/learning-strategy",
+    "img": "/img/learning-strategy/learning.webp",
+    "date": "23/4/2023",
+    "tag": "學習"
+  },
+  {
+    "name": "Stable diffusion 公司全新模型!直出AI海報，超高清圖像生成",
+    "path": "/ai-tutorial/deepfloydif",
+    "img": "/img/deepfloydif/photo1.png",
+    "date": "30/9/2023",
+    "tag": "AI"
+  },
+  {
     "name": "新手必須知道的崩壞：星穹鐵道攻略",
     "path": "/card-game/honkai",
     "img": "/img/honkai/Honkai：Star_Rail崩壞：星穹鐵道.webp",
-    "date": "29/4/23",
+    "date": "29/4/2023",
     "tag": "遊戲"
   },
   {
-    "name": "如何制定一個科學合理、適合自己的學習計劃？",
-    "path": "/news/learning-strategy",
-    "img": "/img/listening-strategy/learning.webp",
-    "date": "23/4/2023",
-    "tag": "學習"
+    "name": "如何解決 Steam 平台問題 (更新時發生錯誤或應用配置文件不可用等)",
+    "path": "/card-game/how-to-solve-steam-error",
+    "img": "/img/fix-steam-error/steam.jpg",
+    "date": "29/4/2023",
+    "tag": "遊戲"
+  },
+  {
+    "name": "直接送400星瓊! 內附星穹鐵道最新兌換碼",
+    "path": "/card-game/honkai-code",
+    "img": "/img/honkai-code/1.png",
+    "date": "30/4/2023",
+    "tag": "遊戲"
   }
 ]
