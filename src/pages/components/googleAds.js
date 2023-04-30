@@ -9,13 +9,12 @@ export const Blogads = () => {
   }, [])
   return(
   <>
-    <ins className="adsbygoogle"
-      style={{display:"block"}}
-      data-ad-format="fluid"
-      data-ad-layout-key="-74+ex-1i-2r+ay"
-      data-ad-client="ca-pub-3459129696587268"
-      data-ad-slot="8411360296">
-      </ins>  
+    <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3459129696587268"
+     data-ad-slot="8401458294"
+     data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
   </>
   )
 }
