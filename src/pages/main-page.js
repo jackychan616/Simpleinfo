@@ -17,6 +17,7 @@ import Image from 'next/image'
 import React, { useState } from 'react';
 import styles from './page.module.css'
 import GroudedCard from './components/groupedcard'
+import { Blogads } from './components/googleAds';
 export const Bloglist = require('../data/Blog.json');
 function Typing() {
   return (
@@ -114,6 +115,7 @@ export default function Home() {
                 </Text>
                </Card>
               ))}
+              <Blogads/>
             </SimpleGrid>
           </Container>
           <Box w={200}>
