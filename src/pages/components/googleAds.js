@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import {Adsense} from '@ctrl/react-adsense';
+
 export const Blogads = () => {
   useEffect(() => {
     try {
@@ -8,14 +10,12 @@ export const Blogads = () => {
     }
   }, [])
   return(
-  <>
-    <ins className="adsbygoogle"
+    <Adsense
      style={{display:"block"}}
-     data-ad-client="ca-pub-3459129696587268"
-     data-ad-slot="8401458294"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-  </>
+     client="ca-pub-3459129696587268"
+     slot="8401458294"
+     layout="in-article"
+     format="fluid"/>
   )
 }
 export const GoogleAds = () => {
