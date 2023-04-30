@@ -105,8 +105,8 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
                 <span><Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge></span>
                 <Space h = "xl"/>   
                 <Recommend data = {Get(asPath.replace("/content",''))}/>
-                <Recommend_ads/>
               </Container>
+              <Recommend_ads/>
             </Group>
           </Basic_lay>
         </>
