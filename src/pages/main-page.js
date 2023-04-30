@@ -118,7 +118,6 @@ export default function Home() {
               <Blogads/>
             </SimpleGrid>
           </Container>
-          <Blogads/>
           <Box w={200}>
             <div className={styles.load_more}>
               <Button onClick={handleClick} fullWidth variant="outline">載入更多</Button>
