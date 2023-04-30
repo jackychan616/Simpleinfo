@@ -14,7 +14,7 @@ import { Space } from '@mantine/core';
 import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
 import Head from 'next/head';
-import {GoogleAds,recommend_ads} from './components/googleAds';
+import {GoogleAds,Recommend_ads} from './components/googleAds';
 import { NotificationsProvider } from '@mantine/notifications';
 const useStyles = createStyles((theme) => ({
   tag_on_top :{
@@ -105,7 +105,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
                 <span><Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge></span>
                 <Space h = "xl"/>   
                 <Recommend data = {Get(asPath.replace("/content",''))}/>
-                <recommend_ads/>
+                <Recommend_ads/>
               </Container>
             </Group>
           </Basic_lay>

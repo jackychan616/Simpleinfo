@@ -18,7 +18,7 @@ export const Blogads = () => {
      format="fluid"/>
   )
 }
-export const recommend_ads = () => {
+export const Recommend_ads = () => {
   useEffect(() => {
     try {
       (adsbygoogle = window.adsbygoogle || []).push({});
