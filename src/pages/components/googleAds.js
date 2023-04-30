@@ -10,7 +10,7 @@ export const Blogads = () => {
   return(
   <>
     <ins class="adsbygoogle"
-     style="display:block"
+     style={{display:"block"}}
      data-ad-client="ca-pub-3459129696587268"
      data-ad-slot="8401458294"
      data-ad-format="auto"
