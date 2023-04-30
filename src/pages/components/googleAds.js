@@ -1,9 +1,16 @@
 import React, { useEffect } from 'react'
 export const Blogads = () => {
+  useEffect(() => {
+    try {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (error) {
+      console.log(error);
+    }
+  }, [])
   return(
   <>
     <ins className="adsbygoogle"
-      style={{display:"block", maxWidth:"500px" ,maxHeight:"500px"}}
+      style={{display:"block"}}
       data-ad-format="fluid"
       data-ad-layout-key="-74+ex-1i-2r+ay"
       data-ad-client="ca-pub-3459129696587268"
