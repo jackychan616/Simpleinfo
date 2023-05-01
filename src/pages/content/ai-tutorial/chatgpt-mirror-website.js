@@ -107,7 +107,7 @@ export const getStaticProps = async () => {
           },
           {
             property: "og:description",
-            content: "我們在互聯網經過一番搜索後，整理出20個ChatGPT鏡像網站，所有都是免費並實用。如果你覺得它們有用，可以考慮支持一下我們，替我們買杯咖啡",
+            content: "我們在互聯網經過一番搜索後，整理出20個ChatGPT鏡像網站，所有都是免費並實用。如果你覺得它們有用，可以考慮支持一下我們，替我們買杯咖啡 ",
           },
           {
             property: "og:type",
