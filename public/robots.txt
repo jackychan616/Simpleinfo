@@ -1,2 +1,9 @@
+# *
 User-agent: *
-Disallow:
+Allow: /
+
+# Host
+Host: https://simpleinfohk.me
+
+# Sitemaps
+Sitemap: https://simpleinfohk.me/sitemap.xml
