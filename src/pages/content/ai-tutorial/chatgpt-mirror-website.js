@@ -54,9 +54,9 @@ export default function ConPage(){
                 </List>
                 <Space h="lg"/>
                 <ConTitle order={3} size="h2">GPT-4</ConTitle>
-                <Space />
+                <Space h="lg"/>
                 <Center><Image maw={850} src="/img/chatgpt-mirror-website/gpt-4.jpg" alt="GPT-4"/></Center>
-                <Space />
+                <Space h="lg"/>
                 <List
                 size="lg"
                 spacing="xs">
