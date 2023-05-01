@@ -92,6 +92,13 @@ const Bloglist = [
     img:'/img/deepfloydif/photo1.png',
     date:'30/9/2023',
     tag:'AI'
+  },
+  {
+    name:'分類了二十個免費ChatGPT鏡像網站，親測能用!包括GPT-4',
+    path:'/ai-tutorial/chatgpt-mirror-website',
+    img:'/img/chatgpt-mirror-website/chatgpt-mirror-website.jpg',
+    date:'1/5/2023',
+    tag:'AI'
   }
 ];
 
