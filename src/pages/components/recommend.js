@@ -1,8 +1,5 @@
 
-import { createStyles, Card, Image, Avatar, Text, Group } from '@mantine/core';
-
-import { SiWpexplorer } from 'react-icons/si';
-import { DatabaseOff } from 'tabler-icons-react';
+import { createStyles, Card, Image, Avatar, Text, Group,Space } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -40,14 +37,15 @@ const R = [
 export function Recommend({chrilden,data}){
   const { classes } = useStyles();
   const cards = data.map((Data) => (
+    <>
     <Card key={Data.name} withBorder radius="md" p={0} component="a" className={classes.card} href = {"/content" + Data.path}>
     <Group noWrap spacing={0}>
       <Image src={Data.img} height={140} width={140} />
       <div className={classes.body}>
-        <Text transform="uppercase" color="dimmed" weight={700} size="xs">
+        <Text transform="uppercase" color="dimmed" weight={700} size="sm">
           {Data.tag}
         </Text>
-        <Text className={classes.name} mt="xs" mb="md">
+        <Text className={classes.name} mt="xs" mb="md" fw={500}>
           {Data.name}
         </Text>
         <Group noWrap spacing="xs">
@@ -59,6 +57,8 @@ export function Recommend({chrilden,data}){
       </div>
     </Group>
   </Card>
+  <Space h ="lg"/>
+  </>
   )
 );
     return (
