@@ -98,6 +98,7 @@ export default function Home() {
                 component="a"
                 href={'/content/' + article.path}
                 className={classes.card}
+                shadow="sm"
               >
                 <AspectRatio ratio={1920 / 1080}>
                   <Image src={article.img} alt={article.img?.replace("/img","")} width="650" height="80" quality = "70" />
