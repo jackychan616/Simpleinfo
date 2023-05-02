@@ -35,6 +35,7 @@ function Page(){
             <ConText>
             你正在按A往左走，當你碰見敵人的時候鬆開A並立即按D之後立即瞄準敵人。
             </ConText>
+            <Image src="https://cdn.akamai.steamstatic.com/steam/apps/730/ss_118cb022b9a43f70d2e5a2df7427f29088b6b191.1920x1080.jpg?t=1668125812" maw = {500} height={400} width ={400}/>
         </Container>
     )
 }
