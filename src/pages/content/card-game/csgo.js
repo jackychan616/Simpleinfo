@@ -49,3 +49,46 @@ export default function page(){
         </>
     )
 }
+
+export const getStaticProps = async () => {
+    return {
+      props: {
+        openGraphData: [
+          {
+            name:'description', 
+            content:'快速中止移動，使角色馬上停下，使用CSGO急停技巧，教學如下：如果你正在前進:松開前進按鍵W鍵。'
+  
+          },
+          {
+            name:'title',
+            content:'30秒學會成為csgo高手的必要技巧！'
+          },
+          {
+            property: "og:image",
+            content:
+              "https://simpleinfohk.me/img/chatgpt-mirror-website/chatgpt-mirror-website.jpg",
+          },
+          {
+            property: "og:image:width",
+            content: "600",
+          },
+          {
+            property: "og:image:height",
+            content: "450",
+          },
+          {
+            property: "og:title",
+            content: "30秒學會成為csgo高手的必要技巧！",
+          },
+          {
+            property: "og:description",
+            content: "快速中止移動，使角色馬上停下，使用CSGO急停技巧，教學如下：如果你正在前進: 松開前進按鍵W鍵。",
+          },
+          {
+            property: "og:type",
+            content: "website",
+          },
+        ],
+      },
+    };
+  };
