@@ -66,7 +66,7 @@ export const getStaticProps = async () => {
           {
             property: "og:image",
             content:
-              "https://simpleinfohk.me/img/chatgpt-mirror-website/chatgpt-mirror-website.jpg",
+              "/img/csgo_2.jpg",
           },
           {
             property: "og:image:width",
