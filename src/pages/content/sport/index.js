@@ -27,7 +27,7 @@ const Bloglist = [
   },
   {
     name:'未來西班牙女王的駙馬？西班牙足球新秀加維',
-    path:'/sport/spain-new-fooball-player',
+    path:'/sport/spain-new-football-player',
     date:'4/5/2023',
     img:'/img/spain-football-new-player/gavi.jpg',
     tag:'sport'
