@@ -1,13 +1,13 @@
 import styles from '../styles/globals.css';
 import Layout from './components/layout';
 import { Analytics } from '@vercel/analytics/react';
-import { MantineProvider, ColorSchemeProvider,Badge,Container,createStyles,Group} from '@mantine/core';
+import { MantineProvider, ColorSchemeProvider,Badge,Container,createStyles,Group,Text} from '@mantine/core';
 import { useState,useEffect } from 'react';
 import Loading from './loading';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 import {topic} from '../data/topics'
 import { Recommend } from './components/recommend';
-import {Get,Gettag} from './components/getrecomm'
+import {Get,Gettag,Getdate} from './components/getrecomm'
 import { useRouter } from 'next/router';
 import { ConTitle} from './components/component';
 import { Space } from '@mantine/core';
@@ -84,7 +84,10 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
             <Container>
                 <Badge variant="filled" >{tag}</Badge>
                 <Space h = "lg"/>
-                <Sharebutton url = {"https://simpleinfohk.me" + appProps.router.pathname}/>
+                <Group>
+                  <Sharebutton url = {"https://simpleinfohk.me" + appProps.router.pathname}/>
+                  <div><Text size="sm" color="dimmed">{Getdate(asPath.replace("/content",''))}</Text></div>
+                </Group>
             </Container>
           </>
         )

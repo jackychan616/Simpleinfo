@@ -23,6 +23,13 @@ export function Get(path){
     }
 	return R;
 }
+export function Getdate(path){
+    for (const i in Bloglist){
+        if (Bloglist[i]['path'] == path){
+            return Bloglist[i]["date"];
+        }
+    }
+}
 export function Gettag(path){
     var tag = "";
     for (const i in Bloglist) {
