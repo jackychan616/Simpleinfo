@@ -83,7 +83,42 @@ export function ConPage() {
         <ConText>
           訪問最後一行的 Running on local URL:
           后的地址，你便可以開始隨心所欲的使用你自己搭建的Stable Diffusion站了。
-          稍後可能會有關於Error的解決方式以及使用教程，祝君好運。
+        </ConText>
+        <Image src="/img/setup-stable-diffusion/5.png"  maw = {500} alt="stable diffusion setup" />
+        <ConText>
+          Prompt：輸入Tag，將會影響圖片風格
+        </ConText>
+        <ConText>
+          例子：Highest picture quality, Master's work，colorful, looking at viewer, expressionless, pale skin, blue eyes
+        </ConText>
+        <ConText>
+          Negative prompt: 輸入Tag，但是圖片將避免包含所提及的風格
+        </ConText>
+        <ConText>
+          例子extra fingers, fewer fingers，bad anatomy，inaccurate limb
+        </ConText>
+        <ConText>
+          Sample method：采樣方式，不同的方式將直接影響圖片風格，取自己偏好即可
+        </ConText>
+        <ConText>
+          Sample steps：采樣步驟數，將對圖片生成時間產生影響，數字越高 時間越久
+        </ConText>
+        <ConText>
+          Width，Height：圖片的長、寬（以像素為單位）；顯卡顯存大小將決定其最高數字，超過上限時，網頁將會崩潰，8GB顯存上限約爲1024*1024。
+        </ConText>
+        <ConText>
+        Seed：種子，不同種子將有不同結果，但相同的種子將導向同一結果，-1為隨機種子。
+        </ConText>
+        <ConText>
+        配置各參數后， 點擊右上角Generate即可開始生成。
+        </ConText>
+        <Image src = "/img/setup-stable-diffusion/6.png" maw = "500px" caption="以下爲生成例子（耗時以RTX3060Ti 為基準，其時長將與你的GPU性能挂鈎)" alt = "emaple of stable diffusion"/>
+        <ConText>
+        Prompt: epic view, fantasy, ice and fire
+        Negative prompt: blurry, watermark
+        Steps: 30, Sampler: Euler a, CFG scale: 7, Seed: 2002586862, Size: 1024x1024, Model hash: 14749efc0a, Model: sd-v1-4-full-ema
+        耗時11秒
+
         </ConText>
       </Container>
     </>
