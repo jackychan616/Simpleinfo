@@ -58,8 +58,8 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         <meta property="og:locale" content="zh-Hant-HK"/>
       </Head>
         <Layout>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-L6NG9DRBHS"></Script>
-        <Script id="google-analytics">
+        <Script strategy="afterInteractive" async src="https://www.googletagmanager.com/gtag/js?id=G-L6NG9DRBHS"></Script>
+        <Script strategy="afterInteractive" id="google-analytics">
           {
             `
               window.dataLayer = window.dataLayer || [];
