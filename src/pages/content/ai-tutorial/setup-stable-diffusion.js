@@ -10,7 +10,6 @@ import {
 } from '@mantine/core';
 import { ConTitle, ConText } from '../../components/component';
 import { IconCircleCheck } from '@tabler/icons-react';
-import {Meta} from '../../components/meta';
 import styles from '../../page.module.css'
 export function ConPage() {
   return (
@@ -125,15 +124,9 @@ export function ConPage() {
   );
 }
 
-export default function page() {
+export default function Page() {
   return (
     <>
-      <Meta
-        description={
-          '如何在Windows部署AI畫圖, 使用Python在電腦搭建Stable diffusion'
-        }
-        pageTitle={'如何在Windows部署AI畫圖'}
-      />
       <ConPage />
     </>
   );
