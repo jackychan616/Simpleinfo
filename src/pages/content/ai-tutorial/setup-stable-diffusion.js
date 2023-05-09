@@ -5,8 +5,7 @@ import {
   ThemeIcon,
   Image,
   Space,
-  Grid,
-  Badge
+  Grid
 } from '@mantine/core';
 import { ConTitle, ConText } from '../../components/component';
 import { IconCircleCheck } from '@tabler/icons-react';
