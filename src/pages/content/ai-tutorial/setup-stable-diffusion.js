@@ -86,7 +86,7 @@ export function ConPage() {
           Prompt：輸入Tag，將會影響圖片風格
         </ConText>
         <ConText>
-          例子：Highest picture quality, Master's work，colorful, looking at viewer, expressionless, pale skin, blue eyes
+          {`例子：Highest picture quality, Master's work，colorful, looking at viewer, expressionless, pale skin, blue eyes`}
         </ConText>
         <ConText>
           Negative prompt: 輸入Tag，但是圖片將避免包含所提及的風格
