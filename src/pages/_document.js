@@ -4,7 +4,6 @@ export default function Document() {
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-L6NG9DRBHS');
   return (
     <Html lang="zh-Hant-HK">
@@ -13,7 +12,6 @@ export default function Document() {
      crossOrigin="anonymous"
      strategy="lazy"></script>
      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-L6NG9DRBHS"></Script>
-    
       </Head>
       <body>
         <Main />
