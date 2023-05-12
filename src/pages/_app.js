@@ -16,6 +16,7 @@ import { Sharebutton } from './components/share';
 import Head from 'next/head';
 import {GoogleAds,Recommend_ads} from './components/googleAds';
 import { NotificationsProvider } from '@mantine/notifications';
+import Script from 'next/script';
 const useStyles = createStyles((theme) => ({
   tag_on_top :{
     position :"absolute",
@@ -57,6 +58,18 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         <meta property="og:locale" content="zh-Hant-HK"/>
       </Head>
         <Layout>
+        <Script strategy="afterInteractive" async src="https://www.googletagmanager.com/gtag/js?id=G-L6NG9DRBHS"></Script>
+        <Script strategy="afterInteractive" id="google-analytics">
+          {
+            `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments)};
+              gtag('js', new Date());
+              gtag('config', 'G-L6NG9DRBHS');
+            `
+          }
+            
+        </Script>
             <GoogleAds />
             {tag}
             {isLoading?<Loading/>: <Component {...pageProps} /> }
