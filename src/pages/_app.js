@@ -80,7 +80,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       </MantineProvider>  
       </ColorSchemeProvider>
     )
-  }    
+  } 
     topic.push(...["/","/content"]);
     if (topic.includes(appProps.router.pathname) || tag == "")
       return(
