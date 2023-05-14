@@ -99,6 +99,13 @@ const Bloglist = [
     img:'/img/chatgpt-mirror-website/chatgpt-mirror-website.jpg',
     date:'1/5/2023',
     tag:'AI'
+  },
+  {
+    name:'Google推出全新AI大型模型PaLM 2 ，可在手機運行與結合多個Google工具完勝OpenAI',
+    path:'/ai-tutorial/googlepalm',
+    img:'/img/google-palm/google-palm.webp',
+    date:'14/5/2023',
+    tag:'AI'
   }
 ];
 
