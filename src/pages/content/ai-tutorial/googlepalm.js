@@ -12,21 +12,20 @@ export default function Page(){
             <Space h="sm"/>
             <Image src="/img/google-palm/palm2.webp" alt="Google PaLM 2"/>
             <ConText>Google介紹了全新大語言模型PaLM 2，Google聲稱它在部分任務超越GPT-4。更新後的 Bard 能力大大提升並能支援多種新語言，Google版AI辦公助手也一併推出，將在Gmail中搶先亮相。 </ConText>
-            <Space h="lg"/> 
             <ConText>發表會結束後，Google股價上漲4%。</ConText>
             <ConTitle>介紹 PaLM 2</ConTitle>
             <ConText>Google 宣布有超過25個自家產品由PaLM 2 作為底層技術支援。</ConText>
             <Space h="sm"/> 
             <ConText>以下是PaLM 2 具有的特點</ConText>
-            <List>
+            <List size="xl">
                 <List.Item>
-                <br>多語言性：</br> PaLM 2 在多語言文本方面接受了更多的訓練，涵蓋 100 多種語言。這顯著提高了它在多種語言中理解、生成和翻譯細微差別文本（包括成語、詩歌和謎語）的能力，這是一個很難解決的問題。 PaLM 2 還通過了“精通”級別的高級語言能力考試。
+                <p><strong>多語言性：</strong> PaLM 2 在多語言文本方面接受了更多的訓練，涵蓋 100 多種語言。這顯著提高了它在多種語言中理解、生成和翻譯細微差別文本（包括成語、詩歌和謎語）的能力，這是一個很難解決的問題。 PaLM 2 還通過了“精通”級別的高級語言能力考試。</p>
                 </List.Item>
                 <List.Item>
-                <br>推理：</br> PaLM 2 的數據集包括科學論文和包含數學表達式的網頁。因此，它具有邏輯、常識推理和數學方面的改進能力
+                <p>推理： PaLM 2 的數據集包括科學論文和包含數學表達式的網頁。因此，它具有邏輯、常識推理和數學方面的改進能力</p>
                 </List.Item>
                 <List.Item>
-                <br>程式設計：</br> PaLM 2 在大量公開可用的源代碼數據集上進行了預訓練。這意味著它擅長 Python 和 JavaScript 等流行的編程語言，但也可以生成 Prolog、Fortran 和 Verilog 等語言的專用代碼。
+                <p>程式設計： PaLM 2 在大量公開可用的源代碼數據集上進行了預訓練。這意味著它擅長 Python 和 JavaScript 等流行的編程語言，但也可以生成 Prolog、Fortran 和 Verilog 等語言的專用代碼。</p>
                 </List.Item>
             </List>
             <Space h="sm"/>
