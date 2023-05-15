@@ -1,4 +1,4 @@
-# [Simple Info website](https://simpleinfo.live)
+# [Simple Info website](https://simpleinfohk.me)
 
 ## version 1
 - main 
