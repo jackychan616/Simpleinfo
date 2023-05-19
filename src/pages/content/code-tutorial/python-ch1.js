@@ -226,3 +226,45 @@ export default function ConPage() {
     </>
   );
 }
+export const getStaticProps = async () => {
+  return {
+    props: {
+      openGraphData: [
+        {
+          name:'description',
+          content:'在這一章，我們將淺易地講解Python基礎語法'
+
+        },
+        {
+          name:'title',
+          content:'Python [第一章]基礎語法'
+        },
+        {
+          property: "og:image",
+          content:
+            "https://simpleinfohk.me/img/python.png",
+        },
+        {
+          property: "og:image:width",
+          content: "300",
+        },
+        {
+          property: "og:image:height",
+          content: "200",
+        },
+        {
+          property: "og:title",
+          content: "Python [第一章]基礎語法",
+        },
+        {
+          property: "og:description",
+          content: "在這一章，我們將淺易地講解Python基礎語法",
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+      ],
+    },
+  };
+};
