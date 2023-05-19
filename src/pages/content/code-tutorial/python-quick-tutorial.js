@@ -219,7 +219,7 @@ export const getStaticProps = async () => {
         {
           property: "og:image",
           content:
-            "https://simpleinfo.me/img/python.png",
+            "https://simpleinfohk.me/img/python.png",
         },
         {
           property: "og:image:width",
