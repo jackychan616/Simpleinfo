@@ -55,6 +55,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-type-animation": "^2.1.2",
+    "react-use-downloader": "^1.2.4",
     "react-youtube": "^10.1.0",
     "tabler-icons-react": "^1.56.0",
     "uuid": "^9.0.0"
