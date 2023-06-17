@@ -25,7 +25,7 @@ export default function about_us(){
           <Blockquote
             cite = "Simpleinfo 網站工程師 Jacky Chan"
           >
-            以目標為結果
+            以目標為結果  
           </Blockquote>
       </Group>
       <Group >
@@ -38,7 +38,7 @@ export default function about_us(){
       </Group>
       <Group position="center">
         <Image src = "/img/footer_page/footer_page_1.png" maw = {500} height={200} width = {275} radius={"15px"}/>
-      </Group>
+      </Group>  
   </Container>
   )
 }

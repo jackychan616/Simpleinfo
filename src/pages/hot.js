@@ -1,9 +1,9 @@
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
-import { createStyles, Paper, Text, Title, Button, useMantineTheme, Container ,Space} from '@mantine/core';
+import { createStyles, Paper, Text, Title, Button, useMantineTheme, Container ,Space,Group} from '@mantine/core';
 import { topics } from 'src/data/topics';
 import { Topic_card } from './header/components/topic_card';
-
+import Sub from '../pages/components/leftbar/sub'
 const Bloglist = require('../data/Blog.json');
 function getrandomblog(){
     var n = [];
@@ -137,7 +137,7 @@ export function CardsCarousel() {
     <Carousel
       slideSize="50%"
       breakpoints={[{ maxWidth: 'sm', slideSize: '100%', slideGap: 2 }]}
-      slideGap="xl"
+      slideGap="lg"
       align="start"
       slidesToScroll={mobile ? 1 : 2}
       loop 
@@ -156,11 +156,13 @@ function Content(){
 export default function Page(){
     return(
     <div>
-            <CardsCarousel/>
+            <Container>
+              <CardsCarousel/>
+            </Container>
             <Space h= "lg"/>
-             <div>      
+             <Group>      
               <Content/>
-            </div>
+            </Group>   
     </div>
     )
 }

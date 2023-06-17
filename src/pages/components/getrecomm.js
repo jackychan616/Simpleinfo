@@ -68,6 +68,18 @@ export function Getblogbytag(tag,name){
     }
     return R;
 }
+export function Getblog(tag){
+    const V = [];
+    for (const i in Bloglist) {
+        if (Bloglist[i]["tag"] == tag){
+            V.push(Bloglist[i]);
+        }
+        if (V.length > 2){
+            break;
+        }
+    }
+    return V;
+}
 export function Getblogint(path){
     for (const i in Bloglist) {
         if (Bloglist[i]["path"] == path){

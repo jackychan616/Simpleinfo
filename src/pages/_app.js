@@ -17,6 +17,7 @@ import Head from 'next/head';
 import {GoogleAds,Recommend_ads} from './components/googleAds';
 import { NotificationsProvider } from '@mantine/notifications';
 import Script from 'next/script';
+import Sub from '../pages/components/leftbar/sub'
 const useStyles = createStyles((theme) => ({
   tag_on_top :{
     position :"absolute",
@@ -118,6 +119,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
                 <span><Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge></span>
                 <Space h = "xl"/>   
                 <Recommend data = {Get(asPath.replace("/content",''))}/>
+                <Sub/>
               </Container>
             </Group>
           </Basic_lay>
