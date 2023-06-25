@@ -18,6 +18,7 @@ import React, { useState } from 'react';
 import styles from './page.module.css'
 import GroudedCard from './components/groupedcard'
 import { Blogads } from './components/googleAds';
+import { Sub } from './components/leftbar/sub';
 export const Bloglist = require('../data/Blog.json');
 function Typing() {
   return (
@@ -84,7 +85,7 @@ export default function Home() {
     className=" d-flex   justify-content-center align-items-center"
     style={{ backgroundColor: 'transparent', height: '150px' }}
     >
-    <Typing />
+      <Typing />
     </div>
     <Container>
     <GroudedCard/>
@@ -120,7 +121,9 @@ export default function Home() {
             </SimpleGrid>
           </Container>
           <Container>
-                <Button loaderPosition="center" onClick={handleClick} variant="outline">載入更多</Button>
+            <Box w={200}>
+                <Button onClick={handleClick} fullWidth variant="outline">載入更多</Button>
+            </Box>
           </Container>
         </Container>
   </Container>

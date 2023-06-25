@@ -3,7 +3,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import { createStyles, Paper, Text, Title, Button, useMantineTheme, Container ,Space,Group} from '@mantine/core';
 import { topics } from 'src/data/topics';
 import { Topic_card } from './header/components/topic_card';
-import Sub from '../pages/components/leftbar/sub'
+import {Sub } from '../pages/components/leftbar/sub'
 const Bloglist = require('../data/Blog.json');
 function getrandomblog(){
     var n = [];

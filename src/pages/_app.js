@@ -1,5 +1,6 @@
-import styles from '../styles/globals.css';
 import Layout from './components/layout';
+import styles from '../styles/globals.css';
+
 import { Analytics } from '@vercel/analytics/react';
 import { MantineProvider, ColorSchemeProvider,Badge,Container,createStyles,Group,Text} from '@mantine/core';
 import { useState,useEffect } from 'react';
@@ -14,10 +15,10 @@ import { Space } from '@mantine/core';
 import stlyes from './page.module.css';
 import { Sharebutton } from './components/share';
 import Head from 'next/head';
-import {GoogleAds,Recommend_ads} from './components/googleAds';
+import {GoogleAds} from './components/googleAds';
 import { NotificationsProvider } from '@mantine/notifications';
 import Script from 'next/script';
-import Sub from '../pages/components/leftbar/sub'
+import {Sub} from '../pages/components/leftbar/sub'
 const useStyles = createStyles((theme) => ({
   tag_on_top :{
     position :"absolute",
@@ -110,7 +111,8 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
         <>
           <Head>
             <link rel="canonical" href={canonicalUrl} />
-          </Head>
+          </Head> 
+          <Group>
           <Basic_lay tag = {<Tag/>}>
             <Group>
               <Container size="30rem">
@@ -119,10 +121,10 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
                 <span><Badge variant="filled" >{Gettag(asPath.replace("/content",''))}</Badge></span>
                 <Space h = "xl"/>   
                 <Recommend data = {Get(asPath.replace("/content",''))}/>
-                <Sub/>
               </Container>
-            </Group>
+            </Group>  
           </Basic_lay>
+          </Group>
         </>
         
       )

@@ -1,0 +1,16 @@
+.container{
+    position: relative;
+    inset: 0 0 0 0;
+    padding-top: 40px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-padding: 30px 0 0 0;
+}
+.container > div {
+    width: 100px;
+    height: 500px;
+    margin: 2px;
+    scroll-snap-align: start none;
+    background-color: antiquewhite;
+  }

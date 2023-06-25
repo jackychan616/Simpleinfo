@@ -1,11 +1,12 @@
 import { createStyles, Text, Container, ActionIcon, Group ,Image} from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram,IconBrandFacebook} from '@tabler/icons-react';
 import styles from "../page.module.css"
+const url = "/footer_pages"
 const data = [
         {
             "title": "Support",
             "links": [
-            { "label": "尋求幫助", "link": "#" },
+            { "label": "尋求幫助", "link": "/footer_pages#" },
             { "label": "返回首頁", "link": "/" },
             { "label": "為你推薦", "link": "#" },
             ]
@@ -13,8 +14,8 @@ const data = [
         {
           "title": "About",
           "links": [
-            { "label": "關於我們", "link": "#" },
-            { "label": "政策", "link": "#" },
+            { "label": "關於我們", "link": "/footer_pages" },
+            { "label": "目標", "link": "/footer_pages#goal" },
             { "label": "使用條款", "link": "#" },
           ]
         },
@@ -22,7 +23,7 @@ const data = [
           "title": "Community",
           "links": [
             { "label": "加入Discord", "link": "#" },
-            { "label": "加入我們", "link": "#" },
+            { "label": "加入我們", "link": "#join_us" },
             { "label": "發送郵件", "link": "#" },
           ]
         }

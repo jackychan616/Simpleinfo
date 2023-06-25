@@ -113,7 +113,7 @@ export default function Page() {
 
   const cards = PostData.map((item) => (
     
-    <Card withBorder padding="lg" radius="md" className={classes.card}>
+    <Card withBorder padding="lg" radius="md" className={classes.card} key={item.name}>
     <Card.Section mb="sm">
       <Image src={item.img} alt={item.name} height={180} />
     </Card.Section>
