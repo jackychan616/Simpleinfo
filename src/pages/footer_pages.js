@@ -196,7 +196,7 @@ export default function Main() {
                   }}>
                     <Join_us/>
                   </Element>
-        </Element>  
+        </Element> 
       </div>
     </Group>
   );
