@@ -86,3 +86,6 @@ export function Goal2() {
   ));
   return <div className={classes.root}>{stats}</div>;
 }
+const  Context = ()=>{
+}
+export default Context

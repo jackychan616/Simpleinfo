@@ -72,3 +72,6 @@ export  function TableOfContents() {
       </div>
   );
 }
+const  Context = ()=>{
+}
+export default Context
