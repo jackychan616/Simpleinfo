@@ -98,3 +98,24 @@
   position:absolute;
   left:50%;
 }
+.loading {
+  background: linear-gradient(90deg,#CCE5FF,#1E90FF,#4169E1,#7F00FF);
+  background-size: 400%;
+  font-size: 70px;
+  font-family: sans-serif;
+  letter-spacing: 5px;
+  font-weight: 600;
+  word-spacing: 5px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: animate 6s linear infinite;
+}
+@keyframes animate{
+  0%{
+    background-position:0%;
+  }
+  100%{
+    background-position:400%;
+  }
+}

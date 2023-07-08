@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 import { blue } from '@mui/material/colors';
 
 
-function Loading() {
+function old() {
   return (
       <div className={styles.div_loader}>
             <Loader color="indigo" size="xl" variant="bars" />
@@ -19,6 +19,15 @@ function Loading() {
           </div>
       </div>
   );
+}
+function Loading(){
+  return(
+    <Center style={{position:"relative",top:"200px"}}>
+      <Container>
+        <h className={styles.loading}>simpleinfo</h>
+      </Container>
+    </Center>
+  )
 }
 Loading.getLayout = function getLayout(page) {
   return <>{page}</>;
