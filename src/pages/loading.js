@@ -1,7 +1,5 @@
 import { Loader, Container, Space, Center } from '@mantine/core';
 import styles from './page.module.css';
-import { ReactElement } from "react";
-import { blue } from '@mui/material/colors';
 
 
 function old() {
@@ -23,9 +21,7 @@ function old() {
 function Loading(){
   return(
     <Center style={{position:"relative",top:"200px"}}>
-      <Container>
         <h className={styles.loading}>simpleinfo</h>
-      </Container>
     </Center>
   )
 }
