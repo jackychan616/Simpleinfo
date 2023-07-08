@@ -112,7 +112,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
           <Head>
             <link rel="canonical" href={canonicalUrl} />
           </Head> 
-          <Group>
           <Basic_lay tag = {<Tag/>}>
             <Group>
               <Container size="30rem">
@@ -124,7 +123,6 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
               </Container>
             </Group>  
           </Basic_lay>
-          </Group>
         </>
         
       )
