@@ -98,8 +98,18 @@
   position:absolute;
   left:50%;
 }
-.loading {
-  background: linear-gradient(90deg,#CCE5FF,#1E90FF,#4169E1,#7F00FF);
+
+
+.loadin_p {
+  background: linear-gradient(90deg,#CCE5FF,#1E90FF,#7F00FF,#00CC66);
+  background-size: 400%;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: animate 5s linear infinite; 
+}
+.loading_s {
+  background: linear-gradient(90deg,#CCE5FF,#1E90FF,#7F00FF,#00CC66);
   background-size: 400%;
   font-size: 70px;
   font-family: sans-serif;
@@ -109,7 +119,7 @@
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  animation: animate 6s linear infinite;
+  animation: animate 5s linear infinite;
 }
 @keyframes animate{
   0%{
