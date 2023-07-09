@@ -20,9 +20,29 @@ function old() {
 }
 function Loading(){
   return(
-    <Center style={{position:"relative",top:"200px"}}>
-        <h className={styles.loading}>simpleinfo</h>
-    </Center>
+    <div>
+      <Center style={{position:"relative",top:"200px"}}>
+        <h className={styles.loading_s}>simpleinfo</h>
+      </Center>
+
+      <style jsx global>
+      {`
+      @keyframes blackWhite {  
+              0% { background-color: white; }
+              25% { background-color: #C0C0C0; }
+              50% { background-color: white; }
+              75% { background-color: #C0C0C0; }
+      }
+      body {
+        height: 100px;
+        background-color: black;
+        -webkit-animation-name: blackWhite;  
+        -webkit-animation-iteration-count: infinite;  
+        -webkit-animation-duration: 3s;   
+       }
+      `}
+      </style>
+    </div>
   )
 }
 Loading.getLayout = function getLayout(page) {
