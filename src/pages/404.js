@@ -38,7 +38,7 @@ function Notfound() {
           height: '100vh',
         }}
       ></div>
-      <h2 style={{ textAlign: 'center' }}>不好意思!這裡沒有任何東西</h2>
+      <h2 style={{ textAlign: 'center' }}>不好意思!冇任何東西</h2>
       <div>
         <Group position="center">
           <Link href="/">
