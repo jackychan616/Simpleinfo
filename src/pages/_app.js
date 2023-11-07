@@ -52,7 +52,7 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
       <NotificationsProvider>
       <Head>
-        <link rel='icon' href="/icon.png"/>
+        <link rel='icon' href="/icon02.png"/>
         {openGraphData.map((og,index) => (
           <meta {...og} key={index}/>
         ))}
