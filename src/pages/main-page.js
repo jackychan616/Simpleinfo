@@ -115,9 +115,9 @@ export default function Home() {
                 <Text className={classes.name} mt={5}>
                   {article.name}
                 </Text>
-               </Card>
+               </Card> &&
+               <Blogads/>
               ))}
-              <Blogads/>
             </SimpleGrid>
           </Container>
           <Container>
