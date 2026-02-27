@@ -28,5 +28,6 @@ npm run build
 
 Setup guide:
 - `docs/SUPABASE_SETUP.md`
+- `docs/V2_ARCHITECTURE.md`
 - `.env.example`
 
