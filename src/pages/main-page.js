@@ -8,7 +8,8 @@ import {
   Group,
   Badge,
   Button,
-  Box
+  Box,
+  Stack
 } from '@mantine/core';
 import {Meta} from './components/meta';
 import Head  from 'next/head';
@@ -19,6 +20,7 @@ import styles from './page.module.css'
 import GroudedCard from './components/groupedcard'
 import { Blogads } from './components/googleAds';
 import { Sub } from './components/leftbar/sub';
+import Link from 'next/link';
 export const Bloglist = require('../data/Blog.json');
 function Typing() {
   return (
@@ -96,6 +98,13 @@ export default function Home() {
       <Typing />
     </div>
     <Container>
+    <Stack align="center" spacing="xs" pb="md">
+      <Text size="sm" color="dimmed">想分享觀點？加入社群投稿，審核後可公開展示。</Text>
+      <Group>
+        <Button component={Link} href="/writer/new" radius="xl">立即投稿</Button>
+        <Button component={Link} href="/community" variant="light" radius="xl">瀏覽社群文章</Button>
+      </Group>
+    </Stack>
     <GroudedCard/>
     <Container py="xl">
         <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
