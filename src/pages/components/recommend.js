@@ -40,7 +40,7 @@ export function Recommend({chrilden,data}){
     <>
     <Card key={Data.name} withBorder radius="md" p={0} component="a" className={classes.card} href = {"/content" + Data.path}>
     <Group noWrap spacing={0}>
-      <Image src={Data.img} height={140} width={140} />
+      <Image src={Data.img} alt={Data.name || 'recommendation image'} height={140} width={140} />
       <div className={classes.body}>
         <Text transform="uppercase" color="dimmed" weight={700} size="sm">
           {Data.tag}

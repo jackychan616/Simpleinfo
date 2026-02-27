@@ -84,7 +84,7 @@ function Blog({data}){
     <>
     <Card key={Data.name} withBorder radius="xl" p={0} component="a" className={classes.card} href = {"/content" + Data.path}>
     <Group noWrap spacing={0}>
-      <Image src={Data.img} height={140} width={140} radius={"xl"}/>
+      <Image src={Data.img} alt={Data.name || 'blog cover'} height={140} width={140} radius={"xl"}/>
       <div className={classes.body}>
 
         <Text className={classes.name} mt="xs" mb="md" fw={500}>

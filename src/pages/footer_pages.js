@@ -55,7 +55,7 @@ export function About_us(){
       <Group>
           <Group position="right">
           <Group position="right">
-            <Image src = "/img/footer_page/footer_page_2.png" maw = {500} height = {270} width = {350} radius={"20px"}/>
+            <Image src = "/img/footer_page/footer_page_2.png" alt="Simpleinfo 團隊理念配圖" maw = {500} height = {270} width = {350} radius={"20px"}/>
           </Group>
             <Blockquote
               cite="Simpleinfo 開發團隊"
@@ -83,7 +83,7 @@ export function About_us(){
         </Group>
       </Group>
       <Group position="center">
-        <Image src = "/img/footer_page/footer_page_1.png" maw = {500} height={200} width = {275} radius={"15px"}/>
+        <Image src = "/img/footer_page/footer_page_1.png" alt="Simpleinfo 團隊插圖" maw = {500} height={200} width = {275} radius={"15px"}/>
       </Group>
       <Space h = "lg"/>
   </Container>
@@ -118,8 +118,8 @@ function Goal(){
       />} />
                 </Stepper>
                 <Container>
-                  <Image src="/img/footer/goal.png" maw = "200px" mah= "200px" className={classes.hiddenMobile}/>
-                  <Image src="/img/footer/goal.png" maw = "150px" mah= "200px" className={classes.hiddenDesktop}/>
+                  <Image src="/img/footer/goal.png" alt="網站目標進度圖" maw = "200px" mah= "200px" className={classes.hiddenMobile}/>
+                  <Image src="/img/footer/goal.png" alt="網站目標進度圖" maw = "150px" mah= "200px" className={classes.hiddenDesktop}/>
                 </Container>
                 <Space h= "lg"/>
                 <Container>
@@ -143,8 +143,8 @@ function Join_us(){
         </thead>
       </Table>
       <Group>
-        <Image src = "/img/footer_page/join_us.png" maw = "200px" mah= "200px" className={classes.hiddenMobile}/>
-        <Image src = "/img/footer_page/join_us.png" maw = "150px" mah= "200px" className={classes.hiddenDesktop}/>
+        <Image src = "/img/footer_page/join_us.png" alt="加入我們插圖" maw = "200px" mah= "200px" className={classes.hiddenMobile}/>
+        <Image src = "/img/footer_page/join_us.png" alt="加入我們插圖" maw = "150px" mah= "200px" className={classes.hiddenDesktop}/>
         <Container>
         <Center>
         <Text fz = "xl" fw = {700}>

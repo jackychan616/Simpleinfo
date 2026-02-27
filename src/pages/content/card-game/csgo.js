@@ -35,7 +35,7 @@ function Page(){
             <ConText>
             你正在按A往左走，當你碰見敵人的時候鬆開A並立即按D之後立即瞄準敵人。
             </ConText>
-            <Image src="/img/csgo_2.jpg" maw = {500} height={400} width ={400}/>
+            <Image src="/img/csgo_2.jpg" alt="CSGO 急停示範圖片" maw = {500} height={400} width ={400}/>
             <ConText> 
              這一種急停的操作看似簡單, 但是需要大量的練習。望大家能早練成這種技巧, 成為csgo槍王！
             </ConText>
