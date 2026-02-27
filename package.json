@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prestart": "python ./src/script/router.py",
+    "prestart": "python3 ./src/script/router.py",
     "build": "next build && next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint",
@@ -47,7 +47,6 @@
     "next-images": "^1.8.4",
     "next-seo": "^5.15.0",
     "next-share": "^0.20.0",
-    "npm": "^9.5.0",
     "nprogress": "^0.2.0",
     "p-min-delay": "^4.0.2",
     "prismjs": "^1.29.0",

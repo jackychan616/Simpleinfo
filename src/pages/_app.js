@@ -83,8 +83,8 @@ export default function MyApp({ Component, pageProps, ...appProps}) {
       </ColorSchemeProvider>
     )
   } 
-    topic.push(...["/","/content"]);
-    if (topic.includes(appProps.router.pathname) || tag == "")
+    const publicTopic = new Set([...(topic || []), '/', '/content']);
+    if (publicTopic.has(appProps.router.pathname) || tag == "")
       return(
         <>
           <Basic_lay/>

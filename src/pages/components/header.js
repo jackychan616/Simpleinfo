@@ -214,7 +214,7 @@ export default function ConHeader() {
           </Group>
           <Group className={classes.hiddenMobile}>
             <Button>訂閱</Button>
-            <Button ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' style ={{textDecoration:"none",color : "White"}}>買杯咖啡俾我哋</a></Button>
+            <Button ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' rel='noopener noreferrer' style ={{textDecoration:"none",color : "White"}}>買杯咖啡俾我哋</a></Button>
             <ActionToggle/>
           </Group>
 
@@ -227,7 +227,7 @@ export default function ConHeader() {
                     <Title size="h2" >Simple Info</Title>
               </Link>
               <Group className={classes.hiddenDesktop} >
-                <ActionIcon variant="outline" size={"lg"}   color={theme.fn.primaryColor()}><a href='https://ko-fi.com/B0B1AA09F' target='_blank' ><SiKofi/></a></ActionIcon>
+                <ActionIcon variant="outline" size={"lg"}   color={theme.fn.primaryColor()}><a href='https://ko-fi.com/B0B1AA09F' target='_blank' rel='noopener noreferrer'><SiKofi/></a></ActionIcon>
                 <ActionToggle  />
               </Group>
             
