@@ -160,6 +160,11 @@ export default function ConHeader() {
                     變現方案
                   </Box>
             </Link>
+            <Link href="/writer" className={classes.link}>
+                  <Box component='span' mr={5}>
+                    投稿中心
+                  </Box>
+            </Link>
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
                 <Container className={classes.link} >
@@ -250,6 +255,9 @@ export default function ConHeader() {
           </Link>
           <Link href="/monetize" className={classes.link} onClick={closeDrawer}>
             變現方案
+          </Link>
+          <Link href="/writer" className={classes.link} onClick={closeDrawer}>
+            投稿中心
           </Link>
           <UnstyledButton className={classes.link}  onClick={toggleLinks}>  
               <Center inline>
