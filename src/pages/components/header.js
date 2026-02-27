@@ -23,11 +23,13 @@ import {
   Drawer
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
 import { topics} from '../../data/topics'
 import { SiKofi } from "react-icons/si";
 import {BiChevronDown} from 'react-icons/bi';
+import { getSupabaseBrowser } from '../../lib/supabaseBrowser';
 const useStyles = createStyles((theme) => ({
   link: {
     display: 'flex',
@@ -109,7 +111,19 @@ function ActionToggle() {
 export default function ConHeader() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
+  const [userEmail, setUserEmail] = useState('');
   const { classes, theme } = useStyles();
+
+  useEffect(() => {
+    const supabase = getSupabaseBrowser();
+    supabase.auth.getUser().then(({ data }) => setUserEmail(data.user?.email || ''));
+  }, []);
+
+  async function logout() {
+    const supabase = getSupabaseBrowser();
+    await supabase.auth.signOut();
+    setUserEmail('');
+  }
   const links = topics.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.name} onClick={closeDrawer}>
       <Link href={'/content/'+item.path} style={{
@@ -218,8 +232,18 @@ export default function ConHeader() {
             
           </Group>
           <Group className={classes.hiddenMobile}>
-            <Button>訂閱</Button>
-            <Button ><a href='https://ko-fi.com/B0B1AA09F' target='_blank' rel='noopener noreferrer' style ={{textDecoration:"none",color : "White"}}>買杯咖啡俾我哋</a></Button>
+            {userEmail ? (
+              <>
+                <Text size="xs" color="dimmed" maw={180} truncate>{userEmail}</Text>
+                <Button variant="light" onClick={logout}>登出</Button>
+              </>
+            ) : (
+              <>
+                <Button component={Link} href="/login" variant="light">登入</Button>
+                <Button component={Link} href="/register">註冊</Button>
+              </>
+            )}
+            <Button><a href='https://ko-fi.com/B0B1AA09F' target='_blank' rel='noopener noreferrer' style={{textDecoration:'none',color:'White'}}>買杯咖啡俾我哋</a></Button>
             <ActionToggle/>
           </Group>
 
@@ -267,6 +291,16 @@ export default function ConHeader() {
           <Link href="/community" className={classes.link} onClick={closeDrawer}>
             社群投稿
           </Link>
+          {!userEmail ? (
+            <>
+              <Link href="/login" className={classes.link} onClick={closeDrawer}>登入</Link>
+              <Link href="/register" className={classes.link} onClick={closeDrawer}>註冊</Link>
+            </>
+          ) : (
+            <UnstyledButton className={classes.link} onClick={() => { logout(); closeDrawer(); }}>
+              登出（{userEmail}）
+            </UnstyledButton>
+          )}
           <UnstyledButton className={classes.link}  onClick={toggleLinks}>  
               <Center inline>
                     <Box component="span" mr={5}>
