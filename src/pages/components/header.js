@@ -237,6 +237,7 @@ export default function ConHeader() {
             {userEmail ? (
               <>
                 <Text size="xs" color="dimmed" maw={180} truncate>{userEmail}</Text>
+                <Button component={Link} href="/account/profile" variant="light">Profile</Button>
                 <Button variant="light" onClick={logout}>登出</Button>
               </>
             ) : (
@@ -299,9 +300,12 @@ export default function ConHeader() {
               <Link href="/register" className={classes.link} onClick={closeDrawer}>註冊</Link>
             </>
           ) : (
-            <UnstyledButton className={classes.link} onClick={() => { logout(); closeDrawer(); }}>
-              登出（{userEmail}）
-            </UnstyledButton>
+            <>
+              <Link href="/account/profile" className={classes.link} onClick={closeDrawer}>個人資料</Link>
+              <UnstyledButton className={classes.link} onClick={() => { logout(); closeDrawer(); }}>
+                登出（{userEmail}）
+              </UnstyledButton>
+            </>
           )}
           <UnstyledButton className={classes.link}  onClick={toggleLinks}>  
               <Center inline>

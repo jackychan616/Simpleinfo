@@ -21,6 +21,12 @@ npm run build
 - `/writer/my-posts` 只睇自己投稿
 - `/writer/submissions` 投稿管理
 - `/community` 已通過審核之社群投稿列表
+- `/account/profile` 個人資料（username / birthday / age）
+
+Auth methods:
+- Email + Password
+- Magic Link
+- Google OAuth（需於 Supabase Auth Providers 啟用）
 
 權限規則：
 - 一般作者：可提交、可睇自己稿
