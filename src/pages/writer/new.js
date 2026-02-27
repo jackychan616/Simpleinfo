@@ -1,6 +1,8 @@
 import { Button, Container, Select, Stack, Text, TextInput, Textarea, Title } from '@mantine/core';
 import Link from 'next/link';
 import { useState } from 'react';
+import WriterAuth from '../components/writerAuth';
+import { getAccessToken } from '../../lib/supabaseBrowser';
 
 export default function NewPostPage() {
   const [title, setTitle] = useState('');
@@ -13,9 +15,19 @@ export default function NewPostPage() {
     setLoading(true);
     setMsg('');
 
+    const token = await getAccessToken();
+    if (!token) {
+      setLoading(false);
+      setMsg('提交失敗：請先登入（magic link）');
+      return;
+    }
+
     const res = await fetch('/api/writer/submissions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify({ title, category, content }),
     });
 
@@ -27,7 +39,7 @@ export default function NewPostPage() {
       return;
     }
 
-    setMsg('已送審 ✅（已寫入 Supabase）');
+    setMsg('已送審 ✅（已綁定 author）');
     setTitle('');
     setCategory('ai');
     setContent('');
@@ -37,7 +49,8 @@ export default function NewPostPage() {
     <Container size="md" py="xl">
       <Stack spacing="md">
         <Title order={1}>建立投稿</Title>
-        <Text color="dimmed">已接上 Supabase，提交後會寫入 writer_submissions（pending_review）。</Text>
+        <WriterAuth />
+        <Text color="dimmed">提交後會寫入 writer_submissions（pending_review）並綁定登入作者。</Text>
 
         <TextInput label="文章標題" value={title} onChange={(e) => setTitle(e.currentTarget.value)} required />
         <Select
@@ -61,7 +74,7 @@ export default function NewPostPage() {
         <Button onClick={submitForReview} disabled={!title || !content || loading}>
           {loading ? '提交中...' : '提交審核'}
         </Button>
-        <Button component={Link} href="/writer/submissions" variant="light">查看投稿狀態</Button>
+        <Button component={Link} href="/writer/my-posts" variant="light">查看我的投稿</Button>
         {msg ? <Text color={msg.includes('失敗') ? 'red' : 'teal'}>{msg}</Text> : null}
       </Stack>
     </Container>

@@ -1,6 +1,9 @@
-import { Badge, Button, Card, Container, Group, Select, Stack, Table, Text, Title, TextInput } from '@mantine/core';
+import { Badge, Button, Card, Container, Group, Select, Stack, Table, Text, Title } from '@mantine/core';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import WriterAuth from '../components/writerAuth';
+import { getAccessToken } from '../../lib/supabaseBrowser';
+import { useSupabaseSession } from '../../lib/useSupabaseSession';
 
 function statusColor(status) {
   if (status === 'approved') return 'green';
@@ -11,8 +14,8 @@ function statusColor(status) {
 export default function WriterSubmissionsPage() {
   const [rows, setRows] = useState([]);
   const [filter, setFilter] = useState('all');
-  const [adminEmail, setAdminEmail] = useState('');
   const [msg, setMsg] = useState('');
+  const { session } = useSupabaseSession();
 
   async function load(nextFilter = filter) {
     const query = nextFilter && nextFilter !== 'all' ? `?status=${nextFilter}` : '';
@@ -22,18 +25,22 @@ export default function WriterSubmissionsPage() {
   }
 
   useEffect(() => {
-    const saved = typeof window !== 'undefined' ? localStorage.getItem('simpleinfo_admin_email') : '';
-    if (saved) setAdminEmail(saved);
     load('all');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function updateStatus(id, status) {
+    const token = await getAccessToken();
+    if (!token) {
+      setMsg('更新失敗：請先登入 admin 帳號');
+      return;
+    }
+
     const res = await fetch(`/api/writer/submissions/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        'x-admin-email': adminEmail,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ status }),
     });
@@ -57,7 +64,8 @@ export default function WriterSubmissionsPage() {
     .split(',')
     .map((s) => s.trim().toLowerCase())
     .filter(Boolean);
-  const isAdmin = adminAllowlist.includes((adminEmail || '').toLowerCase());
+  const sessionEmail = session?.user?.email || '';
+  const isAdmin = adminAllowlist.includes(sessionEmail.toLowerCase());
 
   return (
     <Container size="lg" py="xl">
@@ -65,23 +73,9 @@ export default function WriterSubmissionsPage() {
         <Group position="apart" align="end">
           <div>
             <Title order={1}>投稿管理</Title>
-            <Text color="dimmed">已接上 Supabase 審核流程（pending / approved / rejected）。</Text>
+            <Text color="dimmed">Admin 可審核（approved / rejected），server 會做 email allowlist hard check。</Text>
           </div>
           <Group>
-            <TextInput
-              value={adminEmail}
-              onChange={(e) => setAdminEmail(e.currentTarget.value)}
-              placeholder="admin email"
-            />
-            <Button
-              variant="light"
-              onClick={() => {
-                localStorage.setItem('simpleinfo_admin_email', adminEmail);
-                setMsg('Admin email 已儲存');
-              }}
-            >
-              Save Admin
-            </Button>
             <Select
               value={filter}
               onChange={(v) => {
@@ -97,8 +91,11 @@ export default function WriterSubmissionsPage() {
               ]}
             />
             <Button component={Link} href="/writer/new">新增投稿</Button>
+            <Button component={Link} href="/writer/my-posts" variant="light">My Posts</Button>
           </Group>
         </Group>
+
+        <WriterAuth />
 
         {msg ? <Text size="sm">{msg}</Text> : null}
         {!isAdmin ? <Text size="sm" color="orange">你而家唔係 admin，無法 approve/reject。</Text> : null}
@@ -112,6 +109,7 @@ export default function WriterSubmissionsPage() {
                 <tr>
                   <th>標題</th>
                   <th>分類</th>
+                  <th>作者</th>
                   <th>建立時間</th>
                   <th>狀態</th>
                   <th>操作</th>
@@ -122,6 +120,7 @@ export default function WriterSubmissionsPage() {
                   <tr key={item.id}>
                     <td>{item.title}</td>
                     <td>{item.category}</td>
+                    <td>{item.author_email || '-'}</td>
                     <td>{new Date(item.created_at).toLocaleString()}</td>
                     <td>
                       <Badge color={statusColor(item.status)}>{item.status}</Badge>
