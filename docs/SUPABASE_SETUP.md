@@ -10,6 +10,8 @@ create table if not exists public.writer_submissions (
   title text not null,
   category text not null default 'ai',
   content text not null,
+  content_blocks jsonb,
+  like_count integer not null default 0,
   status text not null default 'pending_review' check (status in ('pending_review', 'approved', 'rejected')),
   author_id uuid,
   author_email text,
@@ -38,7 +40,9 @@ If your table already exists, run migration SQL:
 ```sql
 alter table public.writer_submissions
   add column if not exists author_id uuid,
-  add column if not exists author_email text;
+  add column if not exists author_email text,
+  add column if not exists content_blocks jsonb,
+  add column if not exists like_count integer not null default 0;
 
 create index if not exists idx_writer_submissions_author_id
   on public.writer_submissions(author_id);

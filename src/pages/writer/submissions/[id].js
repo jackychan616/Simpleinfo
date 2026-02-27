@@ -1,7 +1,9 @@
 import { Badge, Button, Card, Container, Group, Stack, Text, Title } from '@mantine/core';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import BlockRenderer from '../../components/blockRenderer';
+import { getBlocksFromSubmission } from '../../../lib/contentBlocks';
 
 function statusColor(status) {
   if (status === 'approved') return 'green';
@@ -21,6 +23,8 @@ export default function SubmissionDetailPage() {
       .then((body) => setRow(body.data || null))
       .catch(() => setRow(null));
   }, [id]);
+
+  const blocks = useMemo(() => getBlocksFromSubmission(row), [row]);
 
   if (!row) {
     return (
@@ -42,7 +46,9 @@ export default function SubmissionDetailPage() {
           <Title order={3}>{row.title}</Title>
           <Text size="sm" color="dimmed" mt="xs">分類：{row.category}</Text>
           <Text size="sm" color="dimmed">建立時間：{new Date(row.created_at).toLocaleString()}</Text>
-          <Text mt="md" style={{ whiteSpace: 'pre-wrap' }}>{row.content}</Text>
+          <Stack mt="md">
+            <BlockRenderer blocks={blocks} />
+          </Stack>
         </Card>
 
         <Group>
