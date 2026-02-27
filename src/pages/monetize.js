@@ -1,5 +1,7 @@
 import { Card, Container, Group, SimpleGrid, Text, Title, Button, Badge, Stack } from '@mantine/core';
 
+const stripeLink = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK || process.env.STRIPE_PAYMENT_LINK || '/about_us';
+
 const plans = [
   {
     name: 'Starter',
@@ -14,7 +16,7 @@ const plans = [
     price: 'HK$39 / 月',
     desc: '進階教學、工具清單、每月 1 份實戰模板',
     cta: '升級 Pro',
-    href: '/about_us',
+    href: stripeLink,
     tag: '熱門',
   },
   {
@@ -44,7 +46,7 @@ export default function MonetizePage() {
             </Group>
             <Text size="xl" weight={700}>{plan.price}</Text>
             <Text color="dimmed" mt="xs">{plan.desc}</Text>
-            <Button component="a" href={plan.href} fullWidth mt="md">{plan.cta}</Button>
+            <Button component="a" href={plan.href} target="_blank" rel="noopener noreferrer" fullWidth mt="md">{plan.cta}</Button>
           </Card>
         ))}
       </SimpleGrid>

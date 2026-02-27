@@ -2,8 +2,6 @@ import { Badge, Button, Card, Container, Group, Select, Stack, Table, Text, Titl
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 
-const KEY = 'simpleinfo_writer_drafts';
-
 function statusColor(status) {
   if (status === 'approved') return 'green';
   if (status === 'rejected') return 'red';
@@ -13,21 +11,35 @@ function statusColor(status) {
 export default function WriterSubmissionsPage() {
   const [rows, setRows] = useState([]);
   const [filter, setFilter] = useState('all');
+  const [msg, setMsg] = useState('');
 
-  function load() {
-    const data = JSON.parse(localStorage.getItem(KEY) || '[]');
-    setRows(data);
+  async function load(nextFilter = filter) {
+    const query = nextFilter && nextFilter !== 'all' ? `?status=${nextFilter}` : '';
+    const res = await fetch(`/api/writer/submissions${query}`);
+    const body = await res.json().catch(() => ({}));
+    setRows(body.data || []);
   }
 
   useEffect(() => {
-    load();
+    load('all');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function updateStatus(id, status) {
-    const data = JSON.parse(localStorage.getItem(KEY) || '[]');
-    const updated = data.map((item) => (item.id === id ? { ...item, status } : item));
-    localStorage.setItem(KEY, JSON.stringify(updated));
-    setRows(updated);
+  async function updateStatus(id, status) {
+    const res = await fetch(`/api/writer/submissions/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status }),
+    });
+
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      setMsg(`更新失敗：${body?.error || 'unknown error'}`);
+      return;
+    }
+
+    setMsg(`已更新狀態：${status}`);
+    await load(filter);
   }
 
   const filtered = useMemo(() => {
@@ -41,12 +53,16 @@ export default function WriterSubmissionsPage() {
         <Group position="apart" align="end">
           <div>
             <Title order={1}>投稿管理</Title>
-            <Text color="dimmed">目前為本機 mock 審核流程（pending / approved / rejected）。</Text>
+            <Text color="dimmed">已接上 Supabase 審核流程（pending / approved / rejected）。</Text>
           </div>
           <Group>
             <Select
               value={filter}
-              onChange={(v) => setFilter(v || 'all')}
+              onChange={(v) => {
+                const next = v || 'all';
+                setFilter(next);
+                load(next);
+              }}
               data={[
                 { value: 'all', label: '全部' },
                 { value: 'pending_review', label: '待審核' },
@@ -57,6 +73,8 @@ export default function WriterSubmissionsPage() {
             <Button component={Link} href="/writer/new">新增投稿</Button>
           </Group>
         </Group>
+
+        {msg ? <Text size="sm">{msg}</Text> : null}
 
         <Card withBorder radius="md" shadow="sm">
           {filtered.length === 0 ? (
@@ -77,7 +95,7 @@ export default function WriterSubmissionsPage() {
                   <tr key={item.id}>
                     <td>{item.title}</td>
                     <td>{item.category}</td>
-                    <td>{new Date(item.createdAt).toLocaleString()}</td>
+                    <td>{new Date(item.created_at).toLocaleString()}</td>
                     <td>
                       <Badge color={statusColor(item.status)}>{item.status}</Badge>
                     </td>

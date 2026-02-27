@@ -35,6 +35,7 @@
     "@mui/material": "^5.11.10",
     "@next/font": "13.1.6",
     "@next/mdx": "^13.1.6",
+    "@supabase/supabase-js": "^2.98.0",
     "@tabler/core": "^1.0.0-beta17",
     "@tabler/icons": "^2.6.0",
     "@tabler/icons-react": "^2.7.0",

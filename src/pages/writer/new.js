@@ -7,21 +7,27 @@ export default function NewPostPage() {
   const [category, setCategory] = useState('ai');
   const [content, setContent] = useState('');
   const [msg, setMsg] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  function submitForReview() {
-    const draft = {
-      id: Date.now().toString(),
-      title,
-      category,
-      content,
-      status: 'pending_review',
-      createdAt: new Date().toISOString(),
-    };
+  async function submitForReview() {
+    setLoading(true);
+    setMsg('');
 
-    const key = 'simpleinfo_writer_drafts';
-    const old = JSON.parse(localStorage.getItem(key) || '[]');
-    localStorage.setItem(key, JSON.stringify([draft, ...old]));
-    setMsg('已送審 ✅（目前為本機 mock，下一步會接真 DB）');
+    const res = await fetch('/api/writer/submissions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, category, content }),
+    });
+
+    const body = await res.json().catch(() => ({}));
+    setLoading(false);
+
+    if (!res.ok) {
+      setMsg(`提交失敗：${body?.error || 'unknown error'}`);
+      return;
+    }
+
+    setMsg('已送審 ✅（已寫入 Supabase）');
     setTitle('');
     setCategory('ai');
     setContent('');
@@ -31,7 +37,7 @@ export default function NewPostPage() {
     <Container size="md" py="xl">
       <Stack spacing="md">
         <Title order={1}>建立投稿</Title>
-        <Text color="dimmed">第一階段先用本機 mock 流程，之後接真實 user/auth/database。</Text>
+        <Text color="dimmed">已接上 Supabase，提交後會寫入 writer_submissions（pending_review）。</Text>
 
         <TextInput label="文章標題" value={title} onChange={(e) => setTitle(e.currentTarget.value)} required />
         <Select
@@ -52,9 +58,11 @@ export default function NewPostPage() {
           required
         />
 
-        <Button onClick={submitForReview} disabled={!title || !content}>提交審核</Button>
+        <Button onClick={submitForReview} disabled={!title || !content || loading}>
+          {loading ? '提交中...' : '提交審核'}
+        </Button>
         <Button component={Link} href="/writer/submissions" variant="light">查看投稿狀態</Button>
-        {msg ? <Text color="teal">{msg}</Text> : null}
+        {msg ? <Text color={msg.includes('失敗') ? 'red' : 'teal'}>{msg}</Text> : null}
       </Stack>
     </Container>
   );
