@@ -186,6 +186,11 @@ export default function ConHeader() {
                     社群投稿
                   </Box>
             </Link>
+            <Link href="/admin/roles" className={classes.link}>
+                  <Box component='span' mr={5}>
+                    Admin
+                  </Box>
+            </Link>
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
                 <Container className={classes.link} >
@@ -293,6 +298,9 @@ export default function ConHeader() {
           </Link>
           <Link href="/community" className={classes.link} onClick={closeDrawer}>
             社群投稿
+          </Link>
+          <Link href="/admin/roles" className={classes.link} onClick={closeDrawer}>
+            Admin
           </Link>
           {!userEmail ? (
             <>
