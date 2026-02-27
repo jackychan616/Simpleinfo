@@ -23,6 +23,7 @@ export default function WriterDashboard() {
           </Stack>
           <Group mt="md">
             <Button component={Link} href="/writer/new">建立新文章</Button>
+            <Button variant="light" component={Link} href="/writer/submissions">管理投稿</Button>
             <Button variant="light" component={Link} href="/hot">查看公開文章</Button>
           </Group>
         </Card>

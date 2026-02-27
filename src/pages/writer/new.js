@@ -1,4 +1,5 @@
 import { Button, Container, Select, Stack, Text, TextInput, Textarea, Title } from '@mantine/core';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function NewPostPage() {
@@ -52,6 +53,7 @@ export default function NewPostPage() {
         />
 
         <Button onClick={submitForReview} disabled={!title || !content}>提交審核</Button>
+        <Button component={Link} href="/writer/submissions" variant="light">查看投稿狀態</Button>
         {msg ? <Text color="teal">{msg}</Text> : null}
       </Stack>
     </Container>
