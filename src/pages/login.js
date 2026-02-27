@@ -1,4 +1,4 @@
-import { Button, Container, Stack, Text, TextInput, Title } from '@mantine/core';
+import { Button, Card, Container, Divider, Stack, Text, TextInput, Title } from '@mantine/core';
 import Link from 'next/link';
 import { useState } from 'react';
 import { getSupabaseBrowser } from '../lib/supabaseBrowser';
@@ -32,15 +32,30 @@ export default function LoginPage() {
   }
 
   return (
-    <Container size="sm" py="xl">
-      <Stack spacing="md">
-        <Title order={1}>登入</Title>
-        <Text color="dimmed">輸入電郵收 magic link。</Text>
-        <TextInput label="Email" value={email} onChange={(e) => setEmail(e.currentTarget.value)} />
-        <Button onClick={login} disabled={!email || loading}>{loading ? '發送中...' : 'Send magic link'}</Button>
-        <Text size="sm">未有帳號？<Link href="/register">去註冊</Link></Text>
-        {msg ? <Text size="sm">{msg}</Text> : null}
-      </Stack>
+    <Container size="xs" py={48}>
+      <Card withBorder shadow="sm" radius="md" p="lg">
+        <Stack spacing="md">
+          <Title order={2}>登入帳戶</Title>
+          <Text color="dimmed" size="sm">輸入電郵接收 magic link，安全快速登入。</Text>
+
+          <TextInput
+            label="Email"
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
+          />
+
+          <Button onClick={login} disabled={!email || loading}>
+            {loading ? '發送中...' : 'Send magic link'}
+          </Button>
+
+          <Divider />
+          <Text size="sm" color="dimmed">
+            未有帳號？<Link href="/register"> 去註冊</Link>
+          </Text>
+          {msg ? <Text size="sm" color={msg.includes('失敗') ? 'red' : 'teal'}>{msg}</Text> : null}
+        </Stack>
+      </Card>
     </Container>
   );
 }

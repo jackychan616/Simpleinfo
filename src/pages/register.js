@@ -1,4 +1,4 @@
-import { Button, Container, Stack, Text, TextInput, Title } from '@mantine/core';
+import { Button, Card, Container, Divider, Stack, Text, TextInput, Title } from '@mantine/core';
 import Link from 'next/link';
 import { useState } from 'react';
 import { getSupabaseBrowser } from '../lib/supabaseBrowser';
@@ -32,15 +32,30 @@ export default function RegisterPage() {
   }
 
   return (
-    <Container size="sm" py="xl">
-      <Stack spacing="md">
-        <Title order={1}>註冊</Title>
-        <Text color="dimmed">用 email 建立帳號（magic link）。</Text>
-        <TextInput label="Email" value={email} onChange={(e) => setEmail(e.currentTarget.value)} />
-        <Button onClick={register} disabled={!email || loading}>{loading ? '發送中...' : '註冊並發送連結'}</Button>
-        <Text size="sm">已有帳號？<Link href="/login">去登入</Link></Text>
-        {msg ? <Text size="sm">{msg}</Text> : null}
-      </Stack>
+    <Container size="xs" py={48}>
+      <Card withBorder shadow="sm" radius="md" p="lg">
+        <Stack spacing="md">
+          <Title order={2}>建立帳戶</Title>
+          <Text color="dimmed" size="sm">註冊後可以投稿、管理文章，並追蹤審核狀態。</Text>
+
+          <TextInput
+            label="Email"
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
+          />
+
+          <Button onClick={register} disabled={!email || loading}>
+            {loading ? '發送中...' : '註冊並發送連結'}
+          </Button>
+
+          <Divider />
+          <Text size="sm" color="dimmed">
+            已有帳號？<Link href="/login"> 去登入</Link>
+          </Text>
+          {msg ? <Text size="sm" color={msg.includes('失敗') ? 'red' : 'teal'}>{msg}</Text> : null}
+        </Stack>
+      </Card>
     </Container>
   );
 }
