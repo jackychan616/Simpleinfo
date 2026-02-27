@@ -1,4 +1,5 @@
 import { Badge, Card, Container, Group, Stack, Text, Title } from '@mantine/core';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
@@ -39,18 +40,32 @@ export default function CommunityPostPage() {
     );
   }
 
+  const canonical = `https://simpleinfohk.me/community/${row.id}`;
+  const description = (row.content || '').slice(0, 120);
+
   return (
-    <Container size="md" py="xl">
-      <Stack spacing="md">
-        <Group position="apart">
-          <Title order={1}>{row.title}</Title>
-          <Badge color="green">Approved</Badge>
-        </Group>
-        <Text size="sm" color="dimmed">分類：{row.category}</Text>
-        <Card withBorder radius="md" shadow="sm">
-          <Text style={{ whiteSpace: 'pre-wrap' }}>{row.content}</Text>
-        </Card>
-      </Stack>
-    </Container>
+    <>
+      <Head>
+        <title>{row.title} | Simple Info 社群投稿</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:title" content={row.title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={canonical} />
+      </Head>
+      <Container size="md" py="xl">
+        <Stack spacing="md">
+          <Group position="apart">
+            <Title order={1}>{row.title}</Title>
+            <Badge color="green">Approved</Badge>
+          </Group>
+          <Text size="sm" color="dimmed">分類：{row.category}</Text>
+          <Card withBorder radius="md" shadow="sm">
+            <Text style={{ whiteSpace: 'pre-wrap' }}>{row.content}</Text>
+          </Card>
+        </Stack>
+      </Container>
+    </>
   );
 }

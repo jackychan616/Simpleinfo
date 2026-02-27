@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Container, Group, Select, Stack, Table, Text, Title } from '@mantine/core';
+import { Badge, Button, Card, Container, Group, Select, Stack, Table, Text, Title, TextInput } from '@mantine/core';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -11,6 +11,7 @@ function statusColor(status) {
 export default function WriterSubmissionsPage() {
   const [rows, setRows] = useState([]);
   const [filter, setFilter] = useState('all');
+  const [adminEmail, setAdminEmail] = useState('');
   const [msg, setMsg] = useState('');
 
   async function load(nextFilter = filter) {
@@ -21,6 +22,8 @@ export default function WriterSubmissionsPage() {
   }
 
   useEffect(() => {
+    const saved = typeof window !== 'undefined' ? localStorage.getItem('simpleinfo_admin_email') : '';
+    if (saved) setAdminEmail(saved);
     load('all');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -28,7 +31,10 @@ export default function WriterSubmissionsPage() {
   async function updateStatus(id, status) {
     const res = await fetch(`/api/writer/submissions/${id}`, {
       method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'x-admin-email': adminEmail,
+      },
       body: JSON.stringify({ status }),
     });
 
@@ -47,6 +53,12 @@ export default function WriterSubmissionsPage() {
     return rows.filter((r) => r.status === filter);
   }, [rows, filter]);
 
+  const adminAllowlist = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '')
+    .split(',')
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
+  const isAdmin = adminAllowlist.includes((adminEmail || '').toLowerCase());
+
   return (
     <Container size="lg" py="xl">
       <Stack spacing="md">
@@ -56,6 +68,20 @@ export default function WriterSubmissionsPage() {
             <Text color="dimmed">已接上 Supabase 審核流程（pending / approved / rejected）。</Text>
           </div>
           <Group>
+            <TextInput
+              value={adminEmail}
+              onChange={(e) => setAdminEmail(e.currentTarget.value)}
+              placeholder="admin email"
+            />
+            <Button
+              variant="light"
+              onClick={() => {
+                localStorage.setItem('simpleinfo_admin_email', adminEmail);
+                setMsg('Admin email 已儲存');
+              }}
+            >
+              Save Admin
+            </Button>
             <Select
               value={filter}
               onChange={(v) => {
@@ -75,6 +101,7 @@ export default function WriterSubmissionsPage() {
         </Group>
 
         {msg ? <Text size="sm">{msg}</Text> : null}
+        {!isAdmin ? <Text size="sm" color="orange">你而家唔係 admin，無法 approve/reject。</Text> : null}
 
         <Card withBorder radius="md" shadow="sm">
           {filtered.length === 0 ? (
@@ -104,12 +131,16 @@ export default function WriterSubmissionsPage() {
                         <Button size="xs" variant="subtle" component={Link} href={`/writer/submissions/${item.id}`}>
                           View
                         </Button>
-                        <Button size="xs" color="green" variant="light" onClick={() => updateStatus(item.id, 'approved')}>
-                          Approve
-                        </Button>
-                        <Button size="xs" color="red" variant="light" onClick={() => updateStatus(item.id, 'rejected')}>
-                          Reject
-                        </Button>
+                        {isAdmin ? (
+                          <>
+                            <Button size="xs" color="green" variant="light" onClick={() => updateStatus(item.id, 'approved')}>
+                              Approve
+                            </Button>
+                            <Button size="xs" color="red" variant="light" onClick={() => updateStatus(item.id, 'rejected')}>
+                              Reject
+                            </Button>
+                          </>
+                        ) : null}
                         {item.status === 'approved' ? (
                           <Button size="xs" component={Link} href={`/community/${item.id}`} variant="outline">
                             Public

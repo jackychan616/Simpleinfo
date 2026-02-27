@@ -14,7 +14,7 @@ import {Meta} from './components/meta';
 import Head  from 'next/head';
 import { TypeAnimation } from 'react-type-animation';
 import Image from 'next/image'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './page.module.css'
 import GroudedCard from './components/groupedcard'
 import { Blogads } from './components/googleAds';
@@ -71,6 +71,14 @@ const useStyles = createStyles((theme) => ({
 export default function Home() {
   const { classes } = useStyles();
   const [ postNum, setPostNum] = useState(6); // Default number of posts dislplayed
+  const [communityPosts, setCommunityPosts] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/writer/submissions?status=approved')
+      .then((r) => r.json())
+      .then((body) => setCommunityPosts((body.data || []).slice(0, 4)))
+      .catch(() => setCommunityPosts([]));
+  }, []);
 
   function handleClick() {
     setPostNum(prevPostNum => prevPostNum + 6) // 3 is the number of posts you want to load per click
@@ -122,6 +130,27 @@ export default function Home() {
                 <Button onClick={handleClick} fullWidth variant="outline">載入更多</Button>
             </Box>
           </Container>
+
+          {communityPosts.length > 0 ? (
+            <Container py="xl">
+              <Group position="apart" mb="md">
+                <Text fw={700} fz="lg">社群精選投稿</Text>
+                <Button component="a" href="/community" variant="subtle">睇全部</Button>
+              </Group>
+              <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+                {communityPosts.map((post) => (
+                  <Card key={post.id} p="md" radius="md" component="a" href={`/community/${post.id}`} className={classes.card} shadow="sm">
+                    <Group position="apart" mb="xs">
+                      <Badge color="green">community</Badge>
+                      <Text size="xs" color="dimmed">{new Date(post.created_at).toLocaleDateString()}</Text>
+                    </Group>
+                    <Text fw={700}>{post.title}</Text>
+                    <Text size="sm" color="dimmed" lineClamp={3} mt="xs">{post.content}</Text>
+                  </Card>
+                ))}
+              </SimpleGrid>
+            </Container>
+          ) : null}
         </Container>
   </Container>
 </>

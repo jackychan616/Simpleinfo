@@ -33,3 +33,7 @@ Then configure env in Vercel and `.env.local`:
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `NEXT_PUBLIC_STRIPE_PAYMENT_LINK`
+- `NEXT_PUBLIC_ADMIN_EMAILS` (comma-separated)
+- `ADMIN_EMAILS` (comma-separated, server-side check)
+
+Only emails in admin allowlist can approve/reject submissions.
