@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getSupabaseBrowser } from '../../lib/supabaseBrowser';
 
+const TITLE_LIMIT = 120;
+const CONTENT_LIMIT = 10000;
+
 export default function NewPostPage() {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('ai');
@@ -24,6 +27,15 @@ export default function NewPostPage() {
     setLoading(true);
     setMsg('');
 
+    const safeTitle = title.trim();
+    const safeContent = content.trim();
+
+    if (!safeTitle || !safeContent) {
+      setLoading(false);
+      setMsg('提交失敗：請先填寫標題與內容');
+      return;
+    }
+
     const res = await fetch('/api/writer/submissions', {
       method: 'POST',
       headers: {
@@ -31,7 +43,7 @@ export default function NewPostPage() {
         'x-user-email': userEmail,
         'x-user-id': userId,
       },
-      body: JSON.stringify({ title, category, content }),
+      body: JSON.stringify({ title: safeTitle, category, content: safeContent }),
     });
 
     const body = await res.json().catch(() => ({}));
@@ -56,7 +68,14 @@ export default function NewPostPage() {
         <Text size="sm">登入狀態：{userEmail || '未登入'}</Text>
         {!userEmail ? <Button component={Link} href="/writer/auth" variant="light">先登入先可以投稿</Button> : null}
 
-        <TextInput label="文章標題" value={title} onChange={(e) => setTitle(e.currentTarget.value)} required />
+        <TextInput
+          label="文章標題"
+          value={title}
+          onChange={(e) => setTitle(e.currentTarget.value)}
+          required
+          maxLength={TITLE_LIMIT}
+          description={`${title.trim().length}/${TITLE_LIMIT}`}
+        />
         <Select
           label="分類"
           value={category}
@@ -73,9 +92,11 @@ export default function NewPostPage() {
           value={content}
           onChange={(e) => setContent(e.currentTarget.value)}
           required
+          maxLength={CONTENT_LIMIT}
+          description={`${content.trim().length}/${CONTENT_LIMIT}`}
         />
 
-        <Button onClick={submitForReview} disabled={!title || !content || loading || !userEmail}>
+        <Button onClick={submitForReview} disabled={!title.trim() || !content.trim() || loading || !userEmail}>
           {loading ? '提交中...' : '提交審核'}
         </Button>
         <Button component={Link} href="/writer/submissions" variant="light">查看投稿狀態</Button>

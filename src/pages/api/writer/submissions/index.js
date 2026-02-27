@@ -1,5 +1,7 @@
 import { getSupabaseServer } from '../../../../lib/supabaseServer';
 
+const ALLOWED_CATEGORIES = new Set(['ai', 'gaming', 'tech']);
+
 export default async function handler(req, res) {
   const { client, error: envError } = getSupabaseServer();
   if (!client) return res.status(500).json({ error: envError });
@@ -21,15 +23,22 @@ export default async function handler(req, res) {
     const { title, category, content } = req.body || {};
     const userEmail = req.headers['x-user-email'];
     const userId = req.headers['x-user-id'];
-    if (!title || !content) return res.status(422).json({ error: 'title and content are required' });
+
+    const safeTitle = String(title || '').trim();
+    const safeContent = String(content || '').trim();
+    const safeCategory = ALLOWED_CATEGORIES.has(category) ? category : 'ai';
+
+    if (!safeTitle || !safeContent) return res.status(422).json({ error: 'title and content are required' });
+    if (safeTitle.length > 120) return res.status(422).json({ error: 'title must be <= 120 chars' });
+    if (safeContent.length > 10000) return res.status(422).json({ error: 'content must be <= 10000 chars' });
     if (!userEmail) return res.status(401).json({ error: 'Login required (missing user email)' });
 
     const { data, error } = await client
       .from('writer_submissions')
       .insert({
-        title,
-        category: category || 'ai',
-        content,
+        title: safeTitle,
+        category: safeCategory,
+        content: safeContent,
         status: 'pending_review',
         author_id: userId ? String(userId) : null,
         author_email: String(userEmail),
