@@ -1,4 +1,5 @@
 import { getSupabaseServer } from '../../../../lib/supabaseServer';
+import { blocksToPlainText, normalizeBlocks } from '../../../../lib/contentBlocks';
 
 const ALLOWED_CATEGORIES = new Set(['ai', 'gaming', 'tech']);
 
@@ -20,12 +21,14 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'POST') {
-    const { title, category, content } = req.body || {};
+    const { title, category, content, contentBlocks } = req.body || {};
     const userEmail = req.headers['x-user-email'];
     const userId = req.headers['x-user-id'];
 
     const safeTitle = String(title || '').trim();
-    const safeContent = String(content || '').trim();
+    const normalizedBlocks = normalizeBlocks(contentBlocks);
+    const generatedContent = blocksToPlainText(normalizedBlocks);
+    const safeContent = String(content || generatedContent || '').trim();
     const safeCategory = ALLOWED_CATEGORIES.has(category) ? category : 'ai';
 
     if (!safeTitle || !safeContent) return res.status(422).json({ error: 'title and content are required' });
@@ -33,16 +36,20 @@ export default async function handler(req, res) {
     if (safeContent.length > 10000) return res.status(422).json({ error: 'content must be <= 10000 chars' });
     if (!userEmail) return res.status(401).json({ error: 'Login required (missing user email)' });
 
+    const payload = {
+      title: safeTitle,
+      category: safeCategory,
+      content: safeContent,
+      status: 'pending_review',
+      author_id: userId ? String(userId) : null,
+      author_email: String(userEmail),
+    };
+
+    if (normalizedBlocks.length > 0) payload.content_blocks = normalizedBlocks;
+
     const { data, error } = await client
       .from('writer_submissions')
-      .insert({
-        title: safeTitle,
-        category: safeCategory,
-        content: safeContent,
-        status: 'pending_review',
-        author_id: userId ? String(userId) : null,
-        author_email: String(userEmail),
-      })
+      .insert(payload)
       .select('*')
       .single();
 

@@ -1,13 +1,18 @@
-import { Badge, Card, Container, Group, Stack, Text, Title } from '@mantine/core';
+import { Badge, Button, Card, Container, Group, Stack, Text, Title } from '@mantine/core';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { IconHeart } from '@tabler/icons-react';
+import BlockRenderer from '../components/blockRenderer';
+import { Sharebutton } from '../components/share';
+import { getBlocksFromSubmission, summarizeBlocks } from '../../lib/contentBlocks';
 
 export default function CommunityPostPage() {
   const router = useRouter();
   const { id } = router.query;
   const [row, setRow] = useState(null);
   const [error, setError] = useState('');
+  const [likeLoading, setLikeLoading] = useState(false);
 
   useEffect(() => {
     if (!id) return;
@@ -23,6 +28,19 @@ export default function CommunityPostPage() {
       })
       .catch(() => setError('讀取失敗'));
   }, [id]);
+
+  const blocks = useMemo(() => getBlocksFromSubmission(row), [row]);
+
+  async function handleLike() {
+    if (!id || likeLoading) return;
+    setLikeLoading(true);
+    const res = await fetch(`/api/community/${id}/like`, { method: 'POST' });
+    const body = await res.json().catch(() => ({}));
+    setLikeLoading(false);
+    if (res.ok && body?.data) {
+      setRow((prev) => ({ ...prev, like_count: body.data.like_count }));
+    }
+  }
 
   if (error) {
     return (
@@ -41,7 +59,7 @@ export default function CommunityPostPage() {
   }
 
   const canonical = `https://simpleinfohk.me/community/${row.id}`;
-  const description = (row.content || '').slice(0, 120);
+  const description = summarizeBlocks(blocks, 160) || (row.content || '').slice(0, 160);
 
   return (
     <>
@@ -60,9 +78,19 @@ export default function CommunityPostPage() {
             <Title order={1}>{row.title}</Title>
             <Badge color="green">Approved</Badge>
           </Group>
-          <Text size="sm" color="dimmed">分類：{row.category}</Text>
+
+          <Group position="apart">
+            <Text size="sm" color="dimmed">分類：{row.category}</Text>
+            <Group>
+              <Button leftIcon={<IconHeart size={16} />} onClick={handleLike} loading={likeLoading} variant="light">
+                Like ({Number(row.like_count || 0)})
+              </Button>
+              <Sharebutton url={`/community/${row.id}`} />
+            </Group>
+          </Group>
+
           <Card withBorder radius="md" shadow="sm">
-            <Text style={{ whiteSpace: 'pre-wrap' }}>{row.content}</Text>
+            <BlockRenderer blocks={blocks} />
           </Card>
         </Stack>
       </Container>

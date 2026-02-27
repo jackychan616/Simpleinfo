@@ -1,5 +1,7 @@
 # Supabase Setup for Writer Submissions
 
+## 1) Create / update table
+
 Run this SQL in Supabase SQL Editor:
 
 ```sql
@@ -8,6 +10,8 @@ create table if not exists public.writer_submissions (
   title text not null,
   category text not null default 'ai',
   content text not null,
+  content_blocks jsonb,
+  like_count integer not null default 0,
   author_id uuid,
   author_email text,
   status text not null default 'pending_review' check (status in ('pending_review', 'approved', 'rejected')),
@@ -17,6 +21,8 @@ create table if not exists public.writer_submissions (
 
 alter table public.writer_submissions add column if not exists author_id uuid;
 alter table public.writer_submissions add column if not exists author_email text;
+alter table public.writer_submissions add column if not exists content_blocks jsonb;
+alter table public.writer_submissions add column if not exists like_count integer not null default 0;
 
 create or replace function public.set_writer_submissions_updated_at()
 returns trigger as $$
@@ -30,9 +36,11 @@ drop trigger if exists trg_writer_submissions_updated_at on public.writer_submis
 create trigger trg_writer_submissions_updated_at
 before update on public.writer_submissions
 for each row execute function public.set_writer_submissions_updated_at();
+
+create index if not exists idx_writer_submissions_author_id on public.writer_submissions(author_id);
 ```
 
-Then configure env in Vercel and `.env.local`:
+## 2) Configure env in Vercel and `.env.local`
 
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
