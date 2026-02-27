@@ -72,12 +72,13 @@ export default function AdminRolesPage() {
   return (
     <Container size="lg" py="xl">
       <Stack spacing="md">
-        <Title order={1}>Admin Role Panel</Title>
+        <Title order={1}>Admin Console · Role Panel</Title>
         <Text color="dimmed">登入：{userEmail || '未登入'} · Role: <Badge>{myRole}</Badge></Text>
 
         {myRole !== 'admin' ? (
           <Card withBorder>
             <Text color="red">你唔係 admin，無法管理 roles。</Text>
+            <Text size="sm" color="dimmed" mt="xs">Admin 功能已隱藏。請用 admin 帳號登入。</Text>
           </Card>
         ) : (
           <>

@@ -112,12 +112,28 @@ export default function ConHeader() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const [userEmail, setUserEmail] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
   const { classes, theme } = useStyles();
 
   useEffect(() => {
     const supabase = getSupabaseBrowser();
     if (!supabase) return;
-    supabase.auth.getUser().then(({ data }) => setUserEmail(data.user?.email || ''));
+    supabase.auth.getUser().then(async ({ data }) => {
+      const email = data.user?.email || '';
+      setUserEmail(email);
+      if (!email) {
+        setIsAdmin(false);
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/v2/me/role?email=${encodeURIComponent(email)}`);
+        const body = await res.json().catch(() => ({}));
+        setIsAdmin(body?.role === 'admin');
+      } catch {
+        setIsAdmin(false);
+      }
+    });
   }, []);
 
   async function logout() {
@@ -125,6 +141,7 @@ export default function ConHeader() {
     if (!supabase) return;
     await supabase.auth.signOut();
     setUserEmail('');
+    setIsAdmin(false);
   }
   const links = topics.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.name} onClick={closeDrawer}>
@@ -186,11 +203,13 @@ export default function ConHeader() {
                     社群投稿
                   </Box>
             </Link>
-            <Link href="/admin/roles" className={classes.link}>
-                  <Box component='span' mr={5}>
-                    Admin
-                  </Box>
-            </Link>
+            {isAdmin ? (
+              <Link href="/admin/roles" className={classes.link}>
+                    <Box component='span' mr={5}>
+                      Admin
+                    </Box>
+              </Link>
+            ) : null}
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
                 <Container className={classes.link} >
@@ -299,9 +318,11 @@ export default function ConHeader() {
           <Link href="/community" className={classes.link} onClick={closeDrawer}>
             社群投稿
           </Link>
-          <Link href="/admin/roles" className={classes.link} onClick={closeDrawer}>
-            Admin
-          </Link>
+          {isAdmin ? (
+            <Link href="/admin/roles" className={classes.link} onClick={closeDrawer}>
+              Admin
+            </Link>
+          ) : null}
           {!userEmail ? (
             <>
               <Link href="/login" className={classes.link} onClick={closeDrawer}>登入</Link>
