@@ -50,3 +50,8 @@ create index if not exists idx_writer_submissions_author_id on public.writer_sub
 - `ADMIN_EMAILS` (comma-separated, server-side check)
 
 Only emails in admin allowlist can approve/reject submissions.
+
+## 3) Storage for image upload
+
+Create a Supabase Storage bucket named `blog-images`.
+For MVP, set it to public read so uploaded image URLs can be rendered directly in posts.

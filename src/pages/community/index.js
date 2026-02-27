@@ -26,7 +26,7 @@ export default function CommunityPage() {
             {rows.map((row) => {
               const summary = summarizeBlocks(getBlocksFromSubmission(row), 200) || row.content;
               return (
-                <Card key={row.id} withBorder radius="md" shadow="sm">
+                <Card key={row.id} withBorder radius="md" shadow="sm" component={Link} href={`/community/${row.id}`} style={{ cursor: 'pointer' }}>
                   <Group position="apart" mb="xs">
                     <Text weight={700}>{row.title}</Text>
                     <Badge color="green">approved</Badge>
@@ -34,9 +34,7 @@ export default function CommunityPage() {
                   <Text size="sm" color="dimmed">{row.category} · {new Date(row.created_at).toLocaleString()}</Text>
                   <Text size="sm" color="dimmed">❤️ {Number(row.like_count || 0)}</Text>
                   <Text mt="sm" lineClamp={4}>{summary}</Text>
-                  <Text component={Link} href={`/community/${row.id}`} mt="md" style={{ textDecoration: 'underline' }}>
-                    閱讀全文
-                  </Text>
+                  <Text mt="md" style={{ textDecoration: 'underline' }}>閱讀全文</Text>
                 </Card>
               );
             })}

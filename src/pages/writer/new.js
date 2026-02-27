@@ -60,6 +60,37 @@ export default function NewPostPage() {
     });
   }
 
+  async function uploadImageForBlock(file, blockId) {
+    if (!file) return;
+    if (!userEmail) {
+      setMsg('請先登入先可上傳圖片');
+      return;
+    }
+
+    try {
+      const supabase = getSupabaseBrowser();
+      const ext = file.name.split('.').pop() || 'jpg';
+      const filename = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+      const path = `writer/${userId || 'anon'}/${filename}`;
+
+      const { error: uploadError } = await supabase.storage.from('blog-images').upload(path, file, {
+        cacheControl: '3600',
+        upsert: false,
+      });
+
+      if (uploadError) {
+        setMsg(`圖片上傳失敗：${uploadError.message}`);
+        return;
+      }
+
+      const { data } = supabase.storage.from('blog-images').getPublicUrl(path);
+      updateBlock(blockId, { src: data.publicUrl });
+      setMsg('圖片上傳成功 ✅');
+    } catch (e) {
+      setMsg(`圖片上傳失敗：${e.message}`);
+    }
+  }
+
   async function submitForReview() {
     setLoading(true);
     setMsg('');
@@ -240,6 +271,11 @@ export default function NewPostPage() {
                   {block.type === 'image' ? (
                     <>
                       <TextInput label="Image URL" value={block.src || ''} onChange={(e) => updateBlock(block.id, { src: e.currentTarget.value })} />
+                      <input
+                        type="file"
+                        accept="image/png,image/jpeg,image/webp"
+                        onChange={(e) => uploadImageForBlock(e.currentTarget.files?.[0], block.id)}
+                      />
                       <Group grow>
                         <TextInput label="Alt" value={block.alt || ''} onChange={(e) => updateBlock(block.id, { alt: e.currentTarget.value })} />
                         <TextInput label="Caption" value={block.caption || ''} onChange={(e) => updateBlock(block.id, { caption: e.currentTarget.value })} />

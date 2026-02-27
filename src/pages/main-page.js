@@ -113,10 +113,11 @@ export default function Home() {
               key={article.path || article.name}
               p="md"
               radius="md"
-              component="a"
+              component={Link}
               href={'/content/' + article.path}
               className={classes.card}
               shadow="sm"
+              style={{ cursor: 'pointer' }}
             >
               <AspectRatio ratio={1920 / 1080}>
                 <Image src={article.img} alt={article.img?.replace('/img', '')} width="650" height="80" quality="70" />
@@ -148,7 +149,7 @@ export default function Home() {
               </Group>
               <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
                 {communityPosts.map((post) => (
-                  <Card key={post.id} p="md" radius="md" component="a" href={`/community/${post.id}`} className={classes.card} shadow="sm">
+                  <Card key={post.id} p="md" radius="md" component={Link} href={`/community/${post.id}`} className={classes.card} shadow="sm" style={{ cursor: 'pointer' }}>
                     <Group position="apart" mb="xs">
                       <Badge color="green">community</Badge>
                       <Text size="xs" color="dimmed">{new Date(post.created_at).toLocaleDateString()}</Text>
