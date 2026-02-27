@@ -13,6 +13,11 @@ export default function LoginPage() {
     setMsg('');
     try {
       const supabase = getSupabaseBrowser();
+      if (!supabase) {
+        setMsg('登入暫不可用：缺少 Supabase 公開環境變數');
+        setLoading(false);
+        return;
+      }
       const { error } = await supabase.auth.signInWithOtp({
         email,
         options: {

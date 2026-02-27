@@ -116,11 +116,13 @@ export default function ConHeader() {
 
   useEffect(() => {
     const supabase = getSupabaseBrowser();
+    if (!supabase) return;
     supabase.auth.getUser().then(({ data }) => setUserEmail(data.user?.email || ''));
   }, []);
 
   async function logout() {
     const supabase = getSupabaseBrowser();
+    if (!supabase) return;
     await supabase.auth.signOut();
     setUserEmail('');
   }

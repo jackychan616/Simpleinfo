@@ -10,6 +10,10 @@ export default function WriterAuthPage() {
 
   async function refreshUser() {
     const supabase = getSupabaseBrowser();
+    if (!supabase) {
+      setMsg('Auth 暫不可用：缺少 Supabase 公開環境變數');
+      return;
+    }
     const { data } = await supabase.auth.getUser();
     setUserEmail(data.user?.email || '');
   }
@@ -23,6 +27,11 @@ export default function WriterAuthPage() {
     setMsg('');
     try {
       const supabase = getSupabaseBrowser();
+      if (!supabase) {
+        setMsg('登入暫不可用：缺少 Supabase 公開環境變數');
+        setLoading(false);
+        return;
+      }
       const { error } = await supabase.auth.signInWithOtp({
         email,
         options: { emailRedirectTo: typeof window !== 'undefined' ? `${window.location.origin}/writer/auth` : undefined },
@@ -40,6 +49,7 @@ export default function WriterAuthPage() {
 
   async function logout() {
     const supabase = getSupabaseBrowser();
+    if (!supabase) return;
     await supabase.auth.signOut();
     setUserEmail('');
     setMsg('已登出');

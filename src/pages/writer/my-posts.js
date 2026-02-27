@@ -15,6 +15,7 @@ export default function MyPostsPage() {
 
   useEffect(() => {
     const supabase = getSupabaseBrowser();
+    if (!supabase) return;
     supabase.auth.getUser().then(async ({ data }) => {
       const userEmail = data.user?.email || '';
       setEmail(userEmail);

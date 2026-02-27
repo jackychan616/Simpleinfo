@@ -9,7 +9,10 @@ export function getSupabaseBrowser() {
   const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!url || !anon) {
-    throw new Error('Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY');
+    if (typeof window !== 'undefined') {
+      console.warn('Supabase browser client disabled: missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY');
+    }
+    return null;
   }
 
   client = createClient(url, anon);

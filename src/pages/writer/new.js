@@ -39,6 +39,10 @@ export default function NewPostPage() {
 
   useEffect(() => {
     const supabase = getSupabaseBrowser();
+    if (!supabase) {
+      setMsg('Auth 未啟用：請設定 NEXT_PUBLIC_SUPABASE_ANON_KEY');
+      return;
+    }
     supabase.auth.getUser().then(({ data }) => {
       setUserEmail(data.user?.email || '');
       setUserId(data.user?.id || '');
@@ -69,6 +73,10 @@ export default function NewPostPage() {
 
     try {
       const supabase = getSupabaseBrowser();
+      if (!supabase) {
+        setMsg('圖片上傳未啟用：缺少 Supabase 公開環境變數');
+        return;
+      }
       const ext = file.name.split('.').pop() || 'jpg';
       const filename = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
       const path = `writer/${userId || 'anon'}/${filename}`;
