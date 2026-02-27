@@ -101,12 +101,20 @@ export default function WriterSubmissionsPage() {
                     </td>
                     <td>
                       <Group spacing="xs">
+                        <Button size="xs" variant="subtle" component={Link} href={`/writer/submissions/${item.id}`}>
+                          View
+                        </Button>
                         <Button size="xs" color="green" variant="light" onClick={() => updateStatus(item.id, 'approved')}>
                           Approve
                         </Button>
                         <Button size="xs" color="red" variant="light" onClick={() => updateStatus(item.id, 'rejected')}>
                           Reject
                         </Button>
+                        {item.status === 'approved' ? (
+                          <Button size="xs" component={Link} href={`/community/${item.id}`} variant="outline">
+                            Public
+                          </Button>
+                        ) : null}
                       </Group>
                     </td>
                   </tr>
