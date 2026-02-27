@@ -11,7 +11,9 @@
     "build": "next build && next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build && next export"
+    "export": "next build && next export",
+    "ai:bot:once": "node scripts/ai-bot-worker.js --once",
+    "ai:bot:loop": "node scripts/ai-bot-worker.js --loop"
   },
   "dependencies": {
     "@ctrl/react-adsense": "^1.6.2",

@@ -55,3 +55,33 @@ Only emails in admin allowlist can approve/reject submissions.
 
 Create a Supabase Storage bucket named `blog-images`.
 For MVP, set it to public read so uploaded image URLs can be rendered directly in posts.
+
+## 4) AI bot queue (backend/local server)
+
+Run migration:
+
+```sql
+-- file: docs/migrations/20260228_ai_bot_queue.sql
+create table if not exists public.ai_blog_queue (
+  id uuid primary key default gen_random_uuid(),
+  topic text not null,
+  category text not null default 'ai',
+  tone text not null default 'professional',
+  length text not null default 'medium',
+  status text not null default 'pending' check (status in ('pending', 'processing', 'done', 'failed')),
+  scheduled_at timestamptz,
+  processed_at timestamptz,
+  generated_submission_id uuid,
+  error_message text,
+  created_at timestamptz not null default now()
+);
+```
+
+APIs:
+- `POST /api/ai-bot/enqueue`
+- `POST /api/ai-bot/run`
+- `GET /api/ai-bot/status`
+
+Local worker:
+- `npm run ai:bot:once`
+- `npm run ai:bot:loop`
