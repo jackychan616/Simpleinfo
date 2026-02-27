@@ -8,10 +8,15 @@ create table if not exists public.writer_submissions (
   title text not null,
   category text not null default 'ai',
   content text not null,
+  author_id uuid,
+  author_email text,
   status text not null default 'pending_review' check (status in ('pending_review', 'approved', 'rejected')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+alter table public.writer_submissions add column if not exists author_id uuid;
+alter table public.writer_submissions add column if not exists author_email text;
 
 create or replace function public.set_writer_submissions_updated_at()
 returns trigger as $$
