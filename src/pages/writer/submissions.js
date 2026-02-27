@@ -1,6 +1,7 @@
-import { Badge, Button, Card, Container, Group, Select, Stack, Table, Text, Title, TextInput } from '@mantine/core';
+import { Badge, Button, Card, Container, Group, Select, Stack, Table, Text, Title } from '@mantine/core';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import { getSupabaseBrowser } from '../../lib/supabaseBrowser';
 
 function statusColor(status) {
   if (status === 'approved') return 'green';
@@ -22,8 +23,10 @@ export default function WriterSubmissionsPage() {
   }
 
   useEffect(() => {
-    const saved = typeof window !== 'undefined' ? localStorage.getItem('simpleinfo_admin_email') : '';
-    if (saved) setAdminEmail(saved);
+    const supabase = getSupabaseBrowser();
+    if (supabase) {
+      supabase.auth.getUser().then(({ data }) => setAdminEmail(data.user?.email || ''));
+    }
     load('all');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -68,20 +71,7 @@ export default function WriterSubmissionsPage() {
             <Text color="dimmed">已接上 Supabase 審核流程（pending / approved / rejected）。</Text>
           </div>
           <Group>
-            <TextInput
-              value={adminEmail}
-              onChange={(e) => setAdminEmail(e.currentTarget.value)}
-              placeholder="admin email"
-            />
-            <Button
-              variant="light"
-              onClick={() => {
-                localStorage.setItem('simpleinfo_admin_email', adminEmail);
-                setMsg('Admin email 已儲存');
-              }}
-            >
-              Save Admin
-            </Button>
+            <Text size="sm" color="dimmed">Admin check: {adminEmail || '未登入'}</Text>
             <Select
               value={filter}
               onChange={(v) => {
