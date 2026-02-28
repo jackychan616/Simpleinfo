@@ -1,10 +1,12 @@
 import { ActionIcon, Badge, Button, Card, Container, Group, Select, Stack, Text, TextInput, Textarea, Title } from '@mantine/core';
 import { IconTrash } from '@tabler/icons-react';
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
-import { getSupabaseBrowser } from '../../lib/supabaseBrowser';
+import { useRouter } from 'next/router';
+import { useMemo, useState } from 'react';
+import WriterAuth from '../components/writerAuth';
+import { handleUnauthorized } from '../../lib/authRedirect';
+import { getAccessToken } from '../../lib/supabaseBrowser';
 import BlockRenderer from '../components/blockRenderer';
-import RouteGuard from '../components/routeGuard';
 import { blocksToPlainText, normalizeBlock, normalizeBlocks } from '../../lib/contentBlocks';
 
 const TITLE_LIMIT = 120;
@@ -22,6 +24,7 @@ const BLOCK_TYPE_OPTIONS = [
 const EMPTY_BLOCK = normalizeBlock({ type: 'paragraph', text: '' });
 
 export default function NewPostPage() {
+  const router = useRouter();
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('ai');
   const [blocks, setBlocks] = useState([EMPTY_BLOCK]);
@@ -33,22 +36,8 @@ export default function NewPostPage() {
   const [aiLength, setAiLength] = useState('medium');
   const [aiLoading, setAiLoading] = useState(false);
   const [aiDraft, setAiDraft] = useState(null);
-  const [userEmail, setUserEmail] = useState('');
-  const [userId, setUserId] = useState('');
 
   const plainContent = useMemo(() => blocksToPlainText(blocks), [blocks]);
-
-  useEffect(() => {
-    const supabase = getSupabaseBrowser();
-    if (!supabase) {
-      setMsg('Auth 未啟用：請設定 NEXT_PUBLIC_SUPABASE_ANON_KEY');
-      return;
-    }
-    supabase.auth.getUser().then(({ data }) => {
-      setUserEmail(data.user?.email || '');
-      setUserId(data.user?.id || '');
-    });
-  }, []);
 
   function updateBlock(id, patch) {
     setBlocks((prev) => prev.map((b) => (b.id === id ? normalizeBlock({ ...b, ...patch }) : b)));
@@ -65,41 +54,6 @@ export default function NewPostPage() {
     });
   }
 
-  async function uploadImageForBlock(file, blockId) {
-    if (!file) return;
-    if (!userEmail) {
-      setMsg('請先登入先可上傳圖片');
-      return;
-    }
-
-    try {
-      const supabase = getSupabaseBrowser();
-      if (!supabase) {
-        setMsg('圖片上傳未啟用：缺少 Supabase 公開環境變數');
-        return;
-      }
-      const ext = file.name.split('.').pop() || 'jpg';
-      const filename = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-      const path = `writer/${userId || 'anon'}/${filename}`;
-
-      const { error: uploadError } = await supabase.storage.from('blog-images').upload(path, file, {
-        cacheControl: '3600',
-        upsert: false,
-      });
-
-      if (uploadError) {
-        setMsg(`圖片上傳失敗：${uploadError.message}`);
-        return;
-      }
-
-      const { data } = supabase.storage.from('blog-images').getPublicUrl(path);
-      updateBlock(blockId, { src: data.publicUrl });
-      setMsg('圖片上傳成功 ✅');
-    } catch (e) {
-      setMsg(`圖片上傳失敗：${e.message}`);
-    }
-  }
-
   async function submitForReview() {
     setLoading(true);
     setMsg('');
@@ -114,12 +68,19 @@ export default function NewPostPage() {
       return;
     }
 
+    const token = await getAccessToken();
+    if (!token) {
+      setLoading(false);
+      setMsg('提交失敗：請先登入（magic link）');
+      handleUnauthorized(router);
+      return;
+    }
+
     const res = await fetch('/api/writer/submissions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-user-email': userEmail,
-        'x-user-id': userId,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ title: safeTitle, category, content: safeContent, contentBlocks: normalized }),
     });
@@ -127,12 +88,18 @@ export default function NewPostPage() {
     const body = await res.json().catch(() => ({}));
     setLoading(false);
 
+    if (res.status === 401) {
+      setMsg('提交失敗：登入狀態已過期');
+      handleUnauthorized(router);
+      return;
+    }
+
     if (!res.ok) {
       setMsg(`提交失敗：${body?.error || 'unknown error'}`);
       return;
     }
 
-    setMsg('已送審 ✅（已寫入 Supabase）');
+    setMsg('已送審 ✅（已綁定 author）');
     setTitle('');
     setCategory('ai');
     setBlocks([normalizeBlock({ type: 'paragraph' })]);
@@ -178,12 +145,10 @@ export default function NewPostPage() {
   }
 
   return (
-    <RouteGuard requireLogin minRole="writer">
-      <Container size="md" py="xl">
-        <Stack spacing="md">
+    <Container size="md" py="xl">
+      <Stack spacing="md">
         <Title order={1}>建立投稿（Advanced Editor MVP）</Title>
-        <Text size="sm">登入狀態：{userEmail || '未登入'}</Text>
-        {!userEmail ? <Button component={Link} href="/writer/auth" variant="light">先登入先可以投稿</Button> : null}
+        <WriterAuth redirectPath="/writer/new" />
         <Text color="dimmed">支援 Block：paragraph / heading / image / link / code（已預留 embed schema）。</Text>
 
         <Card withBorder>
@@ -281,11 +246,6 @@ export default function NewPostPage() {
                   {block.type === 'image' ? (
                     <>
                       <TextInput label="Image URL" value={block.src || ''} onChange={(e) => updateBlock(block.id, { src: e.currentTarget.value })} />
-                      <input
-                        type="file"
-                        accept="image/png,image/jpeg,image/webp"
-                        onChange={(e) => uploadImageForBlock(e.currentTarget.files?.[0], block.id)}
-                      />
                       <Group grow>
                         <TextInput label="Alt" value={block.alt || ''} onChange={(e) => updateBlock(block.id, { alt: e.currentTarget.value })} />
                         <TextInput label="Caption" value={block.caption || ''} onChange={(e) => updateBlock(block.id, { caption: e.currentTarget.value })} />
@@ -323,13 +283,12 @@ export default function NewPostPage() {
           </Stack>
         )}
 
-        <Button onClick={submitForReview} disabled={!title.trim() || !plainContent.trim() || loading || plainContent.length > CONTENT_LIMIT || !userEmail}>
+        <Button onClick={submitForReview} disabled={!title.trim() || !plainContent.trim() || loading || plainContent.length > CONTENT_LIMIT}>
           {loading ? '提交中...' : '提交審核'}
         </Button>
-        <Button component={Link} href="/writer/submissions" variant="light">查看投稿狀態</Button>
-          {msg ? <Text color={msg.includes('失敗') ? 'red' : 'teal'}>{msg}</Text> : null}
-        </Stack>
-      </Container>
-    </RouteGuard>
+        <Button component={Link} href="/writer/my-posts" variant="light">查看我的投稿</Button>
+        {msg ? <Text color={msg.includes('失敗') ? 'red' : 'teal'}>{msg}</Text> : null}
+      </Stack>
+    </Container>
   );
 }

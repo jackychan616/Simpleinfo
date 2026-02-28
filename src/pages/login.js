@@ -1,70 +1,84 @@
-import { Button, Card, Container, Divider, Group, Stack, Text, TextInput, Title, PasswordInput } from '@mantine/core';
+import { Button, Card, Container, Group, Stack, Text, TextInput, Title } from '@mantine/core';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useMemo, useState } from 'react';
 import { getSupabaseBrowser } from '../lib/supabaseBrowser';
+import { useSupabaseSession } from '../lib/useSupabaseSession';
+
+function safeNextPath(next) {
+  if (!next || typeof next !== 'string') return '/writer';
+  if (!next.startsWith('/')) return '/writer';
+  if (next.startsWith('//')) return '/writer';
+  return next;
+}
 
 export default function LoginPage() {
+  const router = useRouter();
+  const { session, ready } = useSupabaseSession();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [msg, setMsg] = useState('');
   const [loading, setLoading] = useState(false);
 
-  async function loginMagicLink() {
-    setLoading(true);
-    setMsg('');
-    try {
-      const supabase = getSupabaseBrowser();
-      if (!supabase) throw new Error('缺少 Supabase env');
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: { emailRedirectTo: typeof window !== 'undefined' ? `${window.location.origin}/writer` : undefined },
-      });
-      setMsg(error ? `登入失敗：${error.message}` : 'Magic link 已發送，請去 email 開連結登入。');
-    } catch (e) {
-      setMsg(`登入失敗：${e.message}`);
-    }
-    setLoading(false);
-  }
+  const nextPath = useMemo(() => safeNextPath(router.query.next), [router.query.next]);
+  const reason = useMemo(() => String(router.query.reason || ''), [router.query.reason]);
 
-  async function loginPassword() {
-    setLoading(true);
-    setMsg('');
-    try {
-      const supabase = getSupabaseBrowser();
-      if (!supabase) throw new Error('缺少 Supabase env');
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      setMsg(error ? `登入失敗：${error.message}` : '登入成功 ✅');
-    } catch (e) {
-      setMsg(`登入失敗：${e.message}`);
+  useEffect(() => {
+    if (ready && session?.user) {
+      router.replace(nextPath);
     }
-    setLoading(false);
-  }
+  }, [ready, session, router, nextPath]);
 
-  async function loginGoogle() {
+  async function sendMagicLink() {
     const supabase = getSupabaseBrowser();
-    if (!supabase) return setMsg('Google 登入不可用：缺少 Supabase env');
-    await supabase.auth.signInWithOAuth({ provider: 'google' });
+    if (!supabase) {
+      setMsg('Missing Supabase env: NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY');
+      return;
+    }
+
+    setLoading(true);
+    setMsg('');
+
+    const redirectTo = `${window.location.origin}${nextPath}`;
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo: redirectTo },
+    });
+
+    setLoading(false);
+    if (error) {
+      setMsg(`登入連結發送失敗：${error.message}`);
+      return;
+    }
+
+    setMsg('Magic link 已發送，請到電郵收信登入。');
   }
 
   return (
-    <Container size="xs" py={48}>
-      <Card withBorder shadow="sm" radius="md" p="lg">
+    <Container size="sm" py="xl">
+      <Card withBorder radius="md" shadow="sm">
         <Stack spacing="md">
-          <Title order={2}>登入帳戶</Title>
-          <Text color="dimmed" size="sm">支援 Password、Magic Link、Google。</Text>
-          <TextInput label="Email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.currentTarget.value)} />
-          <PasswordInput label="Password" value={password} onChange={(e) => setPassword(e.currentTarget.value)} />
+          <Title order={1}>Login</Title>
+          {reason === 'session_expired' ? (
+            <Text color="orange">你的登入狀態已過期，請重新登入後繼續。</Text>
+          ) : null}
+          <Text color="dimmed">登入後會自動返回：{nextPath}</Text>
 
-          <Group grow>
-            <Button onClick={loginPassword} disabled={!email || !password || loading}>{loading ? '處理中...' : 'Password Login'}</Button>
-            <Button variant="light" onClick={loginMagicLink} disabled={!email || loading}>Magic Link</Button>
+          <TextInput
+            label="Email login"
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
+          />
+          <Group>
+            <Button onClick={sendMagicLink} disabled={!email || loading}>
+              {loading ? 'Sending...' : 'Send Magic Link'}
+            </Button>
+            <Button component={Link} href="/writer" variant="light">
+              Back to writer
+            </Button>
           </Group>
 
-          <Button variant="outline" onClick={loginGoogle}>Google Login</Button>
-
-          <Divider />
-          <Text size="sm" color="dimmed">未有帳號？<Link href="/register"> 去註冊</Link></Text>
-          {msg ? <Text size="sm" color={msg.includes('失敗') ? 'red' : 'teal'}>{msg}</Text> : null}
+          {msg ? <Text size="sm">{msg}</Text> : null}
         </Stack>
       </Card>
     </Container>

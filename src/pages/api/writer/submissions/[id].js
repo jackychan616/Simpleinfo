@@ -1,4 +1,6 @@
-import { getSupabaseServer } from '../../../../lib/supabaseServer';
+import { getSupabaseServer, getUserFromRequest, isAdminEmailWithDb } from '../../../../lib/supabaseServer';
+
+const WRITABLE_STATUSES = ['approved', 'rejected'];
 
 export default async function handler(req, res) {
   const { client, error: envError } = getSupabaseServer();
@@ -20,12 +22,14 @@ export default async function handler(req, res) {
   if (req.method === 'PATCH') {
     const { status } = req.body || {};
     if (!id || !status) return res.status(422).json({ error: 'id and status are required' });
+    if (!WRITABLE_STATUSES.includes(status)) {
+      return res.status(422).json({ error: 'status must be approved or rejected' });
+    }
 
-    const adminHeader = req.headers['x-admin-email'];
-    const allowRaw = process.env.ADMIN_EMAILS || process.env.NEXT_PUBLIC_ADMIN_EMAILS || '';
-    const allow = allowRaw.split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
+    const { user, error: authError } = await getUserFromRequest(req);
+    if (!user) return res.status(401).json({ error: authError || 'Unauthorized' });
 
-    if (!adminHeader || !allow.includes(String(adminHeader).toLowerCase())) {
+    if (!(await isAdminEmailWithDb(user.email, client))) {
       return res.status(403).json({ error: 'Only admin can approve/reject' });
     }
 
