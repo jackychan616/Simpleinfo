@@ -1,8 +1,16 @@
 import { getSupabaseServer } from '../../../../lib/supabaseServer';
 import { hasMinRole, resolveRoleByEmail } from '../../../../lib/rbac';
+import { checkRateLimit } from '../../../../lib/rateLimit';
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function denyRateLimit(res, resetAt) {
+  res.setHeader('Retry-After', Math.ceil((resetAt - Date.now()) / 1000));
+  return res.status(429).json({ error: 'Too many requests, slow down' });
+}
 
 export default async function handler(req, res) {
-  const requesterEmail = String(req.headers['x-user-email'] || '').toLowerCase();
+  const requesterEmail = String(req.headers['x-user-email'] || '').trim().toLowerCase();
   const requesterRole = await resolveRoleByEmail(requesterEmail);
 
   if (!hasMinRole(requesterRole, 'admin')) {
@@ -25,16 +33,24 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'POST') {
+    const rl = checkRateLimit(`admin:roles:post:${requesterEmail}`, { windowMs: 60_000, max: 20 });
+    if (!rl.allowed) return denyRateLimit(res, rl.resetAt);
+
     const { email, role } = req.body || {};
     const safeEmail = String(email || '').trim().toLowerCase();
     const safeRole = String(role || '').trim();
 
     if (!safeEmail || !safeRole) return res.status(422).json({ error: 'email and role are required' });
+    if (!EMAIL_RE.test(safeEmail)) return res.status(422).json({ error: 'invalid email format' });
     if (!['admin', 'editor', 'writer', 'user'].includes(safeRole)) {
       return res.status(422).json({ error: 'invalid role' });
     }
 
     const { data: before } = await client.from('user_roles').select('role').eq('email', safeEmail).single();
+
+    if (safeEmail === requesterEmail && safeRole !== 'admin') {
+      return res.status(422).json({ error: 'cannot self-demote from admin' });
+    }
 
     const { data, error: upErr } = await client
       .from('user_roles')
@@ -56,8 +72,13 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'DELETE') {
+    const rl = checkRateLimit(`admin:roles:delete:${requesterEmail}`, { windowMs: 60_000, max: 20 });
+    if (!rl.allowed) return denyRateLimit(res, rl.resetAt);
+
     const email = String(req.query.email || '').trim().toLowerCase();
     if (!email) return res.status(422).json({ error: 'email is required' });
+    if (!EMAIL_RE.test(email)) return res.status(422).json({ error: 'invalid email format' });
+    if (email === requesterEmail) return res.status(422).json({ error: 'cannot remove your own admin role' });
 
     const { data: before } = await client.from('user_roles').select('role').eq('email', email).single();
     const { error: delErr } = await client.from('user_roles').delete().eq('email', email);
