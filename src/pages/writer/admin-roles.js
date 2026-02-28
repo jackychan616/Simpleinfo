@@ -1,4 +1,5 @@
 import { Badge, Button, Card, Container, Group, Pagination, Select, Stack, Table, Text, TextInput, Title } from '@mantine/core';
+import RouteGuard from '../components/routeGuard';
 import { showNotification } from '@mantine/notifications';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -101,8 +102,9 @@ export default function AdminRolesPage() {
   }
 
   return (
-    <Container size="lg" py="xl">
-      <Stack spacing="md">
+    <RouteGuard requireLogin minRole="admin">
+      <Container size="lg" py="xl">
+        <Stack spacing="md">
         <Group position="apart">
           <Title order={1}>Admin Roles</Title>
           <Group>
@@ -173,7 +175,8 @@ export default function AdminRolesPage() {
             )}
           </Stack>
         </Card>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </RouteGuard>
   );
 }

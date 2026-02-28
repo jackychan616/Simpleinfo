@@ -6,6 +6,7 @@ import { handleUnauthorized } from '../../lib/authRedirect';
 import { getAccessToken } from '../../lib/supabaseBrowser';
 import { useSupabaseSession } from '../../lib/useSupabaseSession';
 import { useRouter } from 'next/router';
+import { getCurrentRoleSafe } from '../../lib/authClient';
 
 const steps = ['Email magic link 登入', '建立草稿（標題、分類、內容）', '提交審核（status: pending_review）', '管理員審核通過後公開'];
 
@@ -13,11 +14,17 @@ export default function WriterDashboard() {
   const router = useRouter();
   const { session, ready } = useSupabaseSession();
   const [mine, setMine] = useState([]);
+  const [role, setRole] = useState('user');
 
   useEffect(() => {
     async function loadMine() {
       const token = await getAccessToken();
       if (!token) return;
+
+      if (session?.user?.email) {
+        const nextRole = await getCurrentRoleSafe(session.user.email);
+        setRole(nextRole || 'user');
+      }
 
       const res = await fetch('/api/writer/submissions?mine=1', {
         headers: { Authorization: `Bearer ${token}` },
@@ -33,7 +40,7 @@ export default function WriterDashboard() {
     }
 
     loadMine();
-  }, [router]);
+  }, [router, session?.user?.email]);
 
   const stats = useMemo(() => {
     const base = { pending_review: 0, approved: 0, rejected: 0 };
@@ -54,6 +61,7 @@ export default function WriterDashboard() {
           <Text size="sm" color="dimmed" mt="sm">
             Session: {!ready ? 'loading...' : session?.user?.email ? `signed in as ${session.user.email}` : 'not signed in'}
           </Text>
+          <Text size="sm" color="dimmed">Role: {role}</Text>
         </Card>
 
         <SimpleGrid cols={3} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
@@ -85,8 +93,8 @@ export default function WriterDashboard() {
             <Button component={Link} href="/writer/new">建立新文章</Button>
             <Button variant="light" component={Link} href="/writer/my-posts">My Posts</Button>
             <Button variant="light" component={Link} href="/writer/submissions">管理投稿</Button>
-            <Button variant="light" component={Link} href="/writer/admin-roles">Admin Roles</Button>
-            <Button variant="light" component={Link} href="/writer/ai-bot">AI Bot</Button>
+            {role === 'admin' ? <Button variant="light" component={Link} href="/writer/admin-roles">Admin Panel</Button> : null}
+            {role === 'admin' || role === 'editor' ? <Button variant="light" component={Link} href="/writer/ai-bot">AI Bot</Button> : null}
             <Button variant="light" component={Link} href="/hot">查看公開文章</Button>
           </Group>
         </Card>
