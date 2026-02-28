@@ -3,8 +3,12 @@ import { getSupabaseBrowser } from './supabaseBrowser';
 export async function getCurrentUserSafe() {
   const supabase = getSupabaseBrowser();
   if (!supabase) return null;
+
   const { data } = await supabase.auth.getUser();
-  return data.user || null;
+  if (data.user) return data.user;
+
+  const { data: refreshed } = await supabase.auth.refreshSession();
+  return refreshed.user || null;
 }
 
 export async function getCurrentRoleSafe(email) {

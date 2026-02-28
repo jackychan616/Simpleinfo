@@ -15,7 +15,13 @@ export function getSupabaseBrowser() {
     return null;
   }
 
-  client = createClient(url, anon);
+  client = createClient(url, anon, {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+    },
+  });
   return client;
 }
 
@@ -24,5 +30,12 @@ export async function getAccessToken() {
   if (!supabase) return null;
 
   const { data } = await supabase.auth.getSession();
-  return data.session?.access_token || null;
+  let token = data.session?.access_token || null;
+
+  if (!token) {
+    const { data: refreshed } = await supabase.auth.refreshSession();
+    token = refreshed.session?.access_token || null;
+  }
+
+  return token;
 }

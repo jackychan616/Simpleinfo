@@ -1,4 +1,4 @@
-import { Button, Card, Container, Group, Stack, Text, TextInput, Title } from '@mantine/core';
+import { Button, Card, Container, Group, PasswordInput, Stack, Text, TextInput, Title } from '@mantine/core';
 import Link from 'next/link';
 import Meta from './components/meta';
 import { useRouter } from 'next/router';
@@ -17,6 +17,7 @@ export default function LoginPage() {
   const router = useRouter();
   const { session, ready } = useSupabaseSession();
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [msg, setMsg] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -54,6 +55,28 @@ export default function LoginPage() {
     setMsg('Magic link 已發送，請到電郵收信登入。');
   }
 
+  async function loginWithPassword() {
+    const supabase = getSupabaseBrowser();
+    if (!supabase) {
+      setMsg('Missing Supabase env: NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY');
+      return;
+    }
+
+    setLoading(true);
+    setMsg('');
+
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+    setLoading(false);
+    if (error) {
+      setMsg(`Password 登入失敗：${error.message}`);
+      return;
+    }
+
+    setMsg('登入成功，跳轉中...');
+    router.replace(nextPath);
+  }
+
   return (
     <>
       <Meta pageTitle="Login | Simple Info" description="登入 Simple Info 投稿與管理系統。" path="/login" />
@@ -72,15 +95,24 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.currentTarget.value)}
           />
+          <PasswordInput
+            label="Password login"
+            placeholder="********"
+            value={password}
+            onChange={(e) => setPassword(e.currentTarget.value)}
+          />
           <Group>
-            <Button onClick={sendMagicLink} disabled={!email || loading}>
-              {loading ? 'Sending...' : 'Send Magic Link'}
+            <Button onClick={loginWithPassword} disabled={!email || !password || loading}>
+              {loading ? 'Signing in...' : 'Password Login'}
             </Button>
-            <Button component={Link} href="/writer" variant="light">
-              Back to writer
+            <Button onClick={sendMagicLink} disabled={!email || loading} variant="light">
+              {loading ? 'Sending...' : 'Send Magic Link'}
             </Button>
             <Button component={Link} href="/forgot-password" variant="subtle">
               Forgot password?
+            </Button>
+            <Button component={Link} href="/writer" variant="subtle">
+              Back to writer
             </Button>
           </Group>
 
