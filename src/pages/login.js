@@ -20,6 +20,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [msg, setMsg] = useState('');
   const [loading, setLoading] = useState(false);
+  const [cooldown, setCooldown] = useState(0);
 
   const nextPath = useMemo(() => safeNextPath(router.query.next), [router.query.next]);
   const reason = useMemo(() => String(router.query.reason || ''), [router.query.reason]);
@@ -30,7 +31,18 @@ export default function LoginPage() {
     }
   }, [ready, session, router, nextPath]);
 
+  useEffect(() => {
+    if (cooldown <= 0) return undefined;
+    const t = setInterval(() => setCooldown((v) => (v > 0 ? v - 1 : 0)), 1000);
+    return () => clearInterval(t);
+  }, [cooldown]);
+
   async function sendMagicLink() {
+    if (cooldown > 0) {
+      setMsg(`請等 ${cooldown}s 再試，避免觸發 email rate limit。`);
+      return;
+    }
+
     const supabase = getSupabaseBrowser();
     if (!supabase) {
       setMsg('Missing Supabase env: NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY');
@@ -48,10 +60,12 @@ export default function LoginPage() {
 
     setLoading(false);
     if (error) {
-      setMsg(`登入連結發送失敗：${error.message}`);
+      const isRateLimit = /rate limit|too many requests/i.test(error.message || '');
+      setMsg(isRateLimit ? 'Email 發送太頻密，請稍後再試（可先用 Password/Google 登入）。' : `登入連結發送失敗：${error.message}`);
       return;
     }
 
+    setCooldown(60);
     setMsg('Magic link 已發送，請到電郵收信登入。');
   }
 
@@ -69,12 +83,31 @@ export default function LoginPage() {
 
     setLoading(false);
     if (error) {
-      setMsg(`Password 登入失敗：${error.message}`);
+      const isInvalid = /invalid login credentials|email not confirmed/i.test(error.message || '');
+      setMsg(isInvalid ? '帳號或密碼錯誤，或者 email 未驗證。你可改用 Google 登入。' : `Password 登入失敗：${error.message}`);
       return;
     }
 
     setMsg('登入成功，跳轉中...');
     router.replace(nextPath);
+  }
+
+  async function loginWithGoogle() {
+    const supabase = getSupabaseBrowser();
+    if (!supabase) {
+      setMsg('Missing Supabase env: NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY');
+      return;
+    }
+
+    const redirectTo = `${window.location.origin}${nextPath}`;
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo },
+    });
+
+    if (error) {
+      setMsg(`Google 登入失敗：${error.message}`);
+    }
   }
 
   return (
@@ -105,8 +138,11 @@ export default function LoginPage() {
             <Button onClick={loginWithPassword} disabled={!email || !password || loading}>
               {loading ? 'Signing in...' : 'Password Login'}
             </Button>
-            <Button onClick={sendMagicLink} disabled={!email || loading} variant="light">
-              {loading ? 'Sending...' : 'Send Magic Link'}
+            <Button onClick={sendMagicLink} disabled={!email || loading || cooldown > 0} variant="light">
+              {loading ? 'Sending...' : cooldown > 0 ? `請等 ${cooldown}s` : 'Send Magic Link'}
+            </Button>
+            <Button onClick={loginWithGoogle} variant="light">
+              Google Login
             </Button>
             <Button component={Link} href="/forgot-password" variant="subtle">
               Forgot password?
