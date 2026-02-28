@@ -95,7 +95,7 @@ export default function AiBotDashboardPage() {
   }
 
   return (
-    <RouteGuard requireLogin minRole="editor">
+    <RouteGuard requireLogin>
       <Container size="lg" py="xl">
         <Stack spacing="md">
           <Title order={1}>AI Blog Bot Dashboard</Title>
