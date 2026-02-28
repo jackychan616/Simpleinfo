@@ -79,6 +79,9 @@ export default function LoginPage() {
             <Button component={Link} href="/writer" variant="light">
               Back to writer
             </Button>
+            <Button component={Link} href="/forgot-password" variant="subtle">
+              Forgot password?
+            </Button>
           </Group>
 
           {msg ? <Text size="sm">{msg}</Text> : null}
