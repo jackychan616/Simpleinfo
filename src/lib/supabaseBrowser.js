@@ -18,3 +18,11 @@ export function getSupabaseBrowser() {
   client = createClient(url, anon);
   return client;
 }
+
+export async function getAccessToken() {
+  const supabase = getSupabaseBrowser();
+  if (!supabase) return null;
+
+  const { data } = await supabase.auth.getSession();
+  return data.session?.access_token || null;
+}

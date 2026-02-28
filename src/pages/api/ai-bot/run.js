@@ -3,6 +3,7 @@ import { buildDraftFromTopic } from '../../../lib/aiBotDraft';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  const minChars = Number(req.body?.minChars || 0);
 
   const { client, error: envError } = getSupabaseServer();
   if (!client) return res.status(500).json({ error: envError });
@@ -31,6 +32,10 @@ export default async function handler(req, res) {
       length: item.length,
       category: item.category,
     });
+
+    if (minChars > 0 && String(draft.content || '').length < minChars) {
+      throw new Error(`Generated content below minChars (${minChars})`);
+    }
 
     const { data: submission, error: insertError } = await client
       .from('writer_submissions')

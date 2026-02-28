@@ -9,6 +9,8 @@ export default function AiBotDashboardPage() {
   const [category, setCategory] = useState('ai');
   const [tone, setTone] = useState('professional');
   const [length, setLength] = useState('medium');
+  const [scheduledAt, setScheduledAt] = useState('');
+  const [minChars, setMinChars] = useState(300);
   const [msg, setMsg] = useState('');
   const [counts, setCounts] = useState({});
   const [latest, setLatest] = useState([]);
@@ -52,21 +54,43 @@ export default function AiBotDashboardPage() {
     const res = await fetch('/api/ai-bot/enqueue', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ topic, category, tone, length }),
+      body: JSON.stringify({
+        topic,
+        category,
+        tone,
+        length,
+        scheduledAt: scheduledAt ? new Date(scheduledAt).toISOString() : null,
+      }),
     });
 
     const body = await res.json().catch(() => ({}));
     setMsg(res.ok ? '已加入 queue ✅' : `enqueue 失敗：${body?.error || 'unknown error'}`);
     if (res.ok) {
       setTopic('');
+      setScheduledAt('');
       await loadStatus();
     }
   }
 
   async function runOne() {
-    const res = await fetch('/api/ai-bot/run', { method: 'POST' });
+    const res = await fetch('/api/ai-bot/run', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ minChars: Number(minChars) || 0 }),
+    });
     const body = await res.json().catch(() => ({}));
     setMsg(res.ok ? (body.message || `已處理 queue ${body.queueId || ''}`) : `run 失敗：${body?.error || 'unknown error'}`);
+    await loadStatus();
+  }
+
+  async function retryFailed(id) {
+    const res = await fetch('/api/ai-bot/retry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    });
+    const body = await res.json().catch(() => ({}));
+    setMsg(res.ok ? '已重新排入 queue ✅' : `retry 失敗：${body?.error || 'unknown error'}`);
     await loadStatus();
   }
 
@@ -94,6 +118,10 @@ export default function AiBotDashboardPage() {
                 <Select value={tone} onChange={(v) => setTone(v || 'professional')} data={[{ value: 'professional', label: 'Professional' }, { value: 'friendly', label: 'Friendly' }, { value: 'persuasive', label: 'Persuasive' }]} label="Tone" />
                 <Select value={length} onChange={(v) => setLength(v || 'medium')} data={[{ value: 'short', label: 'Short' }, { value: 'medium', label: 'Medium' }, { value: 'long', label: 'Long' }]} label="Length" />
               </Group>
+              <Group grow>
+                <TextInput label="Schedule (optional)" type="datetime-local" value={scheduledAt} onChange={(e) => setScheduledAt(e.currentTarget.value)} />
+                <TextInput label="Min chars threshold" type="number" value={String(minChars)} onChange={(e) => setMinChars(Number(e.currentTarget.value || 0))} />
+              </Group>
               <Group>
                 <Button onClick={enqueue} disabled={!topic.trim()}>Enqueue</Button>
                 <Button variant="light" onClick={runOne}>Run one now</Button>
@@ -110,6 +138,7 @@ export default function AiBotDashboardPage() {
                   <th>Status</th>
                   <th>Scheduled</th>
                   <th>Processed</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -119,6 +148,15 @@ export default function AiBotDashboardPage() {
                     <td>{r.status}</td>
                     <td>{r.scheduled_at ? new Date(r.scheduled_at).toLocaleString() : '-'}</td>
                     <td>{r.processed_at ? new Date(r.processed_at).toLocaleString() : '-'}</td>
+                    <td>
+                      {r.status === 'failed' ? (
+                        <Button size="xs" variant="light" onClick={() => retryFailed(r.id)}>
+                          Retry
+                        </Button>
+                      ) : (
+                        '-'
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
