@@ -1,5 +1,6 @@
 import { Button, Card, Container, Divider, Group, PasswordInput, Stack, Text, TextInput, Title } from '@mantine/core';
 import Link from 'next/link';
+import Meta from './components/meta';
 import { useState } from 'react';
 import { getSupabaseBrowser } from '../lib/supabaseBrowser';
 
@@ -41,8 +42,10 @@ export default function RegisterPage() {
   }
 
   return (
-    <Container size="xs" py={48}>
-      <Card withBorder shadow="sm" radius="md" p="lg">
+    <>
+      <Meta pageTitle="Register | Simple Info" description="建立 Simple Info 帳戶，開始投稿與互動。" path="/register" />
+      <Container size="xs" py={48}>
+        <Card withBorder shadow="sm" radius="md" p="lg">
         <Stack spacing="md">
           <Title order={2}>建立帳戶</Title>
           <Text color="dimmed" size="sm">支援 Email + Password 或 Magic Link 註冊。</Text>
@@ -61,5 +64,6 @@ export default function RegisterPage() {
         </Stack>
       </Card>
     </Container>
+    </>
   );
 }

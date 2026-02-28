@@ -1,5 +1,6 @@
 import { Button, Card, Container, Group, Stack, Text, TextInput, Title } from '@mantine/core';
 import Link from 'next/link';
+import Meta from './components/meta';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import { getSupabaseBrowser } from '../lib/supabaseBrowser';
@@ -54,8 +55,10 @@ export default function LoginPage() {
   }
 
   return (
-    <Container size="sm" py="xl">
-      <Card withBorder radius="md" shadow="sm">
+    <>
+      <Meta pageTitle="Login | Simple Info" description="登入 Simple Info 投稿與管理系統。" path="/login" />
+      <Container size="sm" py="xl">
+        <Card withBorder radius="md" shadow="sm">
         <Stack spacing="md">
           <Title order={1}>Login</Title>
           {reason === 'session_expired' ? (
@@ -82,5 +85,6 @@ export default function LoginPage() {
         </Stack>
       </Card>
     </Container>
+    </>
   );
 }

@@ -2,6 +2,7 @@ import { Badge, Card, Container, Group, SimpleGrid, Stack, Text, Title } from '@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getBlocksFromSubmission, summarizeBlocks } from '../../lib/contentBlocks';
+import Meta from '../components/meta';
 
 export default function CommunityPage() {
   const [rows, setRows] = useState([]);
@@ -14,8 +15,14 @@ export default function CommunityPage() {
   }, []);
 
   return (
-    <Container size="lg" py="xl">
-      <Stack spacing="md">
+    <>
+      <Meta
+        pageTitle="社群投稿 | Simple Info"
+        description="瀏覽已通過審核的社群投稿內容，涵蓋 AI、Tech、Gaming 主題。"
+        path="/community"
+      />
+      <Container size="lg" py="xl">
+        <Stack spacing="md">
         <Title order={1}>社群投稿</Title>
         <Text color="dimmed">已通過審核嘅投稿會顯示喺呢度。</Text>
 
@@ -40,7 +47,8 @@ export default function CommunityPage() {
             })}
           </SimpleGrid>
         )}
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </>
   );
 }
