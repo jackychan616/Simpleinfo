@@ -13,9 +13,15 @@ export default async function handler(req, res) {
   if (!client) return res.status(500).json({ error });
 
   if (req.method === 'GET') {
-    const { data, error: qErr } = await client.from('user_roles').select('*').order('created_at', { ascending: false });
-    if (qErr) return res.status(500).json({ error: qErr.message });
-    return res.status(200).json({ data: data || [] });
+    const [{ data: roles, error: rolesErr }, { data: logs, error: logsErr }] = await Promise.all([
+      client.from('user_roles').select('*').order('created_at', { ascending: false }),
+      client.from('role_audit_logs').select('*').order('created_at', { ascending: false }).limit(50),
+    ]);
+
+    if (rolesErr) return res.status(500).json({ error: rolesErr.message });
+    if (logsErr) return res.status(500).json({ error: logsErr.message });
+
+    return res.status(200).json({ data: roles || [], logs: logs || [] });
   }
 
   if (req.method === 'POST') {
@@ -28,6 +34,8 @@ export default async function handler(req, res) {
       return res.status(422).json({ error: 'invalid role' });
     }
 
+    const { data: before } = await client.from('user_roles').select('role').eq('email', safeEmail).single();
+
     const { data, error: upErr } = await client
       .from('user_roles')
       .upsert({ email: safeEmail, role: safeRole }, { onConflict: 'email' })
@@ -35,6 +43,15 @@ export default async function handler(req, res) {
       .single();
 
     if (upErr) return res.status(500).json({ error: upErr.message });
+
+    await client.from('role_audit_logs').insert({
+      actor_email: requesterEmail,
+      target_email: safeEmail,
+      action: 'upsert',
+      previous_role: before?.role || null,
+      new_role: safeRole,
+    });
+
     return res.status(200).json({ data });
   }
 
@@ -42,8 +59,18 @@ export default async function handler(req, res) {
     const email = String(req.query.email || '').trim().toLowerCase();
     if (!email) return res.status(422).json({ error: 'email is required' });
 
+    const { data: before } = await client.from('user_roles').select('role').eq('email', email).single();
     const { error: delErr } = await client.from('user_roles').delete().eq('email', email);
     if (delErr) return res.status(500).json({ error: delErr.message });
+
+    await client.from('role_audit_logs').insert({
+      actor_email: requesterEmail,
+      target_email: email,
+      action: 'delete',
+      previous_role: before?.role || null,
+      new_role: null,
+    });
+
     return res.status(200).json({ ok: true });
   }
 

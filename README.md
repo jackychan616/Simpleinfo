@@ -22,7 +22,7 @@ npm run build
 - `/writer/submissions` 投稿管理
 - `/community` 已通過審核之社群投稿列表
 - `/account/profile` 個人資料（username / birthday / age）
-- `/admin/roles` admin 一鍵管理角色（admin/editor/writer/user）
+- `/admin/roles` admin 一鍵管理角色（admin/editor/writer/user）+ audit logs
 
 Auth methods:
 - Email + Password

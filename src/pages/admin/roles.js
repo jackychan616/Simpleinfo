@@ -7,6 +7,7 @@ export default function AdminRolesPage() {
   const [userEmail, setUserEmail] = useState('');
   const [myRole, setMyRole] = useState('user');
   const [rows, setRows] = useState([]);
+  const [logs, setLogs] = useState([]);
   const [targetEmail, setTargetEmail] = useState('');
   const [targetRole, setTargetRole] = useState('writer');
   const [msg, setMsg] = useState('');
@@ -19,9 +20,11 @@ export default function AdminRolesPage() {
     if (!res.ok) {
       setMsg(body?.error || 'failed to load roles');
       setRows([]);
+      setLogs([]);
       return;
     }
     setRows(body.data || []);
+    setLogs(body.logs || []);
   }
 
   useEffect(() => {
@@ -117,6 +120,32 @@ export default function AdminRolesPage() {
                       <td>{r.email}</td>
                       <td><Badge>{r.role}</Badge></td>
                       <td><Button size="xs" color="red" variant="light" onClick={() => removeRole(r.email)}>Remove</Button></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </Card>
+
+            <Card withBorder>
+              <Text size="sm" mb="xs" color="dimmed">Recent role audit logs</Text>
+              <Table striped highlightOnHover>
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Actor</th>
+                    <th>Target</th>
+                    <th>Action</th>
+                    <th>Change</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {logs.map((log) => (
+                    <tr key={log.id}>
+                      <td>{new Date(log.created_at).toLocaleString()}</td>
+                      <td>{log.actor_email || '-'}</td>
+                      <td>{log.target_email}</td>
+                      <td>{log.action}</td>
+                      <td>{log.previous_role || '-'} → {log.new_role || '-'}</td>
                     </tr>
                   ))}
                 </tbody>
