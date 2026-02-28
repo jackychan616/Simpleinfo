@@ -1,6 +1,7 @@
 import { Badge, Button, Card, Container, Group, Select, Stack, Table, Text, TextInput, Title } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { getSupabaseBrowser } from '../../lib/supabaseBrowser';
+import RouteGuard from '../components/routeGuard';
 
 export default function AdminRolesPage() {
   const [userEmail, setUserEmail] = useState('');
@@ -70,8 +71,9 @@ export default function AdminRolesPage() {
   }
 
   return (
-    <Container size="lg" py="xl">
-      <Stack spacing="md">
+    <RouteGuard requireLogin minRole="admin">
+      <Container size="lg" py="xl">
+        <Stack spacing="md">
         <Title order={1}>Admin Console · Role Panel</Title>
         <Text color="dimmed">登入：{userEmail || '未登入'} · Role: <Badge>{myRole}</Badge></Text>
 
@@ -123,8 +125,9 @@ export default function AdminRolesPage() {
           </>
         )}
 
-        {msg ? <Text size="sm">{msg}</Text> : null}
-      </Stack>
-    </Container>
+          {msg ? <Text size="sm">{msg}</Text> : null}
+        </Stack>
+      </Container>
+    </RouteGuard>
   );
 }

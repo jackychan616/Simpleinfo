@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { getSupabaseBrowser } from '../../lib/supabaseBrowser';
 import BlockRenderer from '../components/blockRenderer';
+import RouteGuard from '../components/routeGuard';
 import { blocksToPlainText, normalizeBlock, normalizeBlocks } from '../../lib/contentBlocks';
 
 const TITLE_LIMIT = 120;
@@ -177,8 +178,9 @@ export default function NewPostPage() {
   }
 
   return (
-    <Container size="md" py="xl">
-      <Stack spacing="md">
+    <RouteGuard requireLogin minRole="writer">
+      <Container size="md" py="xl">
+        <Stack spacing="md">
         <Title order={1}>建立投稿（Advanced Editor MVP）</Title>
         <Text size="sm">登入狀態：{userEmail || '未登入'}</Text>
         {!userEmail ? <Button component={Link} href="/writer/auth" variant="light">先登入先可以投稿</Button> : null}
@@ -325,8 +327,9 @@ export default function NewPostPage() {
           {loading ? '提交中...' : '提交審核'}
         </Button>
         <Button component={Link} href="/writer/submissions" variant="light">查看投稿狀態</Button>
-        {msg ? <Text color={msg.includes('失敗') ? 'red' : 'teal'}>{msg}</Text> : null}
-      </Stack>
-    </Container>
+          {msg ? <Text color={msg.includes('失敗') ? 'red' : 'teal'}>{msg}</Text> : null}
+        </Stack>
+      </Container>
+    </RouteGuard>
   );
 }

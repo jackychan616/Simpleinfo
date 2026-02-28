@@ -2,6 +2,7 @@ import { Badge, Button, Card, Container, Group, Select, Stack, Table, Text, Titl
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { getSupabaseBrowser } from '../../lib/supabaseBrowser';
+import RouteGuard from '../components/routeGuard';
 
 function statusColor(status) {
   if (status === 'approved') return 'green';
@@ -63,88 +64,90 @@ export default function WriterSubmissionsPage() {
   const isAdmin = adminAllowlist.includes((adminEmail || '').toLowerCase());
 
   return (
-    <Container size="lg" py="xl">
-      <Stack spacing="md">
-        <Group position="apart" align="end">
-          <div>
-            <Title order={1}>投稿管理</Title>
-            <Text color="dimmed">已接上 Supabase 審核流程（pending / approved / rejected）。</Text>
-          </div>
-          <Group>
-            <Text size="sm" color="dimmed">Admin check: {adminEmail || '未登入'}</Text>
-            <Select
-              value={filter}
-              onChange={(v) => {
-                const next = v || 'all';
-                setFilter(next);
-                load(next);
-              }}
-              data={[
-                { value: 'all', label: '全部' },
-                { value: 'pending_review', label: '待審核' },
-                { value: 'approved', label: '已通過' },
-                { value: 'rejected', label: '已拒絕' },
-              ]}
-            />
-            <Button component={Link} href="/writer/new">新增投稿</Button>
+    <RouteGuard requireLogin minRole="writer">
+      <Container size="lg" py="xl">
+        <Stack spacing="md">
+          <Group position="apart" align="end">
+            <div>
+              <Title order={1}>投稿管理</Title>
+              <Text color="dimmed">已接上 Supabase 審核流程（pending / approved / rejected）。</Text>
+            </div>
+            <Group>
+              <Text size="sm" color="dimmed">Admin check: {adminEmail || '未登入'}</Text>
+              <Select
+                value={filter}
+                onChange={(v) => {
+                  const next = v || 'all';
+                  setFilter(next);
+                  load(next);
+                }}
+                data={[
+                  { value: 'all', label: '全部' },
+                  { value: 'pending_review', label: '待審核' },
+                  { value: 'approved', label: '已通過' },
+                  { value: 'rejected', label: '已拒絕' },
+                ]}
+              />
+              <Button component={Link} href="/writer/new">新增投稿</Button>
+            </Group>
           </Group>
-        </Group>
 
-        {msg ? <Text size="sm">{msg}</Text> : null}
-        {!isAdmin ? <Text size="sm" color="orange">你而家唔係 admin，無法 approve/reject。</Text> : null}
+          {msg ? <Text size="sm">{msg}</Text> : null}
+          {!isAdmin ? <Text size="sm" color="orange">你而家唔係 admin，無法 approve/reject。</Text> : null}
 
-        <Card withBorder radius="md" shadow="sm">
-          {filtered.length === 0 ? (
-            <Text color="dimmed">目前冇投稿資料。可以先去「新增投稿」建立第一篇。</Text>
-          ) : (
-            <Table striped highlightOnHover>
-              <thead>
-                <tr>
-                  <th>標題</th>
-                  <th>分類</th>
-                  <th>建立時間</th>
-                  <th>狀態</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((item) => (
-                  <tr key={item.id}>
-                    <td>{item.title}</td>
-                    <td>{item.category}</td>
-                    <td>{new Date(item.created_at).toLocaleString()}</td>
-                    <td>
-                      <Badge color={statusColor(item.status)}>{item.status}</Badge>
-                    </td>
-                    <td>
-                      <Group spacing="xs">
-                        <Button size="xs" variant="subtle" component={Link} href={`/writer/submissions/${item.id}`}>
-                          View
-                        </Button>
-                        {isAdmin ? (
-                          <>
-                            <Button size="xs" color="green" variant="light" onClick={() => updateStatus(item.id, 'approved')}>
-                              Approve
-                            </Button>
-                            <Button size="xs" color="red" variant="light" onClick={() => updateStatus(item.id, 'rejected')}>
-                              Reject
-                            </Button>
-                          </>
-                        ) : null}
-                        {item.status === 'approved' ? (
-                          <Button size="xs" component={Link} href={`/community/${item.id}`} variant="outline">
-                            Public
-                          </Button>
-                        ) : null}
-                      </Group>
-                    </td>
+          <Card withBorder radius="md" shadow="sm">
+            {filtered.length === 0 ? (
+              <Text color="dimmed">目前冇投稿資料。可以先去「新增投稿」建立第一篇。</Text>
+            ) : (
+              <Table striped highlightOnHover>
+                <thead>
+                  <tr>
+                    <th>標題</th>
+                    <th>分類</th>
+                    <th>建立時間</th>
+                    <th>狀態</th>
+                    <th>操作</th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
-          )}
-        </Card>
-      </Stack>
-    </Container>
+                </thead>
+                <tbody>
+                  {filtered.map((item) => (
+                    <tr key={item.id}>
+                      <td>{item.title}</td>
+                      <td>{item.category}</td>
+                      <td>{new Date(item.created_at).toLocaleString()}</td>
+                      <td>
+                        <Badge color={statusColor(item.status)}>{item.status}</Badge>
+                      </td>
+                      <td>
+                        <Group spacing="xs">
+                          <Button size="xs" variant="subtle" component={Link} href={`/writer/submissions/${item.id}`}>
+                            View
+                          </Button>
+                          {isAdmin ? (
+                            <>
+                              <Button size="xs" color="green" variant="light" onClick={() => updateStatus(item.id, 'approved')}>
+                                Approve
+                              </Button>
+                              <Button size="xs" color="red" variant="light" onClick={() => updateStatus(item.id, 'rejected')}>
+                                Reject
+                              </Button>
+                            </>
+                          ) : null}
+                          {item.status === 'approved' ? (
+                            <Button size="xs" component={Link} href={`/community/${item.id}`} variant="outline">
+                              Public
+                            </Button>
+                          ) : null}
+                        </Group>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            )}
+          </Card>
+        </Stack>
+      </Container>
+    </RouteGuard>
   );
 }

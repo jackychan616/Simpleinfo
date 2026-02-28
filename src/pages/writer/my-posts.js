@@ -2,6 +2,7 @@ import { Badge, Button, Card, Container, Group, Stack, Text, Title } from '@mant
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getSupabaseBrowser } from '../../lib/supabaseBrowser';
+import RouteGuard from '../components/routeGuard';
 
 function statusColor(status) {
   if (status === 'approved') return 'green';
@@ -28,8 +29,9 @@ export default function MyPostsPage() {
   }, []);
 
   return (
-    <Container size="md" py="xl">
-      <Stack spacing="md">
+    <RouteGuard requireLogin minRole="writer">
+      <Container size="md" py="xl">
+        <Stack spacing="md">
         <Title order={1}>我的投稿</Title>
         <Text color="dimmed">只顯示你當前登入帳號提交嘅文章。</Text>
         <Text size="sm">帳號：{email || '未登入'}</Text>
@@ -48,8 +50,9 @@ export default function MyPostsPage() {
               <Text mt="sm" lineClamp={3}>{row.content}</Text>
             </Card>
           ))
-        )}
-      </Stack>
-    </Container>
+          )}
+        </Stack>
+      </Container>
+    </RouteGuard>
   );
 }
