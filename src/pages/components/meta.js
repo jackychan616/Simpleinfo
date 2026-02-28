@@ -1,18 +1,15 @@
 import { NextSeo } from 'next-seo';
+import { buildCanonicalUrl, SITE_URL } from '../../lib/seo';
 
-const SITE_URL = 'https://simpleinfohk.me';
 const siteTitle = 'Simple Info HK';
 const defaultDescription = '香港資訊類型博客,專注於提供最新的電腦,遊戲,AI等資訊';
 
 export function Meta({ pageTitle, keywords, description, img, alt, path }) {
   const resolvedDescription = description || defaultDescription;
   const resolvedTitle = pageTitle || siteTitle;
-  const canonical = path ? `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}` : undefined;
+  const canonical = path ? buildCanonicalUrl(path) : undefined;
 
-  const imageUrl = img
-    ? `${SITE_URL}${img.startsWith('/') ? img : `/${img}`}`
-    : `${SITE_URL}/img/simple_info.png`;
-
+  const imageUrl = img ? buildCanonicalUrl(img) : `${SITE_URL}/img/simple_info.png`;
   const imageType = img && img.includes('.') ? `image/${img.split('.').pop()}` : 'image/png';
 
   return (
@@ -36,9 +33,7 @@ export function Meta({ pageTitle, keywords, description, img, alt, path }) {
           },
         ],
       }}
-      twitter={{
-        cardType: 'summary_large_image',
-      }}
+      twitter={{ cardType: 'summary_large_image' }}
     />
   );
 }

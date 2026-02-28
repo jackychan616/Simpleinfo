@@ -1,13 +1,19 @@
 import { Button, Group, Text, TextInput } from '@mantine/core';
-import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useMemo, useState } from 'react';
+import { buildLoginUrl } from '../../lib/authRedirect';
 import { getSupabaseBrowser } from '../../lib/supabaseBrowser';
 import { useSupabaseSession } from '../../lib/useSupabaseSession';
 
-export default function WriterAuth() {
+export default function WriterAuth({ redirectPath = '/writer' }) {
+  const router = useRouter();
   const { session } = useSupabaseSession();
   const [email, setEmail] = useState('');
   const [msg, setMsg] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const loginHref = useMemo(() => buildLoginUrl(router.asPath || redirectPath, 'manual_login'), [router.asPath, redirectPath]);
 
   async function sendMagicLink() {
     const supabase = getSupabaseBrowser();
@@ -22,7 +28,7 @@ export default function WriterAuth() {
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${window.location.origin}/writer`,
+        emailRedirectTo: `${window.location.origin}${redirectPath}`,
       },
     });
 
@@ -46,7 +52,9 @@ export default function WriterAuth() {
     return (
       <Group>
         <Text size="sm">已登入：{session.user.email}</Text>
-        <Button size="xs" variant="outline" onClick={logout}>Logout</Button>
+        <Button size="xs" variant="outline" onClick={logout}>
+          Logout
+        </Button>
       </Group>
     );
   }
@@ -61,6 +69,9 @@ export default function WriterAuth() {
       />
       <Button onClick={sendMagicLink} disabled={!email || loading}>
         {loading ? 'Sending...' : 'Send Magic Link'}
+      </Button>
+      <Button component={Link} href={loginHref} variant="subtle">
+        Full login page
       </Button>
       {msg ? <Text size="sm">{msg}</Text> : null}
     </Group>

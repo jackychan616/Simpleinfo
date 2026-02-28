@@ -1,8 +1,10 @@
 import { ActionIcon, Badge, Button, Card, Container, Group, Select, Stack, Text, TextInput, Textarea, Title } from '@mantine/core';
 import { IconTrash } from '@tabler/icons-react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useMemo, useState } from 'react';
 import WriterAuth from '../components/writerAuth';
+import { handleUnauthorized } from '../../lib/authRedirect';
 import { getAccessToken } from '../../lib/supabaseBrowser';
 import BlockRenderer from '../components/blockRenderer';
 import { blocksToPlainText, normalizeBlock, normalizeBlocks } from '../../lib/contentBlocks';
@@ -22,6 +24,7 @@ const BLOCK_TYPE_OPTIONS = [
 const EMPTY_BLOCK = normalizeBlock({ type: 'paragraph', text: '' });
 
 export default function NewPostPage() {
+  const router = useRouter();
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('ai');
   const [blocks, setBlocks] = useState([EMPTY_BLOCK]);
@@ -69,6 +72,7 @@ export default function NewPostPage() {
     if (!token) {
       setLoading(false);
       setMsg('提交失敗：請先登入（magic link）');
+      handleUnauthorized(router);
       return;
     }
 
@@ -83,6 +87,12 @@ export default function NewPostPage() {
 
     const body = await res.json().catch(() => ({}));
     setLoading(false);
+
+    if (res.status === 401) {
+      setMsg('提交失敗：登入狀態已過期');
+      handleUnauthorized(router);
+      return;
+    }
 
     if (!res.ok) {
       setMsg(`提交失敗：${body?.error || 'unknown error'}`);
@@ -138,7 +148,7 @@ export default function NewPostPage() {
     <Container size="md" py="xl">
       <Stack spacing="md">
         <Title order={1}>建立投稿（Advanced Editor MVP）</Title>
-        <WriterAuth />
+        <WriterAuth redirectPath="/writer/new" />
         <Text color="dimmed">支援 Block：paragraph / heading / image / link / code（已預留 embed schema）。</Text>
 
         <Card withBorder>

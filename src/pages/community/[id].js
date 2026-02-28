@@ -6,6 +6,7 @@ import { IconHeart } from '@tabler/icons-react';
 import BlockRenderer from '../components/blockRenderer';
 import { Sharebutton } from '../components/share';
 import { getBlocksFromSubmission, summarizeBlocks } from '../../lib/contentBlocks';
+import { buildCanonicalUrl } from '../../lib/seo';
 
 export default function CommunityPostPage() {
   const router = useRouter();
@@ -58,8 +59,26 @@ export default function CommunityPostPage() {
     );
   }
 
-  const canonical = `https://simpleinfohk.me/community/${row.id}`;
+  const canonical = buildCanonicalUrl(`/community/${row.id}`);
   const description = summarizeBlocks(blocks, 160) || (row.content || '').slice(0, 160);
+
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: row.title,
+    description,
+    datePublished: row.created_at,
+    dateModified: row.updated_at || row.created_at,
+    mainEntityOfPage: canonical,
+    author: {
+      '@type': 'Person',
+      name: row.author_email || 'Simple Info 社群作者',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Simple Info HK',
+    },
+  };
 
   return (
     <>
@@ -71,6 +90,7 @@ export default function CommunityPostPage() {
         <meta property="og:description" content={description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={canonical} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       </Head>
       <Container size="md" py="xl">
         <Stack spacing="md">
@@ -80,12 +100,14 @@ export default function CommunityPostPage() {
           </Group>
 
           <Group position="apart">
-            <Text size="sm" color="dimmed">分類：{row.category}</Text>
+            <Text size="sm" color="dimmed">
+              分類：{row.category}
+            </Text>
             <Group>
               <Button leftIcon={<IconHeart size={16} />} onClick={handleLike} loading={likeLoading} variant="light">
                 Like ({Number(row.like_count || 0)})
               </Button>
-              <Sharebutton url={`/community/${row.id}`} />
+              <Sharebutton url={canonical} />
             </Group>
           </Group>
 

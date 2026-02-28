@@ -1,32 +1,34 @@
 import { Button, Menu } from '@mantine/core';
-import { Share, Copy, BrandFacebook } from 'tabler-icons-react';
 import { showNotification } from '@mantine/notifications';
-import { IconCheck } from '@tabler/icons-react';
+import { IconBrandFacebook, IconCheck, IconCopy, IconShare } from '@tabler/icons-react';
+import { buildCanonicalUrl } from '../../lib/seo';
 
 export function Sharebutton({ url }) {
+  const shareUrl = buildCanonicalUrl(url || '/');
+
   return (
     <Menu shadow="md" width={200} position="right-end">
       <Menu.Target>
-        <Button leftIcon={<Share />} compact variant="outline">分享</Button>
+        <Button leftIcon={<IconShare size={16} />} compact variant="outline">分享</Button>
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item
           component="button"
           onClick={() => {
-            navigator.clipboard.writeText(url);
+            navigator.clipboard.writeText(shareUrl);
             showNotification({
               message: 'Copied',
-              icon: <IconCheck />,
+              icon: <IconCheck size={16} />,
             });
           }}
-          icon={<Copy />}
+          icon={<IconCopy size={16} />}
         >
           複製鏈結
         </Menu.Item>
         <Menu.Item
-          icon={<BrandFacebook />}
+          icon={<IconBrandFacebook size={16} />}
           component="a"
-          href={`https://www.facebook.com/sharer/sharer.php?u=https://simpleinfohk.me${url}`}
+          href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
           target="_blank"
           rel="noreferrer"
         >

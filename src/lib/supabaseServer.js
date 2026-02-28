@@ -29,11 +29,36 @@ export async function getUserFromRequest(req) {
 }
 
 export function isAdminEmail(email) {
+  const allow = getAdminAllowlist();
+  return allow.includes(String(email || '').toLowerCase());
+}
+
+export async function isAdminEmailWithDb(email, clientArg) {
+  const normalizedEmail = String(email || '').trim().toLowerCase();
+  if (!normalizedEmail) return false;
+  if (isAdminEmail(normalizedEmail)) return true;
+
+  const client = clientArg || getSupabaseServer().client;
+  if (!client) return false;
+
+  const { data, error } = await client
+    .from('admin_roles')
+    .select('email, role')
+    .eq('email', normalizedEmail)
+    .limit(1);
+
+  if (error) return false;
+
+  return (data || []).some((item) => {
+    const role = String(item?.role || '').toLowerCase();
+    return role === '' || role === 'admin';
+  });
+}
+
+export function getAdminAllowlist() {
   const allowRaw = process.env.ADMIN_EMAILS || process.env.NEXT_PUBLIC_ADMIN_EMAILS || '';
-  const allow = allowRaw
+  return allowRaw
     .split(',')
     .map((s) => s.trim().toLowerCase())
     .filter(Boolean);
-
-  return allow.includes(String(email || '').toLowerCase());
 }
