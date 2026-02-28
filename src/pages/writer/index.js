@@ -86,6 +86,7 @@ export default function WriterDashboard() {
             <Button variant="light" component={Link} href="/writer/my-posts">My Posts</Button>
             <Button variant="light" component={Link} href="/writer/submissions">管理投稿</Button>
             <Button variant="light" component={Link} href="/writer/admin-roles">Admin Roles</Button>
+            <Button variant="light" component={Link} href="/writer/ai-bot">AI Bot</Button>
             <Button variant="light" component={Link} href="/hot">查看公開文章</Button>
           </Group>
         </Card>
