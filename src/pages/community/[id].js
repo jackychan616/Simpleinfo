@@ -7,6 +7,7 @@ import BlockRenderer from '../components/blockRenderer';
 import { Sharebutton } from '../components/share';
 import { getBlocksFromSubmission, summarizeBlocks } from '../../lib/contentBlocks';
 import { buildCanonicalUrl } from '../../lib/seo';
+import { articleJsonLd } from '../../lib/seoStructured';
 
 export default function CommunityPostPage() {
   const router = useRouter();
@@ -62,23 +63,14 @@ export default function CommunityPostPage() {
   const canonical = buildCanonicalUrl(`/community/${row.id}`);
   const description = summarizeBlocks(blocks, 160) || (row.content || '').slice(0, 160);
 
-  const articleJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: row.title,
+  const articleLd = articleJsonLd({
+    title: row.title,
     description,
-    datePublished: row.created_at,
-    dateModified: row.updated_at || row.created_at,
-    mainEntityOfPage: canonical,
-    author: {
-      '@type': 'Person',
-      name: row.author_email || 'Simple Info 社群作者',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Simple Info HK',
-    },
-  };
+    idOrPath: `/community/${row.id}`,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+    authorName: row.author_email || 'Simple Info 社群作者',
+  });
 
   return (
     <>
@@ -90,7 +82,7 @@ export default function CommunityPostPage() {
         <meta property="og:description" content={description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={canonical} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       </Head>
       <Container size="md" py="xl">
         <Stack spacing="md">

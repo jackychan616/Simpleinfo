@@ -36,5 +36,6 @@ Auth methods:
 Setup guide:
 - `docs/SUPABASE_SETUP.md`
 - `docs/V2_ARCHITECTURE.md`
+- `docs/SEARCH_CONSOLE_CHECKLIST.md`
 - `.env.example`
 
