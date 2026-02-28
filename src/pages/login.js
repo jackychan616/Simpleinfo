@@ -18,6 +18,7 @@ export default function LoginPage() {
   const { session, ready } = useSupabaseSession();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [otpCode, setOtpCode] = useState('');
   const [msg, setMsg] = useState('');
   const [loading, setLoading] = useState(false);
   const [cooldown, setCooldown] = useState(0);
@@ -37,7 +38,7 @@ export default function LoginPage() {
     return () => clearInterval(t);
   }, [cooldown]);
 
-  async function sendMagicLink() {
+  async function sendEmailCode() {
     if (cooldown > 0) {
       setMsg(`請等 ${cooldown}s 再試，避免觸發 email rate limit。`);
       return;
@@ -52,21 +53,46 @@ export default function LoginPage() {
     setLoading(true);
     setMsg('');
 
-    const redirectTo = `${window.location.origin}${nextPath}`;
     const { error } = await supabase.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: redirectTo },
+      options: { shouldCreateUser: false },
     });
 
     setLoading(false);
     if (error) {
       const isRateLimit = /rate limit|too many requests/i.test(error.message || '');
-      setMsg(isRateLimit ? 'Email 發送太頻密，請稍後再試（可先用 Password/Google 登入）。' : `登入連結發送失敗：${error.message}`);
+      setMsg(isRateLimit ? 'Email 發送太頻密，請稍後再試（可先用 Password/Google 登入）。' : `發送驗證碼失敗：${error.message}`);
       return;
     }
 
     setCooldown(60);
-    setMsg('Magic link 已發送，請到電郵收信登入。');
+    setMsg('驗證碼已發送到你電郵，請輸入 6 位數碼登入。');
+  }
+
+  async function loginWithEmailCode() {
+    const supabase = getSupabaseBrowser();
+    if (!supabase) {
+      setMsg('Missing Supabase env: NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY');
+      return;
+    }
+
+    setLoading(true);
+    setMsg('');
+
+    const { error } = await supabase.auth.verifyOtp({
+      email,
+      token: otpCode,
+      type: 'email',
+    });
+
+    setLoading(false);
+    if (error) {
+      setMsg(`驗證碼登入失敗：${error.message}`);
+      return;
+    }
+
+    setMsg('驗證成功，跳轉中...');
+    router.replace(nextPath);
   }
 
   async function loginWithPassword() {
@@ -134,12 +160,21 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.currentTarget.value)}
           />
+          <TextInput
+            label="Email 驗證碼（6位）"
+            placeholder="123456"
+            value={otpCode}
+            onChange={(e) => setOtpCode(e.currentTarget.value)}
+          />
           <Group>
             <Button onClick={loginWithPassword} disabled={!email || !password || loading}>
               {loading ? 'Signing in...' : 'Password Login'}
             </Button>
-            <Button onClick={sendMagicLink} disabled={!email || loading || cooldown > 0} variant="light">
-              {loading ? 'Sending...' : cooldown > 0 ? `請等 ${cooldown}s` : 'Send Magic Link'}
+            <Button onClick={sendEmailCode} disabled={!email || loading || cooldown > 0} variant="light">
+              {loading ? 'Sending...' : cooldown > 0 ? `請等 ${cooldown}s` : 'Send 驗證碼'}
+            </Button>
+            <Button onClick={loginWithEmailCode} disabled={!email || !otpCode || loading} variant="light">
+              驗證碼登入
             </Button>
             <Button onClick={loginWithGoogle} variant="light">
               Google Login

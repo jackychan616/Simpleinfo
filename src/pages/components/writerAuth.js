@@ -10,12 +10,13 @@ export default function WriterAuth({ redirectPath = '/writer' }) {
   const router = useRouter();
   const { session } = useSupabaseSession();
   const [email, setEmail] = useState('');
+  const [otpCode, setOtpCode] = useState('');
   const [msg, setMsg] = useState('');
   const [loading, setLoading] = useState(false);
 
   const loginHref = useMemo(() => buildLoginUrl(router.asPath || redirectPath, 'manual_login'), [router.asPath, redirectPath]);
 
-  async function sendMagicLink() {
+  async function sendEmailCode() {
     const supabase = getSupabaseBrowser();
     if (!supabase) {
       setMsg('Missing Supabase env: NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY');
@@ -27,18 +28,41 @@ export default function WriterAuth({ redirectPath = '/writer' }) {
 
     const { error } = await supabase.auth.signInWithOtp({
       email,
-      options: {
-        emailRedirectTo: `${window.location.origin}${redirectPath}`,
-      },
+      options: { shouldCreateUser: false },
     });
 
     setLoading(false);
     if (error) {
-      setMsg(`登入連結發送失敗：${error.message}`);
+      setMsg(`發送驗證碼失敗：${error.message}`);
       return;
     }
 
-    setMsg('Magic link 已發送，請到電郵收信登入。');
+    setMsg('驗證碼已發送，請輸入 6 位數碼登入。');
+  }
+
+  async function verifyEmailCode() {
+    const supabase = getSupabaseBrowser();
+    if (!supabase) {
+      setMsg('Missing Supabase env: NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY');
+      return;
+    }
+
+    setLoading(true);
+    setMsg('');
+
+    const { error } = await supabase.auth.verifyOtp({
+      email,
+      token: otpCode,
+      type: 'email',
+    });
+
+    setLoading(false);
+    if (error) {
+      setMsg(`驗證碼登入失敗：${error.message}`);
+      return;
+    }
+
+    setMsg('登入成功 ✅');
   }
 
   async function logout() {
@@ -67,8 +91,17 @@ export default function WriterAuth({ redirectPath = '/writer' }) {
         value={email}
         onChange={(e) => setEmail(e.currentTarget.value)}
       />
-      <Button onClick={sendMagicLink} disabled={!email || loading}>
-        {loading ? 'Sending...' : 'Send Magic Link'}
+      <TextInput
+        label="Email OTP"
+        placeholder="123456"
+        value={otpCode}
+        onChange={(e) => setOtpCode(e.currentTarget.value)}
+      />
+      <Button onClick={sendEmailCode} disabled={!email || loading}>
+        {loading ? 'Sending...' : 'Send 驗證碼'}
+      </Button>
+      <Button onClick={verifyEmailCode} disabled={!email || !otpCode || loading} variant="light">
+        驗證碼登入
       </Button>
       <Button component={Link} href={loginHref} variant="subtle">
         Full login page
