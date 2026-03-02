@@ -1,7 +1,7 @@
 import { Badge, Button, Card, Container, Group, ScrollArea, Select, Stack, Table, Text, TextInput, Title } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import RouteGuard from '../components/routeGuard';
-import { getSupabaseBrowser } from '../../lib/supabaseBrowser';
+import { getAccessToken, getSupabaseBrowser } from '../../lib/supabaseBrowser';
 
 export default function AiBotDashboardPage() {
   const [email, setEmail] = useState('');
@@ -118,6 +118,32 @@ export default function AiBotDashboardPage() {
     } else {
       const err = await readErrorMessage(res);
       setMsg(`刪除失敗：${err}`);
+    }
+
+    await loadStatus();
+  }
+
+  async function reviewSubmission(id, status) {
+    const token = await getAccessToken();
+    if (!token) {
+      setMsg('請先登入 admin 帳號');
+      return;
+    }
+
+    const res = await fetch(`/api/writer/submissions/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ status }),
+    });
+
+    if (res.ok) {
+      setMsg(`已更新為 ${status} ✅`);
+    } else {
+      const err = await readErrorMessage(res);
+      setMsg(`更新失敗：${err}`);
     }
 
     await loadStatus();
@@ -242,6 +268,16 @@ export default function AiBotDashboardPage() {
                           {r.generated_submission_id ? (
                             <Button size="xs" component="a" href={`/writer/submissions/${r.generated_submission_id}`}>
                               View/Edit
+                            </Button>
+                          ) : null}
+                          {r.generated_submission_id ? (
+                            <Button size="xs" color="green" variant="light" onClick={() => reviewSubmission(r.generated_submission_id, 'approved')}>
+                              Approve
+                            </Button>
+                          ) : null}
+                          {r.generated_submission_id ? (
+                            <Button size="xs" color="red" variant="light" onClick={() => reviewSubmission(r.generated_submission_id, 'rejected')}>
+                              Reject
                             </Button>
                           ) : null}
                           {r.status === 'failed' ? (
