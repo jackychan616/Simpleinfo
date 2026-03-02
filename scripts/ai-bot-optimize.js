@@ -32,9 +32,13 @@ async function callModel(messages, responseFormat = true) {
   if (provider === 'ollama') {
     const base = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
     const model = process.env.OLLAMA_MODEL || 'gpt-oss';
+    const apiKey = process.env.OLLAMA_API_KEY || '';
+    const headers = { 'Content-Type': 'application/json' };
+    if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
+
     const resp = await fetch(`${base}/api/chat`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       body: JSON.stringify({ model, stream: false, format: responseFormat ? 'json' : undefined, messages }),
     });
     if (!resp.ok) {
