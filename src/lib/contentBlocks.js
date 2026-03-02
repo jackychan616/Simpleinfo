@@ -53,11 +53,78 @@ export function blocksToPlainText(blocks) {
 }
 
 export function contentToBlocks(content = '') {
-  const chunks = String(content)
-    .split(/\n{2,}/)
-    .map((s) => s.trim())
-    .filter(Boolean);
-  return chunks.map((text, idx) => normalizeBlock({ id: `legacy-${idx}`, type: 'paragraph', text }));
+  const raw = String(content || '').replace(/\r\n/g, '\n');
+  if (!raw.trim()) return [];
+
+  const lines = raw.split('\n');
+  const blocks = [];
+  let idx = 0;
+  let inCode = false;
+  let codeLang = 'plaintext';
+  let codeBuffer = [];
+  let paraBuffer = [];
+
+  function flushParagraph() {
+    const text = paraBuffer.join('\n').trim();
+    if (text) {
+      blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'paragraph', text }));
+    }
+    paraBuffer = [];
+  }
+
+  function flushCode() {
+    const code = codeBuffer.join('\n');
+    if (code.trim()) {
+      blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'code', language: codeLang, code }));
+    }
+    codeBuffer = [];
+    codeLang = 'plaintext';
+  }
+
+  for (const line of lines) {
+    if (line.trim().startsWith('```')) {
+      if (!inCode) {
+        flushParagraph();
+        inCode = true;
+        codeLang = line.trim().slice(3).trim() || 'plaintext';
+      } else {
+        flushCode();
+        inCode = false;
+      }
+      continue;
+    }
+
+    if (inCode) {
+      codeBuffer.push(line);
+      continue;
+    }
+
+    const h = line.match(/^(#{1,6})\s+(.+)$/);
+    if (h) {
+      flushParagraph();
+      blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'heading', level: h[1].length, text: h[2].trim() }));
+      continue;
+    }
+
+    const linkOnly = line.match(/^\[(.+)\]\((https?:\/\/[^)]+)\)$/);
+    if (linkOnly) {
+      flushParagraph();
+      blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'link', text: linkOnly[1].trim(), href: linkOnly[2].trim() }));
+      continue;
+    }
+
+    if (!line.trim()) {
+      flushParagraph();
+      continue;
+    }
+
+    paraBuffer.push(line);
+  }
+
+  if (inCode) flushCode();
+  flushParagraph();
+
+  return normalizeBlocks(blocks);
 }
 
 export function getBlocksFromSubmission(row) {
