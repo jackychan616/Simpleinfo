@@ -9,8 +9,6 @@ import { useSupabaseSession } from '../../lib/useSupabaseSession';
 import { useRouter } from 'next/router';
 import { getCurrentRoleSafe } from '../../lib/authClient';
 
-const steps = ['Google 登入', '建立草稿（標題、分類、內容）', '提交審核（Pending）', '管理員審核通過後公開'];
-
 export default function WriterDashboard() {
   const router = useRouter();
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -103,14 +101,7 @@ export default function WriterDashboard() {
           </Stack>
         </Card>
 
-        <Card withBorder radius="md" shadow="sm">
-          <Title order={4}>投稿流程</Title>
-          <Stack spacing={6} mt="sm">
-            {steps.map((s) => (
-              <Text key={s}>• {s}</Text>
-            ))}
-          </Stack>
-        </Card>
+
       </Stack>
     </Container>
   );

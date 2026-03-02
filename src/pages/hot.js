@@ -1,176 +1,60 @@
-import { Carousel } from '@mantine/carousel';
-import { useMediaQuery } from '@mantine/hooks';
-import { createStyles, Paper, Text, Title, Button, useMantineTheme, Container ,Space,Group} from '@mantine/core';
-import { topics } from 'src/data/topics';
-import { Topic_card } from './header/components/topic_card';
-import {Sub } from '../pages/components/leftbar/sub'
-const Bloglist = require('../data/Blog.json');
-function getrandomblog(){
-    var n = [];
-    var num = []
-    function R(){
-        var j = Math.floor(Math.random()* Bloglist.length)
-        if (num.includes(j) == false){
-            return j;
-        }
-        R()
-    }
-    for (let i = 0; i < 6; i++ ){
-	    var b = R();
-        num.push(b);
-        n.push(Bloglist[b]);
-    }
-    return n;
-}
-const useStyles = createStyles((theme) => ({
-  card: {
-    height: 440,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
+import Link from 'next/link';
+import { Card, Container, Group, SimpleGrid, Stack, Text, Title, Badge, Button } from '@mantine/core';
+import { getSupabaseServer } from '../lib/supabaseServer';
+import { summarizeBlocks, getBlocksFromSubmission } from '../lib/contentBlocks';
 
-  title: {
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontWeight: 900,
-    lineHeight: 1.2,
-    color: theme.white,
-    fontSize: 32,
-    marginTop: theme.spacing.xs,
-  },
-
-  category: {
-    color: theme.white,
-    opacity: 0.7,
-    fontWeight: 700,
-    textTransform: 'uppercase',
-  },
-}));
-
-
-
-function toContentHref(path = '') {
-  const clean = String(path || '').replace(/^\/+/, '');
-  return `/content/${clean}`;
+function toCommunityHref(id) {
+  return `/community/${id}`;
 }
 
-function Card({img,name,tag,path}) {
-  const { classes } = useStyles();
-
+export default function HotPage({ items = [] }) {
   return (
-    <Paper
-      shadow="md"
-      p="xl"
-      radius="md"
-      sx={{ backgroundImage: `url(${img})` }}
-      className={classes.card}
-    >
-      <div>
-        <Text className={classes.category} size="xs">
-          {tag}
-        </Text>
-        <Title order={3} className={classes.title}>
-          {name}
-        </Title>
-      </div>
-      <Button href={toContentHref(path)} component="a">
-        閱讀文章
-      </Button>
-    </Paper>
+    <Container size="lg" py="xl">
+      <Stack spacing="md">
+        <Title order={1}>近期最熱</Title>
+        <Text color="dimmed">精選熱門文章（最新 + 高互動優先）</Text>
+
+        <SimpleGrid cols={3} breakpoints={[{ maxWidth: 'md', cols: 2 }, { maxWidth: 'sm', cols: 1 }]}>
+          {items.map((item) => (
+            <Card key={item.id} withBorder radius="md" shadow="sm">
+              <Stack spacing="xs">
+                <Group position="apart">
+                  <Badge>{item.category || 'general'}</Badge>
+                  <Text size="xs" color="dimmed">{new Date(item.created_at).toLocaleDateString()}</Text>
+                </Group>
+                <Title order={4} lineClamp={2}>{item.title}</Title>
+                <Text size="sm" color="dimmed" lineClamp={3}>{item.description}</Text>
+                <Button component={Link} href={toCommunityHref(item.id)} variant="light">
+                  閱讀文章
+                </Button>
+              </Stack>
+            </Card>
+          ))}
+        </SimpleGrid>
+      </Stack>
+    </Container>
   );
 }
 
-const datas = [
-    {
-        "name": "解構GPT-3工作原理",
-        "path": "/ai-tutorial/openai-chatgpt-how-to-work",
-        "img": "/img/openai.jpg",
-        "date": "1/4/2023",
-        "tag": "GPT"
-    },
-    {
-        "name": "什麼是AI?",
-        "path": "/ai-tutorial/ai-quick-tutorial",
-        "img": "/img/ai_quick.webp",
-        "date": "12/3/2023",
-        "tag": "AI 教學"
-    },
-    {
-      name: '如何使用AI繒圖？',
-      path: '/ai-tutorial/photo-ai-tutorial',
-      img: '/img/ai-generate-img.webp',
-      date: '1/3/2023',
-      tag: 'AI 教學'
-    },
-    {
-      name: '《小小諾亞-樂園的繼承者》介紹',
-      path: '/card-game/little-noah-introduce',
-      img: '/img/little-noach-introduce/4.png',
-      date: '2/3/2023',
-      tag: '遊戲'
-    },
-    {
-      name: '球隊大事記—曼聯',
-      path: '/sport/football-big-news',
-      date: '15/3/2023',
-      img: '/img/football-big-news/1.webp',
-      tag: 'sport'
-    },
-    {
-      name: 'RG 1/144系列必入手的商品',
-      path: '/toy/5-gundam',
-      img: '/img/5-gundam/1.jpg',
-      date: '6/3/2023',
-      tag: 'toy'
-    }
-  ]
+export async function getServerSideProps() {
+  const { client } = getSupabaseServer();
+  if (!client) return { props: { items: [] } };
 
-export function CardsCarousel() {
-  const theme = useMantineTheme();
-  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
-  /*const data = getrandomblog();*/
-  const slides = datas.map((item) => (
-      <Carousel.Slide key={item.name}>
-        <Card {...item} />
-      </Carousel.Slide>
-  ));
+  const { data } = await client
+    .from('writer_submissions')
+    .select('id,title,category,content,content_blocks,created_at,like_count,status')
+    .eq('status', 'approved')
+    .order('like_count', { ascending: false, nullsFirst: false })
+    .order('created_at', { ascending: false })
+    .limit(18);
 
-  return (
-    <Carousel
-      slideSize="50%"
-      breakpoints={[{ maxWidth: 'sm', slideSize: '100%', slideGap: 2 }]}
-      slideGap="lg"
-      align="start"
-      slidesToScroll={mobile ? 1 : 2}
-      loop 
-    >
-      {slides}
-    </Carousel>
-  );
-}
-function Content(){
-    return(
-        <div>
-            <Topic_card/>
-        </div>
-    ) 
-}
-export default function Page(){
-    return(
-    <div>
-            <Container>
-              <Title order={2}>Top Hits</Title>
-              <Text color="dimmed" size="sm">精選熱門文章，持續更新。</Text>
-              <Space h="sm" />
-              <CardsCarousel/>
-            </Container>
-            <Space h= "lg"/>
-             <Group>      
-              <Content/>
-            </Group>   
-    </div>
-    )
+  const items = (data || []).map((row) => ({
+    id: row.id,
+    title: row.title,
+    category: row.category,
+    created_at: row.created_at,
+    description: summarizeBlocks(getBlocksFromSubmission(row), 140) || String(row.content || '').slice(0, 140),
+  }));
+
+  return { props: { items } };
 }

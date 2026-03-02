@@ -11,7 +11,7 @@ import { useRouter } from 'next/router';
 import { ConTitle } from './components/component';
 import { Sharebutton } from './components/share';
 import Head from 'next/head';
-import { GoogleAds } from './components/googleAds';
+
 import { NotificationsProvider } from '@mantine/notifications';
 import Script from 'next/script';
 import AuthErrorBoundary from './components/authErrorBoundary';
@@ -88,7 +88,7 @@ export default function MyApp({ Component, pageProps, ...appProps }) {
                 `}
               </Script>
 
-              <GoogleAds />
+
               {tagNode}
               <AuthErrorBoundary><Component {...pageProps} /></AuthErrorBoundary>
               <GetStartedPrompt />

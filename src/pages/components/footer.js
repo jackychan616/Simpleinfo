@@ -15,7 +15,7 @@ const footerSections = [
     links: [
       { label: '關於我們', link: '/footer_pages' },
       { label: '網站目標', link: '/footer_pages#goal' },
-      { label: '變現方案', link: '/monetize' },
+      { label: '聯絡我們', link: '/about_us' },
     ],
   },
   {
