@@ -41,15 +41,27 @@ export async function isAdminEmailWithDb(email, clientArg) {
   const client = clientArg || getSupabaseServer().client;
   if (!client) return false;
 
-  const { data, error } = await client
+  // Preferred table: user_roles (new schema)
+  const { data: userRoleRows, error: userRoleErr } = await client
+    .from('user_roles')
+    .select('email, role')
+    .eq('email', normalizedEmail)
+    .limit(1);
+
+  if (!userRoleErr && (userRoleRows || []).length > 0) {
+    return (userRoleRows || []).some((item) => String(item?.role || '').toLowerCase() === 'admin');
+  }
+
+  // Backward compatibility: admin_roles (legacy schema)
+  const { data: legacyRows, error: legacyErr } = await client
     .from('admin_roles')
     .select('email, role')
     .eq('email', normalizedEmail)
     .limit(1);
 
-  if (error) return false;
+  if (legacyErr) return false;
 
-  return (data || []).some((item) => {
+  return (legacyRows || []).some((item) => {
     const role = String(item?.role || '').toLowerCase();
     return role === '' || role === 'admin';
   });
