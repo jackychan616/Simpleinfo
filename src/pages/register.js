@@ -24,26 +24,6 @@ export default function RegisterPage() {
     setLoading(false);
   }
 
-  async function registerSendCode() {
-    setLoading(true);
-    setMsg('');
-    try {
-      const supabase = getSupabaseBrowser();
-      if (!supabase) throw new Error('缺少 Supabase env');
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: { shouldCreateUser: true },
-      });
-      if (error) {
-        setMsg(`發送驗證碼失敗：${error.message}`);
-      } else {
-        setMsg('驗證碼已發送，請檢查電郵完成註冊。');
-      }
-    } catch (e) {
-      setMsg(`註冊失敗：${e.message}`);
-    }
-    setLoading(false);
-  }
 
   return (
     <>
@@ -52,14 +32,13 @@ export default function RegisterPage() {
         <Card withBorder shadow="sm" radius="md" p="lg">
         <Stack spacing="md">
           <Title order={2}>建立帳戶</Title>
-          <Text color="dimmed" size="sm">支援 Email + Password 或 Email 驗證碼註冊。</Text>
+          <Text color="dimmed" size="sm">支援 Email + Password 註冊（不使用 Email 驗證碼登入）。</Text>
 
           <TextInput label="Email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.currentTarget.value)} />
           <PasswordInput label="Password" value={password} onChange={(e) => setPassword(e.currentTarget.value)} />
 
           <Group grow>
             <Button onClick={registerPassword} disabled={!email || !password || loading}>{loading ? '處理中...' : 'Password Register'}</Button>
-            <Button variant="light" onClick={registerSendCode} disabled={!email || loading}>Send 驗證碼 Register</Button>
           </Group>
 
           <Divider />
