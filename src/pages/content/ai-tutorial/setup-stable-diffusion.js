@@ -1,173 +1,160 @@
 import {
+  Alert,
+  Badge,
+  Card,
   Code,
   Container,
-  List,
-  ThemeIcon,
+  Divider,
+  Grid,
+  Group,
   Image,
+  List,
   Space,
-  Grid
+  Stack,
+  Text,
+  ThemeIcon,
+  Title,
 } from '@mantine/core';
-import { ConTitle, ConText } from '../../components/component';
-import { IconCircleCheck } from '@tabler/icons-react';
+import { IconCircleCheck, IconInfoCircle } from '@tabler/icons-react';
+
+const command = 'git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git';
+
+function SectionTitle({ children }) {
+  return <Title order={2} mt="xl" mb="sm">{children}</Title>;
+}
+
 export function ConPage() {
   return (
-    <>
-      <Container>
-        <Grid>
-          <Grid.Col span="auto">
-            <ConTitle order={1}>部署Stable Diffusion</ConTitle>
+    <Container size="md" py="xl">
+      <Stack spacing="md">
+        <Grid align="center">
+          <Grid.Col span={12} md={7}>
+            <Stack spacing={6}>
+              <Badge color="blue" variant="light">AI Tutorial</Badge>
+              <Title order={1}>Stable Diffusion 本機部署指南（Windows）</Title>
+              <Text color="dimmed">
+                呢篇會用最實用方式，帶你由 0 到可用：安裝、啟動、放模型、第一次出圖。
+              </Text>
+            </Stack>
           </Grid.Col>
-          <Grid.Col span="auto">
-            <Image src="/img/stable-diffusion.webp" alt="main Image" />
+          <Grid.Col span={12} md={5}>
+            <Image src="/img/stable-diffusion.webp" alt="stable diffusion" radius="md" />
           </Grid.Col>
         </Grid>
-        <ConTitle order={2}>前置條件</ConTitle>
-        <List
-          spacing="xs"
-          size="sm"
-          icon={
-            <ThemeIcon color="teal" size={24} radius="xl">
-              <IconCircleCheck size="1rem" />
-            </ThemeIcon>
-          }
-        >
-          <List.Item>
-            安裝<kbd>python</kbd>最新版，確保添加至“PATH”路徑
-          </List.Item>
-          <List.Item>安裝git</List.Item>
-        </List>
 
-        <ConTitle order={2}>正文</ConTitle>
-        <ConText>在心儀的路徑下添加新的文件夾</ConText>
-        <ConText>在路徑下創建一個新的txt檔</ConText>
-        <ConText>複製以下命令，並添加至txt檔内，保存：</ConText>
-        <Code display="block" style={{ color: 'primary' }}>
-          <ConText>
-            git clone{' '}
-            <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui.git">
-              https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
-            </a>
-          </ConText>
-        </Code>
-        <ConText>
-          重命名txt檔，確保名稱不包含除英文外的字符，同時將.txt後綴改爲.bat
-        </ConText>
-        <Image src="/img/setup-stable-diffusion/1.png" alt="Image 1" />
-        <ConText>
-          運行bat檔，一個名爲stable-diffusion-webui的文件將會被創建，他將包含以下内容：
-        </ConText>
-        <Space h="lg"></Space>
-        <Image
-          src="/img/setup-stable-diffusion/2.png"
-          alt="Image 2"
-          height={429}
-          width={293}
-        />
-        <Space h="lg"></Space>
-        <ConText>
-          將你手上的ckpt檔案添加至stable-diffusion-webui\models\Stable-diffusion，直接粘貼即可，以下爲完成后的樣子
-          （請自行獲取ckpt檔，本站暫不提供）
-        </ConText>
-        <Space h="lg"></Space>
-        <Image src="/img/setup-stable-diffusion/3.png" alt="Image 3" />
-        <Space h="lg"></Space>
-        <ConText>
-          運行stable-diffusion-webui路徑下的webui-user.bat。
-          若一切順利，你將獲得以下結果
-        </ConText>
-        <Image src="/img/setup-stable-diffusion/4.png" alt="Image 4" />
-        <Space h="lg"></Space>
-        <ConText>
-          訪問最後一行的 Running on local URL:
-          后的地址，你便可以開始隨心所欲的使用你自己搭建的Stable Diffusion站了。
-        </ConText>
-        <Image src="/img/setup-stable-diffusion/5.png"  maw = {500} alt="stable diffusion setup" />
-        <ConText>
-          Prompt：輸入Tag，將會影響圖片風格
-        </ConText>
-        <ConText>
-          {`例子：Highest picture quality, Master's work，colorful, looking at viewer, expressionless, pale skin, blue eyes`}
-        </ConText>
-        <ConText>
-          Negative prompt: 輸入Tag，但是圖片將避免包含所提及的風格
-        </ConText>
-        <ConText>
-          例子extra fingers, fewer fingers，bad anatomy，inaccurate limb
-        </ConText>
-        <ConText>
-          Sample method：采樣方式，不同的方式將直接影響圖片風格，取自己偏好即可
-        </ConText>
-        <ConText>
-          Sample steps：采樣步驟數，將對圖片生成時間產生影響，數字越高 時間越久
-        </ConText>
-        <ConText>
-          Width，Height：圖片的長、寬（以像素為單位）；顯卡顯存大小將決定其最高數字，超過上限時，網頁將會崩潰，8GB顯存上限約爲1024*1024。
-        </ConText>
-        <ConText>
-        Seed：種子，不同種子將有不同結果，但相同的種子將導向同一結果，-1為隨機種子。
-        </ConText>
-        <ConText>
-        配置各參數后， 點擊右上角Generate即可開始生成。
-        </ConText>
-        <Image src = "/img/setup-stable-diffusion/6.png" maw = "500px" caption="以下爲生成例子（耗時以RTX3060Ti 為基準，其時長將與你的GPU性能挂鈎)" alt = "emaple of stable diffusion"/>
-        <ConText>
-        Prompt: epic view, fantasy, ice and fire
-        Negative prompt: blurry, watermark
-        Steps: 30, Sampler: Euler a, CFG scale: 7, Seed: 2002586862, Size: 1024x1024, Model hash: 14749efc0a, Model: sd-v1-4-full-ema
-        耗時11秒
+        <Alert icon={<IconInfoCircle size={16} />} color="blue" radius="md">
+          目標：15-30 分鐘內完成本機部署，並成功生成第一張圖。
+        </Alert>
 
-        </ConText>
-      </Container>
-    </>
+        <SectionTitle>前置條件</SectionTitle>
+        <Card withBorder radius="md">
+          <List
+            spacing="sm"
+            icon={
+              <ThemeIcon color="teal" size={22} radius="xl">
+                <IconCircleCheck size={14} />
+              </ThemeIcon>
+            }
+          >
+            <List.Item>安裝最新版 Python，並勾選加入 PATH</List.Item>
+            <List.Item>安裝 Git</List.Item>
+            <List.Item>建議顯卡 8GB VRAM 以上（入門可用，速度會慢啲）</List.Item>
+          </List>
+        </Card>
+
+        <SectionTitle>步驟 1：下載 WebUI</SectionTitle>
+        <Card withBorder radius="md">
+          <Stack spacing="sm">
+            <Text>喺你想安裝嘅資料夾，開 terminal / cmd，執行：</Text>
+            <Code block>{command}</Code>
+            <Text size="sm" color="dimmed">
+              如果你習慣 .bat 方式都可以，但直接 terminal 會更簡潔、更少出錯。
+            </Text>
+          </Stack>
+        </Card>
+
+        <SectionTitle>步驟 2：首次啟動（自動安裝依賴）</SectionTitle>
+        <Card withBorder radius="md">
+          <Stack spacing="sm">
+            <Text>進入 `stable-diffusion-webui` 資料夾，執行 `webui-user.bat`。</Text>
+            <Image src="/img/setup-stable-diffusion/1.png" alt="step 1" radius="sm" />
+            <Text size="sm" color="dimmed">首次啟動會安裝依賴，需等幾分鐘。</Text>
+          </Stack>
+        </Card>
+
+        <SectionTitle>步驟 3：放入模型檔</SectionTitle>
+        <Card withBorder radius="md">
+          <Stack spacing="sm">
+            <Text>
+              將你的 `.ckpt` / `.safetensors` 模型放入：
+              <Code>stable-diffusion-webui/models/Stable-diffusion</Code>
+            </Text>
+            <Image src="/img/setup-stable-diffusion/3.png" alt="model folder" radius="sm" />
+            <Text size="sm" color="dimmed">模型檔請自行取得，本站不提供下載。</Text>
+          </Stack>
+        </Card>
+
+        <SectionTitle>步驟 4：開 WebUI 開始出圖</SectionTitle>
+        <Card withBorder radius="md">
+          <Stack spacing="sm">
+            <Text>再次執行 `webui-user.bat`，看到 `Running on local URL` 後，打開該網址即可。</Text>
+            <Image src="/img/setup-stable-diffusion/4.png" alt="running" radius="sm" />
+            <Image src="/img/setup-stable-diffusion/5.png" alt="web ui" radius="sm" />
+          </Stack>
+        </Card>
+
+        <SectionTitle>核心參數（快速理解）</SectionTitle>
+        <Card withBorder radius="md">
+          <Stack spacing={6}>
+            <Text><b>Prompt：</b>你想要的畫面描述，愈具體愈好。</Text>
+            <Text><b>Negative prompt：</b>你唔想出現嘅元素。</Text>
+            <Text><b>Sampler：</b>采樣方法，影響風格與細節。</Text>
+            <Text><b>Steps：</b>步數，愈高通常愈慢。</Text>
+            <Text><b>Width / Height：</b>圖片尺寸；超過顯存上限可能崩潰。</Text>
+            <Text><b>Seed：</b>固定同一 seed 可重現相近結果，`-1` 為隨機。</Text>
+          </Stack>
+        </Card>
+
+        <SectionTitle>參考配置（可直接試）</SectionTitle>
+        <Card withBorder radius="md">
+          <Stack spacing="sm">
+            <Code block>
+{`Prompt: epic view, fantasy, ice and fire
+Negative prompt: blurry, watermark
+Steps: 30
+Sampler: Euler a
+CFG scale: 7
+Seed: 2002586862
+Size: 1024x1024`}
+            </Code>
+            <Image src="/img/setup-stable-diffusion/6.png" alt="example image" maw={520} radius="sm" />
+            <Text size="sm" color="dimmed">示例耗時約 11 秒（RTX 3060 Ti，實際視乎你 GPU）。</Text>
+          </Stack>
+        </Card>
+
+        <Divider my="md" />
+        <Text size="sm" color="dimmed">完成後你已可用本機 Stable Diffusion 生圖。下一步可學 LoRA / ControlNet 進階玩法。</Text>
+      </Stack>
+      <Space h="lg" />
+    </Container>
   );
 }
 
 export default function Page() {
-  return (
-    <>
-      <ConPage />
-    </>
-  );
+  return <ConPage />;
 }
-export const getStaticProps = async () => {
-  return {
-    props: {
-      openGraphData: [
-        {
-          name:'description',
-          content:'如何在Windows部署AI畫圖, 使用Python在電腦搭建Stable diffusion'
 
-        },
-        {
-          name:'title',
-          content:'如何在Windows部署AI畫圖'
-        },
-        {
-          property: "og:image",
-          content:
-            "https://simpleinfohk.me/img/stable-diffusion.webp",
-        },
-        {
-          property: "og:image:width",
-          content: "300",
-        },
-        {
-          property: "og:image:height",
-          content: "200",
-        },
-        {
-          property: "og:title",
-          content: "如何在Windows部署AI畫圖",
-        },
-        {
-          property: "og:description",
-          content: "如何在Windows部署AI畫圖, 使用Python在電腦搭建Stable diffusion",
-        },
-        {
-          property: "og:type",
-          content: "website",
-        },
-      ],
-    },
-  };
-};
+export const getStaticProps = async () => ({
+  props: {
+    openGraphData: [
+      { name: 'description', content: '如何在 Windows 本機部署 Stable Diffusion，快速完成安裝並生成第一張 AI 圖像。' },
+      { name: 'title', content: 'Stable Diffusion 本機部署指南（Windows）' },
+      { property: 'og:image', content: 'https://simpleinfohk.me/img/stable-diffusion.webp' },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+      { property: 'og:title', content: 'Stable Diffusion 本機部署指南（Windows）' },
+      { property: 'og:description', content: '由安裝到第一張圖，一步步完成 Stable Diffusion 本機部署。' },
+      { property: 'og:type', content: 'article' },
+    ],
+  },
+});
