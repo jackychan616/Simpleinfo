@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import BlockRenderer from '../../components/blockRenderer';
 import { getBlocksFromSubmission } from '../../../lib/contentBlocks';
+import { getAccessToken } from '../../../lib/supabaseBrowser';
 
 function statusColor(status) {
   if (status === 'approved') return 'green';
@@ -16,14 +17,33 @@ export default function SubmissionDetailPage() {
   const router = useRouter();
   const { id } = router.query;
   const [row, setRow] = useState(null);
+  const [error, setError] = useState('');
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     if (!id) return;
-    fetch(`/api/writer/submissions/${id}`)
-      .then((r) => r.json())
-      .then((body) => setRow(body.data || null))
-      .catch(() => setRow(null));
+
+    async function load() {
+      const token = await getAccessToken();
+      const res = await fetch(`/api/writer/submissions/${id}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+      const body = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setError(body?.error || '讀取失敗');
+        setRow(null);
+        return;
+      }
+
+      setError('');
+      setRow(body.data || null);
+    }
+
+    load().catch(() => {
+      setError('讀取失敗');
+      setRow(null);
+    });
   }, [id]);
 
   const blocks = useMemo(() => getBlocksFromSubmission(row), [row]);
@@ -31,7 +51,7 @@ export default function SubmissionDetailPage() {
   if (!row) {
     return (
       <Container size="md" py="xl">
-        <Text color="dimmed">載入中...</Text>
+        <Text color="dimmed">{error || '載入中...'}</Text>
       </Container>
     );
   }
