@@ -1,4 +1,5 @@
 import { Badge, Button, Card, Container, Group, Stack, Text, Title } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
@@ -15,6 +16,7 @@ export default function SubmissionDetailPage() {
   const router = useRouter();
   const { id } = router.query;
   const [row, setRow] = useState(null);
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     if (!id) return;
@@ -48,10 +50,10 @@ export default function SubmissionDetailPage() {
           </Stack>
         </Card>
 
-        <Group>
-          <Button component={Link} href="/writer/submissions" variant="light">返回列表</Button>
+        <Group style={{ width: isMobile ? '100%' : 'auto' }}>
+          <Button component={Link} href="/writer/submissions" variant="light" fullWidth={isMobile}>返回列表</Button>
           {row.status === 'approved' ? (
-            <Button component={Link} href={`/community/${row.id}`}>公開頁預覽</Button>
+            <Button component={Link} href={`/community/${row.id}`} fullWidth={isMobile}>公開頁預覽</Button>
           ) : null}
         </Group>
       </Stack>
