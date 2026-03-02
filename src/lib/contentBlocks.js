@@ -1,4 +1,4 @@
-export const BLOCK_TYPES = ['paragraph', 'heading', 'image', 'link', 'code', 'embed'];
+export const BLOCK_TYPES = ['paragraph', 'heading', 'image', 'link', 'code', 'embed', 'list', 'table'];
 
 export function normalizeBlock(raw = {}) {
   const type = BLOCK_TYPES.includes(raw.type) ? raw.type : 'paragraph';
@@ -22,6 +22,18 @@ export function normalizeBlock(raw = {}) {
   if (type === 'embed') {
     return { ...base, provider: String(raw.provider || 'youtube').trim(), url: String(raw.url || '').trim(), title: String(raw.title || '').trim() };
   }
+  if (type === 'list') {
+    const items = Array.isArray(raw.items) ? raw.items.map((x) => String(x || '').trim()).filter(Boolean) : [];
+    const ordered = Boolean(raw.ordered);
+    return { ...base, ordered, items };
+  }
+  if (type === 'table') {
+    const headers = Array.isArray(raw.headers) ? raw.headers.map((x) => String(x || '').trim()) : [];
+    const rows = Array.isArray(raw.rows)
+      ? raw.rows.map((r) => (Array.isArray(r) ? r.map((c) => String(c || '').trim()) : [])).filter((r) => r.some(Boolean))
+      : [];
+    return { ...base, headers, rows };
+  }
 
   return { ...base, text: String(raw.text || '').trim() };
 }
@@ -33,6 +45,8 @@ export function normalizeBlocks(blocks) {
     if (b.type === 'code') return Boolean(String(b.code || '').trim());
     if (b.type === 'link') return Boolean(b.href || b.text);
     if (b.type === 'embed') return Boolean(b.url);
+    if (b.type === 'list') return Array.isArray(b.items) && b.items.length > 0;
+    if (b.type === 'table') return Array.isArray(b.rows) && b.rows.length > 0;
     return Boolean(String(b.text || '').trim());
   });
 }
@@ -63,6 +77,9 @@ export function contentToBlocks(content = '') {
   let codeLang = 'plaintext';
   let codeBuffer = [];
   let paraBuffer = [];
+  let listBuffer = [];
+  let listOrdered = false;
+  let tableBuffer = [];
 
   function flushParagraph() {
     const text = paraBuffer.join('\n').trim();
@@ -70,6 +87,25 @@ export function contentToBlocks(content = '') {
       blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'paragraph', text }));
     }
     paraBuffer = [];
+  }
+
+  function flushList() {
+    if (listBuffer.length) {
+      blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'list', ordered: listOrdered, items: listBuffer }));
+    }
+    listBuffer = [];
+    listOrdered = false;
+  }
+
+  function flushTable() {
+    if (tableBuffer.length >= 2) {
+      const headers = tableBuffer[0].map((x) => x.trim());
+      const rows = tableBuffer.slice(2).map((r) => r.map((x) => x.trim())).filter((r) => r.some(Boolean));
+      if (rows.length) {
+        blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'table', headers, rows }));
+      }
+    }
+    tableBuffer = [];
   }
 
   function flushCode() {
@@ -102,6 +138,8 @@ export function contentToBlocks(content = '') {
     const h = line.match(/^(#{1,6})\s+(.+)$/);
     if (h) {
       flushParagraph();
+      flushList();
+      flushTable();
       blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'heading', level: h[1].length, text: h[2].trim() }));
       continue;
     }
@@ -109,20 +147,51 @@ export function contentToBlocks(content = '') {
     const linkOnly = line.match(/^\[(.+)\]\((https?:\/\/[^)]+)\)$/);
     if (linkOnly) {
       flushParagraph();
+      flushList();
+      flushTable();
       blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'link', text: linkOnly[1].trim(), href: linkOnly[2].trim() }));
+      continue;
+    }
+
+    const ul = line.match(/^[-*]\s+(.+)$/);
+    const ol = line.match(/^\d+\.\s+(.+)$/);
+    if (ul || ol) {
+      flushParagraph();
+      flushTable();
+      const ordered = Boolean(ol);
+      const item = (ul?.[1] || ol?.[1] || '').trim();
+      if (listBuffer.length && listOrdered !== ordered) {
+        flushList();
+      }
+      listOrdered = ordered;
+      if (item) listBuffer.push(item);
+      continue;
+    }
+
+    if (/^\|.+\|$/.test(line.trim())) {
+      flushParagraph();
+      flushList();
+      const cells = line.trim().split('|').slice(1, -1).map((x) => x.trim());
+      tableBuffer.push(cells);
       continue;
     }
 
     if (!line.trim()) {
       flushParagraph();
+      flushList();
+      flushTable();
       continue;
     }
 
+    flushList();
+    flushTable();
     paraBuffer.push(line);
   }
 
   if (inCode) flushCode();
   flushParagraph();
+  flushList();
+  flushTable();
 
   return normalizeBlocks(blocks);
 }

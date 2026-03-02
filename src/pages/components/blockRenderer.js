@@ -51,6 +51,44 @@ export default function BlockRenderer({ blocks = [] }) {
           );
         }
 
+        if (block.type === 'list') {
+          const Tag = block.ordered ? 'ol' : 'ul';
+          return (
+            <Tag key={block.id} style={{ paddingLeft: 20, margin: 0 }}>
+              {(block.items || []).map((item, i) => (
+                <li key={`${block.id}-${i}`}>
+                  <Text component="span">{item}</Text>
+                </li>
+              ))}
+            </Tag>
+          );
+        }
+
+        if (block.type === 'table') {
+          return (
+            <div key={block.id} style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr>
+                    {(block.headers || []).map((h, i) => (
+                      <th key={`${block.id}-h-${i}`} style={{ border: '1px solid #ddd', padding: 8, textAlign: 'left' }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {(block.rows || []).map((row, r) => (
+                    <tr key={`${block.id}-r-${r}`}>
+                      {row.map((cell, c) => (
+                        <td key={`${block.id}-c-${r}-${c}`} style={{ border: '1px solid #ddd', padding: 8 }}>{cell}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          );
+        }
+
         return <Text key={block.id} style={{ whiteSpace: 'pre-wrap' }}>{block.text}</Text>;
       })}
     </Stack>
