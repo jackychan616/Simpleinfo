@@ -38,14 +38,11 @@ export default function SubmissionDetailPage() {
     <Container size="md" py="xl">
       <Stack spacing="md">
         <Group position="apart">
-          <Title order={1}>投稿內容</Title>
           <Badge color={statusColor(row.status)}>{row.status}</Badge>
         </Group>
 
         <Card withBorder radius="md" shadow="sm">
-          <Title order={3}>{row.title}</Title>
-          <Text size="sm" color="dimmed" mt="xs">分類：{row.category}</Text>
-          <Text size="sm" color="dimmed">建立時間：{new Date(row.created_at).toLocaleString()}</Text>
+          <Title order={2}>{row.title}</Title>
           <Stack mt="md">
             <BlockRenderer blocks={blocks} />
           </Stack>
