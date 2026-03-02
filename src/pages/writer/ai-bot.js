@@ -174,7 +174,7 @@ export default function AiBotDashboardPage() {
   }
 
   async function optimizeByReview() {
-    const res = await fetch('/api/ai-bot/optimize', {
+    const res = await fetch('/api/ai-bot/optimize-enqueue', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -184,16 +184,13 @@ export default function AiBotDashboardPage() {
     });
 
     if (res.ok) {
-      const body = await res.json().catch(() => ({}));
-      setMsg(`已按評論優化內容 ✅ submission=${body?.data?.id || reviewSubmissionId}`);
+      setMsg(`已加入優化 queue ✅ submission=${reviewSubmissionId}`);
       setReviewComment('');
-      await loadStatus();
     } else {
       const err = await readErrorMessage(res);
-      setMsg(`優化失敗：${err}`);
+      setMsg(`優化排程失敗：${err}`);
     }
   }
-
 
   return (
     <RouteGuard requireLogin>
@@ -257,7 +254,7 @@ export default function AiBotDashboardPage() {
                   Regenerate / Optimize by Comment
                 </Button>
               </Group>
-              <Text size="xs" color="dimmed">如遇 504 timeout，可改用本機：<code>npm run ai:bot:optimize -- --submissionId {'<id>'} --comment &quot;語氣更貼地，加入實例&quot;</code></Text>
+              <Text size="xs" color="dimmed">Web 會先入 optimize queue；本機請跑：<code>npm run ai:bot:optimize:loop -- --interval 15000</code></Text>
             </Stack>
           </Card>
 

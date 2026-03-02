@@ -92,14 +92,7 @@ async function optimizeWithAI({ title, content, comment }) {
   };
 }
 
-async function main() {
-  const submissionId = arg('submissionId');
-  const comment = arg('comment');
-  if (!submissionId || !comment) {
-    console.error('Usage: npm run ai:bot:optimize -- --submissionId <id> --comment "your review"');
-    process.exit(1);
-  }
-
+async function optimizeOne({ submissionId, comment }) {
   const { data: row, error: rowErr } = await supabase
     .from('writer_submissions')
     .select('id,title,content')
@@ -125,8 +118,62 @@ async function main() {
     .single();
 
   if (upErr) throw upErr;
-
   console.log('[ai-optimize] done', updated.id, updated.title);
+}
+
+async function processQueueOne() {
+  const { data: job, error } = await supabase
+    .from('ai_optimize_queue')
+    .select('*')
+    .eq('status', 'pending')
+    .order('created_at', { ascending: true })
+    .limit(1)
+    .single();
+
+  if (error || !job) {
+    console.log('[ai-optimize] no pending jobs');
+    return false;
+  }
+
+  await supabase.from('ai_optimize_queue').update({ status: 'processing' }).eq('id', job.id);
+
+  try {
+    await optimizeOne({ submissionId: job.submission_id, comment: job.comment });
+    await supabase.from('ai_optimize_queue').update({ status: 'done', processed_at: new Date().toISOString() }).eq('id', job.id);
+    return true;
+  } catch (e) {
+    await supabase
+      .from('ai_optimize_queue')
+      .update({ status: 'failed', error_message: String(e.message || e), processed_at: new Date().toISOString() })
+      .eq('id', job.id);
+    console.error('[ai-optimize] failed', e.message || e);
+    return false;
+  }
+}
+
+async function main() {
+  const submissionId = arg('submissionId');
+  const comment = arg('comment');
+  const isLoop = process.argv.includes('--loop');
+  const intervalMs = Math.max(5000, Number(arg('interval', '15000')) || 15000);
+
+  if (submissionId && comment) {
+    await optimizeOne({ submissionId, comment });
+    return;
+  }
+
+  if (!isLoop) {
+    await processQueueOne();
+    return;
+  }
+
+  console.log(`[ai-optimize] loop mode started (interval=${intervalMs}ms)`);
+  while (true) {
+    // eslint-disable-next-line no-await-in-loop
+    await processQueueOne();
+    // eslint-disable-next-line no-await-in-loop
+    await new Promise((r) => setTimeout(r, intervalMs));
+  }
 }
 
 main().catch((e) => {
