@@ -15,6 +15,7 @@ import { GoogleAds } from './components/googleAds';
 import { NotificationsProvider } from '@mantine/notifications';
 import Script from 'next/script';
 import AuthErrorBoundary from './components/authErrorBoundary';
+import GetStartedPrompt from './components/getStartedPrompt';
 import { buildCanonicalUrl } from '../lib/seo';
 
 export default function MyApp({ Component, pageProps, ...appProps }) {
@@ -63,6 +64,7 @@ export default function MyApp({ Component, pageProps, ...appProps }) {
               <GoogleAds />
               {tagNode}
               <AuthErrorBoundary><Component {...pageProps} /></AuthErrorBoundary>
+              <GetStartedPrompt />
               {children}
               <Analytics />
             </Layout>
