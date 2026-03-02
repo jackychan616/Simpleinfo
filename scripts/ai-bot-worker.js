@@ -83,6 +83,9 @@ Rules:
   }
 
   const blocks = normalizeBlocks(Array.isArray(parsed.blocks) ? parsed.blocks : []);
+  if (!blocks.length) {
+    throw new Error('AI produced empty blocks');
+  }
 
   return {
     title: String(parsed.title).trim(),
