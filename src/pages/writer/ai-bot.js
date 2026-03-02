@@ -241,7 +241,8 @@ export default function AiBotDashboardPage() {
                 <thead>
                   <tr>
                     <th>Topic</th>
-                    <th>Status</th>
+                    <th>Queue</th>
+                    <th>Submission</th>
                     <th>Submission ID</th>
                     <th>Scheduled</th>
                     <th>Processed</th>
@@ -254,6 +255,7 @@ export default function AiBotDashboardPage() {
                     <tr key={r.id}>
                       <td>{r.topic}</td>
                       <td>{r.status}</td>
+                      <td>{r.submission_status || '-'}</td>
                       <td>
                         {r.generated_submission_id ? (
                           <Stack spacing={4}>

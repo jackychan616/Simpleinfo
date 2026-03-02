@@ -23,5 +23,25 @@ export default async function handler(req, res) {
     return acc;
   }, {});
 
-  return res.status(200).json({ counts, latest: latest || [] });
+  const submissionIds = [...new Set((latest || []).map((x) => x.generated_submission_id).filter(Boolean))];
+  let submissionStatusMap = {};
+
+  if (submissionIds.length > 0) {
+    const { data: submissions } = await client
+      .from('writer_submissions')
+      .select('id,status')
+      .in('id', submissionIds);
+
+    submissionStatusMap = (submissions || []).reduce((acc, row) => {
+      acc[row.id] = row.status;
+      return acc;
+    }, {});
+  }
+
+  const normalizedLatest = (latest || []).map((item) => ({
+    ...item,
+    submission_status: item.generated_submission_id ? submissionStatusMap[item.generated_submission_id] || null : null,
+  }));
+
+  return res.status(200).json({ counts, latest: normalizedLatest });
 }
