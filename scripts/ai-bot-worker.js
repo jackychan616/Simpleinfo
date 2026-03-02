@@ -2,6 +2,9 @@
 
 const { createClient } = require('@supabase/supabase-js');
 const { buildDraftFromTopic } = require('../src/lib/aiBotDraft');
+const { loadLocalEnv } = require('./load-env');
+
+loadLocalEnv();
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -72,17 +75,25 @@ async function processOne() {
   }
 }
 
+function arg(name, fallback = '') {
+  const index = process.argv.findIndex((a) => a === `--${name}`);
+  if (index < 0) return fallback;
+  return process.argv[index + 1] || fallback;
+}
+
 async function main() {
   const isLoop = process.argv.includes('--loop');
+  const intervalMs = Math.max(5_000, Number(arg('interval', '60000')) || 60_000);
+
   if (!isLoop) {
     await processOne();
     return;
   }
 
-  console.log('[ai-bot] loop mode started');
+  console.log(`[ai-bot] loop mode started (interval=${intervalMs}ms)`);
   while (true) {
     await processOne();
-    await new Promise((r) => setTimeout(r, 60_000));
+    await new Promise((r) => setTimeout(r, intervalMs));
   }
 }
 

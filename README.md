@@ -16,7 +16,7 @@ npm run build
 ## Writer platform (v2)
 
 - `/writer` 投稿中心
-- `/writer/auth` Email magic link 登入
+- `/writer/auth` Email 驗證碼登入
 - `/writer/new` 建立投稿（寫入 Supabase `writer_submissions`）
 - `/writer/my-posts` 只睇自己投稿
 - `/writer/submissions` 投稿管理
@@ -26,12 +26,25 @@ npm run build
 
 Auth methods:
 - Email + Password
-- Magic Link
 - Google OAuth（需於 Supabase Auth Providers 啟用）
+- Register 頁可用 Email 驗證碼 + verify code 完成註冊
 
 權限規則：
 - 一般作者：可提交、可睇自己稿
 - admin（`ADMIN_EMAILS` allowlist）：先可 approve/reject
+
+## Local AI blog auto-generation scripts
+
+- Queue one topic:
+  - `npm run ai:bot:enqueue -- --topic "2026 香港 AI 工具比較" --category ai --tone professional --length medium`
+- Run worker once:
+  - `npm run ai:bot:once`
+- Run worker loop locally (default every 60s):
+  - `npm run ai:bot:loop`
+- Custom loop interval (ms):
+  - `npm run ai:bot:loop -- --interval 15000`
+
+Scripts will auto-load `.env` and `.env.local` from project root.
 
 Setup guide:
 - `docs/SUPABASE_SETUP.md`
