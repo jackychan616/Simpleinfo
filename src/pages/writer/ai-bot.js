@@ -232,6 +232,7 @@ export default function AiBotDashboardPage() {
                 <tr>
                   <th>Topic</th>
                   <th>Status</th>
+                  <th>Submission ID</th>
                   <th>Scheduled</th>
                   <th>Processed</th>
                   <th>Log</th>
@@ -243,6 +244,30 @@ export default function AiBotDashboardPage() {
                   <tr key={r.id}>
                     <td>{r.topic}</td>
                     <td>{r.status}</td>
+                    <td>
+                      {r.generated_submission_id ? (
+                        <Stack spacing={4}>
+                          <Text size="xs">{r.generated_submission_id}</Text>
+                          <Button
+                            size="xs"
+                            variant="subtle"
+                            onClick={async () => {
+                              try {
+                                await navigator.clipboard.writeText(r.generated_submission_id);
+                                setReviewSubmissionId(r.generated_submission_id);
+                                setMsg('已複製 submission id 並填入 optimize 欄位 ✅');
+                              } catch {
+                                setMsg('複製失敗，請手動複製 submission id');
+                              }
+                            }}
+                          >
+                            Copy ID
+                          </Button>
+                        </Stack>
+                      ) : (
+                        '-'
+                      )}
+                    </td>
                     <td>{r.scheduled_at ? new Date(r.scheduled_at).toLocaleString() : '-'}</td>
                     <td>{r.processed_at ? new Date(r.processed_at).toLocaleString() : '-'}</td>
                     <td style={{ maxWidth: 260 }}>{r.error_message || '-'}</td>
