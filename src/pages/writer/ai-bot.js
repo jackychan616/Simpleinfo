@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Container, Group, Select, Stack, Table, Text, TextInput, Title } from '@mantine/core';
+import { Badge, Button, Card, Container, Group, ScrollArea, Select, Stack, Table, Text, TextInput, Title } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import RouteGuard from '../components/routeGuard';
 import { getSupabaseBrowser } from '../../lib/supabaseBrowser';
@@ -192,71 +192,76 @@ export default function AiBotDashboardPage() {
 
           <Card withBorder>
             <Text size="sm" color="dimmed" mb="sm">Recent queue items (with logs)</Text>
-            <Table striped highlightOnHover>
-              <thead>
-                <tr>
-                  <th>Topic</th>
-                  <th>Status</th>
-                  <th>Submission ID</th>
-                  <th>Scheduled</th>
-                  <th>Processed</th>
-                  <th>Log</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {latest.map((r) => (
-                  <tr key={r.id}>
-                    <td>{r.topic}</td>
-                    <td>{r.status}</td>
-                    <td>
-                      {r.generated_submission_id ? (
-                        <Stack spacing={4}>
-                          <Text size="xs">{r.generated_submission_id}</Text>
-                          <Button
-                            size="xs"
-                            variant="subtle"
-                            onClick={async () => {
-                              try {
-                                await navigator.clipboard.writeText(r.generated_submission_id);
-                                setReviewSubmissionId(r.generated_submission_id);
-                                setMsg('已複製 submission id 並填入 optimize 欄位 ✅');
-                              } catch {
-                                setMsg('複製失敗，請手動複製 submission id');
-                              }
-                            }}
-                          >
-                            Copy ID
-                          </Button>
-                        </Stack>
-                      ) : (
-                        '-'
-                      )}
-                    </td>
-                    <td>{r.scheduled_at ? new Date(r.scheduled_at).toLocaleString() : '-'}</td>
-                    <td>{r.processed_at ? new Date(r.processed_at).toLocaleString() : '-'}</td>
-                    <td style={{ maxWidth: 260 }}>{r.error_message || '-'}</td>
-                    <td>
-                      {r.status === 'failed' ? (
-                        <Button size="xs" variant="light" onClick={() => retryFailed(r.id)}>
-                          Retry
-                        </Button>
-                      ) : r.status === 'pending' ? (
-                        <Button size="xs" color="red" variant="light" onClick={() => deletePending(r.id)}>
-                          Delete
-                        </Button>
-                      ) : r.generated_submission_id ? (
-                        <Button size="xs" component="a" href={`/writer/submissions/${r.generated_submission_id}`}>
-                          Edit
-                        </Button>
-                      ) : (
-                        '-'
-                      )}
-                    </td>
+            <ScrollArea>
+              <Table striped highlightOnHover miw={980}>
+                <thead>
+                  <tr>
+                    <th>Topic</th>
+                    <th>Status</th>
+                    <th>Submission ID</th>
+                    <th>Scheduled</th>
+                    <th>Processed</th>
+                    <th>Log</th>
+                    <th>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
+                </thead>
+                <tbody>
+                  {latest.map((r) => (
+                    <tr key={r.id}>
+                      <td>{r.topic}</td>
+                      <td>{r.status}</td>
+                      <td>
+                        {r.generated_submission_id ? (
+                          <Stack spacing={4}>
+                            <Text size="xs">{r.generated_submission_id}</Text>
+                            <Button
+                              size="xs"
+                              variant="subtle"
+                              onClick={async () => {
+                                try {
+                                  await navigator.clipboard.writeText(r.generated_submission_id);
+                                  setReviewSubmissionId(r.generated_submission_id);
+                                  setMsg('已複製 submission id 並填入 optimize 欄位 ✅');
+                                } catch {
+                                  setMsg('複製失敗，請手動複製 submission id');
+                                }
+                              }}
+                            >
+                              Copy ID
+                            </Button>
+                          </Stack>
+                        ) : (
+                          '-'
+                        )}
+                      </td>
+                      <td>{r.scheduled_at ? new Date(r.scheduled_at).toLocaleString() : '-'}</td>
+                      <td>{r.processed_at ? new Date(r.processed_at).toLocaleString() : '-'}</td>
+                      <td style={{ maxWidth: 260 }}>{r.error_message || '-'}</td>
+                      <td>
+                        <Stack spacing={6}>
+                          {r.generated_submission_id ? (
+                            <Button size="xs" component="a" href={`/writer/submissions/${r.generated_submission_id}`}>
+                              View/Edit
+                            </Button>
+                          ) : null}
+                          {r.status === 'failed' ? (
+                            <Button size="xs" variant="light" onClick={() => retryFailed(r.id)}>
+                              Retry
+                            </Button>
+                          ) : null}
+                          {r.status === 'pending' ? (
+                            <Button size="xs" color="red" variant="light" onClick={() => deletePending(r.id)}>
+                              Delete
+                            </Button>
+                          ) : null}
+                          {!r.generated_submission_id && r.status !== 'failed' && r.status !== 'pending' ? '-': null}
+                        </Stack>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </ScrollArea>
           </Card>
 
           {msg ? <Text size="sm">{msg}</Text> : null}
