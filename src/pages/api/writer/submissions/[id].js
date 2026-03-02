@@ -44,5 +44,18 @@ export default async function handler(req, res) {
     return res.status(200).json({ data });
   }
 
+  if (req.method === 'DELETE') {
+    const { user, error: authError } = await getUserFromRequest(req);
+    if (!user) return res.status(401).json({ error: authError || 'Unauthorized' });
+
+    if (!(await isAdminEmailWithDb(user.email, client))) {
+      return res.status(403).json({ error: 'Only admin can delete submission' });
+    }
+
+    const { error } = await client.from('writer_submissions').delete().eq('id', id);
+    if (error) return res.status(500).json({ error: error.message });
+    return res.status(200).json({ ok: true, id });
+  }
+
   return res.status(405).json({ error: 'Method not allowed' });
 }

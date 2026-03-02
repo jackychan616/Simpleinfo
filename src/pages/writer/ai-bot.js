@@ -149,6 +149,30 @@ export default function AiBotDashboardPage() {
     await loadStatus();
   }
 
+  async function deleteSubmission(id) {
+    const token = await getAccessToken();
+    if (!token) {
+      setMsg('請先登入 admin 帳號');
+      return;
+    }
+
+    const res = await fetch(`/api/writer/submissions/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (res.ok) {
+      setMsg('已刪除 AI 文章 ✅');
+    } else {
+      const err = await readErrorMessage(res);
+      setMsg(`刪除文章失敗：${err}`);
+    }
+
+    await loadStatus();
+  }
+
   async function optimizeByReview() {
     const res = await fetch('/api/ai-bot/optimize', {
       method: 'POST',
@@ -299,6 +323,11 @@ export default function AiBotDashboardPage() {
                           {r.generated_submission_id ? (
                             <Button size="xs" color="red" variant="light" onClick={() => reviewSubmission(r.generated_submission_id, 'rejected')}>
                               Reject
+                            </Button>
+                          ) : null}
+                          {r.generated_submission_id ? (
+                            <Button size="xs" color="red" variant="outline" onClick={() => deleteSubmission(r.generated_submission_id)}>
+                              Delete Blog
                             </Button>
                           ) : null}
                           {r.status === 'failed' ? (
