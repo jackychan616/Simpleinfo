@@ -7,7 +7,7 @@ import { IconHeart } from '@tabler/icons-react';
 import BlockRenderer from '../components/blockRenderer';
 import { Sharebutton } from '../components/share';
 import { getBlocksFromSubmission, summarizeBlocks } from '../../lib/contentBlocks';
-import { buildCanonicalUrl } from '../../lib/seo';
+import { buildCanonicalUrl, SITE_URL } from '../../lib/seo';
 import { articleJsonLd } from '../../lib/seoStructured';
 
 export default function CommunityPostPage() {
@@ -69,6 +69,8 @@ export default function CommunityPostPage() {
 
   const canonical = buildCanonicalUrl(`/community/${row.id}`);
   const description = summarizeBlocks(blocks, 160) || (row.content || '').slice(0, 160);
+  const seoTitle = `${row.title} | Simple Info 社群投稿`;
+  const seoImage = `${SITE_URL}/img/simple_info.png`;
 
   const articleLd = articleJsonLd({
     title: row.title,
@@ -82,13 +84,23 @@ export default function CommunityPostPage() {
   return (
     <>
       <Head>
-        <title>{row.title} | Simple Info 社群投稿</title>
+        <title>{seoTitle}</title>
         <meta name="description" content={description} />
+        <meta name="keywords" content={`${row.category || 'ai'}, blog, 香港, Simple Info`} />
         <link rel="canonical" href={canonical} />
-        <meta property="og:title" content={row.title} />
+
+        <meta property="og:site_name" content="Simple Info HK" />
+        <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={seoImage} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seoTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={seoImage} />
+
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       </Head>
       <Container size="md" py="xl">
