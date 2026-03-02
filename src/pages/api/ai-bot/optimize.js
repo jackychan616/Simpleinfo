@@ -1,5 +1,5 @@
 import { getSupabaseServer } from '../../../lib/supabaseServer';
-import { normalizeBlocks, blocksToPlainText } from '../../../lib/contentBlocks';
+import { normalizeBlocks, blocksToPlainText, contentToBlocks } from '../../../lib/contentBlocks';
 
 function safeJsonParse(raw) {
   try {
@@ -25,7 +25,8 @@ Requirements:
 - Traditional Chinese (Hong Kong style)
 - Human-like writing voice
 - Keep practical and concrete
-- blocks can include heading/paragraph/link/code`;
+- blocks can include heading/paragraph/link/code
+- Return at least 6 non-empty blocks`;
 
   const resp = await fetch('https://models.inference.ai.azure.com/chat/completions', {
     method: 'POST',
@@ -53,8 +54,15 @@ Requirements:
   const parsed = safeJsonParse(data?.choices?.[0]?.message?.content || '{}');
   if (!parsed) throw new Error('Failed to parse optimize JSON');
 
-  const blocks = normalizeBlocks(Array.isArray(parsed.blocks) ? parsed.blocks : []);
-  if (!blocks.length) throw new Error('AI optimize returned empty blocks');
+  let blocks = normalizeBlocks(Array.isArray(parsed.blocks) ? parsed.blocks : []);
+
+  if (!blocks.length && parsed.content) {
+    blocks = normalizeBlocks(contentToBlocks(String(parsed.content)));
+  }
+
+  if (!blocks.length) {
+    return null;
+  }
 
   return {
     title: String(parsed.title || title || '').trim(),
@@ -83,11 +91,22 @@ export default async function handler(req, res) {
   if (rowErr || !row) return res.status(404).json({ error: rowErr?.message || 'Submission not found' });
 
   try {
-    const draft = await optimizeWithGitHubModels({
-      title: row.title,
-      content: row.content,
-      comment,
-    });
+    let draft = null;
+
+    for (let i = 0; i < 2; i += 1) {
+      // Retry once if model returns empty blocks.
+      // eslint-disable-next-line no-await-in-loop
+      draft = await optimizeWithGitHubModels({
+        title: row.title,
+        content: row.content,
+        comment,
+      });
+      if (draft?.blocks?.length) break;
+    }
+
+    if (!draft?.blocks?.length) {
+      return res.status(422).json({ error: 'AI optimize returned empty blocks after retry' });
+    }
 
     const { data: updated, error: upErr } = await client
       .from('writer_submissions')
