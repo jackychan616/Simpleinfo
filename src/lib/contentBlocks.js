@@ -196,10 +196,33 @@ export function contentToBlocks(content = '') {
   return normalizeBlocks(blocks);
 }
 
+function hasMarkdownHints(text = '') {
+  const s = String(text || '');
+  return /(^|\n)#{1,6}\s+/.test(s)
+    || /(^|\n)(-|\*)\s+/.test(s)
+    || /(^|\n)\d+\.\s+/.test(s)
+    || /```/.test(s)
+    || /(^|\n)\|.+\|/.test(s);
+}
+
 export function getBlocksFromSubmission(row) {
   const blocks = normalizeBlocks(row?.content_blocks);
-  if (blocks.length > 0) return blocks;
-  return contentToBlocks(row?.content || '');
+  const content = String(row?.content || '');
+
+  if (blocks.length > 0) {
+    const rich = blocks.some((b) => ['heading', 'list', 'table', 'code', 'link'].includes(b.type));
+    if (rich) return blocks;
+
+    const merged = blocksToPlainText(blocks) || content;
+    if (hasMarkdownHints(merged)) {
+      const reparsed = contentToBlocks(merged);
+      if (reparsed.length) return reparsed;
+    }
+
+    return blocks;
+  }
+
+  return contentToBlocks(content);
 }
 
 export function summarizeBlocks(blocks, maxLen = 160) {
