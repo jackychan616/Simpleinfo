@@ -11,13 +11,8 @@ export default async function handler(req, res) {
     const status = String(req.query.status || 'all');
     const authorEmail = req.query.authorEmail;
 
-    // rejected: hide from everyone in list API
-    if (status === 'rejected') {
-      return res.status(200).json({ data: [] });
-    }
-
     // public can only list approved
-    // pending_review/all are admin-only
+    // pending_review/rejected/all are admin-only unless explicitly approved filter
     let forceApprovedOnly = false;
     if (status === 'approved') {
       forceApprovedOnly = true;
