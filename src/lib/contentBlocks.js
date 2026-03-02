@@ -14,7 +14,16 @@ export function normalizeBlock(raw = {}) {
     return { ...base, src: String(raw.src || '').trim(), alt: String(raw.alt || '').trim(), caption: String(raw.caption || '').trim() };
   }
   if (type === 'link') {
-    return { ...base, href: String(raw.href || '').trim(), text: String(raw.text || '').trim() };
+    const text = String(raw.text || '').trim();
+    let href = String(raw.href || '').trim();
+
+    if (href && !/^https?:\/\//i.test(href)) {
+      if (/^[a-z0-9.-]+\.[a-z]{2,}(\/.*)?$/i.test(href)) {
+        href = `https://${href}`;
+      }
+    }
+
+    return { ...base, href, text };
   }
   if (type === 'code') {
     return { ...base, language: String(raw.language || 'plaintext').trim(), code: String(raw.code || '') };
