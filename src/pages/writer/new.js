@@ -1,5 +1,6 @@
-import { ActionIcon, Badge, Button, Card, Container, Group, Select, Stack, Text, TextInput, Textarea, Title } from '@mantine/core';
-import { IconTrash } from '@tabler/icons-react';
+import { ActionIcon, Badge, Button, Card, Container, Divider, Group, Select, Stack, Text, TextInput, Textarea, Title } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
+import { IconSparkles, IconTrash } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useMemo, useState } from 'react';
@@ -18,13 +19,16 @@ const BLOCK_TYPE_OPTIONS = [
   { value: 'image', label: 'Image' },
   { value: 'link', label: 'Link' },
   { value: 'code', label: 'Code' },
-  { value: 'embed', label: 'Embed (future: YouTube)' },
+  { value: 'embed', label: 'Embed' },
+  { value: 'list', label: 'List' },
+  { value: 'table', label: 'Table' },
 ];
 
 const EMPTY_BLOCK = normalizeBlock({ type: 'paragraph', text: '' });
 
 export default function NewPostPage() {
   const router = useRouter();
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('ai');
   const [blocks, setBlocks] = useState([EMPTY_BLOCK]);
@@ -71,7 +75,7 @@ export default function NewPostPage() {
     const token = await getAccessToken();
     if (!token) {
       setLoading(false);
-      setMsg('提交失敗：請先登入（magic link）');
+      setMsg('提交失敗：請先登入');
       handleUnauthorized(router);
       return;
     }
@@ -99,7 +103,7 @@ export default function NewPostPage() {
       return;
     }
 
-    setMsg('已送審 ✅（已綁定 author）');
+    setMsg('已送審 ✅');
     setTitle('');
     setCategory('ai');
     setBlocks([normalizeBlock({ type: 'paragraph' })]);
@@ -135,7 +139,7 @@ export default function NewPostPage() {
 
     setAiDraft(body.data);
     if (body.data.title && !title.trim()) setTitle(body.data.title);
-    setMsg(body.fallback ? 'AI 使用 fallback 模式，已生成可用草稿。' : 'AI 草稿已生成 ✅');
+    setMsg(body.fallback ? 'AI 使用 fallback 模式，已生成草稿。' : 'AI 草稿已生成 ✅');
   }
 
   function applyAIDraft() {
@@ -145,15 +149,23 @@ export default function NewPostPage() {
   }
 
   return (
-    <Container size="md" py="xl">
+    <Container size="lg" py="xl">
       <Stack spacing="md">
-        <Title order={1}>建立投稿（Advanced Editor MVP）</Title>
-        <WriterAuth redirectPath="/writer/new" />
-        <Text color="dimmed">支援 Block：paragraph / heading / image / link / code（已預留 embed schema）。</Text>
+        <Stack spacing={2}>
+          <Title order={1}>Writer Editor</Title>
+          <Text color="dimmed">Professional block editor：清晰、快速、可直接送審。</Text>
+        </Stack>
 
-        <Card withBorder>
-          <Stack spacing="xs">
-            <Title order={4}>AI Assistant</Title>
+        <Card withBorder radius="md" shadow="sm">
+          <WriterAuth redirectPath="/writer/new" />
+        </Card>
+
+        <Card withBorder radius="md" shadow="sm">
+          <Stack spacing="sm">
+            <Group>
+              <IconSparkles size={18} />
+              <Title order={4}>AI Assistant</Title>
+            </Group>
             <TextInput label="Topic" placeholder="例如：2026 AI SEO content strategy" value={aiTopic} onChange={(e) => setAiTopic(e.currentTarget.value)} />
             <Group grow>
               <Select
@@ -179,115 +191,130 @@ export default function NewPostPage() {
             </Group>
             <Group>
               <Button onClick={() => requestAI('draft')} loading={aiLoading}>Generate draft</Button>
-              <Button variant="light" onClick={() => requestAI('expand')} loading={aiLoading}>Rewrite: Expand</Button>
-              <Button variant="light" onClick={() => requestAI('shorten')} loading={aiLoading}>Rewrite: Shorten</Button>
-              <Button variant="light" onClick={() => requestAI('improve_seo')} loading={aiLoading}>Rewrite: Improve SEO</Button>
+              <Button variant="light" onClick={() => requestAI('expand')} loading={aiLoading}>Expand</Button>
+              <Button variant="light" onClick={() => requestAI('shorten')} loading={aiLoading}>Shorten</Button>
+              <Button variant="light" onClick={() => requestAI('improve_seo')} loading={aiLoading}>Improve SEO</Button>
               <Button variant="outline" onClick={applyAIDraft} disabled={!aiDraft}>Apply to editor</Button>
             </Group>
-            {aiDraft?.description ? <Text size="sm" color="dimmed">AI SEO Description: {aiDraft.description}</Text> : null}
+            {aiDraft?.description ? <Text size="sm" color="dimmed">AI Description: {aiDraft.description}</Text> : null}
           </Stack>
         </Card>
 
-        <TextInput
-          label="文章標題"
-          value={title}
-          onChange={(e) => setTitle(e.currentTarget.value)}
-          required
-          maxLength={TITLE_LIMIT}
-          description={`${title.trim().length}/${TITLE_LIMIT}`}
-        />
-        <Select
-          label="分類"
-          value={category}
-          onChange={(value) => setCategory(value || 'ai')}
-          data={[
-            { value: 'ai', label: 'AI' },
-            { value: 'gaming', label: 'Gaming' },
-            { value: 'tech', label: 'Tech' },
-          ]}
-        />
-
-        <Group>
-          <Button variant={preview ? 'outline' : 'filled'} onClick={() => setPreview(false)}>Edit mode</Button>
-          <Button variant={preview ? 'filled' : 'outline'} onClick={() => setPreview(true)}>Preview mode</Button>
-          <Badge>{plainContent.length}/{CONTENT_LIMIT}</Badge>
-        </Group>
+        <Card withBorder radius="md" shadow="sm">
+          <Stack spacing="sm">
+            <Title order={4}>Article Basics</Title>
+            <TextInput
+              label="文章標題"
+              value={title}
+              onChange={(e) => setTitle(e.currentTarget.value)}
+              required
+              maxLength={TITLE_LIMIT}
+              description={`${title.trim().length}/${TITLE_LIMIT}`}
+            />
+            <Select
+              label="分類"
+              value={category}
+              onChange={(value) => setCategory(value || 'ai')}
+              data={[
+                { value: 'ai', label: 'AI' },
+                { value: 'gaming', label: 'Gaming' },
+                { value: 'tech', label: 'Tech' },
+                { value: 'business', label: 'Business' },
+              ]}
+            />
+            <Group>
+              <Button variant={preview ? 'outline' : 'filled'} onClick={() => setPreview(false)}>Edit</Button>
+              <Button variant={preview ? 'filled' : 'outline'} onClick={() => setPreview(true)}>Preview</Button>
+              <Badge>{plainContent.length}/{CONTENT_LIMIT}</Badge>
+            </Group>
+          </Stack>
+        </Card>
 
         {preview ? (
-          <Card withBorder>
+          <Card withBorder radius="md" shadow="sm">
+            <Title order={4} mb="sm">Live Preview</Title>
             <BlockRenderer blocks={normalizeBlocks(blocks)} />
           </Card>
         ) : (
-          <Stack spacing="sm">
-            {blocks.map((block, idx) => (
-              <Card key={block.id} withBorder>
-                <Stack spacing="xs">
-                  <Group position="apart">
-                    <Group>
-                      <Badge>#{idx + 1}</Badge>
-                      <Select
-                        value={block.type}
-                        onChange={(v) => updateBlock(block.id, { type: v || 'paragraph' })}
-                        data={BLOCK_TYPE_OPTIONS}
-                      />
-                    </Group>
-                    <ActionIcon color="red" variant="subtle" onClick={() => removeBlock(block.id)}>
-                      <IconTrash size={16} />
-                    </ActionIcon>
-                  </Group>
-
-                  {block.type === 'paragraph' ? <Textarea minRows={4} value={block.text || ''} onChange={(e) => updateBlock(block.id, { text: e.currentTarget.value })} /> : null}
-                  {block.type === 'heading' ? (
-                    <Group grow>
-                      <Select label="Level" value={String(block.level || 2)} onChange={(v) => updateBlock(block.id, { level: Number(v || 2) })} data={[1, 2, 3, 4, 5, 6].map((v) => ({ value: String(v), label: `H${v}` }))} />
-                      <TextInput label="Text" value={block.text || ''} onChange={(e) => updateBlock(block.id, { text: e.currentTarget.value })} />
-                    </Group>
-                  ) : null}
-                  {block.type === 'image' ? (
-                    <>
-                      <TextInput label="Image URL" value={block.src || ''} onChange={(e) => updateBlock(block.id, { src: e.currentTarget.value })} />
-                      <Group grow>
-                        <TextInput label="Alt" value={block.alt || ''} onChange={(e) => updateBlock(block.id, { alt: e.currentTarget.value })} />
-                        <TextInput label="Caption" value={block.caption || ''} onChange={(e) => updateBlock(block.id, { caption: e.currentTarget.value })} />
+          <Card withBorder radius="md" shadow="sm">
+            <Stack spacing="sm">
+              <Title order={4}>Block Editor</Title>
+              {blocks.map((block, idx) => (
+                <Card key={block.id} withBorder radius="md">
+                  <Stack spacing="xs">
+                    <Group position="apart">
+                      <Group>
+                        <Badge>#{idx + 1}</Badge>
+                        <Select
+                          value={block.type}
+                          onChange={(v) => updateBlock(block.id, { type: v || 'paragraph' })}
+                          data={BLOCK_TYPE_OPTIONS}
+                        />
                       </Group>
-                    </>
-                  ) : null}
-                  {block.type === 'link' ? (
-                    <Group grow>
-                      <TextInput label="Text" value={block.text || ''} onChange={(e) => updateBlock(block.id, { text: e.currentTarget.value })} />
-                      <TextInput label="Href" value={block.href || ''} onChange={(e) => updateBlock(block.id, { href: e.currentTarget.value })} />
+                      <ActionIcon color="red" variant="subtle" onClick={() => removeBlock(block.id)}>
+                        <IconTrash size={16} />
+                      </ActionIcon>
                     </Group>
-                  ) : null}
-                  {block.type === 'code' ? (
-                    <>
-                      <TextInput label="Language" value={block.language || 'plaintext'} onChange={(e) => updateBlock(block.id, { language: e.currentTarget.value })} />
-                      <Textarea minRows={6} label="Code" value={block.code || ''} onChange={(e) => updateBlock(block.id, { code: e.currentTarget.value })} />
-                    </>
-                  ) : null}
-                  {block.type === 'embed' ? (
-                    <>
-                      <TextInput label="Provider" value={block.provider || 'youtube'} onChange={(e) => updateBlock(block.id, { provider: e.currentTarget.value })} />
-                      <TextInput label="URL" value={block.url || ''} onChange={(e) => updateBlock(block.id, { url: e.currentTarget.value })} />
-                    </>
-                  ) : null}
-                </Stack>
-              </Card>
-            ))}
-            <Group>
-              {BLOCK_TYPE_OPTIONS.map((opt) => (
-                <Button key={opt.value} size="xs" variant="light" onClick={() => addBlock(opt.value)}>
-                  + {opt.label}
-                </Button>
+
+                    {block.type === 'paragraph' ? <Textarea minRows={4} value={block.text || ''} onChange={(e) => updateBlock(block.id, { text: e.currentTarget.value })} /> : null}
+                    {block.type === 'heading' ? (
+                      <Group grow>
+                        <Select label="Level" value={String(block.level || 2)} onChange={(v) => updateBlock(block.id, { level: Number(v || 2) })} data={[1, 2, 3, 4, 5, 6].map((v) => ({ value: String(v), label: `H${v}` }))} />
+                        <TextInput label="Text" value={block.text || ''} onChange={(e) => updateBlock(block.id, { text: e.currentTarget.value })} />
+                      </Group>
+                    ) : null}
+                    {block.type === 'image' ? (
+                      <>
+                        <TextInput label="Image URL" value={block.src || ''} onChange={(e) => updateBlock(block.id, { src: e.currentTarget.value })} />
+                        <Group grow>
+                          <TextInput label="Alt" value={block.alt || ''} onChange={(e) => updateBlock(block.id, { alt: e.currentTarget.value })} />
+                          <TextInput label="Caption" value={block.caption || ''} onChange={(e) => updateBlock(block.id, { caption: e.currentTarget.value })} />
+                        </Group>
+                      </>
+                    ) : null}
+                    {block.type === 'link' ? (
+                      <Group grow>
+                        <TextInput label="Text" value={block.text || ''} onChange={(e) => updateBlock(block.id, { text: e.currentTarget.value })} />
+                        <TextInput label="Href" value={block.href || ''} onChange={(e) => updateBlock(block.id, { href: e.currentTarget.value })} />
+                      </Group>
+                    ) : null}
+                    {block.type === 'code' ? (
+                      <>
+                        <TextInput label="Language" value={block.language || 'plaintext'} onChange={(e) => updateBlock(block.id, { language: e.currentTarget.value })} />
+                        <Textarea minRows={6} label="Code" value={block.code || ''} onChange={(e) => updateBlock(block.id, { code: e.currentTarget.value })} />
+                      </>
+                    ) : null}
+                    {block.type === 'embed' ? (
+                      <>
+                        <TextInput label="Provider" value={block.provider || 'youtube'} onChange={(e) => updateBlock(block.id, { provider: e.currentTarget.value })} />
+                        <TextInput label="URL" value={block.url || ''} onChange={(e) => updateBlock(block.id, { url: e.currentTarget.value })} />
+                      </>
+                    ) : null}
+                  </Stack>
+                </Card>
               ))}
-            </Group>
-          </Stack>
+
+              <Divider />
+              <Group>
+                {BLOCK_TYPE_OPTIONS.map((opt) => (
+                  <Button key={opt.value} size="xs" variant="light" onClick={() => addBlock(opt.value)}>
+                    + {opt.label}
+                  </Button>
+                ))}
+              </Group>
+            </Stack>
+          </Card>
         )}
 
-        <Button onClick={submitForReview} disabled={!title.trim() || !plainContent.trim() || loading || plainContent.length > CONTENT_LIMIT}>
-          {loading ? '提交中...' : '提交審核'}
-        </Button>
-        <Button component={Link} href="/writer/my-posts" variant="light">查看我的投稿</Button>
-        {msg ? <Text color={msg.includes('失敗') ? 'red' : 'teal'}>{msg}</Text> : null}
+        <Card withBorder radius="md" shadow="sm">
+          <Group>
+            <Button onClick={submitForReview} disabled={!title.trim() || !plainContent.trim() || loading || plainContent.length > CONTENT_LIMIT} fullWidth={isMobile}>
+              {loading ? '提交中...' : '提交審核'}
+            </Button>
+            <Button component={Link} href="/writer/my-posts" variant="light" fullWidth={isMobile}>查看我的投稿</Button>
+          </Group>
+          {msg ? <Text mt="sm" color={msg.includes('失敗') ? 'red' : 'teal'}>{msg}</Text> : null}
+        </Card>
       </Stack>
     </Container>
   );
