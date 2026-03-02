@@ -2,7 +2,7 @@
 
 const { createClient } = require('@supabase/supabase-js');
 const { buildDraftFromTopic } = require('../src/lib/aiBotDraft');
-const { normalizeBlocks, blocksToPlainText } = require('../src/lib/contentBlocks');
+const { normalizeBlocks, blocksToPlainText, contentToBlocks } = require('../src/lib/contentBlocks');
 const { loadLocalEnv } = require('./load-env');
 
 loadLocalEnv();
@@ -23,6 +23,29 @@ function safeJsonParse(raw) {
   } catch {
     return null;
   }
+}
+
+function toValidDraft(parsed, fallback = {}) {
+  if (!parsed) return null;
+
+  let blocks = normalizeBlocks(Array.isArray(parsed.blocks) ? parsed.blocks : []);
+  if (!blocks.length && parsed.content) {
+    blocks = normalizeBlocks(contentToBlocks(String(parsed.content)));
+  }
+
+  const content = (blocksToPlainText(blocks) || String(parsed.content || '')).trim();
+  const minChars = Math.max(300, Number(process.env.AI_BOT_MIN_CONTENT_CHARS || 700));
+
+  if (!content || content.length < minChars) return null;
+  if (!String(parsed.title || fallback.title || '').trim()) return null;
+
+  return {
+    title: String(parsed.title || fallback.title).trim(),
+    description: String(parsed.description || '').trim(),
+    category: String(parsed.category || fallback.category || 'ai').trim(),
+    blocks: blocks.length ? blocks : normalizeBlocks(contentToBlocks(content)),
+    content,
+  };
 }
 
 async function generateDraftWithAI({ topic, tone, length, category }) {
@@ -77,23 +100,9 @@ Rules:
   const data = await resp.json();
   const raw = data?.choices?.[0]?.message?.content || '{}';
   const parsed = safeJsonParse(raw);
-
-  if (!parsed || !parsed.title) {
-    throw new Error('AI response parse failed');
-  }
-
-  const blocks = normalizeBlocks(Array.isArray(parsed.blocks) ? parsed.blocks : []);
-  if (!blocks.length) {
-    throw new Error('AI produced empty blocks');
-  }
-
-  return {
-    title: String(parsed.title).trim(),
-    description: String(parsed.description || '').trim(),
-    category: String(parsed.category || category || 'ai').trim(),
-    blocks,
-    content: blocksToPlainText(blocks),
-  };
+  const draft = toValidDraft(parsed, { title: topic, category });
+  if (!draft) throw new Error('AI produced invalid/short content');
+  return draft;
 }
 
 async function processOne() {
@@ -116,26 +125,40 @@ async function processOne() {
 
   try {
     let draft;
+    let lastError = null;
 
-    try {
-      draft = await generateDraftWithAI({
-        topic: item.topic,
-        tone: item.tone,
-        length: item.length,
-        category: item.category,
-      });
-    } catch (aiErr) {
+    for (let i = 0; i < 2; i += 1) {
+      try {
+        // eslint-disable-next-line no-await-in-loop
+        draft = await generateDraftWithAI({
+          topic: item.topic,
+          tone: item.tone,
+          length: item.length,
+          category: item.category,
+        });
+        break;
+      } catch (aiErr) {
+        lastError = aiErr;
+      }
+    }
+
+    if (!draft) {
       if (!process.argv.includes('--fallback-template')) {
-        throw aiErr;
+        throw lastError || new Error('AI generation failed');
       }
 
-      console.warn('[ai-bot] AI generation failed, fallback to template:', aiErr.message || aiErr);
+      console.warn('[ai-bot] AI generation failed, fallback to template:', lastError?.message || lastError);
       draft = buildDraftFromTopic({
         topic: item.topic,
         tone: item.tone,
         length: item.length,
         category: item.category,
       });
+    }
+
+    const minChars = Math.max(300, Number(process.env.AI_BOT_MIN_CONTENT_CHARS || 700));
+    if (!String(draft.content || '').trim() || String(draft.content || '').trim().length < minChars) {
+      throw new Error(`Generated content below quality threshold (${minChars})`);
     }
 
     const { data: submission, error: insertErr } = await supabase
