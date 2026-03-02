@@ -8,7 +8,7 @@ import { useSupabaseSession } from '../../lib/useSupabaseSession';
 import { useRouter } from 'next/router';
 import { getCurrentRoleSafe } from '../../lib/authClient';
 
-const steps = ['Email magic link 登入', '建立草稿（標題、分類、內容）', '提交審核（status: pending_review）', '管理員審核通過後公開'];
+const steps = ['Google 登入', '建立草稿（標題、分類、內容）', '提交審核（status: pending_review）', '管理員審核通過後公開'];
 
 export default function WriterDashboard() {
   const router = useRouter();
@@ -65,17 +65,17 @@ export default function WriterDashboard() {
         </Card>
 
         <SimpleGrid cols={3} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-          <Card withBorder>
+          <Card withBorder component={Link} href="/writer/submissions?status=pending_review" style={{ textDecoration: 'none' }}>
             <Text size="sm" color="dimmed">Pending</Text>
             <Title order={2}>{stats.pending_review}</Title>
             <Badge color="yellow">pending_review</Badge>
           </Card>
-          <Card withBorder>
+          <Card withBorder component={Link} href="/writer/submissions?status=approved" style={{ textDecoration: 'none' }}>
             <Text size="sm" color="dimmed">Approved</Text>
             <Title order={2}>{stats.approved}</Title>
             <Badge color="green">approved</Badge>
           </Card>
-          <Card withBorder>
+          <Card withBorder component={Link} href="/writer/submissions?status=rejected" style={{ textDecoration: 'none' }}>
             <Text size="sm" color="dimmed">Rejected</Text>
             <Title order={2}>{stats.rejected}</Title>
             <Badge color="red">rejected</Badge>

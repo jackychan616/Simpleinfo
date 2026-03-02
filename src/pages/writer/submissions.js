@@ -20,7 +20,10 @@ function statusColor(status) {
 export default function WriterSubmissionsPage() {
   const router = useRouter();
   const [rows, setRows] = useState([]);
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState(() => {
+    const q = String(router.query?.status || '');
+    return ['pending_review', 'approved', 'rejected'].includes(q) ? q : 'all';
+  });
   const [keyword, setKeyword] = useState('');
   const [page, setPage] = useState(1);
   const [msg, setMsg] = useState('');
@@ -35,9 +38,13 @@ export default function WriterSubmissionsPage() {
   }
 
   useEffect(() => {
-    load('all');
+    const q = String(router.query?.status || '');
+    const next = ['pending_review', 'approved', 'rejected'].includes(q) ? q : 'all';
+    setFilter(next);
+    setPage(1);
+    load(next);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [router.query?.status]);
 
   async function updateStatus(id, status) {
     const token = await getAccessToken();
