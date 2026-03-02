@@ -35,14 +35,20 @@ Auth methods:
 
 ## Local AI blog auto-generation scripts
 
+Required env for AI generation:
+- `OPENAI_API_KEY`
+- `OPENAI_MODEL` (recommended: `gpt-4.1`)
+
 - Queue one topic:
   - `npm run ai:bot:enqueue -- --topic "2026 香港 AI 工具比較" --category ai --tone professional --length medium`
-- Run worker once:
+- Run worker once (AI model):
   - `npm run ai:bot:once`
 - Run worker loop locally (default every 60s):
   - `npm run ai:bot:loop`
 - Custom loop interval (ms):
   - `npm run ai:bot:loop -- --interval 15000`
+- Optional fallback to local template when AI fails:
+  - `npm run ai:bot:loop -- --fallback-template`
 
 Scripts will auto-load `.env` and `.env.local` from project root.
 
