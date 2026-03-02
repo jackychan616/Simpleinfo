@@ -16,6 +16,18 @@ export default function AiBotDashboardPage() {
   const [counts, setCounts] = useState({});
   const [latest, setLatest] = useState([]);
 
+  async function readErrorMessage(res) {
+    const text = await res.text();
+    if (!text) return `HTTP ${res.status}`;
+
+    try {
+      const json = JSON.parse(text);
+      return json?.error || json?.hint || text;
+    } catch {
+      return text;
+    }
+  }
+
   async function getRole(emailValue) {
     const res = await fetch(`/api/v2/me/role?email=${encodeURIComponent(emailValue || '')}`);
     const body = await res.json().catch(() => ({}));
@@ -64,8 +76,12 @@ export default function AiBotDashboardPage() {
       }),
     });
 
-    const body = await res.json().catch(() => ({}));
-    setMsg(res.ok ? '已加入 queue ✅' : `enqueue 失敗：${body?.error || 'unknown error'}`);
+    if (res.ok) {
+      setMsg('已加入 queue ✅');
+    } else {
+      const err = await readErrorMessage(res);
+      setMsg(`enqueue 失敗：${err}`);
+    }
     if (res.ok) {
       setTopic('');
       setCustomCategory('');
@@ -80,8 +96,13 @@ export default function AiBotDashboardPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ minChars: Number(minChars) || 0 }),
     });
-    const body = await res.json().catch(() => ({}));
-    setMsg(res.ok ? (body.message || `已處理 queue ${body.queueId || ''}`) : `run 失敗：${body?.error || 'unknown error'}`);
+    if (res.ok) {
+      const body = await res.json().catch(() => ({}));
+      setMsg(body.message || `已處理 queue ${body.queueId || ''}`);
+    } else {
+      const err = await readErrorMessage(res);
+      setMsg(`run 失敗：${err}`);
+    }
     await loadStatus();
   }
 
@@ -91,8 +112,12 @@ export default function AiBotDashboardPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id }),
     });
-    const body = await res.json().catch(() => ({}));
-    setMsg(res.ok ? '已重新排入 queue ✅' : `retry 失敗：${body?.error || 'unknown error'}`);
+    if (res.ok) {
+      setMsg('已重新排入 queue ✅');
+    } else {
+      const err = await readErrorMessage(res);
+      setMsg(`retry 失敗：${err}`);
+    }
     await loadStatus();
   }
 
