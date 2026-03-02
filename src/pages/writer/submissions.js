@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 import WriterAuth from '../components/writerAuth';
+import RouteGuard from '../components/routeGuard';
 import { handleUnauthorized } from '../../lib/authRedirect';
 import { getAccessToken } from '../../lib/supabaseBrowser';
 import { useSupabaseSession } from '../../lib/useSupabaseSession';
@@ -103,8 +104,9 @@ export default function WriterSubmissionsPage() {
   const isAdmin = adminAllowlist.includes(sessionEmail.toLowerCase());
 
   return (
-    <Container size="lg" py="xl">
-      <Stack spacing="md">
+    <RouteGuard requireLogin minRole="admin">
+      <Container size="lg" py="xl">
+        <Stack spacing="md">
         <Group position="apart" align="end">
           <div>
             <Title order={1}>Admin 角色與投稿管理</Title>
@@ -221,7 +223,8 @@ export default function WriterSubmissionsPage() {
             </>
           )}
         </Card>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </RouteGuard>
   );
 }
