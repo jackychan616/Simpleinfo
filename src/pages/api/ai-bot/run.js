@@ -1,5 +1,87 @@
 import { getSupabaseServer } from '../../../lib/supabaseServer';
+import { normalizeBlocks, blocksToPlainText } from '../../../lib/contentBlocks';
 import { buildDraftFromTopic } from '../../../lib/aiBotDraft';
+
+function safeJsonParse(raw) {
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
+async function generateDraftWithGitHubModels({ topic, tone, length, category }) {
+  const token = process.env.GITHUB_TOKEN;
+  const model = process.env.GITHUB_MODEL || 'gpt-4.1';
+
+  if (!token) throw new Error('Missing GITHUB_TOKEN');
+
+  const targetWords = length === 'long' ? 1000 : length === 'short' ? 400 : 700;
+  const prompt = `Generate a practical Traditional Chinese (Hong Kong) blog draft as strict JSON only.
+
+Topic: ${topic}
+Tone: ${tone || 'professional'}
+Length: ${length || 'medium'}
+Category: ${category || 'ai'}
+Target words: around ${targetWords}
+
+Return strict JSON with:
+- title (string)
+- description (string)
+- category (string)
+- blocks (array)
+
+blocks allowed types:
+- heading: {"type":"heading","level":2|3,"text":"..."}
+- paragraph: {"type":"paragraph","text":"..."}
+- link: {"type":"link","href":"https://...","text":"..."}
+- code: {"type":"code","language":"bash|js|python|plaintext","code":"..."}
+
+Quality requirements:
+- No generic filler opening.
+- Include concrete steps, examples, and pitfalls.
+- Useful for real execution, not abstract summary.
+- No markdown fences. JSON only.`;
+
+  const resp = await fetch('https://models.inference.ai.azure.com/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      model,
+      temperature: 0.7,
+      response_format: { type: 'json_object' },
+      messages: [
+        { role: 'system', content: 'You are an expert SEO content writer for HK readers.' },
+        { role: 'user', content: prompt },
+      ],
+    }),
+  });
+
+  if (!resp.ok) {
+    const text = await resp.text();
+    throw new Error(`GitHub Models error ${resp.status}: ${text.slice(0, 300)}`);
+  }
+
+  const data = await resp.json();
+  const raw = data?.choices?.[0]?.message?.content || '{}';
+  const parsed = safeJsonParse(raw);
+
+  if (!parsed?.title) throw new Error('AI response parse failed');
+
+  const blocks = normalizeBlocks(Array.isArray(parsed.blocks) ? parsed.blocks : []);
+  if (!blocks.length) throw new Error('AI produced empty blocks');
+
+  return {
+    title: String(parsed.title || '').trim(),
+    description: String(parsed.description || '').trim(),
+    category: String(parsed.category || category || 'ai').trim(),
+    blocks,
+    content: blocksToPlainText(blocks),
+  };
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
@@ -26,12 +108,18 @@ export default async function handler(req, res) {
   await client.from('ai_blog_queue').update({ status: 'processing' }).eq('id', item.id);
 
   try {
-    const draft = buildDraftFromTopic({
-      topic: item.topic,
-      tone: item.tone,
-      length: item.length,
-      category: item.category,
-    });
+    let draft;
+    try {
+      draft = await generateDraftWithGitHubModels({
+        topic: item.topic,
+        tone: item.tone,
+        length: item.length,
+        category: item.category,
+      });
+    } catch (aiErr) {
+      if (!process.env.AI_BOT_ALLOW_TEMPLATE_FALLBACK) throw aiErr;
+      draft = buildDraftFromTopic({ topic: item.topic, tone: item.tone, length: item.length, category: item.category });
+    }
 
     if (minChars > 0 && String(draft.content || '').length < minChars) {
       throw new Error(`Generated content below minChars (${minChars})`);

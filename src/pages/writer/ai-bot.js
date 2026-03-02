@@ -7,6 +7,7 @@ export default function AiBotDashboardPage() {
   const [email, setEmail] = useState('');
   const [topic, setTopic] = useState('');
   const [category, setCategory] = useState('ai');
+  const [customCategory, setCustomCategory] = useState('');
   const [tone, setTone] = useState('professional');
   const [length, setLength] = useState('medium');
   const [scheduledAt, setScheduledAt] = useState('');
@@ -56,7 +57,7 @@ export default function AiBotDashboardPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         topic,
-        category,
+        category: (customCategory || category || 'ai').trim(),
         tone,
         length,
         scheduledAt: scheduledAt ? new Date(scheduledAt).toISOString() : null,
@@ -67,6 +68,7 @@ export default function AiBotDashboardPage() {
     setMsg(res.ok ? '已加入 queue ✅' : `enqueue 失敗：${body?.error || 'unknown error'}`);
     if (res.ok) {
       setTopic('');
+      setCustomCategory('');
       setScheduledAt('');
       await loadStatus();
     }
@@ -114,7 +116,22 @@ export default function AiBotDashboardPage() {
             <Stack>
               <TextInput label="Topic" placeholder="例如：AI SEO 策略 2026" value={topic} onChange={(e) => setTopic(e.currentTarget.value)} />
               <Group grow>
-                <Select value={category} onChange={(v) => setCategory(v || 'ai')} data={[{ value: 'ai', label: 'AI' }, { value: 'tech', label: 'Tech' }, { value: 'gaming', label: 'Gaming' }]} label="Category" />
+                <Select
+                  value={category}
+                  onChange={(v) => setCategory(v || 'ai')}
+                  data={[
+                    { value: 'ai', label: 'AI' },
+                    { value: 'tech', label: 'Tech' },
+                    { value: 'business', label: 'Business' },
+                    { value: 'finance', label: 'Finance' },
+                    { value: 'marketing', label: 'Marketing' },
+                    { value: 'productivity', label: 'Productivity' },
+                    { value: 'lifestyle', label: 'Lifestyle' },
+                    { value: 'gaming', label: 'Gaming' },
+                  ]}
+                  label="Category"
+                />
+                <TextInput label="Custom category (optional)" placeholder="例如：startup / education" value={customCategory} onChange={(e) => setCustomCategory(e.currentTarget.value)} />
                 <Select value={tone} onChange={(v) => setTone(v || 'professional')} data={[{ value: 'professional', label: 'Professional' }, { value: 'friendly', label: 'Friendly' }, { value: 'persuasive', label: 'Persuasive' }]} label="Tone" />
                 <Select value={length} onChange={(v) => setLength(v || 'medium')} data={[{ value: 'short', label: 'Short' }, { value: 'medium', label: 'Medium' }, { value: 'long', label: 'Long' }]} label="Length" />
               </Group>

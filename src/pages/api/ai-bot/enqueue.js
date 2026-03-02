@@ -9,11 +9,13 @@ export default async function handler(req, res) {
   const { topic, category = 'ai', tone = 'professional', length = 'medium', scheduledAt = null } = req.body || {};
   if (!topic) return res.status(422).json({ error: 'topic is required' });
 
+  const safeCategory = String(category || 'ai').trim().toLowerCase() || 'ai';
+
   const { data, error } = await client
     .from('ai_blog_queue')
     .insert({
       topic: String(topic).trim(),
-      category,
+      category: safeCategory,
       tone,
       length,
       status: 'pending',
