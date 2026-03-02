@@ -123,6 +123,23 @@ export default function AiBotDashboardPage() {
     await loadStatus();
   }
 
+  async function deletePending(id) {
+    const res = await fetch('/api/ai-bot/delete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    });
+
+    if (res.ok) {
+      setMsg('已刪除 pending 項目 ✅');
+    } else {
+      const err = await readErrorMessage(res);
+      setMsg(`刪除失敗：${err}`);
+    }
+
+    await loadStatus();
+  }
+
   async function optimizeByReview() {
     const res = await fetch('/api/ai-bot/optimize', {
       method: 'POST',
@@ -233,6 +250,10 @@ export default function AiBotDashboardPage() {
                       {r.status === 'failed' ? (
                         <Button size="xs" variant="light" onClick={() => retryFailed(r.id)}>
                           Retry
+                        </Button>
+                      ) : r.status === 'pending' ? (
+                        <Button size="xs" color="red" variant="light" onClick={() => deletePending(r.id)}>
+                          Delete
                         </Button>
                       ) : r.generated_submission_id ? (
                         <Button size="xs" component="a" href={`/writer/submissions/${r.generated_submission_id}`}>
