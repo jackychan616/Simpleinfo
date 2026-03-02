@@ -16,11 +16,26 @@ import { NotificationsProvider } from '@mantine/notifications';
 import Script from 'next/script';
 import AuthErrorBoundary from './components/authErrorBoundary';
 import GetStartedPrompt from './components/getStartedPrompt';
-import { buildCanonicalUrl } from '../lib/seo';
+import { buildCanonicalUrl, SITE_URL } from '../lib/seo';
 
 export default function MyApp({ Component, pageProps, ...appProps }) {
   const { asPath } = useRouter();
   const canonicalUrl = buildCanonicalUrl(asPath);
+  const defaultDescription = 'Simple Info HK：香港科技、AI、遊戲與投資資訊平台，提供實用教學與社群文章。';
+  const defaultImage = `${SITE_URL}/img/simple_info.png`;
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Simple Info HK',
+    url: SITE_URL,
+  };
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Simple Info HK',
+    url: SITE_URL,
+    logo: defaultImage,
+  };
 
   if (asPath.includes('/savejson')) return null;
 
@@ -43,11 +58,23 @@ export default function MyApp({ Component, pageProps, ...appProps }) {
           <NotificationsProvider>
             <Head>
               <link rel="icon" href="/icon02.png" />
+              <link rel="canonical" href={canonicalUrl} />
               {openGraphData.map((og, index) => (
                 <meta {...og} key={index} />
               ))}
               <meta name="charSet" content="utf-8" />
+              <meta name="description" content={defaultDescription} />
               <meta property="og:locale" content="zh-Hant-HK" />
+              <meta property="og:site_name" content="Simple Info HK" />
+              <meta property="og:type" content="website" />
+              <meta property="og:url" content={canonicalUrl} />
+              <meta property="og:image" content={defaultImage} />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Simple Info HK" />
+              <meta name="twitter:description" content={defaultDescription} />
+              <meta name="twitter:image" content={defaultImage} />
+              <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
+              <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
             </Head>
 
             <Layout>

@@ -1,6 +1,19 @@
 /** @type {import('next-sitemap').IConfig} */
-// Default code you can customize according to your requirements.
 module.exports = {
-    siteUrl: 'https://simpleinfohk.me',
-    generateRobotsTxt: true,   
-}
+  siteUrl: 'https://simpleinfohk.me',
+  generateRobotsTxt: true,
+  changefreq: 'daily',
+  priority: 0.7,
+  autoLastmod: true,
+  exclude: ['/components/*', '/header/*', '/loading', '/404', '/api/*'],
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/components/', '/header/', '/api/'],
+      },
+    ],
+    additionalSitemaps: ['https://simpleinfohk.me/sitemap.xml'],
+  },
+};
