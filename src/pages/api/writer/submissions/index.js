@@ -1,4 +1,4 @@
-import { getSupabaseServer } from '../../../../lib/supabaseServer';
+import { getSupabaseServer, getUserFromRequest, isAdminEmailWithDb } from '../../../../lib/supabaseServer';
 import { blocksToPlainText, normalizeBlocks } from '../../../../lib/contentBlocks';
 
 const ALLOWED_CATEGORIES = new Set(['ai', 'gaming', 'tech']);
@@ -8,11 +8,32 @@ export default async function handler(req, res) {
   if (!client) return res.status(500).json({ error: envError });
 
   if (req.method === 'GET') {
-    const status = req.query.status;
+    const status = String(req.query.status || 'all');
     const authorEmail = req.query.authorEmail;
 
+    // rejected: hide from everyone in list API
+    if (status === 'rejected') {
+      return res.status(200).json({ data: [] });
+    }
+
+    // public can only list approved
+    // pending_review/all are admin-only
+    let forceApprovedOnly = false;
+    if (status === 'approved') {
+      forceApprovedOnly = true;
+    } else {
+      const { user } = await getUserFromRequest(req);
+      const isAdmin = user ? await isAdminEmailWithDb(user.email, client) : false;
+      if (!isAdmin) forceApprovedOnly = true;
+    }
+
     let query = client.from('writer_submissions').select('*').order('created_at', { ascending: false }).limit(200);
-    if (status && status !== 'all') query = query.eq('status', status);
+    if (forceApprovedOnly) {
+      query = query.eq('status', 'approved');
+    } else if (status && status !== 'all') {
+      query = query.eq('status', status);
+    }
+
     if (authorEmail) query = query.eq('author_email', authorEmail);
 
     const { data, error } = await query;
