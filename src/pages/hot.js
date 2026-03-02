@@ -52,6 +52,11 @@ const useStyles = createStyles((theme) => ({
 
 
 
+function toContentHref(path = '') {
+  const clean = String(path || '').replace(/^\/+/, '');
+  return `/content/${clean}`;
+}
+
 function Card({img,name,tag,path}) {
   const { classes } = useStyles();
 
@@ -71,7 +76,7 @@ function Card({img,name,tag,path}) {
           {name}
         </Title>
       </div>
-      <Button href={"/content" + path} component="a">
+      <Button href={toContentHref(path)} component="a">
         閱讀文章
       </Button>
     </Paper>
@@ -157,6 +162,9 @@ export default function Page(){
     return(
     <div>
             <Container>
+              <Title order={2}>Top Hits</Title>
+              <Text color="dimmed" size="sm">精選熱門文章，持續更新。</Text>
+              <Space h="sm" />
               <CardsCarousel/>
             </Container>
             <Space h= "lg"/>

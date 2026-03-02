@@ -1,4 +1,5 @@
 import { Badge, Button, Card, Container, Group, Stack, Text, Title } from '@mantine/core';
+import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
@@ -15,18 +16,24 @@ export default function CommunityPostPage() {
   const [row, setRow] = useState(null);
   const [error, setError] = useState('');
   const [likeLoading, setLikeLoading] = useState(false);
+  const [recommended, setRecommended] = useState([]);
 
   useEffect(() => {
     if (!id) return;
     fetch(`/api/writer/submissions/${id}`)
       .then((r) => r.json())
-      .then((body) => {
+      .then(async (body) => {
         const data = body.data;
         if (!data || data.status !== 'approved') {
           setError('文章未公開或不存在');
           return;
         }
         setRow(data);
+
+        const r = await fetch(`/api/writer/submissions?status=approved`);
+        const rb = await r.json().catch(() => ({}));
+        const rec = (rb.data || []).filter((x) => x.id !== data.id).slice(0, 4);
+        setRecommended(rec);
       })
       .catch(() => setError('讀取失敗'));
   }, [id]);
@@ -106,6 +113,21 @@ export default function CommunityPostPage() {
           <Card withBorder radius="md" shadow="sm">
             <BlockRenderer blocks={blocks} />
           </Card>
+
+          {recommended.length > 0 ? (
+            <Card withBorder radius="md" shadow="sm">
+              <Title order={4}>推薦文章</Title>
+              <Stack mt="sm" spacing={8}>
+                {recommended.map((item) => (
+                  <Text key={item.id}>
+                    <Link href={`/community/${item.id}`} style={{ textDecoration: 'none' }}>
+                      {item.title}
+                    </Link>
+                  </Text>
+                ))}
+              </Stack>
+            </Card>
+          ) : null}
         </Stack>
       </Container>
     </>

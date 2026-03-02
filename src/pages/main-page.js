@@ -22,6 +22,7 @@ import { Blogads } from './components/googleAds';
 import { Sub } from './components/leftbar/sub';
 import Link from 'next/link';
 export const Bloglist = require('../data/Blog.json');
+const toContentHref = (path = '') => `/content/${String(path).replace(/^\/+/, '')}`;
 function Typing() {
   return (
     <TypeAnimation
@@ -114,7 +115,7 @@ export default function Home() {
               p="md"
               radius="md"
               component={Link}
-              href={'/content/' + article.path}
+              href={toContentHref(article.path)}
               className={classes.card}
               shadow="sm"
               style={{ cursor: 'pointer' }}
