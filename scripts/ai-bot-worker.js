@@ -26,11 +26,11 @@ function safeJsonParse(raw) {
 }
 
 async function generateDraftWithAI({ topic, tone, length, category }) {
-  const apiKey = process.env.OPENAI_API_KEY;
-  const model = process.env.OPENAI_MODEL || 'gpt-4.1';
+  const githubToken = process.env.GITHUB_TOKEN;
+  const model = process.env.GITHUB_MODEL || 'gpt-4.1';
 
-  if (!apiKey) {
-    throw new Error('Missing OPENAI_API_KEY (required for AI generation)');
+  if (!githubToken) {
+    throw new Error('Missing GITHUB_TOKEN (required for GitHub Models generation)');
   }
 
   const prompt = `Generate a Traditional Chinese (zh-HK) blog draft as JSON only.
@@ -52,11 +52,11 @@ Rules:
 - Keep content professional and useful.
 - No markdown fences, no extra commentary.`;
 
-  const resp = await fetch('https://api.openai.com/v1/chat/completions', {
+  const resp = await fetch('https://models.inference.ai.azure.com/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
+      Authorization: `Bearer ${githubToken}`,
     },
     body: JSON.stringify({
       model,
@@ -71,7 +71,7 @@ Rules:
 
   if (!resp.ok) {
     const text = await resp.text();
-    throw new Error(`OpenAI error ${resp.status}: ${text.slice(0, 300)}`);
+    throw new Error(`GitHub Models error ${resp.status}: ${text.slice(0, 300)}`);
   }
 
   const data = await resp.json();
@@ -183,7 +183,7 @@ async function main() {
     return;
   }
 
-  console.log(`[ai-bot] loop mode started (interval=${intervalMs}ms, model=${process.env.OPENAI_MODEL || 'gpt-4.1'})`);
+  console.log(`[ai-bot] loop mode started (interval=${intervalMs}ms, model=${process.env.GITHUB_MODEL || 'gpt-4.1'})`);
   while (true) {
     await processOne();
     await new Promise((r) => setTimeout(r, intervalMs));

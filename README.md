@@ -35,9 +35,9 @@ Auth methods:
 
 ## Local AI blog auto-generation scripts
 
-Required env for AI generation:
-- `OPENAI_API_KEY`
-- `OPENAI_MODEL` (recommended: `gpt-4.1`)
+Required env for AI generation (GitHub Models):
+- `GITHUB_TOKEN`
+- `GITHUB_MODEL` (recommended: `gpt-4.1`)
 
 - Queue one topic:
   - `npm run ai:bot:enqueue -- --topic "2026 香港 AI 工具比較" --category ai --tone professional --length medium`
