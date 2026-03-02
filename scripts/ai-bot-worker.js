@@ -21,10 +21,30 @@ function safeJsonParse(raw) {
   try { return JSON.parse(raw); } catch { return null; }
 }
 
+function ensureHeadingStructure(blocks = [], fallbackTitle = '重點整理') {
+  const normalized = normalizeBlocks(blocks);
+  const hasHeading = normalized.some((b) => b.type === 'heading');
+  if (hasHeading) return normalized;
+
+  const paragraphs = normalized.filter((b) => b.type === 'paragraph' && String(b.text || '').trim());
+  if (!paragraphs.length) return normalized;
+
+  const next = [];
+  next.push({ type: 'heading', level: 2, text: String(fallbackTitle || '重點整理') });
+  paragraphs.forEach((p, i) => {
+    if (i > 0 && i % 3 === 0) {
+      next.push({ type: 'heading', level: 3, text: `重點段落 ${Math.floor(i / 3) + 1}` });
+    }
+    next.push(p);
+  });
+  return normalizeBlocks(next);
+}
+
 function toValidDraft(parsed, fallback = {}) {
   if (!parsed) return null;
   let blocks = normalizeBlocks(Array.isArray(parsed.blocks) ? parsed.blocks : []);
   if (!blocks.length && parsed.content) blocks = normalizeBlocks(contentToBlocks(String(parsed.content)));
+  blocks = ensureHeadingStructure(blocks, parsed.title || fallback.title || '文章重點');
   const content = (blocksToPlainText(blocks) || String(parsed.content || '')).trim();
   const minChars = Math.max(300, Number(process.env.AI_BOT_MIN_CONTENT_CHARS || 700));
   if (!content || content.length < minChars) return null;

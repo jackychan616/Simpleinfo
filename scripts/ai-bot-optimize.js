@@ -68,9 +68,27 @@ async function callModel(messages, responseFormat = true) {
   return String(data?.choices?.[0]?.message?.content || '{}');
 }
 
-async function optimizeWithAI({ title, content, comment }) {
-  const prompt = `You are editing a blog post based on reviewer comments. Return strict JSON only with keys: title, blocks, content.\n\nCurrent title: ${title}\nCurrent content:\n${content}\n\nReviewer comment:\n${comment}\n\nRequirements:\n- Traditional Chinese (Hong Kong style)\n- Human-like writing voice\n- Keep practical and concrete\n- Return at least 6 non-empty blocks`;
+function ensureHeadingStructure(blocks = [], fallbackTitle = '重點整理') {
+  const normalized = normalizeBlocks(blocks);
+  const hasHeading = normalized.some((b) => b.type === 'heading');
+  if (hasHeading) return normalized;
 
+  const paragraphs = normalized.filter((b) => b.type === 'paragraph' && String(b.text || '').trim());
+  if (!paragraphs.length) return normalized;
+
+  const next = [];
+  next.push({ type: 'heading', level: 2, text: String(fallbackTitle || '重點整理') });
+  paragraphs.forEach((p, i) => {
+    if (i > 0 && i % 3 === 0) {
+      next.push({ type: 'heading', level: 3, text: `重點段落 ${Math.floor(i / 3) + 1}` });
+    }
+    next.push(p);
+  });
+  return normalizeBlocks(next);
+}
+
+async function optimizeWithAI({ title, content, comment }) {
+  const prompt = `You are editing a blog post based on reviewer comments. Return strict JSON only with keys: title, blocks, content.\n\nCurrent title: ${title}\nCurrent content:\n${content}\n\nReviewer comment:\n${comment}\n\nRequirements:\n- Traditional Chinese (Hong Kong style)\n- Human-like writing voice\n- Keep practical and concrete\n- Return at least 1 H2 and 2 H3 headings\n- Return at least 6 non-empty blocks`;
   const raw = await callModel([
     { role: 'system', content: 'You are a senior content editor.' },
     { role: 'user', content: prompt },
@@ -81,6 +99,7 @@ async function optimizeWithAI({ title, content, comment }) {
 
   let blocks = normalizeBlocks(Array.isArray(parsed.blocks) ? parsed.blocks : []);
   if (!blocks.length && parsed.content) blocks = normalizeBlocks(contentToBlocks(String(parsed.content)));
+  blocks = ensureHeadingStructure(blocks, parsed.title || title || '文章重點');
   const finalContent = (blocksToPlainText(blocks) || String(parsed.content || '')).trim();
   const minChars = Math.max(300, Number(process.env.AI_BOT_MIN_CONTENT_CHARS || 700));
   if (!finalContent || finalContent.length < minChars) return null;
