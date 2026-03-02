@@ -62,28 +62,24 @@ async function callModel(messages, responseFormat = true) {
   const provider = (process.env.AI_PROVIDER || 'github').toLowerCase();
 
   if (provider === 'ollama') {
-    const base = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
-    const model = process.env.OLLAMA_MODEL || 'gpt-oss';
+    const { Ollama } = await import('ollama');
+    const host = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
+    const model = process.env.OLLAMA_MODEL || 'gpt-oss:120b';
     const apiKey = process.env.OLLAMA_API_KEY || '';
-    const headers = { 'Content-Type': 'application/json' };
-    if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
 
-    const resp = await fetch(`${base}/api/chat`, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({
-        model,
-        stream: false,
-        format: responseFormat ? 'json' : undefined,
-        messages,
-      }),
+    const ollama = new Ollama({
+      host,
+      headers: apiKey ? { Authorization: `Bearer ${apiKey}` } : undefined,
     });
-    if (!resp.ok) {
-      const text = await resp.text();
-      throw new Error(`Ollama error ${resp.status}: ${text.slice(0, 300)}`);
-    }
-    const data = await resp.json();
-    return String(data?.message?.content || '{}');
+
+    const response = await ollama.chat({
+      model,
+      messages,
+      stream: false,
+      format: responseFormat ? 'json' : undefined,
+    });
+
+    return String(response?.message?.content || '{}');
   }
 
   const token = process.env.GITHUB_TOKEN;

@@ -57,6 +57,7 @@
     "next-seo": "^5.15.0",
     "next-share": "^0.20.0",
     "nprogress": "^0.2.0",
+    "ollama": "^0.6.3",
     "p-min-delay": "^4.0.2",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
