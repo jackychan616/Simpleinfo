@@ -2,8 +2,7 @@ import Layout from './components/layout';
 import '../styles/globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import { Badge, ColorSchemeProvider, Container, Group, MantineProvider, Space, Text } from '@mantine/core';
-import { useEffect, useState } from 'react';
-import Loading from './loading';
+import { useState } from 'react';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 import { topic } from '../data/topics';
 import { Recommend } from './components/recommend';
@@ -36,11 +35,6 @@ export default function MyApp({ Component, pageProps, ...appProps }) {
     const toggleColorScheme = () => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
     useHotkeys([['mod+J', () => toggleColorScheme()]]);
 
-    const [isLoading, setIsLoading] = useState(true);
-    useEffect(() => {
-      const timer = setTimeout(() => setIsLoading(false), 1000);
-      return () => clearTimeout(timer);
-    }, []);
 
     return (
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
@@ -68,7 +62,7 @@ export default function MyApp({ Component, pageProps, ...appProps }) {
 
               <GoogleAds />
               {tagNode}
-              <AuthErrorBoundary>{isLoading ? <Loading /> : <Component {...pageProps} />}</AuthErrorBoundary>
+              <AuthErrorBoundary><Component {...pageProps} /></AuthErrorBoundary>
               {children}
               <Analytics />
             </Layout>

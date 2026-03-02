@@ -1,10 +1,9 @@
 import ConHeader from './header';
 import { Text, Paper, Group ,Image, Box, TextInput} from '@mantine/core';
-import { useState,useEffect } from 'react';
+
 import Script from 'next/script'
 import { Sharebutton } from './share';
 import { FooterLinks } from './footer';
-import Loading from '../loading';
 
 function Down(){
 
@@ -40,18 +39,11 @@ function Kofi(){
     );
 }
 export default function Layout({children}){
-    const [isLoading, setIsLoading] = useState(true);
-    useEffect(() => {
-        setTimeout(() => setIsLoading(false), 1e3);
-      }, []);
     return (
-        <>
-            {isLoading ? <><Loading/></>: <div>
-                                <ConHeader title=""></ConHeader>
-                                    {children}
-                                <FooterLinks></FooterLinks></div>
-                                }
-            
-        </>
+        <div>
+            <ConHeader title=""></ConHeader>
+            {children}
+            <FooterLinks></FooterLinks>
+        </div>
     );
 }
