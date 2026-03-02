@@ -10,26 +10,30 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     const status = String(req.query.status || 'all');
     const authorEmail = req.query.authorEmail;
+    const mine = String(req.query.mine || '') === '1';
 
-    // public can only list approved
-    // pending_review/rejected/all are admin-only unless explicitly approved filter
-    let forceApprovedOnly = false;
-    if (status === 'approved') {
-      forceApprovedOnly = true;
-    } else {
-      const { user } = await getUserFromRequest(req);
-      const isAdmin = user ? await isAdminEmailWithDb(user.email, client) : false;
-      if (!isAdmin) forceApprovedOnly = true;
-    }
+    const { user } = await getUserFromRequest(req);
+    const isAdmin = user ? await isAdminEmailWithDb(user.email, client) : false;
 
     let query = client.from('writer_submissions').select('*').order('created_at', { ascending: false }).limit(200);
-    if (forceApprovedOnly) {
-      query = query.eq('status', 'approved');
-    } else if (status && status !== 'all') {
-      query = query.eq('status', status);
-    }
 
-    if (authorEmail) query = query.eq('author_email', authorEmail);
+    if (mine) {
+      if (!user?.email) return res.status(401).json({ error: 'Unauthorized' });
+      query = query.eq('author_email', String(user.email).toLowerCase());
+      if (status && status !== 'all') query = query.eq('status', status);
+    } else {
+      // public can only list approved
+      // pending_review/rejected/all are admin-only unless explicitly approved filter
+      const forceApprovedOnly = status === 'approved' ? true : !isAdmin;
+
+      if (forceApprovedOnly) {
+        query = query.eq('status', 'approved');
+      } else if (status && status !== 'all') {
+        query = query.eq('status', status);
+      }
+
+      if (authorEmail) query = query.eq('author_email', authorEmail);
+    }
 
     const { data, error } = await query;
     if (error) return res.status(500).json({ error: error.message });
