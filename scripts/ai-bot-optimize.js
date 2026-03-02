@@ -8,15 +8,9 @@ loadLocalEnv();
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const token = process.env.GITHUB_TOKEN;
-const model = process.env.GITHUB_MODEL || 'gpt-4.1';
 
 if (!url || !serviceKey) {
   console.error('Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
-  process.exit(1);
-}
-if (!token) {
-  console.error('Missing GITHUB_TOKEN');
   process.exit(1);
 }
 
@@ -32,24 +26,33 @@ function safeJsonParse(raw) {
   try { return JSON.parse(raw); } catch { return null; }
 }
 
-async function optimizeWithGitHubModels({ title, content, comment }) {
-  const prompt = `You are editing a blog post based on reviewer comments. Return strict JSON only with keys: title, blocks.\n\nCurrent title: ${title}\nCurrent content:\n${content}\n\nReviewer comment:\n${comment}\n\nRequirements:\n- Traditional Chinese (Hong Kong style)\n- Human-like writing voice\n- Keep practical and concrete\n- Return at least 6 non-empty blocks`; 
+async function callModel(messages, responseFormat = true) {
+  const provider = (process.env.AI_PROVIDER || 'github').toLowerCase();
+
+  if (provider === 'ollama') {
+    const base = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
+    const model = process.env.OLLAMA_MODEL || 'gpt-oss';
+    const resp = await fetch(`${base}/api/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model, stream: false, format: responseFormat ? 'json' : undefined, messages }),
+    });
+    if (!resp.ok) {
+      const text = await resp.text();
+      throw new Error(`Ollama error ${resp.status}: ${text.slice(0, 300)}`);
+    }
+    const data = await resp.json();
+    return String(data?.message?.content || '{}');
+  }
+
+  const token = process.env.GITHUB_TOKEN;
+  const model = process.env.GITHUB_MODEL || 'gpt-4.1';
+  if (!token) throw new Error('Missing GITHUB_TOKEN');
 
   const resp = await fetch('https://models.inference.ai.azure.com/chat/completions', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      model,
-      temperature: 0.7,
-      response_format: { type: 'json_object' },
-      messages: [
-        { role: 'system', content: 'You are a senior content editor.' },
-        { role: 'user', content: prompt },
-      ],
-    }),
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ model, temperature: 0.7, response_format: responseFormat ? { type: 'json_object' } : undefined, messages }),
   });
 
   if (!resp.ok) {
@@ -58,19 +61,30 @@ async function optimizeWithGitHubModels({ title, content, comment }) {
   }
 
   const data = await resp.json();
-  const parsed = safeJsonParse(data?.choices?.[0]?.message?.content || '{}');
+  return String(data?.choices?.[0]?.message?.content || '{}');
+}
+
+async function optimizeWithAI({ title, content, comment }) {
+  const prompt = `You are editing a blog post based on reviewer comments. Return strict JSON only with keys: title, blocks, content.\n\nCurrent title: ${title}\nCurrent content:\n${content}\n\nReviewer comment:\n${comment}\n\nRequirements:\n- Traditional Chinese (Hong Kong style)\n- Human-like writing voice\n- Keep practical and concrete\n- Return at least 6 non-empty blocks`;
+
+  const raw = await callModel([
+    { role: 'system', content: 'You are a senior content editor.' },
+    { role: 'user', content: prompt },
+  ], true);
+
+  const parsed = safeJsonParse(raw);
   if (!parsed) return null;
 
   let blocks = normalizeBlocks(Array.isArray(parsed.blocks) ? parsed.blocks : []);
-  if (!blocks.length && parsed.content) {
-    blocks = normalizeBlocks(contentToBlocks(String(parsed.content)));
-  }
-  if (!blocks.length) return null;
+  if (!blocks.length && parsed.content) blocks = normalizeBlocks(contentToBlocks(String(parsed.content)));
+  const finalContent = (blocksToPlainText(blocks) || String(parsed.content || '')).trim();
+  const minChars = Math.max(300, Number(process.env.AI_BOT_MIN_CONTENT_CHARS || 700));
+  if (!finalContent || finalContent.length < minChars) return null;
 
   return {
     title: String(parsed.title || title || '').trim(),
-    blocks,
-    content: blocksToPlainText(blocks),
+    blocks: blocks.length ? blocks : normalizeBlocks(contentToBlocks(finalContent)),
+    content: finalContent,
   };
 }
 
@@ -93,19 +107,15 @@ async function main() {
   let draft = null;
   for (let i = 0; i < 2; i += 1) {
     // eslint-disable-next-line no-await-in-loop
-    draft = await optimizeWithGitHubModels({ title: row.title, content: row.content, comment });
+    draft = await optimizeWithAI({ title: row.title, content: row.content, comment });
     if (draft?.blocks?.length) break;
   }
 
-  if (!draft?.blocks?.length) throw new Error('AI optimize returned empty blocks after retry');
+  if (!draft?.blocks?.length) throw new Error('AI optimize returned invalid/short content after retry');
 
   const { data: updated, error: upErr } = await supabase
     .from('writer_submissions')
-    .update({
-      title: draft.title,
-      content: draft.content,
-      content_blocks: draft.blocks,
-    })
+    .update({ title: draft.title, content: draft.content, content_blocks: draft.blocks })
     .eq('id', submissionId)
     .select('id,title,updated_at')
     .single();

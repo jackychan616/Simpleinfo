@@ -18,27 +18,17 @@ if (!url || !serviceKey) {
 const supabase = createClient(url, serviceKey, { auth: { persistSession: false } });
 
 function safeJsonParse(raw) {
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
+  try { return JSON.parse(raw); } catch { return null; }
 }
 
 function toValidDraft(parsed, fallback = {}) {
   if (!parsed) return null;
-
   let blocks = normalizeBlocks(Array.isArray(parsed.blocks) ? parsed.blocks : []);
-  if (!blocks.length && parsed.content) {
-    blocks = normalizeBlocks(contentToBlocks(String(parsed.content)));
-  }
-
+  if (!blocks.length && parsed.content) blocks = normalizeBlocks(contentToBlocks(String(parsed.content)));
   const content = (blocksToPlainText(blocks) || String(parsed.content || '')).trim();
   const minChars = Math.max(300, Number(process.env.AI_BOT_MIN_CONTENT_CHARS || 700));
-
   if (!content || content.length < minChars) return null;
   if (!String(parsed.title || fallback.title || '').trim()) return null;
-
   return {
     title: String(parsed.title || fallback.title).trim(),
     description: String(parsed.description || '').trim(),
@@ -48,14 +38,56 @@ function toValidDraft(parsed, fallback = {}) {
   };
 }
 
-async function generateDraftWithAI({ topic, tone, length, category }) {
-  const githubToken = process.env.GITHUB_TOKEN;
-  const model = process.env.GITHUB_MODEL || 'gpt-4.1';
+async function callModel(messages, responseFormat = true) {
+  const provider = (process.env.AI_PROVIDER || 'github').toLowerCase();
 
-  if (!githubToken) {
-    throw new Error('Missing GITHUB_TOKEN (required for GitHub Models generation)');
+  if (provider === 'ollama') {
+    const base = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
+    const model = process.env.OLLAMA_MODEL || 'gpt-oss';
+    const resp = await fetch(`${base}/api/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model,
+        stream: false,
+        format: responseFormat ? 'json' : undefined,
+        messages,
+      }),
+    });
+    if (!resp.ok) {
+      const text = await resp.text();
+      throw new Error(`Ollama error ${resp.status}: ${text.slice(0, 300)}`);
+    }
+    const data = await resp.json();
+    return String(data?.message?.content || '{}');
   }
 
+  const token = process.env.GITHUB_TOKEN;
+  const model = process.env.GITHUB_MODEL || 'gpt-4.1';
+  if (!token) throw new Error('Missing GITHUB_TOKEN');
+
+  const resp = await fetch('https://models.inference.ai.azure.com/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      model,
+      temperature: 0.7,
+      response_format: responseFormat ? { type: 'json_object' } : undefined,
+      messages,
+    }),
+  });
+  if (!resp.ok) {
+    const text = await resp.text();
+    throw new Error(`GitHub Models error ${resp.status}: ${text.slice(0, 300)}`);
+  }
+  const data = await resp.json();
+  return String(data?.choices?.[0]?.message?.content || '{}');
+}
+
+async function generateDraftWithAI({ topic, tone, length, category }) {
   const prompt = `Generate a Traditional Chinese (zh-HK) blog draft as JSON only.
 
 Topic: ${topic}
@@ -68,37 +100,18 @@ Return strictly valid JSON with fields:
 - description (string)
 - category (string)
 - blocks (array of content blocks: heading/paragraph/link/code)
+- content (optional string)
 
 Rules:
 - Use Traditional Chinese, Hong Kong style writing.
 - Include practical steps and examples.
-- Keep content professional and useful.
-- No markdown fences, no extra commentary.`;
+- Keep content professional and useful.`;
 
-  const resp = await fetch('https://models.inference.ai.azure.com/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${githubToken}`,
-    },
-    body: JSON.stringify({
-      model,
-      temperature: 0.7,
-      response_format: { type: 'json_object' },
-      messages: [
-        { role: 'system', content: 'You are a professional SEO content writer.' },
-        { role: 'user', content: prompt },
-      ],
-    }),
-  });
+  const raw = await callModel([
+    { role: 'system', content: 'You are a professional SEO content writer.' },
+    { role: 'user', content: prompt },
+  ], true);
 
-  if (!resp.ok) {
-    const text = await resp.text();
-    throw new Error(`GitHub Models error ${resp.status}: ${text.slice(0, 300)}`);
-  }
-
-  const data = await resp.json();
-  const raw = data?.choices?.[0]?.message?.content || '{}';
   const parsed = safeJsonParse(raw);
   const draft = toValidDraft(parsed, { title: topic, category });
   if (!draft) throw new Error('AI produced invalid/short content');
@@ -126,16 +139,10 @@ async function processOne() {
   try {
     let draft;
     let lastError = null;
-
     for (let i = 0; i < 2; i += 1) {
       try {
         // eslint-disable-next-line no-await-in-loop
-        draft = await generateDraftWithAI({
-          topic: item.topic,
-          tone: item.tone,
-          length: item.length,
-          category: item.category,
-        });
+        draft = await generateDraftWithAI({ topic: item.topic, tone: item.tone, length: item.length, category: item.category });
         break;
       } catch (aiErr) {
         lastError = aiErr;
@@ -143,17 +150,9 @@ async function processOne() {
     }
 
     if (!draft) {
-      if (!process.argv.includes('--fallback-template')) {
-        throw lastError || new Error('AI generation failed');
-      }
-
+      if (!process.argv.includes('--fallback-template')) throw lastError || new Error('AI generation failed');
       console.warn('[ai-bot] AI generation failed, fallback to template:', lastError?.message || lastError);
-      draft = buildDraftFromTopic({
-        topic: item.topic,
-        tone: item.tone,
-        length: item.length,
-        category: item.category,
-      });
+      draft = buildDraftFromTopic({ topic: item.topic, tone: item.tone, length: item.length, category: item.category });
     }
 
     const minChars = Math.max(300, Number(process.env.AI_BOT_MIN_CONTENT_CHARS || 700));
@@ -203,13 +202,14 @@ function arg(name, fallback = '') {
 async function main() {
   const isLoop = process.argv.includes('--loop');
   const intervalMs = Math.max(5_000, Number(arg('interval', '60000')) || 60_000);
+  const provider = (process.env.AI_PROVIDER || 'github').toLowerCase();
 
   if (!isLoop) {
     await processOne();
     return;
   }
 
-  console.log(`[ai-bot] loop mode started (interval=${intervalMs}ms, model=${process.env.GITHUB_MODEL || 'gpt-4.1'})`);
+  console.log(`[ai-bot] loop mode started (interval=${intervalMs}ms, provider=${provider})`);
   while (true) {
     await processOne();
     await new Promise((r) => setTimeout(r, intervalMs));
