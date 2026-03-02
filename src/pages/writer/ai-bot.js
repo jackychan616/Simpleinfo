@@ -37,8 +37,8 @@ export default function AiBotDashboardPage() {
 
   async function loadStatus() {
     const role = await getRole(email);
-    if (!['admin', 'editor'].includes(role)) {
-      setMsg('你需要 admin/editor 權限先可用 AI Bot Dashboard');
+    if (role !== 'admin') {
+      setMsg('你需要 admin 權限先可用 AI Bot Dashboard');
       return;
     }
 
@@ -169,7 +169,7 @@ export default function AiBotDashboardPage() {
   }
 
   return (
-    <RouteGuard requireLogin>
+    <RouteGuard requireLogin minRole="admin">
       <Container size="lg" py="xl">
         <Stack spacing="md">
           <Title order={1}>AI Blog Bot Dashboard</Title>
