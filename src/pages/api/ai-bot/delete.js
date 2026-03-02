@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     .single();
 
   if (findErr || !row) return res.status(404).json({ error: findErr?.message || 'Queue item not found' });
-  if (row.status !== 'pending') return res.status(422).json({ error: 'Only pending item can be deleted' });
+  if (row.status === 'processing') return res.status(422).json({ error: 'processing item cannot be deleted now' });
 
   const { error } = await client.from('ai_blog_queue').delete().eq('id', id);
   if (error) return res.status(500).json({ error: error.message });

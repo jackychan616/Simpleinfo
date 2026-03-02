@@ -106,7 +106,7 @@ export default function AiBotDashboardPage() {
     await loadStatus();
   }
 
-  async function deletePending(id) {
+  async function deleteQueueItem(id) {
     const res = await fetch('/api/ai-bot/delete', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -114,7 +114,7 @@ export default function AiBotDashboardPage() {
     });
 
     if (res.ok) {
-      setMsg('已刪除 pending 項目 ✅');
+      setMsg('已刪除 queue 項目 ✅');
     } else {
       const err = await readErrorMessage(res);
       setMsg(`刪除失敗：${err}`);
@@ -144,30 +144,6 @@ export default function AiBotDashboardPage() {
     } else {
       const err = await readErrorMessage(res);
       setMsg(`更新失敗：${err}`);
-    }
-
-    await loadStatus();
-  }
-
-  async function deleteSubmission(id) {
-    const token = await getAccessToken();
-    if (!token) {
-      setMsg('請先登入 admin 帳號');
-      return;
-    }
-
-    const res = await fetch(`/api/writer/submissions/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    if (res.ok) {
-      setMsg('已刪除 AI 文章 ✅');
-    } else {
-      const err = await readErrorMessage(res);
-      setMsg(`刪除文章失敗：${err}`);
     }
 
     await loadStatus();
@@ -322,22 +298,17 @@ export default function AiBotDashboardPage() {
                               Reject
                             </Button>
                           ) : null}
-                          {r.generated_submission_id ? (
-                            <Button size="xs" color="red" variant="outline" onClick={() => deleteSubmission(r.generated_submission_id)}>
-                              Delete Blog
-                            </Button>
-                          ) : null}
                           {r.status === 'failed' ? (
                             <Button size="xs" variant="light" onClick={() => retryFailed(r.id)}>
                               Retry
                             </Button>
                           ) : null}
-                          {r.status === 'pending' ? (
-                            <Button size="xs" color="red" variant="light" onClick={() => deletePending(r.id)}>
-                              Delete
+                          {r.status !== 'processing' ? (
+                            <Button size="xs" color="red" variant="light" onClick={() => deleteQueueItem(r.id)}>
+                              Delete Queue
                             </Button>
                           ) : null}
-                          {!r.generated_submission_id && r.status !== 'failed' && r.status !== 'pending' ? '-': null}
+                          {!r.generated_submission_id && r.status === 'processing' ? '-': null}
                         </Stack>
                       </td>
                     </tr>
