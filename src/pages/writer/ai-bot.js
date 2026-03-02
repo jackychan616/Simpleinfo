@@ -123,25 +123,6 @@ export default function AiBotDashboardPage() {
     await loadStatus();
   }
 
-  async function optimizeByReview() {
-    const res = await fetch('/api/ai-bot/optimize', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        submissionId: reviewSubmissionId,
-        comment: reviewComment,
-      }),
-    });
-
-    if (res.ok) {
-      const body = await res.json().catch(() => ({}));
-      setMsg(`已按評論優化內容 ✅ submission=${body?.data?.id || reviewSubmissionId}`);
-      setReviewComment('');
-    } else {
-      const err = await readErrorMessage(res);
-      setMsg(`優化失敗：${err}`);
-    }
-  }
 
   return (
     <RouteGuard requireLogin>
@@ -201,10 +182,11 @@ export default function AiBotDashboardPage() {
                 <TextInput label="Review Comment" placeholder="例如：語氣更貼地、加實例、減官腔" value={reviewComment} onChange={(e) => setReviewComment(e.currentTarget.value)} />
               </Group>
               <Group>
-                <Button variant="light" onClick={optimizeByReview} disabled={!reviewSubmissionId.trim() || !reviewComment.trim()}>
-                  Regenerate / Optimize by Comment
+                <Button variant="light" disabled>
+                  Regenerate / Optimize by Comment (use local command)
                 </Button>
               </Group>
+              <Text size="xs" color="dimmed">本機執行：<code>npm run ai:bot:optimize -- --submissionId {'<id>'} --comment &quot;語氣更貼地，加入實例&quot;</code></Text>
             </Stack>
           </Card>
 
