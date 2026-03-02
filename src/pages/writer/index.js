@@ -1,4 +1,5 @@
-import { Badge, Button, Card, Container, Group, SimpleGrid, Stack, Text, Title } from '@mantine/core';
+import { Badge, Button, Card, Container, Divider, Group, SimpleGrid, Stack, Text, Title } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import WriterAuth from '../components/writerAuth';
@@ -8,10 +9,11 @@ import { useSupabaseSession } from '../../lib/useSupabaseSession';
 import { useRouter } from 'next/router';
 import { getCurrentRoleSafe } from '../../lib/authClient';
 
-const steps = ['Google 登入', '建立草稿（標題、分類、內容）', '提交審核（status: pending_review）', '管理員審核通過後公開'];
+const steps = ['Google 登入', '建立草稿（標題、分類、內容）', '提交審核（Pending）', '管理員審核通過後公開'];
 
 export default function WriterDashboard() {
   const router = useRouter();
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const { session, ready } = useSupabaseSession();
   const [mine, setMine] = useState([]);
   const [role, setRole] = useState('user');
@@ -53,20 +55,25 @@ export default function WriterDashboard() {
   return (
     <Container size="md" py="xl">
       <Stack spacing="md">
-        <Title order={1}>Writer Dashboard</Title>
-        <Text color="dimmed">投稿平台 v2：已加入 Supabase Auth（magic link）。</Text>
+        <Stack spacing={2}>
+          <Title order={1}>Writer Workspace</Title>
+          <Text color="dimmed">集中管理投稿、審核狀態與 AI 內容工作流。</Text>
+        </Stack>
 
         <Card withBorder radius="md" shadow="sm">
-          <WriterAuth redirectPath="/writer" />
-          <Text size="sm" color="dimmed" mt="sm">
-            Session: {!ready ? 'loading...' : session?.user?.email ? `signed in as ${session.user.email}` : 'not signed in'}
-          </Text>
-          <Text size="sm" color="dimmed">Role: {role}</Text>
+          <Stack spacing={6}>
+            <WriterAuth redirectPath="/writer" />
+            <Divider />
+            <Text size="sm" color="dimmed">
+              Session: {!ready ? 'loading...' : session?.user?.email ? `signed in as ${session.user.email}` : 'not signed in'}
+            </Text>
+            <Text size="sm" color="dimmed">Role: {role}</Text>
+          </Stack>
         </Card>
 
-        <SimpleGrid cols={3} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+        <SimpleGrid cols={3} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}> 
           <Card withBorder component={Link} href="/writer/submissions?status=pending_review" style={{ textDecoration: 'none' }}>
-            <Text size="sm" color="dimmed">Pending</Text>
+            <Text size="sm" color="dimmed">Pending Review</Text>
             <Title order={2}>{stats.pending_review}</Title>
             <Badge color="yellow">pending_review</Badge>
           </Card>
@@ -83,20 +90,26 @@ export default function WriterDashboard() {
         </SimpleGrid>
 
         <Card withBorder radius="md" shadow="sm">
+          <Stack spacing="sm">
+            <Title order={4}>Quick Actions</Title>
+            <Group>
+              <Button component={Link} href="/writer/new" fullWidth={isMobile}>建立新文章</Button>
+              <Button variant="light" component={Link} href="/writer/my-posts" fullWidth={isMobile}>My Posts</Button>
+              <Button variant="light" component={Link} href="/writer/submissions" fullWidth={isMobile}>管理投稿</Button>
+              {role === 'admin' ? <Button variant="light" component={Link} href="/writer/admin-roles" fullWidth={isMobile}>Admin Panel</Button> : null}
+              {role === 'admin' || role === 'editor' ? <Button variant="light" component={Link} href="/writer/ai-bot" fullWidth={isMobile}>AI Bot</Button> : null}
+              <Button variant="subtle" component={Link} href="/hot" fullWidth={isMobile}>查看公開文章</Button>
+            </Group>
+          </Stack>
+        </Card>
+
+        <Card withBorder radius="md" shadow="sm">
           <Title order={4}>投稿流程</Title>
           <Stack spacing={6} mt="sm">
             {steps.map((s) => (
               <Text key={s}>• {s}</Text>
             ))}
           </Stack>
-          <Group mt="md">
-            <Button component={Link} href="/writer/new">建立新文章</Button>
-            <Button variant="light" component={Link} href="/writer/my-posts">My Posts</Button>
-            <Button variant="light" component={Link} href="/writer/submissions">管理投稿</Button>
-            {role === 'admin' ? <Button variant="light" component={Link} href="/writer/admin-roles">Admin Panel</Button> : null}
-            {role === 'admin' || role === 'editor' ? <Button variant="light" component={Link} href="/writer/ai-bot">AI Bot</Button> : null}
-            <Button variant="light" component={Link} href="/hot">查看公開文章</Button>
-          </Group>
         </Card>
       </Stack>
     </Container>
