@@ -1,4 +1,4 @@
-export const BLOCK_TYPES = ['paragraph', 'heading', 'image', 'link', 'code', 'embed', 'list', 'table'];
+export const BLOCK_TYPES = ['paragraph', 'heading', 'image', 'link', 'code', 'embed', 'list', 'table', 'chart'];
 
 export function normalizeBlock(raw = {}) {
   const type = BLOCK_TYPES.includes(raw.type) ? raw.type : 'paragraph';
@@ -34,6 +34,13 @@ export function normalizeBlock(raw = {}) {
       : [];
     return { ...base, headers, rows };
   }
+  if (type === 'chart') {
+    const chartType = String(raw.chartType || 'pie').trim().toLowerCase();
+    const labels = Array.isArray(raw.labels) ? raw.labels.map((x) => String(x || '').trim()).filter(Boolean) : [];
+    const values = Array.isArray(raw.values) ? raw.values.map((x) => Number(x)).filter((n) => Number.isFinite(n)) : [];
+    const title = String(raw.title || '').trim();
+    return { ...base, chartType, labels, values, title };
+  }
 
   return { ...base, text: String(raw.text || '').trim() };
 }
@@ -47,6 +54,7 @@ export function normalizeBlocks(blocks) {
     if (b.type === 'embed') return Boolean(b.url);
     if (b.type === 'list') return Array.isArray(b.items) && b.items.length > 0;
     if (b.type === 'table') return Array.isArray(b.rows) && b.rows.length > 0;
+    if (b.type === 'chart') return Array.isArray(b.labels) && Array.isArray(b.values) && b.labels.length > 0 && b.labels.length === b.values.length;
     return Boolean(String(b.text || '').trim());
   });
 }
@@ -59,6 +67,9 @@ export function blocksToPlainText(blocks) {
       if (b.type === 'code') return b.code;
       if (b.type === 'image') return b.caption || b.alt || '';
       if (b.type === 'embed') return b.title || b.url;
+      if (b.type === 'list') return (b.items || []).join('\n');
+      if (b.type === 'table') return (b.rows || []).map((r) => r.join(' | ')).join('\n');
+      if (b.type === 'chart') return `${b.title || 'chart'} ${(b.labels || []).join(', ')}`.trim();
       return '';
     })
     .filter(Boolean)
@@ -111,7 +122,31 @@ export function contentToBlocks(content = '') {
   function flushCode() {
     const code = codeBuffer.join('\n');
     if (code.trim()) {
-      blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'code', language: codeLang, code }));
+      const isChartLang = ['chart', 'pie', 'bar', 'line'].includes(String(codeLang || '').toLowerCase());
+      if (isChartLang) {
+        const lines = code.split('\n').map((s) => s.trim()).filter(Boolean);
+        const pairs = lines
+          .map((line) => {
+            const m = line.match(/^(.+?)\s*[:=]\s*(-?\d+(?:\.\d+)?)$/);
+            return m ? [m[1].trim(), Number(m[2])] : null;
+          })
+          .filter(Boolean);
+
+        if (pairs.length >= 2) {
+          blocks.push(normalizeBlock({
+            id: `legacy-${idx++}`,
+            type: 'chart',
+            chartType: codeLang.toLowerCase() === 'chart' ? 'pie' : codeLang.toLowerCase(),
+            labels: pairs.map((p) => p[0]),
+            values: pairs.map((p) => p[1]),
+            title: 'Data Chart',
+          }));
+        } else {
+          blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'code', language: codeLang, code }));
+        }
+      } else {
+        blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'code', language: codeLang, code }));
+      }
     }
     codeBuffer = [];
     codeLang = 'plaintext';
@@ -141,6 +176,15 @@ export function contentToBlocks(content = '') {
       flushList();
       flushTable();
       blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'heading', level: h[1].length, text: h[2].trim() }));
+      continue;
+    }
+
+    const imageOnly = line.match(/^!\[(.*)\]\((https?:\/\/[^)]+)\)$/);
+    if (imageOnly) {
+      flushParagraph();
+      flushList();
+      flushTable();
+      blocks.push(normalizeBlock({ id: `legacy-${idx++}`, type: 'image', src: imageOnly[2].trim(), alt: imageOnly[1].trim() }));
       continue;
     }
 

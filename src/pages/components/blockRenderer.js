@@ -12,6 +12,29 @@ function highlight(code, language) {
   }
 }
 
+function buildQuickChartUrl(block) {
+  const type = ['pie', 'bar', 'line'].includes(block.chartType) ? block.chartType : 'pie';
+  const config = {
+    type,
+    data: {
+      labels: block.labels || [],
+      datasets: [{
+        label: block.title || 'Dataset',
+        data: block.values || [],
+      }],
+    },
+    options: {
+      plugins: {
+        legend: { display: true },
+        title: { display: Boolean(block.title), text: block.title || '' },
+      },
+    },
+  };
+
+  const encoded = encodeURIComponent(JSON.stringify(config));
+  return `https://quickchart.io/chart?c=${encoded}`;
+}
+
 export default function BlockRenderer({ blocks = [] }) {
   return (
     <Stack spacing="sm">
@@ -85,6 +108,16 @@ export default function BlockRenderer({ blocks = [] }) {
                   ))}
                 </tbody>
               </table>
+            </div>
+          );
+        }
+
+        if (block.type === 'chart') {
+          const chartUrl = buildQuickChartUrl(block);
+          return (
+            <div key={block.id}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={chartUrl} alt={block.title || 'chart'} style={{ width: '100%', borderRadius: 8 }} />
             </div>
           );
         }
