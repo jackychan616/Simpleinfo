@@ -13,6 +13,8 @@ export default function AiBotDashboardPage() {
   const [scheduledAt, setScheduledAt] = useState('');
   const [minChars, setMinChars] = useState(300);
   const [msg, setMsg] = useState('');
+  const [reviewSubmissionId, setReviewSubmissionId] = useState('');
+  const [reviewComment, setReviewComment] = useState('');
   const [counts, setCounts] = useState({});
   const [latest, setLatest] = useState([]);
 
@@ -121,6 +123,26 @@ export default function AiBotDashboardPage() {
     await loadStatus();
   }
 
+  async function optimizeByReview() {
+    const res = await fetch('/api/ai-bot/optimize', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        submissionId: reviewSubmissionId,
+        comment: reviewComment,
+      }),
+    });
+
+    if (res.ok) {
+      const body = await res.json().catch(() => ({}));
+      setMsg(`已按評論優化內容 ✅ submission=${body?.data?.id || reviewSubmissionId}`);
+      setReviewComment('');
+    } else {
+      const err = await readErrorMessage(res);
+      setMsg(`優化失敗：${err}`);
+    }
+  }
+
   return (
     <RouteGuard requireLogin>
       <Container size="lg" py="xl">
@@ -172,7 +194,22 @@ export default function AiBotDashboardPage() {
           </Card>
 
           <Card withBorder>
-            <Text size="sm" color="dimmed" mb="sm">Recent queue items</Text>
+            <Stack>
+              <Text size="sm" color="dimmed">Review comment → API regenerate/optimize</Text>
+              <Group grow>
+                <TextInput label="Submission ID" placeholder="貼上 writer_submissions id" value={reviewSubmissionId} onChange={(e) => setReviewSubmissionId(e.currentTarget.value)} />
+                <TextInput label="Review Comment" placeholder="例如：語氣更貼地、加實例、減官腔" value={reviewComment} onChange={(e) => setReviewComment(e.currentTarget.value)} />
+              </Group>
+              <Group>
+                <Button variant="light" onClick={optimizeByReview} disabled={!reviewSubmissionId.trim() || !reviewComment.trim()}>
+                  Regenerate / Optimize by Comment
+                </Button>
+              </Group>
+            </Stack>
+          </Card>
+
+          <Card withBorder>
+            <Text size="sm" color="dimmed" mb="sm">Recent queue items (with logs)</Text>
             <Table striped highlightOnHover>
               <thead>
                 <tr>
@@ -180,6 +217,7 @@ export default function AiBotDashboardPage() {
                   <th>Status</th>
                   <th>Scheduled</th>
                   <th>Processed</th>
+                  <th>Log</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -190,10 +228,15 @@ export default function AiBotDashboardPage() {
                     <td>{r.status}</td>
                     <td>{r.scheduled_at ? new Date(r.scheduled_at).toLocaleString() : '-'}</td>
                     <td>{r.processed_at ? new Date(r.processed_at).toLocaleString() : '-'}</td>
+                    <td style={{ maxWidth: 260 }}>{r.error_message || '-'}</td>
                     <td>
                       {r.status === 'failed' ? (
                         <Button size="xs" variant="light" onClick={() => retryFailed(r.id)}>
                           Retry
+                        </Button>
+                      ) : r.generated_submission_id ? (
+                        <Button size="xs" component="a" href={`/writer/submissions/${r.generated_submission_id}`}>
+                          Edit
                         </Button>
                       ) : (
                         '-'
