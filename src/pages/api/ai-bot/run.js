@@ -13,6 +13,7 @@ function safeJsonParse(raw) {
 async function generateDraftWithGitHubModels({ topic, tone, length, category }) {
   const token = process.env.GITHUB_TOKEN;
   const model = process.env.GITHUB_MODEL || 'gpt-4.1';
+  const timeoutMs = Math.max(8_000, Number(process.env.AI_BOT_HTTP_TIMEOUT_MS || 25_000));
 
   if (!token) throw new Error('Missing GITHUB_TOKEN');
 
@@ -43,22 +44,36 @@ Quality requirements:
 - Useful for real execution, not abstract summary.
 - No markdown fences. JSON only.`;
 
-  const resp = await fetch('https://models.inference.ai.azure.com/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      model,
-      temperature: 0.7,
-      response_format: { type: 'json_object' },
-      messages: [
-        { role: 'system', content: 'You are an expert SEO content writer for HK readers.' },
-        { role: 'user', content: prompt },
-      ],
-    }),
-  });
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+  let resp;
+  try {
+    resp = await fetch('https://models.inference.ai.azure.com/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        model,
+        temperature: 0.7,
+        response_format: { type: 'json_object' },
+        messages: [
+          { role: 'system', content: 'You are an expert SEO content writer for HK readers.' },
+          { role: 'user', content: prompt },
+        ],
+      }),
+      signal: controller.signal,
+    });
+  } catch (e) {
+    if (e?.name === 'AbortError') {
+      throw new Error(`GitHub Models timeout after ${timeoutMs}ms`);
+    }
+    throw e;
+  } finally {
+    clearTimeout(timer);
+  }
 
   if (!resp.ok) {
     const text = await resp.text();
@@ -91,6 +106,14 @@ export default async function handler(req, res) {
   if (!client) return res.status(500).json({ error: envError });
 
   const nowIso = new Date().toISOString();
+  const staleMinutes = Math.max(5, Number(process.env.AI_BOT_STALE_MINUTES || 15));
+  const staleAt = new Date(Date.now() - staleMinutes * 60 * 1000).toISOString();
+
+  await client
+    .from('ai_blog_queue')
+    .update({ status: 'pending', error_message: 'auto-reset stale processing job' })
+    .eq('status', 'processing')
+    .lt('updated_at', staleAt);
 
   const { data: item, error: pickError } = await client
     .from('ai_blog_queue')
