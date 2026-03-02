@@ -49,6 +49,10 @@ Required env for AI generation (GitHub Models):
   - `npm run ai:bot:loop -- --interval 15000`
 - Optional fallback to local template when AI fails:
   - `npm run ai:bot:loop -- --fallback-template`
+- Optional web-search grounding for AI generation:
+  - set `AI_BOT_WEB_SEARCH=1`
+  - set `BRAVE_API_KEY=...`
+  - worker will include latest web references in the prompt
 
 Scripts will auto-load `.env` and `.env.local` from project root.
 

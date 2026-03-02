@@ -111,7 +111,32 @@ async function callModel(messages, responseFormat = true) {
   return String(data?.choices?.[0]?.message?.content || '{}');
 }
 
+async function fetchWebContext(topic) {
+  if (String(process.env.AI_BOT_WEB_SEARCH || '').toLowerCase() !== '1') return '';
+
+  const braveKey = process.env.BRAVE_API_KEY;
+  if (!braveKey) return '';
+
+  try {
+    const url = `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(topic)}&count=5&search_lang=zh&country=HK`;
+    const resp = await fetch(url, {
+      headers: {
+        Accept: 'application/json',
+        'X-Subscription-Token': braveKey,
+      },
+    });
+
+    if (!resp.ok) return '';
+    const data = await resp.json();
+    const items = (data?.web?.results || []).slice(0, 5).map((r, i) => `${i + 1}. ${r.title}\n${r.description || ''}\n${r.url}`).join('\n\n');
+    return items ? `\n\nWeb references (latest search):\n${items}` : '';
+  } catch {
+    return '';
+  }
+}
+
 async function generateDraftWithAI({ topic, tone, length, category }) {
+  const webContext = await fetchWebContext(topic);
   const prompt = `Generate a Traditional Chinese (zh-HK) blog draft as JSON only.
 
 Topic: ${topic}
@@ -129,7 +154,8 @@ Return strictly valid JSON with fields:
 Rules:
 - Use Traditional Chinese, Hong Kong style writing.
 - Include practical steps and examples.
-- Keep content professional and useful.`;
+- Keep content professional and useful.
+- If web references are provided, use them as context and avoid making up facts.${webContext}`;
 
   const raw = await callModel([
     { role: 'system', content: 'You are a professional SEO content writer.' },
