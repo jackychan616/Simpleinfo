@@ -20,7 +20,8 @@ import {
   Flex,
   ActionIcon,
   Container,
-  Drawer
+  Drawer,
+  Stack
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
@@ -294,7 +295,7 @@ export default function ConHeader() {
       <Drawer
       opened={drawerOpened}
       onClose={closeDrawer}
-      size="50%"
+      size="85%"
       padding="md"
       title="Simple Info"
       className={classes.hiddenDesktop}
@@ -307,7 +308,7 @@ export default function ConHeader() {
             首頁
           </Link>
           <Link href="/hot" className={classes.link} onClick={closeDrawer}>
-            文章
+            近期最熱
           </Link>
           <Link href="/monetize" className={classes.link} onClick={closeDrawer}>
             變現方案
@@ -324,10 +325,14 @@ export default function ConHeader() {
             </Link>
           ) : null}
           {!userEmail ? (
-            <>
-              <Link href="/login" className={classes.link} onClick={closeDrawer}>登入</Link>
-              <Link href="/register" className={classes.link} onClick={closeDrawer}>註冊</Link>
-            </>
+            <Stack px="md" pb="sm" spacing="xs">
+              <Button component={Link} href="/login" onClick={closeDrawer} fullWidth>
+                Google 登入
+              </Button>
+              <Button component={Link} href="/register" onClick={closeDrawer} fullWidth variant="light">
+                建立帳戶
+              </Button>
+            </Stack>
           ) : (
             <>
               <Link href="/account/profile" className={classes.link} onClick={closeDrawer}>個人資料</Link>

@@ -49,13 +49,14 @@ export default function LoginPage() {
       <Container size="sm" py="xl">
         <Card withBorder radius="md" shadow="sm">
           <Stack spacing="md">
-            <Title order={1}>Login</Title>
+            <Title order={1}>登入 Simple Info</Title>
             {reason === 'session_expired' ? <Text color="orange">你的登入狀態已過期，請重新登入後繼續。</Text> : null}
             <Text color="dimmed">登入後會自動返回：{nextPath}</Text>
-            <Text color="dimmed">目前只支援 Google 登入（Gmail）。</Text>
+            <Text color="dimmed">目前只支援 Google（Gmail）登入。請按下面按鈕用同一個 Google 帳戶登入。</Text>
+            <Text size="sm" color="dimmed">如果登入後仍然無權限，請先確認你登入嘅 Gmail 同 admin 設定 email 一致。</Text>
 
             <Group>
-              <Button onClick={loginWithGoogle}>Continue with Google</Button>
+              <Button onClick={loginWithGoogle}>用 Google 繼續</Button>
               <Button component={Link} href="/writer" variant="subtle">
                 Back to writer
               </Button>
