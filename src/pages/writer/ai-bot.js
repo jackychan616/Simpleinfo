@@ -11,7 +11,6 @@ export default function AiBotDashboardPage() {
   const [tone, setTone] = useState('professional');
   const [length, setLength] = useState('medium');
   const [scheduledAt, setScheduledAt] = useState('');
-  const [minChars, setMinChars] = useState(300);
   const [msg, setMsg] = useState('');
   const [reviewSubmissionId, setReviewSubmissionId] = useState('');
   const [reviewComment, setReviewComment] = useState('');
@@ -90,22 +89,6 @@ export default function AiBotDashboardPage() {
       setScheduledAt('');
       await loadStatus();
     }
-  }
-
-  async function runOne() {
-    const res = await fetch('/api/ai-bot/run', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ minChars: Number(minChars) || 0 }),
-    });
-    if (res.ok) {
-      const body = await res.json().catch(() => ({}));
-      setMsg(body.message || `已處理 queue ${body.queueId || ''}`);
-    } else {
-      const err = await readErrorMessage(res);
-      setMsg(`run 失敗：${err}`);
-    }
-    await loadStatus();
   }
 
   async function retryFailed(id) {
@@ -201,12 +184,12 @@ export default function AiBotDashboardPage() {
               </Group>
               <Group grow>
                 <TextInput label="Schedule (optional)" type="datetime-local" value={scheduledAt} onChange={(e) => setScheduledAt(e.currentTarget.value)} />
-                <TextInput label="Min chars threshold" type="number" value={String(minChars)} onChange={(e) => setMinChars(Number(e.currentTarget.value || 0))} />
               </Group>
               <Group>
                 <Button onClick={enqueue} disabled={!topic.trim()}>Enqueue</Button>
-                <Button variant="light" onClick={runOne}>Run one now</Button>
+                <Button variant="light" disabled>Run one now (use local worker)</Button>
               </Group>
+              <Text size="xs" color="dimmed">為避免 Cloudflare 504，請用本機 worker：<code>npm run ai:bot:loop -- --interval 15000</code></Text>
             </Stack>
           </Card>
 
