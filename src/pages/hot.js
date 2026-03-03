@@ -4,7 +4,7 @@ import { getSupabaseServer } from '../lib/supabaseServer';
 import { summarizeBlocks, getBlocksFromSubmission } from '../lib/contentBlocks';
 
 function toCommunityHref(id, slug) {
-  return `/community/${slug || id}`;
+  return `/community/${id}-${slug || 'post'}`;
 }
 
 export default function HotPage({ items = [] }) {

@@ -10,17 +10,29 @@ import { getBlocksFromSubmission, summarizeBlocks } from '../../lib/contentBlock
 import { buildCanonicalUrl, SITE_URL } from '../../lib/seo';
 import { articleJsonLd } from '../../lib/seoStructured';
 
+function parseIdSlug(value = '') {
+  const raw = String(value || '');
+  const m = raw.match(/^([0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})(?:-(.+))?$/i);
+  if (!m) return { id: raw, slug: '' };
+  return { id: m[1], slug: m[2] || '' };
+}
+
+function toCommunityPath(row) {
+  return `/community/${row.id}-${row.slug || 'post'}`;
+}
+
 export default function CommunityPostPage() {
   const router = useRouter();
   const { id } = router.query;
+  const parsed = parseIdSlug(id);
   const [row, setRow] = useState(null);
   const [error, setError] = useState('');
   const [likeLoading, setLikeLoading] = useState(false);
   const [recommended, setRecommended] = useState([]);
 
   useEffect(() => {
-    if (!id) return;
-    fetch(`/api/writer/submissions/${id}`)
+    if (!parsed.id) return;
+    fetch(`/api/writer/submissions/${parsed.id}`)
       .then((r) => r.json())
       .then(async (body) => {
         const data = body.data;
@@ -36,14 +48,14 @@ export default function CommunityPostPage() {
         setRecommended(rec);
       })
       .catch(() => setError('讀取失敗'));
-  }, [id]);
+  }, [parsed.id]);
 
   const blocks = useMemo(() => getBlocksFromSubmission(row), [row]);
 
   async function handleLike() {
-    if (!id || likeLoading) return;
+    if (!parsed.id || likeLoading) return;
     setLikeLoading(true);
-    const res = await fetch(`/api/community/${id}/like`, { method: 'POST' });
+    const res = await fetch(`/api/community/${parsed.id}/like`, { method: 'POST' });
     const body = await res.json().catch(() => ({}));
     setLikeLoading(false);
     if (res.ok && body?.data) {
@@ -67,7 +79,8 @@ export default function CommunityPostPage() {
     );
   }
 
-  const canonical = buildCanonicalUrl(`/community/${row.slug || row.id}`);
+  const canonicalPath = toCommunityPath(row);
+  const canonical = buildCanonicalUrl(canonicalPath);
   const description = summarizeBlocks(blocks, 160) || (row.content || '').slice(0, 160);
   const seoTitle = `${row.title} | Simple Info 社群投稿`;
   const seoImage = `${SITE_URL}/img/simple_info.png`;
@@ -75,7 +88,7 @@ export default function CommunityPostPage() {
   const articleLd = articleJsonLd({
     title: row.title,
     description,
-    idOrPath: `/community/${row.slug || row.id}`,
+    idOrPath: canonicalPath,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
     authorName: row.author_email || 'Simple Info 社群作者',
@@ -132,7 +145,7 @@ export default function CommunityPostPage() {
               <Stack mt="sm" spacing={8}>
                 {recommended.map((item) => (
                   <Text key={item.id}>
-                    <Link href={`/community/${item.slug || item.id}`} style={{ textDecoration: 'none' }}>
+                    <Link href={toCommunityPath(item)} style={{ textDecoration: 'none' }}>
                       {item.title}
                     </Link>
                   </Text>
