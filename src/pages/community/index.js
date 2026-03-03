@@ -33,7 +33,7 @@ export default function CommunityPage() {
             {rows.map((row) => {
               const summary = summarizeBlocks(getBlocksFromSubmission(row), 200) || row.content;
               return (
-                <Card key={row.id} withBorder radius="md" shadow="sm" component={Link} href={`/community/${row.id}`} style={{ cursor: 'pointer' }}>
+                <Card key={row.id} withBorder radius="md" shadow="sm" component={Link} href={`/community/${row.slug || row.id}`} style={{ cursor: 'pointer' }}>
                   <Group position="apart" mb="xs">
                     <Text weight={700}>{row.title}</Text>
                     <Badge color="green">approved</Badge>

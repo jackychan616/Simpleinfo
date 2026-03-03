@@ -73,7 +73,7 @@ export default function SubmissionDetailPage() {
         <Group style={{ width: isMobile ? '100%' : 'auto' }}>
           <Button component={Link} href="/writer/submissions" variant="light" fullWidth={isMobile}>返回列表</Button>
           {row.status === 'approved' ? (
-            <Button component={Link} href={`/community/${row.id}`} fullWidth={isMobile}>公開頁預覽</Button>
+            <Button component={Link} href={`/community/${row.slug || row.id}`} fullWidth={isMobile}>公開頁預覽</Button>
           ) : null}
         </Group>
       </Stack>

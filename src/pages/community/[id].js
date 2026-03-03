@@ -67,7 +67,7 @@ export default function CommunityPostPage() {
     );
   }
 
-  const canonical = buildCanonicalUrl(`/community/${row.id}`);
+  const canonical = buildCanonicalUrl(`/community/${row.slug || row.id}`);
   const description = summarizeBlocks(blocks, 160) || (row.content || '').slice(0, 160);
   const seoTitle = `${row.title} | Simple Info 社群投稿`;
   const seoImage = `${SITE_URL}/img/simple_info.png`;
@@ -75,7 +75,7 @@ export default function CommunityPostPage() {
   const articleLd = articleJsonLd({
     title: row.title,
     description,
-    idOrPath: `/community/${row.id}`,
+    idOrPath: `/community/${row.slug || row.id}`,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
     authorName: row.author_email || 'Simple Info 社群作者',
@@ -132,7 +132,7 @@ export default function CommunityPostPage() {
               <Stack mt="sm" spacing={8}>
                 {recommended.map((item) => (
                   <Text key={item.id}>
-                    <Link href={`/community/${item.id}`} style={{ textDecoration: 'none' }}>
+                    <Link href={`/community/${item.slug || item.id}`} style={{ textDecoration: 'none' }}>
                       {item.title}
                     </Link>
                   </Text>

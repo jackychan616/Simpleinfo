@@ -150,7 +150,7 @@ export default function Home() {
               </Group>
               <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
                 {communityPosts.map((post) => (
-                  <Card key={post.id} p="md" radius="md" component={Link} href={`/community/${post.id}`} className={classes.card} shadow="sm" style={{ cursor: 'pointer' }}>
+                  <Card key={post.id} p="md" radius="md" component={Link} href={`/community/${post.slug || post.id}`} className={classes.card} shadow="sm" style={{ cursor: 'pointer' }}>
                     <Group position="apart" mb="xs">
                       <Badge color="green">community</Badge>
                       <Text size="xs" color="dimmed">{new Date(post.created_at).toLocaleDateString()}</Text>

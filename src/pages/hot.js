@@ -3,8 +3,8 @@ import { Card, Container, Group, SimpleGrid, Stack, Text, Title, Badge, Button }
 import { getSupabaseServer } from '../lib/supabaseServer';
 import { summarizeBlocks, getBlocksFromSubmission } from '../lib/contentBlocks';
 
-function toCommunityHref(id) {
-  return `/community/${id}`;
+function toCommunityHref(id, slug) {
+  return `/community/${slug || id}`;
 }
 
 export default function HotPage({ items = [] }) {
@@ -24,7 +24,7 @@ export default function HotPage({ items = [] }) {
                 </Group>
                 <Title order={4} lineClamp={2}>{item.title}</Title>
                 <Text size="sm" color="dimmed" lineClamp={3}>{item.description}</Text>
-                <Button component={Link} href={toCommunityHref(item.id)} variant="light">
+                <Button component={Link} href={toCommunityHref(item.id, item.slug)} variant="light">
                   閱讀文章
                 </Button>
               </Stack>
@@ -42,7 +42,7 @@ export async function getServerSideProps() {
 
   const { data } = await client
     .from('writer_submissions')
-    .select('id,title,category,content,content_blocks,created_at,like_count,status')
+    .select('id,slug,title,category,content,content_blocks,created_at,like_count,status')
     .eq('status', 'approved')
     .order('like_count', { ascending: false, nullsFirst: false })
     .order('created_at', { ascending: false })
@@ -50,6 +50,7 @@ export async function getServerSideProps() {
 
   const items = (data || []).map((row) => ({
     id: row.id,
+    slug: row.slug || null,
     title: row.title,
     category: row.category,
     created_at: row.created_at,
