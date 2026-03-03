@@ -42,13 +42,18 @@ export default function CommunityPostPage() {
         }
         setRow(data);
 
+        const canonicalPath = toCommunityPath(data);
+        if (parsed.slug && data.slug && parsed.slug !== data.slug) {
+          router.replace(canonicalPath, undefined, { shallow: true });
+        }
+
         const r = await fetch(`/api/writer/submissions?status=approved`);
         const rb = await r.json().catch(() => ({}));
         const rec = (rb.data || []).filter((x) => x.id !== data.id).slice(0, 4);
         setRecommended(rec);
       })
       .catch(() => setError('讀取失敗'));
-  }, [parsed.id]);
+  }, [parsed.id, parsed.slug, router]);
 
   const blocks = useMemo(() => getBlocksFromSubmission(row), [row]);
 
