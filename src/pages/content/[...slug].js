@@ -1,6 +1,8 @@
-import { Badge, Button, Card, Container, Group, Image, Stack, Text, Title } from '@mantine/core';
+import { Badge, Button, Card, Container, Group, Stack, Text, Title } from '@mantine/core';
 import Link from 'next/link';
-import mapData from '../../data/content-articles.generated.json';
+import { getSupabaseServer } from '../../lib/supabaseServer';
+import BlockRenderer from '../components/blockRenderer';
+import { getBlocksFromSubmission } from '../../lib/contentBlocks';
 
 export default function ContentSlugPage({ slug, article }) {
   if (!article) {
@@ -8,8 +10,8 @@ export default function ContentSlugPage({ slug, article }) {
       <Container size="sm" py="xl">
         <Card withBorder>
           <Stack>
-            <Title order={2}>文章整理中</Title>
-            <Text color="dimmed">這篇舊內容正在遷移到新版內容系統。</Text>
+            <Title order={2}>文章不存在</Title>
+            <Text color="dimmed">這個 slug 尚未完成遷移，請稍後再試。</Text>
             <Button component={Link} href="/hot">返回近期最熱</Button>
           </Stack>
         </Card>
@@ -17,20 +19,22 @@ export default function ContentSlugPage({ slug, article }) {
     );
   }
 
+  const blocks = getBlocksFromSubmission(article);
+
   return (
     <Container size="md" py="xl">
       <Card withBorder radius="md" shadow="sm">
         <Stack>
           <Group position="apart">
-            <Badge>Legacy Migrated</Badge>
+            <Badge color="blue" variant="light">Content</Badge>
             <Text size="xs" color="dimmed">/content/{slug}</Text>
           </Group>
           <Title order={1}>{article.title}</Title>
-          {article.image ? <Image src={article.image} alt={article.title} radius="md" /> : null}
-          <Text color="dimmed">{article.description}</Text>
+          <Text color="dimmed">{article.category || 'tech'} · {new Date(article.created_at).toLocaleDateString()}</Text>
+          <BlockRenderer blocks={blocks} />
           <Group>
-            <Button component={Link} href="/hot">返回近期最熱</Button>
-            <Button component={Link} href="/community" variant="light">查看社群文章</Button>
+            <Button component={Link} href="/hot" variant="light">返回近期最熱</Button>
+            <Button component={Link} href="/community">查看社群文章</Button>
           </Group>
         </Stack>
       </Card>
@@ -40,6 +44,16 @@ export default function ContentSlugPage({ slug, article }) {
 
 export async function getServerSideProps(ctx) {
   const slug = (ctx.params?.slug || []).join('/');
-  const article = (mapData?.items || []).find((x) => x.slug === slug) || null;
-  return { props: { slug, article } };
+  const { client } = getSupabaseServer();
+
+  if (!client) return { props: { slug, article: null } };
+
+  const { data } = await client
+    .from('writer_submissions')
+    .select('id,title,category,content,content_blocks,created_at,source_slug,status')
+    .eq('source_slug', slug)
+    .eq('status', 'approved')
+    .single();
+
+  return { props: { slug, article: data || null } };
 }
