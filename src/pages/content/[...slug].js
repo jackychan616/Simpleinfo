@@ -1,9 +1,9 @@
-import { Button, Card, Container, Stack, Text, Title } from '@mantine/core';
+import { Badge, Button, Card, Container, Group, Image, Stack, Text, Title } from '@mantine/core';
 import Link from 'next/link';
-import slugMap from '../../data/content-slug-map.generated.json';
+import mapData from '../../data/content-articles.generated.json';
 
-export default function ContentSlugPage({ slug, found }) {
-  if (!found) {
+export default function ContentSlugPage({ slug, article }) {
+  if (!article) {
     return (
       <Container size="sm" py="xl">
         <Card withBorder>
@@ -18,13 +18,20 @@ export default function ContentSlugPage({ slug, found }) {
   }
 
   return (
-    <Container size="sm" py="xl">
-      <Card withBorder>
+    <Container size="md" py="xl">
+      <Card withBorder radius="md" shadow="sm">
         <Stack>
-          <Title order={2}>Content Slug Route 已就緒</Title>
-          <Text color="dimmed">Slug: /content/{slug}</Text>
-          <Text size="sm" color="dimmed">下一步會把 legacy JS 內容批量轉入這個 dynamic route。</Text>
-          <Button component={Link} href={`/content/${slug}`}>重新載入</Button>
+          <Group position="apart">
+            <Badge>Legacy Migrated</Badge>
+            <Text size="xs" color="dimmed">/content/{slug}</Text>
+          </Group>
+          <Title order={1}>{article.title}</Title>
+          {article.image ? <Image src={article.image} alt={article.title} radius="md" /> : null}
+          <Text color="dimmed">{article.description}</Text>
+          <Group>
+            <Button component={Link} href="/hot">返回近期最熱</Button>
+            <Button component={Link} href="/community" variant="light">查看社群文章</Button>
+          </Group>
         </Stack>
       </Card>
     </Container>
@@ -33,6 +40,6 @@ export default function ContentSlugPage({ slug, found }) {
 
 export async function getServerSideProps(ctx) {
   const slug = (ctx.params?.slug || []).join('/');
-  const found = (slugMap?.items || []).some((x) => x.slug === slug);
-  return { props: { slug, found } };
+  const article = (mapData?.items || []).find((x) => x.slug === slug) || null;
+  return { props: { slug, article } };
 }
