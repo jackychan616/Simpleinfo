@@ -159,7 +159,7 @@ export default function WriterSubmissionsPage() {
                           <Button size="xs" variant="subtle" component={Link} href={`/writer/submissions/${item.id}`}>View</Button>
                           {isAdmin ? <Button size="xs" color="green" variant="light" onClick={() => updateStatus(item.id, 'approved')}>Approve</Button> : null}
                           {isAdmin ? <Button size="xs" color="red" variant="light" onClick={() => updateStatus(item.id, 'rejected')}>Reject</Button> : null}
-                          {item.status === 'approved' ? <Button size="xs" component={Link} href={`/community/${item.id}`} variant="outline">Public</Button> : null}
+                          {item.status === 'approved' ? <Button size="xs" component={Link} href={`/community/${item.id}-${item.slug || 'post'}`} variant="outline">Public</Button> : null}
                         </Group>
                       </Stack>
                     </Card>
@@ -204,7 +204,7 @@ export default function WriterSubmissionsPage() {
                                 </>
                               ) : null}
                               {item.status === 'approved' ? (
-                                <Button size="xs" component={Link} href={`/community/${item.id}`} variant="outline">
+                                <Button size="xs" component={Link} href={`/community/${item.id}-${item.slug || 'post'}`} variant="outline">
                                   Public
                                 </Button>
                               ) : null}

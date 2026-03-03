@@ -40,6 +40,7 @@ export default function NewPostPage() {
   const [aiLength, setAiLength] = useState('medium');
   const [aiLoading, setAiLoading] = useState(false);
   const [aiDraft, setAiDraft] = useState(null);
+  const [uploadingBlockId, setUploadingBlockId] = useState('');
 
   const plainContent = useMemo(() => blocksToPlainText(blocks), [blocks]);
 
@@ -146,6 +147,44 @@ export default function NewPostPage() {
     if (!aiDraft) return;
     setBlocks(normalizeBlocks(aiDraft.blocks || []));
     if (aiDraft.title) setTitle(aiDraft.title);
+  }
+
+  async function handleImageUpload(blockId, file) {
+    if (!file) return;
+    setUploadingBlockId(blockId);
+    setMsg('');
+
+    const dataUrl = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error('read file failed'));
+      reader.readAsDataURL(file);
+    });
+
+    const token = await getAccessToken();
+    const res = await fetch('/api/writer/upload-image', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: JSON.stringify({
+        filename: file.name,
+        contentType: file.type,
+        dataUrl,
+      }),
+    });
+
+    const body = await res.json().catch(() => ({}));
+    setUploadingBlockId('');
+
+    if (!res.ok || !body?.url) {
+      setMsg(`圖片上傳失敗：${body?.error || 'unknown error'}`);
+      return;
+    }
+
+    updateBlock(blockId, { src: body.url });
+    setMsg('圖片已上傳 ✅');
   }
 
   return (
@@ -266,6 +305,17 @@ export default function NewPostPage() {
                     {block.type === 'image' ? (
                       <>
                         <TextInput label="Image URL" value={block.src || ''} onChange={(e) => updateBlock(block.id, { src: e.currentTarget.value })} />
+                        <Group>
+                          <Button component="label" size="xs" variant="light" loading={uploadingBlockId === block.id}>
+                            Upload from device
+                            <input
+                              type="file"
+                              accept="image/png,image/jpeg,image/webp,image/gif"
+                              hidden
+                              onChange={(e) => handleImageUpload(block.id, e.currentTarget.files?.[0])}
+                            />
+                          </Button>
+                        </Group>
                         <Group grow>
                           <TextInput label="Alt" value={block.alt || ''} onChange={(e) => updateBlock(block.id, { alt: e.currentTarget.value })} />
                           <TextInput label="Caption" value={block.caption || ''} onChange={(e) => updateBlock(block.id, { caption: e.currentTarget.value })} />

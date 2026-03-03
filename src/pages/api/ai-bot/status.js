@@ -24,23 +24,25 @@ export default async function handler(req, res) {
   }, {});
 
   const submissionIds = [...new Set((latest || []).map((x) => x.generated_submission_id).filter(Boolean))];
-  let submissionStatusMap = {};
+  let submissionMap = {};
 
   if (submissionIds.length > 0) {
     const { data: submissions } = await client
       .from('writer_submissions')
-      .select('id,status')
+      .select('id,status,slug,title')
       .in('id', submissionIds);
 
-    submissionStatusMap = (submissions || []).reduce((acc, row) => {
-      acc[row.id] = row.status;
+    submissionMap = (submissions || []).reduce((acc, row) => {
+      acc[row.id] = row;
       return acc;
     }, {});
   }
 
   const normalizedLatest = (latest || []).map((item) => ({
     ...item,
-    submission_status: item.generated_submission_id ? submissionStatusMap[item.generated_submission_id] || null : null,
+    submission_status: item.generated_submission_id ? submissionMap[item.generated_submission_id]?.status || null : null,
+    submission_slug: item.generated_submission_id ? submissionMap[item.generated_submission_id]?.slug || null : null,
+    submission_title: item.generated_submission_id ? submissionMap[item.generated_submission_id]?.title || null : null,
   }));
 
   return res.status(200).json({ counts, latest: normalizedLatest });

@@ -9,11 +9,12 @@ export default async function handler(req, res) {
   const { id } = req.query;
 
   if (req.method === 'GET') {
-    const { data, error } = await client
-      .from('writer_submissions')
-      .select('*')
-      .eq('id', id)
-      .single();
+    const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(String(id));
+
+    let query = client.from('writer_submissions').select('*');
+    query = isUuid ? query.eq('id', id) : query.eq('slug', String(id));
+
+    const { data, error } = await query.single();
 
     if (error) return res.status(500).json({ error: error.message });
     if (!data) return res.status(404).json({ error: 'Not found' });

@@ -1,0 +1,356 @@
+{
+  "generatedAt": "2026-03-03T08:43:49.619Z",
+  "count": 50,
+  "items": [
+    {
+      "slug": "[...slug]",
+      "title": "[...Slug]",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/[...slug]"
+    },
+    {
+      "slug": "ai-tutorial/ai-futher-develop",
+      "title": "AI未來發展的前景,商業分析竟佔重要地位",
+      "description": "隨著科技快速發展，人工智慧 (AI) 已經成為一個越來越受到關注的技術領域。AI的應用可以幫助企業提高效率、改善產品品質、為人類解決許多問題。未來，AI的發展前景非常廣闊， 亦能接手很多人類的工作。",
+      "image": "https://simpleinfohk.me/img/ai-light-talk/ai-1.jpg",
+      "legacyPath": "/content/ai-tutorial/ai-futher-develop"
+    },
+    {
+      "slug": "ai-tutorial/ai-light-talk",
+      "title": "淺談AI",
+      "description": "AI（Artificial Intelligence）也被稱為人工智能，是一項研究如何讓計算機實現類似人類智能的技術。它是一個廣泛的研究領域，涉及到計算機科學、統計學、數學和神經科學等多個學科。AI可以分為兩大類：一是“強人工智能”，這種人工智能可以像人類一樣思考，甚至超過人類思維水平；二是“弱人工智能”，這種人工智能只能執行特定任務，例如語音識別、圖像識別、自然語言處理等。",
+      "image": "https://simpleinfohk.me/img/ai-light-talk/ai-1.jpg",
+      "legacyPath": "/content/ai-tutorial/ai-light-talk"
+    },
+    {
+      "slug": "ai-tutorial/ai-quick-tutorial",
+      "title": "什麼是AI? 10分鐘內學懂AI",
+      "description": "AI(人工智慧)  是電腦科學的一個領域，用於解決與人類智慧相關的常見認知問題 ，例如學習、解決問題和模式辨識。而這類行動原本需要人類智慧判斷或涉及超出人為分析能力上限的資料規模AI 是一個廣泛版圖，包含許多不同的專業領域，包括電",
+      "image": "https://simpleinfohk.me/img/ai.jpg",
+      "legacyPath": "/content/ai-tutorial/ai-quick-tutorial"
+    },
+    {
+      "slug": "ai-tutorial/assemblyaI",
+      "title": "AssemblyaI",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/ai-tutorial/assemblyaI"
+    },
+    {
+      "slug": "ai-tutorial/chatgpt-mirror-website",
+      "title": "分類了二十個免費ChatGPT鏡像網站，親測能用!包括GPT-4",
+      "description": "我們在互聯網經過一番搜索後，整理出20個ChatGPT鏡像網站，所有都是免費並實用。如果你覺得它們有用，可以考慮支持一下我們，替我們買杯咖啡",
+      "image": "https://simpleinfohk.me/img/chatgpt-mirror-website/chatgpt-mirror-website.jpg",
+      "legacyPath": "/content/ai-tutorial/chatgpt-mirror-website"
+    },
+    {
+      "slug": "ai-tutorial/chatgpt-quick-talk",
+      "title": "Chatgpt Quick Talk",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/ai-tutorial/chatgpt-quick-talk"
+    },
+    {
+      "slug": "ai-tutorial/claude-quick-talk",
+      "title": "最強AI聊天機械人來襲 - Claude，告別繁瑣的註冊過程，被譽為ChatGPT的最強對手，對比ChatGPT凡所的註冊門檻，Claude可以說是{`",
+      "description": "最強AI聊天機械人來襲 - Claude，告別繁瑣的註冊過程，被譽為ChatGPT的最強對手，對比ChatGPT凡所的註冊門檻，Claude可以說是{`",
+      "image": "https://simpleinfohk.me/img/claude-quick-talk/meet-claude.webp",
+      "legacyPath": "/content/ai-tutorial/claude-quick-talk"
+    },
+    {
+      "slug": "ai-tutorial/deepfloydif",
+      "title": "Stable diffusion 背後公司StabilityAI最近又有新打算了。他們在Github發表了全新的開源模型 DeepFloyd IF",
+      "description": "Stable diffusion 背後公司StabilityAI最近又有新打算了。他們在Github發表了全新的開源模型 DeepFloyd IF",
+      "image": "https://simpleinfohk.me/img/deepfloydif/photo1.png",
+      "legacyPath": "/content/ai-tutorial/deepfloydif"
+    },
+    {
+      "slug": "ai-tutorial/google-mix-deepmind-and-googlebrain",
+      "title": "Google宣布將會合拼燈DeepMind 和 Google Brain",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/ai-tutorial/google-mix-deepmind-and-googlebrain"
+    },
+    {
+      "slug": "ai-tutorial/googlepalm",
+      "title": "在這一週，谷歌",
+      "description": "在這一週，谷歌",
+      "image": "https://simpleinfohk.me/img/google-palm/google-palm.webp",
+      "legacyPath": "/content/ai-tutorial/googlepalm"
+    },
+    {
+      "slug": "ai-tutorial/hugging-chat",
+      "title": "Hugging Face在4 月 26 日發布了 大語言模型 HuggingChat，官方自信地表示:",
+      "description": "Hugging Face在4 月 26 日發布了 大語言模型 HuggingChat，官方自信地表示:",
+      "image": "https://simpleinfohk.me/img/huggingchat/huggingface.png",
+      "legacyPath": "/content/ai-tutorial/hugging-chat"
+    },
+    {
+      "slug": "ai-tutorial/openai-chatgpt-how-to-work",
+      "title": "OpenAI ChatGPT 如何運作? 解構GPT-3工作原理",
+      "description": "GPT的訓練過程中，主要使用無監督學習的方法，即不需要人工標注的數據。具體來說，GPT將輸入的語言序列分成若幹個token，然後通過多層的自注意力機制和前向神經網絡來預測每個token的下一個token。預測時，GPT會給出一個概率分布，表示每個token能夠成為下一個token的可能性大小，然後根據這個概率分布進行采樣，從而得到下一個token。通過這種方式，GPT可以不斷地生成新的文本，從而實現對自然語言的生成。",
+      "image": "https://simpleinfohk.me/img/openai.jpg",
+      "legacyPath": "/content/ai-tutorial/openai-chatgpt-how-to-work"
+    },
+    {
+      "slug": "ai-tutorial/openxla-quick-tutorial",
+      "title": "OpenXLA:史上最強開源項目，Google、微軟、蘋果、Meta，整合現有AI框架和硬件",
+      "description": "2022年 10 月的 Google Cloud Next 2022 活動中，OpenXLA 項目正式浮出水面，Google與包括Meta、Apple、AMD、Arm、亞馬遜、英特爾、英偉達、阿里巴巴等科技公司推動的開源 AI 框架合作，致力於匯集不同機器學習框架，讓機器學習開發人員獲得能主動選擇框架、硬件的能力。",
+      "image": "https://avatars.githubusercontent.com/u/107584881?s=200&v=4",
+      "legacyPath": "/content/ai-tutorial/openxla-quick-tutorial"
+    },
+    {
+      "slug": "ai-tutorial/photo-ai-tutorial",
+      "title": "Photo Ai Tutorial",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/ai-tutorial/photo-ai-tutorial"
+    },
+    {
+      "slug": "ai-tutorial/pomo-rhythm",
+      "title": "Pomo.rhythm 是一個用於番茄工作法的Spotify 歌單生成器。它專為一邊使用番茄工作法、一邊聽音樂的用戶們設計。",
+      "description": "Pomo.rhythm 是一個用於番茄工作法的Spotify 歌單生成器。它專為一邊使用番茄工作法、一邊聽音樂的用戶們設計。",
+      "image": "https://simpleinfohk.me/img/pomo-rhythm/pomo-rhythm.png",
+      "legacyPath": "/content/ai-tutorial/pomo-rhythm"
+    },
+    {
+      "slug": "ai-tutorial/setup-stable-diffusion",
+      "title": "如何在 Windows 本機部署 Stable Diffusion，快速完成安裝並生成第一張 AI 圖像。",
+      "description": "如何在 Windows 本機部署 Stable Diffusion，快速完成安裝並生成第一張 AI 圖像。",
+      "image": "https://simpleinfohk.me/img/stable-diffusion.webp",
+      "legacyPath": "/content/ai-tutorial/setup-stable-diffusion"
+    },
+    {
+      "slug": "ai-tutorial/stable-diffusion-speed-up",
+      "title": "Stable Diffusion Speed Up",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/ai-tutorial/stable-diffusion-speed-up"
+    },
+    {
+      "slug": "ai-tutorial/truthgpt",
+      "title": "馬斯克在接受福克斯新聞採訪時表示，新公司「X.AI」正在開發一個名叫「TruthGPT」的大型語言模型（LLM） TruthGPT，這將是“最大程度尋求真相的人工智能”——不管這意味著什麼。",
+      "description": "馬斯克在接受福克斯新聞採訪時表示，新公司「X.AI」正在開發一個名叫「TruthGPT」的大型語言模型（LLM） TruthGPT，這將是“最大程度尋求真相的人工智能”——不管這意味著什麼。",
+      "image": "https://simpleinfohk.me/img/truthgpt/truthgpt.jpg",
+      "legacyPath": "/content/ai-tutorial/truthgpt"
+    },
+    {
+      "slug": "ai-tutorial/xai-quick-talk",
+      "title": "Elon Musk 創立了 X.AI 公司對抗OpenAI",
+      "description": "根據《華爾街日報》前日 (14)的一份新報告，埃隆-馬斯克在內華達州成立了一家新的人工智能公司，名為X.AI公司。馬斯克被列為該公司的董事，被廣泛認為是馬斯克幕後得力助手的賈里德-伯查爾被列為該公司的秘書。",
+      "image": "https://simpleinfohk.me/img/xai-quick-talk/elon-musk.jpg",
+      "legacyPath": "/content/ai-tutorial/xai-quick-talk"
+    },
+    {
+      "slug": "card-game/csgo",
+      "title": "快速中止移動，使角色馬上停下，使用CSGO急停技巧，教學如下：如果你正在前進:松開前進按鍵W鍵。",
+      "description": "快速中止移動，使角色馬上停下，使用CSGO急停技巧，教學如下：如果你正在前進:松開前進按鍵W鍵。",
+      "image": "/img/csgo_2.jpg",
+      "legacyPath": "/content/card-game/csgo"
+    },
+    {
+      "slug": "card-game/genshin",
+      "title": "对于原神的剧情，一些人认为它是好的，而另一些人则认为它是坏的。针对这个问题，我们需要具体分析原神的剧情特点。",
+      "description": "对于原神的剧情，一些人认为它是好的，而另一些人则认为它是坏的。针对这个问题，我们需要具体分析原神的剧情特点。",
+      "image": "/img/csgo_2.jpg",
+      "legacyPath": "/content/card-game/genshin"
+    },
+    {
+      "slug": "card-game/honkai",
+      "title": "崩壞：星穹鐵道是米哈游的最新遊戲，𠄘接崩壞3rd的宇宙，並結合了原神的一些遊戲機制，以全新的故事和回合制的玩法帶來全新的遊戲體驗。",
+      "description": "崩壞：星穹鐵道是米哈游的最新遊戲，𠄘接崩壞3rd的宇宙，並結合了原神的一些遊戲機制，以全新的故事和回合制的玩法帶來全新的遊戲體驗。",
+      "image": "https://simpleinfohk.me/img/honkai/Honkai：Star_Rail崩壞：星穹鐵道.webp",
+      "legacyPath": "/content/card-game/honkai"
+    },
+    {
+      "slug": "card-game/honkai-code",
+      "title": "各位登上了星穹列車了嗎? 我們為大家收集了所有崩壞：星穹鐵道的兌換碼，幫助您進行星際冒險。我們會定期更新本教學，請務必回來查看以知道所有最新的兌換碼。",
+      "description": "各位登上了星穹列車了嗎? 我們為大家收集了所有崩壞：星穹鐵道的兌換碼，幫助您進行星際冒險。我們會定期更新本教學，請務必回來查看以知道所有最新的兌換碼。",
+      "image": "https://simpleinfohk.me/img/honkai-code/1.png",
+      "legacyPath": "/content/card-game/honkai-code"
+    },
+    {
+      "slug": "card-game/how-to-solve-steam-error",
+      "title": "在 Steam 中有非常多優秀的遊戲可以玩，但是 Steam 平台也有一些問題，例如更新時發生錯誤或應用配置文件不可用等。下面，小編將分享一些解決方法，以幫助玩家們解決這些問題。",
+      "description": "在 Steam 中有非常多優秀的遊戲可以玩，但是 Steam 平台也有一些問題，例如更新時發生錯誤或應用配置文件不可用等。下面，小編將分享一些解決方法，以幫助玩家們解決這些問題。",
+      "image": "https://simpleinfohk.me/img/fix-steam-error/steam.jpg",
+      "legacyPath": "/content/card-game/how-to-solve-steam-error"
+    },
+    {
+      "slug": "card-game/little-noah-introduce",
+      "title": "《小小諾亞-樂園的繼承者》介紹",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/card-game/little-noah-introduce"
+    },
+    {
+      "slug": "card-game/poker_21point_quick_talk",
+      "title": "Poker 21point Quick Talk",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/card-game/poker_21point_quick_talk"
+    },
+    {
+      "slug": "card-game/steam-game-forager",
+      "title": "Steam 移植遊戲-浮島物語 (Forager)",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/card-game/steam-game-forager"
+    },
+    {
+      "slug": "card-game/unrecord",
+      "title": "由游戲開發團隊 Drama製作的FPS新作《Unrecord》登上了Steam商店，但未有發售日期。官方在YouTube上釋出遊戲預告後，在外國遊戲論壇引起一片討論。",
+      "description": "由游戲開發團隊 Drama製作的FPS新作《Unrecord》登上了Steam商店，但未有發售日期。官方在YouTube上釋出遊戲預告後，在外國遊戲論壇引起一片討論。",
+      "image": "https://simpleinfohk.me/img/unrecord/unrecord-game-sence.jpg",
+      "legacyPath": "/content/card-game/unrecord"
+    },
+    {
+      "slug": "code-tutorial/python-ch1",
+      "title": "Python [第一章]基礎語法",
+      "description": "在這一章，我們將淺易地講解Python基礎語法",
+      "image": "https://simpleinfohk.me/img/python.png",
+      "legacyPath": "/content/code-tutorial/python-ch1"
+    },
+    {
+      "slug": "code-tutorial/python-quick-tutorial",
+      "title": "Python入門",
+      "description": "入門快速學習Python,即使新手也很快速掌握",
+      "image": "https://simpleinfohk.me/img/python.png",
+      "legacyPath": "/content/code-tutorial/python-quick-tutorial"
+    },
+    {
+      "slug": "code-tutorial/simple_linux_cmd",
+      "title": "Linux幾個必學指令(ls cd cat)",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/code-tutorial/simple_linux_cmd"
+    },
+    {
+      "slug": "fun-fact/All-Quiet-On-the-Western-Front",
+      "title": "All Quiet On The Western Front",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/fun-fact/All-Quiet-On-the-Western-Front"
+    },
+    {
+      "slug": "fun-fact/ancient-3-sex-fun-fact",
+      "title": "孫中山、張飛是蘿莉控？蘇軾竟是… 我們一起來看看古人的性癖好！",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/fun-fact/ancient-3-sex-fun-fact"
+    },
+    {
+      "slug": "fun-fact/chinese-king1",
+      "title": "中國古代最重要的君主列表",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/fun-fact/chinese-king1"
+    },
+    {
+      "slug": "fun-fact/chinese-king2",
+      "title": "中國古代最重要的君主列表{`(2)`}",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/fun-fact/chinese-king2"
+    },
+    {
+      "slug": "fun-fact/shi-dudu",
+      "title": "顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞",
+      "description": "顛覆你對間諜的認知！有趣人物之間謀篇：時佩璞《孫子兵法》有云：「因間者，因其鄉人而用之。」，指利用敵方人員作間諜，這次的主角使用「因間」的方式過於特殊。他身為男兒男扮女裝與法國駐華大使館職員維持了20年的伴侶關係，為中華人民共和國政府竊取法國政府情報，但是他是如何做到的？",
+      "image": "https://upload.wikimedia.org/wikipedia/zh/7/73/Shi_Pei_Pu.jpeg",
+      "legacyPath": "/content/fun-fact/shi-dudu"
+    },
+    {
+      "slug": "fun-fact/Sun-Yat-sen",
+      "title": "古人的性癖好 孫中山是蘿莉控？",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/fun-fact/Sun-Yat-sen"
+    },
+    {
+      "slug": "news/素海霖/first-hongkonger-av",
+      "title": "First Hongkonger Av",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/news/素海霖/first-hongkonger-av"
+    },
+    {
+      "slug": "news/Faye-Wong",
+      "title": "不在藏了? 王菲和謝霆鋒",
+      "description": "謝霆鋒和王菲合作過多首歌曲，其中最著名的是<<因為愛情>>、<<傳奇>>和<<曖昧>>。這些歌曲都非常成功，成為了中國音樂歷史上的經典作品。",
+      "image": "https://simpleinfohk.me/img/Faye_Wong_03.jpg",
+      "legacyPath": "/content/news/Faye-Wong"
+    },
+    {
+      "slug": "news/Faye-Wong-song",
+      "title": "謝霆鋒和王菲的合作",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/news/Faye-Wong-song"
+    },
+    {
+      "slug": "news/learning-strategy",
+      "title": "這篇文章介紹了如何制定適合自己的學習計劃。制定學習計劃對於學習的效率、成果和職業發展都非常重要。為了制定一個科學合理的學習計劃，需要先明確自己的學習目標和需求，然後綜合考慮時間、學習能力、任務難度等因素，制定出一份詳細的學習計劃。在制定計劃的過程中，需要注意合理安排學習時間和內容，並結合自己的興趣愛好和特長，選擇適合的學習內容和學習方式。在制定計劃後，需要監督自己執行計劃，及時調整計劃以確保有效性和實用性。此外，還可以通過閱讀優秀的文學作品、掌握基礎知識和技能等方式來提高學習效率和學習成果。",
+      "description": "這篇文章介紹了如何制定適合自己的學習計劃。制定學習計劃對於學習的效率、成果和職業發展都非常重要。為了制定一個科學合理的學習計劃，需要先明確自己的學習目標和需求，然後綜合考慮時間、學習能力、任務難度等因素，制定出一份詳細的學習計劃。在制定計劃的過程中，需要注意合理安排學習時間和內容，並結合自己的興趣愛好和特長，選擇適合的學習內容和學習方式。在制定計劃後，需要監督自己執行計劃，及時調整計劃以確保有效性和實用性。此外，還可以通過閱讀優秀的文學作品、掌握基礎知識和技能等方式來提高學習效率和學習成果。",
+      "image": "https://simpleinfohk.me/img/learning-strategy/learning.webp",
+      "legacyPath": "/content/news/learning-strategy"
+    },
+    {
+      "slug": "news/leslie-quick-talk",
+      "title": "《最愛是誰》懷念張國榮",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/news/leslie-quick-talk"
+    },
+    {
+      "slug": "news/youtube_revanced",
+      "title": "Youtube Revanced",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/news/youtube_revanced"
+    },
+    {
+      "slug": "sport/football-big-news",
+      "title": "球隊大事記 曼聯",
+      "description": "曼聯的發展歷史--曼徹斯特聯足球俱樂部，簡稱曼聯，目前在英格蘭超級聯賽比賽。在22-23賽季，曼聯在創造了曼聯歷史最大失利被利物浦7比0大比數戰勝，這個歴史悠久的球會是如何在英超中掘起？又如何在近年沒落？讓我們一起回顧這段曼聯的歷史。",
+      "image": "https://simpleinfohk.me/img/football-big-news/1.webp",
+      "legacyPath": "/content/sport/football-big-news"
+    },
+    {
+      "slug": "sport/football-henry",
+      "title": "海布里之王-亨利大帝",
+      "description": "海布里之王-亨利(Thierry Henry)，亨利作為阿仙奴的標誌性人物於早年間便充滿天賦被摩洛哥青年軍收入旗下...",
+      "image": "https://simpleinfohk.me/img/football-big-news/1.webp",
+      "legacyPath": "/content/sport/football-henry"
+    },
+    {
+      "slug": "sport/football-new-hope",
+      "title": "足球界的革新和希望 國王聯賽",
+      "description": "足球界的革新和希望  國王聯賽國王聯賽由不久前退役的職業足球員碧基成立，於23年一月一日開始首賽季，分為冬、夏兩個實季。此賽事是七人制賽事，聯賽中有12支球隊，在各交手一次共11場比賽後，前8名將進入季後賽。賽事分上下半場各20分鐘，共四十分鐘，當40分鐘時平局將以不同規則的十二碼決勝。每支球隊共12人，10人將從報名者選出，任何人都可報名，別外2人就由客串球員擔任，2位中1位會每周更換，當中乏知名現役或退役球星例如細哨、朗拿甸奴、阿古露等人。",
+      "image": "https://resource01-proxy.ulifestyle.com.hk/res/v3/image/content/1990000/1992752/18JSA003__20180118_L.jpg",
+      "legacyPath": "/content/sport/football-new-hope"
+    },
+    {
+      "slug": "sport/spain-new-football-player",
+      "title": "未來西班牙女王的駙馬？西班牙足球新秀加維",
+      "description": "加維，自從在2021年加入巴塞隆拿主隊後，在埸上不論運球、預判、智慧、視野、傳球都有著不凡的表現。他憑着實力贏得許多巴塞隆拿和西班牙球迷的心，因為他跳入了高級足球，尤其是西班牙王室的球迷。",
+      "image": "https://simpleinfohk.me/img/spain-football-new-player/gavi.jpg",
+      "legacyPath": "/content/sport/spain-new-football-player"
+    },
+    {
+      "slug": "toy/5-gundam",
+      "title": "RG 1/144系列必入手的商品",
+      "description": "內容遷移中，請稍後查看完整新版文章。",
+      "image": "/img/simple_info.png",
+      "legacyPath": "/content/toy/5-gundam"
+    },
+    {
+      "slug": "web3/what-is-web3",
+      "title": "Web 3.0和區塊鏈是什麼?是否對現實生活和環境的潛在環境有影響？",
+      "description": "Web 3.0是指第三代網際網路，也稱為分佈式網路，其重點在於將網際網路從僅將信息分發給被動接收者轉變為一個更去中心化的互動平台，其中用戶可以使用自己的資料、數位貨幣和智能合約，進行更安全、更透明和更互動的操作。Web 3 的核心特點是去中心化和去信任化，這使得每個人都可以受益，而無需與任何中心化組織或機構相關聯。",
+      "image": "https://simpleinfohk.me/img/what-is-web3/blockchain.jpg",
+      "legacyPath": "/content/web3/what-is-web3"
+    }
+  ]
+}

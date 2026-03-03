@@ -4,14 +4,14 @@ import { getSupabaseServer } from '../../lib/supabaseServer';
 import BlockRenderer from '../components/blockRenderer';
 import { getBlocksFromSubmission } from '../../lib/contentBlocks';
 
-export default function ContentSlugPage({ slug, article }) {
+export default function ContentDbSlugPage({ slug, article }) {
   if (!article) {
     return (
       <Container size="sm" py="xl">
         <Card withBorder>
           <Stack>
             <Title order={2}>文章不存在</Title>
-            <Text color="dimmed">這個 slug 尚未完成遷移，請稍後再試。</Text>
+            <Text color="dimmed">這篇內容未找到或仍在遷移中。</Text>
             <Button component={Link} href="/hot">返回近期最熱</Button>
           </Stack>
         </Card>

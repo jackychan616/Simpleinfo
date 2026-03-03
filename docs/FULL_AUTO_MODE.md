@@ -47,6 +47,15 @@ Add:
 
 This adds 3 new topics every day at 09:00 / 14:00 / 20:00.
 
+## Optional: AI polish migrated legacy content
+
+```bash
+cd /Users/jackychan/.openclaw/workspace-work/Simpleinfo
+npm run content:migrate:ai-polish -- --limit 20
+```
+
+This uses your configured AI provider (Ollama recommended) to rewrite legacy migrated content into cleaner publish-ready blocks.
+
 ## 3) Stop full-auto mode
 
 ```bash
