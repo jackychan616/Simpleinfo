@@ -14,6 +14,7 @@
     "export": "next build && next export",
     "ai:bot:enqueue": "node scripts/ai-bot-enqueue.js",
     "ai:bot:autotopic": "node scripts/ai-bot-autotopic.js",
+    "content:slug:migrate": "node scripts/content-slug-migrate.js",
     "ai:bot:optimize": "node scripts/ai-bot-optimize.js",
     "ai:bot:optimize:loop": "node scripts/ai-bot-optimize.js --loop",
     "ai:bot:once": "node scripts/ai-bot-worker.js --once",
