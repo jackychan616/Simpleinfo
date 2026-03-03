@@ -45,11 +45,23 @@ export default function BlockRenderer({ blocks = [] }) {
         }
 
         if (block.type === 'image') {
+          const maxW = Number(block.maxWidth) || 760;
           return (
-            <div key={block.id}>
+            <div key={block.id} style={{ textAlign: 'center' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={block.src} alt={block.alt || block.caption || 'image'} style={{ maxWidth: '100%', borderRadius: 8 }} />
-              {block.caption ? <Text size="sm" color="dimmed">{block.caption}</Text> : null}
+              <img
+                src={block.src}
+                alt={block.alt || block.caption || 'image'}
+                style={{
+                  width: '100%',
+                  maxWidth: maxW,
+                  height: 'auto',
+                  borderRadius: 8,
+                  display: 'inline-block',
+                  boxShadow: '0 1px 6px rgba(0,0,0,0.12)',
+                }}
+              />
+              {block.caption ? <Text size="sm" color="dimmed" mt={6}>{block.caption}</Text> : null}
             </div>
           );
         }
@@ -115,9 +127,9 @@ export default function BlockRenderer({ blocks = [] }) {
         if (block.type === 'chart') {
           const chartUrl = buildQuickChartUrl(block);
           return (
-            <div key={block.id}>
+            <div key={block.id} style={{ textAlign: 'center' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={chartUrl} alt={block.title || 'chart'} style={{ width: '100%', borderRadius: 8 }} />
+              <img src={chartUrl} alt={block.title || 'chart'} style={{ width: '100%', maxWidth: 760, borderRadius: 8, display: 'inline-block' }} />
             </div>
           );
         }
