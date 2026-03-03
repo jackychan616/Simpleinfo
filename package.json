@@ -18,6 +18,7 @@
     "content:slug:build": "node scripts/content-slug-build.js",
     "content:migrate:supabase": "node scripts/content-to-supabase.js",
     "content:migrate:repair": "node scripts/content-migration-repair.js",
+    "content:migrate:ai-polish": "node scripts/content-migrate-ai-polish.js",
     "ai:bot:optimize": "node scripts/ai-bot-optimize.js",
     "ai:bot:optimize:loop": "node scripts/ai-bot-optimize.js --loop",
     "ai:bot:once": "node scripts/ai-bot-worker.js --once",
