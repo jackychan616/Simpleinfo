@@ -123,6 +123,15 @@ export default function AiBotDashboardPage() {
     await loadStatus();
   }
 
+  function toCommunityIdSlug(id, slug, title) {
+    if (id && slug) return `/community/${id}-${slug}`;
+    if (id && title) {
+      const fallbackSlug = String(title).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'post';
+      return `/community/${id}-${fallbackSlug}`;
+    }
+    return id ? `/community/${id}` : '/community';
+  }
+
   async function reviewSubmission(id, status) {
     const token = await getAccessToken();
     if (!token) {
@@ -288,6 +297,16 @@ export default function AiBotDashboardPage() {
                           {r.generated_submission_id ? (
                             <Button size="xs" component="a" href={`/writer/submissions/${r.generated_submission_id}`}>
                               View/Edit
+                            </Button>
+                          ) : null}
+                          {r.generated_submission_id && r.submission_status === 'approved' ? (
+                            <Button
+                              size="xs"
+                              variant="outline"
+                              component="a"
+                              href={toCommunityIdSlug(r.generated_submission_id, r.submission_slug, r.submission_title)}
+                            >
+                              Public(id-slug)
                             </Button>
                           ) : null}
                           {r.generated_submission_id ? (
